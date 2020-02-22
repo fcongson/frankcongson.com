@@ -3,7 +3,35 @@ header {
   justify-content: center;
 
   .header-container {
+    display: flex;
+    flex-direction: row;
     width: 1120px;
     height: 64px;
+  }
+
+  .navigation-container {
+    display: flex;
+    flex-direction: row;
+    height: 64px;
+    align-items: stretch;
+  }
+
+  .navigation-link {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+    margin-left: 32px;
+    padding-top: 30px;
+    border-bottom: 2px solid transparent;
+    transition: all 200ms ease-in-out;
+    color: $grey-dark-40;
+    &:hover {
+      border-bottom: 2px solid $grey-dark-40;
+    }
+    &[aria-current='page'] {
+      border-bottom: 2px solid $grey-dark-40;
+    }
   }
 }

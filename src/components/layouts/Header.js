@@ -8,10 +8,20 @@ export default () => (
       <Link to='/'>
         <img className='header-logo' src={logo} alt='Frank Congson logo' />
       </Link>
-      <Link to='/'>Home</Link>
-      <Link to='/photography'>Photography</Link>
-      <Link to='/about'>About</Link>
-      <Link to='/blog'>Blog</Link>
+      <div className='navigation-container'>
+        <Link className='navigation-link' to='/'>
+          Home
+        </Link>
+        <Link className='navigation-link' to='/photography'>
+          Photography
+        </Link>
+        <Link className='navigation-link' to='/about'>
+          About
+        </Link>
+        <Link className='navigation-link' to='/blog'>
+          Blog
+        </Link>
+      </div>
     </div>
   </header>
 )
