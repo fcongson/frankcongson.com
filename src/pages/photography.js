@@ -4,7 +4,9 @@ import Layout from '../components/layouts'
 export default () => {
   return (
     <Layout>
-      <h1>Photography</h1>
+      <div className='container'>
+        <h1>Photography</h1>
+      </div>
     </Layout>
   )
 }

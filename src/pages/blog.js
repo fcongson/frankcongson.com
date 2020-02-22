@@ -39,7 +39,9 @@ export default ({ data }) => {
 
   return (
     <Layout>
-      <h1>Blog</h1>
+      <div className='container'>
+        <h1>Blog</h1>
+      </div>
       <BlogPosts posts={posts} />
     </Layout>
   )

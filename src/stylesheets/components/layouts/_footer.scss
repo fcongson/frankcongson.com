@@ -1,12 +1,12 @@
 footer {
-  color: #9A9A9A;
+  background-color: $grey-dark-40;
+  color: $grey-light-40;
   font-family: $font-sans-serif;
   font-size: 16px;
-  font-style: italic;
   text-align: center;
+  flex-shrink: 0;
 
   p {
-    border-top: 1px solid #DADADA;
     padding: 2rem 0;
     margin-bottom: 0;
   }
