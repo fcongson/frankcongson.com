@@ -1,76 +1,50 @@
-import React from 'react'
+import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
-import { graphql } from 'gatsby';
+import React from 'react'
 import Layout from '../components/layouts'
-import BlogPosts from '../components/BlogPosts'
 
 // Query for the Blog Home content in Prismic
 export const query = graphql`
-{
-  prismic{
-    allBlog_homes(uid:null){
-      edges{
-        node{
-          _meta{
-            id
-            type
-          }
-          headline
-          description
-          image
-        }
-      }
-    }
-    allPosts(sortBy: date_DESC){
-      edges{
-        node{
-          _meta{
-            id
-            uid
-            type
-          }
-          title
-          date
-          body{
-            ... on PRISMIC_PostBodyText{
+  {
+    prismic {
+      allBlog_homes(uid: null) {
+        edges {
+          node {
+            _meta {
+              id
               type
-              label
-              primary{
-                text
-              }
             }
+            headline
+            description
+            image
           }
         }
       }
     }
   }
-}
 `
 
 // Using the queried Blog Home document data, we render the top section
-const BlogHomeHead = ({ home }) => {  
-  const avatar = { backgroundImage: 'url(' + home.image.url +')' };
+const BlogHomeHead = ({ home }) => {
+  const avatar = { backgroundImage: 'url(' + home.image.url + ')' }
   return (
-    <div className="home-header container" data-wio-id={ home._meta.id }>
-      <div className="blog-avatar" style={ avatar }>
-      </div>
-      <h1>{ RichText.asText(home.headline) }</h1>
-      <p className="blog-description">{ RichText.asText(home.description) }</p>
+    <div className='home-header container' data-wio-id={home._meta.id}>
+      <div className='blog-avatar' style={avatar}></div>
+      <h1>{RichText.asText(home.headline)}</h1>
+      <p className='blog-description'>{RichText.asText(home.description)}</p>
     </div>
-  );
-};
+  )
+}
 
 export default ({ data }) => {
-  // Define the Blog Home & Blog Post content returned from Prismic
-  const doc = data.prismic.allBlog_homes.edges.slice(0,1).pop();
-  const posts = data.prismic.allPosts.edges;
+  // Define the Blog Home content returned from Prismic
+  const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
 
-  if(!doc) return null;
+  if (!doc) return null
 
-  return(
+  return (
     <Layout>
-      <BlogHomeHead home={ doc.node } />
-      <BlogPosts posts={ posts }/>
+      <BlogHomeHead home={doc.node} />
     </Layout>
   )
 }
