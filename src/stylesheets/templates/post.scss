@@ -1,9 +1,8 @@
-
 .post-header {
   padding: 20px;
 
   .back {
-    color: #9A9A9A;
+    color: $grey;
     display: block;
     max-width: 1120px;
     margin: 0 auto 2em auto;
@@ -18,7 +17,7 @@
     }
 
     a {
-      color: #9A9A9A;
+      color: $grey;
 
       &:hover {
         text-decoration: underline;

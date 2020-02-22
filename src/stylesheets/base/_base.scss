@@ -2,10 +2,10 @@
   -webkit-font-smoothing: antialiased;
 }
 ::selection {
-  background: #a4b5d0; /* WebKit/Blink Browsers */
+  background: $navy-light-40; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: #a4b5d0; /* Gecko Browsers */
+  background: $navy-light-40; /* Gecko Browsers */
 }
 
 html,
@@ -23,15 +23,12 @@ body {
   line-height: 1.5;
   font-family: $font-sans-serif;
   font-size: 16px;
-
-  @media (max-width: $max-width-sm) {
-    padding: 0 16px;
-  }
 }
 
 .container {
   max-width: 1120px;
   margin: auto;
+  padding: 0 16px;
 
   @media (max-width: $max-width-sm) {
     padding: 0 16px;

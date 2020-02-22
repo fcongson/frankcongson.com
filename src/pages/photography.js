@@ -5,7 +5,7 @@ export default () => {
   return (
     <Layout>
       <div className='container'>
-        <h1>Photography</h1>
+        <h1 className='page-header'>Photography.</h1>
       </div>
     </Layout>
   )

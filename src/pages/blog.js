@@ -40,7 +40,7 @@ export default ({ data }) => {
   return (
     <Layout>
       <div className='container'>
-        <h1>Blog</h1>
+        <h1 className='page-header'>Blog.</h1>
       </div>
       <BlogPosts posts={posts} />
     </Layout>

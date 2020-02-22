@@ -3,7 +3,7 @@ import React from 'react'
 import logo from '../../images/logo.svg'
 
 export default () => (
-  <header>
+  <header className='container'>
     <div className='header-container'>
       <Link to='/'>
         <img className='header-logo' src={logo} alt='Frank Congson logo' />
