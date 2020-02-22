@@ -13,6 +13,8 @@ export default props => (
           siteMetadata {
             title
             description
+            keywords
+            author
           }
         }
       }
@@ -22,9 +24,8 @@ export default props => (
 )
 
 const Layout = props => {
-  // Define the meta title and description
-  const title = props.data.site.siteMetadata.title
-  const description = props.data.site.siteMetadata.description
+  // Define the meta title, description, keywords, and author
+  const { title, description, keywords, author } = props.data.site.siteMetadata
 
   // Load the Prismic edit button
   if (typeof window !== 'undefined' && window.prismic) {
@@ -37,8 +38,10 @@ const Layout = props => {
         <meta charSet='utf-8' />
         <title>{title}</title>
         <meta name='description' content={description} />
+        <meta name='keywords' content={keywords} />
+        <meta name='author' content={author} />
         <link
-          href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700'
+          href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap'
           rel='stylesheet'
           type='text/css'></link>
         <link
