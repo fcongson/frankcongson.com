@@ -1,37 +1,105 @@
 header {
+  display: block;
+}
+
+.header-container {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  max-width: 1120px;
+  margin: auto;
+  padding: 0 16px;
 
-  .header-container {
-    display: flex;
-    flex-direction: row;
-    width: 1120px;
-    height: 64px;
+  @media (max-width: $max-width-tablet-landscape) {
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+}
+
+.logo-container {
+  height: 64px;
+}
+
+.navigation-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: stretch;
+
+  @media (max-width: $max-width-tablet-landscape) {
+    flex-direction: column;
+    margin: 32px 0 64px 0;
+    order: 2;
+    width: 100%;
+    display: none;
+    &.open {
+      display: flex;
+    }
+  }
+}
+
+.navigation-link {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+  width: fit-content;
+  margin-left: 32px;
+  padding-top: 30px;
+  border-bottom: 2px solid transparent;
+  transition: border-bottom 200ms ease-in-out;
+  color: $grey-dark-40;
+  &:hover {
+    border-bottom: 2px solid $grey-dark-40;
+  }
+  &[aria-current='page'] {
+    border-bottom: 2px solid $grey-dark-40;
   }
 
-  .navigation-container {
-    display: flex;
-    flex-direction: row;
-    height: 64px;
-    align-items: stretch;
-  }
-
-  .navigation-link {
-    font-family: Montserrat;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    margin-left: 32px;
-    padding-top: 30px;
-    border-bottom: 2px solid transparent;
-    transition: all 200ms ease-in-out;
-    color: $grey-dark-40;
+  @media (max-width: $max-width-tablet-landscape) {
+    font-size: 36px;
+    line-height: 44px;
+    margin: 0;
+    padding: 0 0 16px 0;
     &:hover {
       border-bottom: 2px solid $grey-dark-40;
     }
     &[aria-current='page'] {
       border-bottom: 2px solid $grey-dark-40;
     }
+  }
+}
+
+.navigation-menu-toggle {
+  display: none;
+  height: 64px;
+  & .toggle-line {
+    position: relative;
+    width: 32px;
+    height: 2px;
+    background-color: $grey-dark-40;
+    transition: top 200ms ease-in-out 0ms, transform 200ms ease-in-out 0ms;
+    &.top {
+      top: 33px;
+      &.open {
+        top: 40px;
+        transform: rotate(45deg);
+      }
+    }
+    &.bottom {
+      top: 45px;
+      &.open {
+        top: 38px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: $max-width-tablet-landscape) {
+    display: block;
+    order: 1;
   }
 }

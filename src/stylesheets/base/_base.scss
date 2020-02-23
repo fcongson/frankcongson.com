@@ -29,8 +29,4 @@ body {
   max-width: 1120px;
   margin: auto;
   padding: 0 16px;
-
-  @media (max-width: $max-width-sm) {
-    padding: 0 16px;
-  }
 }

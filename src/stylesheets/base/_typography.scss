@@ -61,7 +61,7 @@ em {
   font-style: italic;
 }
 
-@media (max-width: $max-width-sm) {
+@media (max-width: $max-width-tablet-portrait) {
   h1 {
     font-size: 36px;
     line-height: 45px;
@@ -89,7 +89,22 @@ em {
   line-height: 148px;
   text-align: center;
 
-  @media (max-width: $max-width-sm) {
+  @media (max-width: $max-width-tablet-landscape) {
+    font-size: 54px;
+    line-height: 66px;
+  }
+
+  @media (max-width: $max-width-tablet-portrait) {
+    font-size: 54px;
+    line-height: 66px;
+  }
+
+  @media (max-width: $max-width-mobile-landscape) {
+    font-size: 36px;
+    line-height: 44px;
+  }
+
+  @media (max-width: $max-width-mobile-portrait) {
     font-size: 36px;
     line-height: 44px;
   }
