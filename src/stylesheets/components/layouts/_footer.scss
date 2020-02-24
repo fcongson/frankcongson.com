@@ -1,5 +1,5 @@
 footer {
-  background-color: $grey-dark-40;
+  background-color: $black;
   color: $grey-light-40;
   font-family: $font-sans-serif;
   font-size: 16px;
@@ -15,8 +15,27 @@ footer {
     font-weight: bold;
   }
 
+  .footer-container {
+    display: flex;
+    flex-direction: row;
+    max-width: $max-width-container;
+    margin: auto;
+    padding: 0 16px;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 256px;
+  }
+
   .footer-logo {
-    width: 30px;
-    margin-top: 10px;
+    height: 64px;
+    width: 64px;
+  }
+
+  .copyright {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10.67px;
+    line-height: 13px;
   }
 }

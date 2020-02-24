@@ -5,7 +5,7 @@ header {
 .header-container {
   display: flex;
   flex-direction: row;
-  max-width: 1120px;
+  max-width: $max-width-container;
   margin: auto;
   padding: 0 16px;
 

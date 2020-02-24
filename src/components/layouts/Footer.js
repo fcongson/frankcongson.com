@@ -1,13 +1,11 @@
 import React from 'react'
-import prismicLogo from '../../images/logo-prismic.svg'
+import logo from '../../images/logo-light.svg'
 
-export default () =>
+export default () => (
   <footer>
-    <p>
-      Proudly published with <a href="https://prismic.io" target="_blank" rel="noopener noreferrer">Prismic</a>
-      <br/>
-      <a href="https://prismic.io" target="_blank" rel="noopener noreferrer">
-      <img className="footer-logo" src={ prismicLogo } alt="Gray Prismic logo"/>
-      </a>
-    </p>
+    <div className='footer-container'>
+      <img className='footer-logo' src={logo} alt='Frank Congson logo' />
+      <p className='copyright'>Copyright © {new Date().getFullYear()} Frank Congson</p>
+    </div>
   </footer>
+)

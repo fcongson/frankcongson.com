@@ -4,7 +4,7 @@
   .back {
     color: $grey;
     display: block;
-    max-width: 1120px;
+    max-width: $max-width-container;
     margin: 0 auto 2em auto;
     font-family: $font-sans-serif;
     font-size: 16px;
