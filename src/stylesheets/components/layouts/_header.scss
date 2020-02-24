@@ -27,12 +27,15 @@ header {
 
   @media (max-width: $max-width-tablet-landscape) {
     flex-direction: column;
-    margin: 32px 0 64px 0;
+    margin-top: 32px;
     order: 2;
     width: 100%;
-    display: none;
+    height: 0px;
+    overflow: hidden;
+    transition: height 200ms ease-in-out, padding-bottom 200ms ease-in-out;
     &.open {
-      display: flex;
+      height: 312px;
+      padding-bottom: 64px;
     }
   }
 }
@@ -44,8 +47,8 @@ header {
   font-size: 16px;
   line-height: 20px;
   width: fit-content;
-  margin-left: 32px;
-  padding-top: 30px;
+  margin: 0 0 0 32px;
+  padding: 30px 0 0 0;
   border-bottom: 2px solid transparent;
   transition: border-bottom 200ms ease-in-out;
   color: $grey-dark-40;
@@ -59,8 +62,8 @@ header {
   @media (max-width: $max-width-tablet-landscape) {
     font-size: 36px;
     line-height: 44px;
-    margin: 0;
-    padding: 0 0 16px 0;
+    margin: 0 0 8px 0;
+    padding: 0 0 8px 0;
     &:hover {
       border-bottom: 2px solid $grey-dark-40;
     }
@@ -78,7 +81,7 @@ header {
     width: 32px;
     height: 2px;
     background-color: $grey-dark-40;
-    transition: top 200ms ease-in-out 0ms, transform 200ms ease-in-out 0ms;
+    transition: transform 100ms ease-in-out 0ms, top 100ms ease-in-out 100ms;
     &.top {
       top: 33px;
       &.open {
@@ -92,6 +95,9 @@ header {
         top: 38px;
         transform: rotate(-45deg);
       }
+    }
+    &.open {
+      transition: top 100ms ease-in-out 0ms, transform 100ms ease-in-out 100ms;
     }
   }
   &:hover {
