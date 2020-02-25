@@ -3,20 +3,36 @@ import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
 
-// Query for the Blog Home content in Prismic
 export const query = graphql`
   {
     prismic {
-      allBlog_homes(uid: null) {
+      allHomes(uid: null) {
         edges {
           node {
             _meta {
               id
               type
             }
-            headline
-            description
-            image
+            hero_image
+            page_header
+            page_description
+            body {
+              __typename
+              ... on PRISMIC_HomeBodyFeatured_section {
+                type
+                label
+                primary {
+                  section_image
+                  section_title
+                  section_description
+                  call_to_action_text
+                  call_to_action {
+                    _linkType
+                    __typename
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -24,27 +40,24 @@ export const query = graphql`
   }
 `
 
-// Using the queried Blog Home document data, we render the top section
-const BlogHomeHead = ({ home }) => {
-  const avatar = { backgroundImage: 'url(' + home.image.url + ')' }
-  return (
-    <div className='home-header container' data-wio-id={home._meta.id}>
-      <div className='blog-avatar' style={avatar}></div>
-      <h1 className='page-header'>{RichText.asText(home.headline)}</h1>
-      <p className='blog-description'>{RichText.asText(home.description)}</p>
+const Home = ({ home }) => (
+  <div className='container' data-wio-id={home._meta.id}>
+    <div className='hero-image'>
+      <img className='hero-image' src={home.hero_image.url} alt={home.hero_image.alt} />
     </div>
-  )
-}
+    <h1 className='page-header'>{RichText.asText(home.page_header)}</h1>
+    <p className='page-description'>{RichText.asText(home.page_description)}</p>
+  </div>
+)
 
 export default ({ data }) => {
-  // Define the Blog Home content returned from Prismic
-  const doc = data.prismic.allBlog_homes.edges.slice(0, 1).pop()
+  const doc = data.prismic.allHomes.edges.slice(0, 1).pop()
 
   if (!doc) return null
 
   return (
     <Layout>
-      <BlogHomeHead home={doc.node} />
+      <Home home={doc.node} />
     </Layout>
   )
 }

@@ -3,7 +3,7 @@ import React from 'react'
 import BlogPosts from '../components/BlogPosts'
 import Layout from '../components/layouts'
 
-// Query for the Blog Home content in Prismic
+// Query for the Blog Post content in Prismic
 export const query = graphql`
   {
     prismic {

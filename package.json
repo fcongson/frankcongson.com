@@ -33,6 +33,7 @@
   ],
   "license": "MIT",
   "scripts": {
+    "clean": "gatsby clean",
     "build": "gatsby build",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "gatsby develop",
