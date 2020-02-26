@@ -1,5 +1,5 @@
 import { graphql, StaticQuery } from 'gatsby'
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import '../../stylesheets/main.scss'
 import Footer from './Footer'
@@ -24,8 +24,26 @@ export default props => (
 )
 
 const Layout = props => {
+  const [noFocusOutline, setNoFocusOutline] = useState(true)
+
   // Define the meta title, description, keywords, and author
   const { title, description, keywords, author } = props.data.site.siteMetadata
+
+  const a11yHandler = ({ keyCode }) => {
+    // Add focus outline when tab key is pressed
+    if (keyCode === 9) {
+      setNoFocusOutline(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener('keydown', a11yHandler)
+    window.addEventListener('keyup', a11yHandler)
+    return () => {
+      window.removeEventListener('keydown', a11yHandler)
+      window.removeEventListener('keyup', a11yHandler)
+    }
+  }, [])
 
   // Load the Prismic edit button
   if (typeof window !== 'undefined' && window.prismic) {
@@ -49,6 +67,7 @@ const Layout = props => {
           rel='stylesheet'
           type='text/css'></link>
         <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'></link>
+        <body className={noFocusOutline ? 'no-focus-outline' : ''} />
       </Helmet>
       <Header />
       <main>{props.children}</main>

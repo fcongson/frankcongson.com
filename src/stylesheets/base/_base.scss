@@ -8,6 +8,14 @@
   background: $navy-light-40; /* Gecko Browsers */
 }
 
+html {
+  .no-focus-outline a:focus,
+  .no-focus-outline button:focus,
+  .no-focus-outline div[role='button']:focus {
+    outline: none;
+  }
+}
+
 html,
 body,
 #___gatsby,
