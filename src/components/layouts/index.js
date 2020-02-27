@@ -1,56 +1,32 @@
-import { graphql, StaticQuery } from 'gatsby'
-import React, { Fragment, useEffect, useState } from 'react'
+import { graphql, useStaticQuery } from 'gatsby'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import '../../stylesheets/main.scss'
+import SEO from '../SEO'
 import Footer from './Footer'
 import Header from './Header'
 
-export default props => (
-  <StaticQuery
-    query={graphql`
-      query SiteQuery {
-        site {
-          siteMetadata {
-            title
-            description
-            keywords
-            author
-            url
-            image
-            twitterUsername
-            twitterUrl
-            facebookUrl
-            instagramUrl
-            youtubeUrl
-            linkedinUrl
-            githubUrl
-          }
-        }
+const query = graphql`
+  query SiteQuery {
+    site {
+      siteMetadata {
+        title
+        twitterUrl
+        facebookUrl
+        instagramUrl
+        youtubeUrl
+        linkedinUrl
+        githubUrl
       }
-    `}
-    render={data => <Layout data={data} {...props} />}
-  />
-)
+    }
+  }
+`
 
 const Layout = props => {
+  const { site } = useStaticQuery(query)
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
-  // Define the meta title, description, keywords, and author
-  const {
-    title,
-    description,
-    keywords,
-    author,
-    url,
-    image,
-    twitterUsername,
-    twitterUrl,
-    facebookUrl,
-    instagramUrl,
-    youtubeUrl,
-    linkedinUrl,
-    githubUrl
-  } = props.data.site.siteMetadata
+  const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl } = site.siteMetadata
 
   const a11yHandler = ({ keyCode }) => {
     // Add focus outline when tab key is pressed
@@ -74,13 +50,10 @@ const Layout = props => {
   }
 
   return (
-    <Fragment>
+    <>
       <Helmet>
         <meta charSet='utf-8' />
         <title>{title}</title>
-        <meta name='description' content={description} />
-        <meta name='keywords' content={keywords} />
-        <meta name='author' content={author} />
         <link
           href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700&display=swap'
           rel='stylesheet'
@@ -92,6 +65,7 @@ const Layout = props => {
         <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'></link>
         <body className={noFocusOutline ? 'no-focus-outline' : ''} />
       </Helmet>
+      <SEO />
       <Header />
       <main>{props.children}</main>
       <Footer
@@ -104,6 +78,8 @@ const Layout = props => {
           githubUrl
         }}
       />
-    </Fragment>
+    </>
   )
 }
+
+export default Layout
