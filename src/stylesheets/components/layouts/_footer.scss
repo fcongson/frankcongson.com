@@ -6,15 +6,6 @@ footer {
   text-align: center;
   flex-shrink: 0;
 
-  p {
-    padding: 2rem 0;
-    margin-bottom: 0;
-  }
-
-  a {
-    font-weight: bold;
-  }
-
   .footer-container {
     display: flex;
     flex-direction: row;
@@ -31,11 +22,30 @@ footer {
     width: 64px;
   }
 
+  .footer-content {
+    display: flex;
+    flex-direction: column;
+    height: 64px;
+    justify-content: space-between;
+    text-align: right;
+  }
+
+  .social-links {
+    font-size: 24px;
+    & a {
+      padding-left: 16px;
+    }
+    & svg {
+      color: $grey-light-40;
+    }
+  }
+
   .copyright {
     font-family: Montserrat;
     font-style: normal;
     font-weight: normal;
     font-size: 10.67px;
     line-height: 13px;
+    margin: 0px;
   }
 }

@@ -8,9 +8,19 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Frank Congson`,
+    titleTemplate: `$s - Frank Congson`,
     description: `Photography, Travel, Minimalism, Design, & Development`,
     keywords: `photography, travel, minimalism, design, web design, development, web development`,
-    author: `Frank Congson`
+    author: `Frank Congson`,
+    url: `https://www.frankcongson.com`,
+    image: `/images/logo.svg`,
+    twitterUsername: `@fcongson`,
+    twitterUrl: `https://twitter.com/fcongson`,
+    facebookUrl: `https://www.facebook.com/fcongson`,
+    instagramUrl: `https://www.instagram.com/fcongson`,
+    youtubeUrl: `https://www.youtube.com/channel/UCY6yq-YHsNzdchUlMlUn3TQ`,
+    linkedinUrl: `https://www.linkedin.com/in/fcongson`,
+    githubUrl: `https://github.com/fcongson`
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

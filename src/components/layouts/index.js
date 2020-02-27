@@ -15,6 +15,15 @@ export default props => (
             description
             keywords
             author
+            url
+            image
+            twitterUsername
+            twitterUrl
+            facebookUrl
+            instagramUrl
+            youtubeUrl
+            linkedinUrl
+            githubUrl
           }
         }
       }
@@ -27,7 +36,21 @@ const Layout = props => {
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
   // Define the meta title, description, keywords, and author
-  const { title, description, keywords, author } = props.data.site.siteMetadata
+  const {
+    title,
+    description,
+    keywords,
+    author,
+    url,
+    image,
+    twitterUsername,
+    twitterUrl,
+    facebookUrl,
+    instagramUrl,
+    youtubeUrl,
+    linkedinUrl,
+    githubUrl
+  } = props.data.site.siteMetadata
 
   const a11yHandler = ({ keyCode }) => {
     // Add focus outline when tab key is pressed
@@ -71,7 +94,16 @@ const Layout = props => {
       </Helmet>
       <Header />
       <main>{props.children}</main>
-      <Footer />
+      <Footer
+        social={{
+          twitterUrl,
+          facebookUrl,
+          instagramUrl,
+          youtubeUrl,
+          linkedinUrl,
+          githubUrl
+        }}
+      />
     </Fragment>
   )
 }
