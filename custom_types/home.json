@@ -18,12 +18,12 @@
         "placeholder": "Page Header..."
       }
     },
-    "page_description": {
+    "page_text": {
       "type": "StructuredText",
       "config": {
         "multi": "paragraph",
-        "label": "Page Description",
-        "placeholder": "Page Description..."
+        "label": "Page Text",
+        "placeholder": "Page Text..."
       }
     },
     "body": {
@@ -51,20 +51,20 @@
                   "label": "Section Image"
                 }
               },
-              "section_title": {
+              "section_header": {
                 "type": "StructuredText",
                 "config": {
                   "single": "heading2",
-                  "label": "Section Title",
-                  "placeholder": "Section Title..."
+                  "label": "Section Header",
+                  "placeholder": "Section Header..."
                 }
               },
-              "section_description": {
+              "section_text": {
                 "type": "StructuredText",
                 "config": {
                   "multi": "paragraph",
-                  "label": "Section Description",
-                  "placeholder": "Section Description..."
+                  "label": "Section Text",
+                  "placeholder": "Section Text..."
                 }
               },
               "call_to_action_text": {

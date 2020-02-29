@@ -9,9 +9,6 @@ footer {
   .footer-container {
     display: flex;
     flex-direction: row;
-    max-width: $max-width-container;
-    margin: auto;
-    padding: 0 16px;
     justify-content: space-between;
     align-items: center;
     min-height: 256px;

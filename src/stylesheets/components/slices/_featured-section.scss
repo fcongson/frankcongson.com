@@ -1,0 +1,8 @@
+.featured-image {
+  width: 100%;
+  padding: 0 64px;
+
+  @media (max-width: $max-width-tablet-landscape) {
+    padding: 0;
+  }
+}

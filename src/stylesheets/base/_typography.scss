@@ -80,13 +80,13 @@ em {
   }
 }
 
-.page-header,
 .section-header {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   font-size: 121.5px;
   line-height: 148px;
+  margin: 128px auto 0px auto;
   text-align: center;
 
   @media (max-width: $max-width-tablet-landscape) {
@@ -110,6 +110,33 @@ em {
   }
 }
 
-.page-description {
+.section-text {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
   text-align: center;
+  max-width: 544px;
+  margin: 64px auto;
+
+  @media (max-width: $max-width-tablet-landscape) {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  @media (max-width: $max-width-tablet-portrait) {
+    font-size: 24px;
+    line-height: 36px;
+  }
+
+  @media (max-width: $max-width-mobile-landscape) {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  @media (max-width: $max-width-mobile-portrait) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }

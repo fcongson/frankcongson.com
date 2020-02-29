@@ -88,17 +88,23 @@ const PostSlices = ({ slices }) => {
 const PostBody = ({ blogPost }) => {
   const titled = blogPost.title.length !== 0
   return (
-    <div>
-      <div className='container post-header'>
-        <div className='back'>
-          <Link to='/blog'>back to list</Link>
+    <>
+      <div className='section'>
+        <div className='container post-header post-container'>
+          <div className='back'>
+            <Link to='/blog'>back to list</Link>
+          </div>
+          {/* Render the edit button */}
+          <h1 data-wio-id={blogPost._meta.id}>{titled ? RichText.asText(blogPost.title) : 'Untitled'}</h1>
         </div>
-        {/* Render the edit button */}
-        <h1 data-wio-id={blogPost._meta.id}>{titled ? RichText.asText(blogPost.title) : 'Untitled'}</h1>
       </div>
       {/* Go through the slices of the post and render the appropiate one */}
-      <PostSlices slices={blogPost.body} />
-    </div>
+      <div className='section'>
+        <div className='container post-container'>
+          <PostSlices slices={blogPost.body} />
+        </div>
+      </div>
+    </>
   )
 }
 

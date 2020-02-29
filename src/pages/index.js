@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
+import { FeaturedSection } from '../components/slices'
 
 export const query = graphql`
   {
@@ -15,7 +16,7 @@ export const query = graphql`
             }
             hero_image
             page_header
-            page_description
+            page_text
             body {
               __typename
               ... on PRISMIC_HomeBodyFeatured_section {
@@ -23,8 +24,8 @@ export const query = graphql`
                 label
                 primary {
                   section_image
-                  section_title
-                  section_description
+                  section_header
+                  section_text
                   call_to_action_text
                   call_to_action {
                     _linkType
@@ -40,14 +41,39 @@ export const query = graphql`
   }
 `
 
+const Slices = ({ slices }) => {
+  return slices.map((slice, index) => {
+    const res = (() => {
+      switch (slice.type) {
+        case 'featured_section':
+          return (
+            <div key={index}>
+              <FeaturedSection slice={slice} />
+            </div>
+          )
+        default:
+          return
+      }
+    })()
+    return res
+  })
+}
+
 const Home = ({ home }) => (
-  <div className='container' data-wio-id={home._meta.id}>
-    <div className='hero-image'>
-      <img className='hero-image' src={home.hero_image.url} alt={home.hero_image.alt} />
+  <>
+    <div className='section' data-wio-id={home._meta.id}>
+      <div className='container'>
+        <img className='hero-image' src={home.hero_image.url} alt={home.hero_image.alt} />
+      </div>
     </div>
-    <h1 className='page-header'>{RichText.asText(home.page_header)}</h1>
-    <p className='page-description'>{RichText.asText(home.page_description)}</p>
-  </div>
+    <div className='section'>
+      <div className='container'>
+        <h1 className='section-header'>{RichText.asText(home.page_header)}</h1>
+        <p className='section-text'>{RichText.asText(home.page_text)}</p>
+      </div>
+    </div>
+    <Slices slices={home.body} />
+  </>
 )
 
 export default ({ data }) => {
