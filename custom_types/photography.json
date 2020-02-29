@@ -1,0 +1,19 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "unique-identifier-for-page-url"
+      }
+    },
+    "page_header": {
+      "type": "StructuredText",
+      "config": {
+        "single": "heading1",
+        "label": "Page Header",
+        "placeholder": "Page Header..."
+      }
+    }
+  }
+}

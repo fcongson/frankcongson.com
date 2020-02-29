@@ -7,6 +7,7 @@ import {
   faYoutube
 } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'gatsby'
 import React from 'react'
 import logo from '../../images/logo-light.svg'
 
@@ -14,7 +15,9 @@ export default ({ social }) => (
   <footer>
     <div className='section'>
       <div className='container footer-container'>
-        <img className='footer-logo' src={logo} alt='Frank Congson logo' />
+        <Link to='/'>
+          <img className='footer-logo' src={logo} alt='Frank Congson logo' />
+        </Link>
         <div className='footer-content'>
           <div className='social-links'>
             <a href={social.facebookUrl}>

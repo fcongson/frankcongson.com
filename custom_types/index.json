@@ -1,9 +1,21 @@
 [
   {
+    "id": "about",
+    "name": "About",
+    "repeatable": false,
+    "value": "about.json"
+  },
+  {
     "id": "home",
     "name": "Home",
     "repeatable": false,
     "value": "home.json"
+  },
+  {
+    "id": "photography",
+    "name": "Photography",
+    "repeatable": false,
+    "value": "photography.json"
   },
   {
     "id": "post",

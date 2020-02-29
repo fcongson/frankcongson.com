@@ -30,6 +30,11 @@ export const query = graphql`
                   call_to_action {
                     _linkType
                     __typename
+                    ... on PRISMIC__Document {
+                      _meta {
+                        uid
+                      }
+                    }
                   }
                 }
               }
