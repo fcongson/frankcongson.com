@@ -18,11 +18,9 @@ export default ({ slice }) => {
             {RichText.asText(slice.primary.section_header, linkResolver, htmlSerializer)}
           </h2>
           <p className='section-text'>{RichText.asText(slice.primary.section_text, linkResolver, htmlSerializer)}</p>
-          <button className='call-to-action'>
-            <Link to={`/${slice.primary.call_to_action._meta.uid}`}>
-              {RichText.asText(slice.primary.call_to_action_text, linkResolver, htmlSerializer)}
-            </Link>
-          </button>
+          <Link className='call-to-action' to={`/${slice.primary.call_to_action._meta.uid}`}>
+            <button>{RichText.asText(slice.primary.call_to_action_text, linkResolver, htmlSerializer)}</button>
+          </Link>
         </div>
       </div>
     </>

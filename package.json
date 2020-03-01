@@ -39,7 +39,7 @@
     "clean": "gatsby clean",
     "build": "gatsby build",
     "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "gatsby develop",
+    "start": "gatsby develop --host=0.0.0.0",
     "serve": "gatsby serve",
     "now-build": "gatsby build"
   },
