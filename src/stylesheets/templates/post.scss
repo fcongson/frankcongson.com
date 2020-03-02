@@ -18,15 +18,18 @@
 
     a {
       color: $grey;
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 100ms ease-in-out;
 
       &:hover {
-        text-decoration: underline;
+        border-bottom: 1px solid $grey;
       }
     }
   }
 }
 
 .post-container {
-  max-width: 860px;
+  max-width: 800px;
   margin: 0 auto;
 }

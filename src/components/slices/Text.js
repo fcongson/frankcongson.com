@@ -3,9 +3,8 @@ import { RichText } from 'prismic-reactjs'
 import { linkResolver } from '../../utils/linkResolver'
 import htmlSerializer from '../../utils/htmlSerializer'
 
-export default ({ slice }) =>
-  <div className="post-text container">
-    <div>
-      { RichText.render(slice.primary.text, linkResolver, htmlSerializer) }
-    </div>
+export default ({ slice }) => (
+  <div className='post-text'>
+    <div>{RichText.render(slice.primary.text, linkResolver, htmlSerializer)}</div>
   </div>
+)
