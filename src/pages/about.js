@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
+import SEO from '../components/SEO'
 
 export const query = graphql`
   {
@@ -36,6 +37,13 @@ export default ({ data }) => {
 
   return (
     <Layout>
+      <SEO
+        title='About'
+        desc="I'm Frank Congson. A dad, husband, traveler, minimalist, and web developer."
+        keywords=''
+        image=''
+        pathname='/about'
+      />
       <About about={doc.node} />
     </Layout>
   )
