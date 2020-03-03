@@ -12,9 +12,14 @@ export const query = graphql`
           node {
             _meta {
               id
+              uid
               type
             }
             page_header
+            seo_title
+            seo_description
+            seo_keywords
+            seo_image
           }
         }
       }
@@ -35,14 +40,16 @@ export default ({ data }) => {
 
   if (!doc) return null
 
+  const { seo_title, seo_description, seo_keywords, seo_image, _meta } = doc.node
+
   return (
     <Layout>
       <SEO
-        title='Photography'
-        desc='Photography & Visual Stories'
-        keywords='photography, travel, visual stories, visual storytelling, stories, storytelling'
-        image=''
-        pathname='/photography'
+        title={seo_title}
+        desc={seo_description}
+        keywords={seo_keywords}
+        image={seo_image}
+        pathname={`/${_meta.uid}`}
       />
       <Photography photography={doc.node} />
     </Layout>
