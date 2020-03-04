@@ -6,10 +6,22 @@
     "value": "about.json"
   },
   {
+    "id": "blog",
+    "name": "Blog",
+    "repeatable": false,
+    "value": "blog.json"
+  },
+  {
     "id": "home",
     "name": "Home",
     "repeatable": false,
     "value": "home.json"
+  },
+  {
+    "id": "page",
+    "name": "Page",
+    "repeatable": true,
+    "value": "page.json"
   },
   {
     "id": "photography",

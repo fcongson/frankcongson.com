@@ -1,7 +1,37 @@
+import { graphql, Link, useStaticQuery } from 'gatsby'
+import { Date, RichText } from 'prismic-reactjs'
 import React from 'react'
-import { Link } from 'gatsby'
-import { RichText, Date } from 'prismic-reactjs'
 import { linkResolver } from '../utils/linkResolver'
+
+// Query for the Blog Post content in Prismic
+export const query = graphql`
+  {
+    prismic {
+      allPosts(sortBy: date_DESC) {
+        edges {
+          node {
+            _meta {
+              id
+              uid
+              type
+            }
+            title
+            date
+            body {
+              ... on PRISMIC_PostBodyText {
+                type
+                label
+                primary {
+                  text
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
 
 // Function to retrieve a small preview of the post's text
 const firstParagraph = post => {
@@ -58,7 +88,12 @@ const PostSummary = ({ post }) => {
   )
 }
 
-export default ({ posts }) => {
+export default () => {
+  const data = useStaticQuery(query)
+
+  // Define the Blog Post content returned from Prismic
+  const posts = data.prismic.allPosts.edges
+
   if (!posts) return null
 
   return (

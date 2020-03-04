@@ -1,14 +1,13 @@
 import { graphql } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
-import BlogPosts from '../components/BlogPosts'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
 
 export const query = graphql`
-  {
+  query PageQuery($uid: String) {
     prismic {
-      allBlogs(uid: "blog") {
+      allPages(uid: $uid) {
         edges {
           node {
             _meta {
@@ -28,17 +27,16 @@ export const query = graphql`
   }
 `
 
-const Blog = ({ blog }) => (
+const Page = ({ page }) => (
   <div className='section'>
     <div className='container'>
-      <h1 className='section-header'>{RichText.asText(blog.page_header)}</h1>
-      <BlogPosts />
+      <h1 className='section-header'>{RichText.asText(page.page_header)}</h1>
     </div>
   </div>
 )
 
 export default ({ data }) => {
-  const doc = data.prismic.allBlogs.edges.slice(0, 1).pop()
+  const doc = data.prismic.allPages.edges.slice(0, 1).pop()
 
   if (!doc) return null
 
@@ -53,7 +51,7 @@ export default ({ data }) => {
         image={seo_image}
         pathname={`/${_meta.uid}`}
       />
-      <Blog blog={doc.node} />
+      <Page page={doc.node} />
     </Layout>
   )
 }

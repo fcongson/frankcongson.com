@@ -41,6 +41,12 @@ module.exports = {
             match: '/blog/:uid',
             path: '/blog-preview',
             component: require.resolve('./src/templates/post.js')
+          },
+          {
+            type: 'Page',
+            match: '/:uid',
+            path: '/page-preview',
+            component: require.resolve('./src/templates/page.js')
           }
         ]
       }
