@@ -1,24 +1,38 @@
 .post-quote {
   blockquote {
     margin-bottom: 2rem;
+    padding-left: 1rem;
+    border-left: 2px solid $grey-dark-40;
     display: inline-block;
+    font-family: $font-serif;
     font-style: italic;
-    font-size: 24px;
+    font-size: 16px;
     color: $grey;
 
     @media screen and (min-width: $min-width-emph) {
       width: 130%;
       margin: 0 -15% 2rem -15%;
-      font-size: 30px;
-      padding: 0;
+      font-size: 24px;
+      padding-left: 2rem;
+      border-left: 4px solid $grey-dark-40;
     }
 
     &:before {
-      content: '« ';
+      content: open-quote;
+      font-family: $font-serif;
+      font-size: 2em;
+      line-height: 0.1em;
+      margin-right: 0.25em;
+      vertical-align: -0.4em;
     }
 
     &:after {
-      content: ' »';
+      content: close-quote;
+      font-family: $font-serif;
+      font-size: 2em;
+      line-height: 0.1em;
+      margin-left: 0.025em;
+      vertical-align: -0.4em;
     }
   }
 }
