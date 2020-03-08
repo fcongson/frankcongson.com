@@ -20,4 +20,8 @@ $padding: 16px;
 .container {
   max-width: $max-width-container;
   margin: 0 auto 128px auto;
+
+  @media (max-width: $max-width-mobile-landscape) {
+    margin: 0 auto 64px auto;
+  }
 }

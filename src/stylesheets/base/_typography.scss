@@ -128,18 +128,10 @@ em {
     margin: 0 auto 32px auto;
   }
 
-  @media (max-width: $max-width-tablet-portrait) {
-    font-size: 24px;
-    line-height: 36px;
-  }
-
   @media (max-width: $max-width-mobile-landscape) {
     font-size: 16px;
     line-height: 24px;
-  }
-
-  @media (max-width: $max-width-mobile-portrait) {
-    font-size: 16px;
-    line-height: 24px;
+    max-width: 440px;
+    padding: 0 16px 0 16px;
   }
 }
