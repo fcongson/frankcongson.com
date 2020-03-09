@@ -7,5 +7,12 @@
 
   a {
     color: $grey;
+    padding-bottom: 4px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 100ms ease-in-out;
+
+    &:hover {
+      border-bottom: 1px solid $grey;
+    }
   }
 }

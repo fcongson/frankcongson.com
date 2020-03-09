@@ -96,17 +96,7 @@ em {
     margin: 0 auto 32px auto;
   }
 
-  @media (max-width: $max-width-tablet-portrait) {
-    font-size: 54px;
-    line-height: 66px;
-  }
-
   @media (max-width: $max-width-mobile-landscape) {
-    font-size: 36px;
-    line-height: 44px;
-  }
-
-  @media (max-width: $max-width-mobile-portrait) {
     font-size: 36px;
     line-height: 44px;
   }
@@ -116,21 +106,18 @@ em {
   font-family: Montserrat;
   font-style: normal;
   font-weight: normal;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 20px;
   text-align: center;
   max-width: 544px;
   margin: 0 auto 64px auto;
 
   @media (max-width: $max-width-tablet-landscape) {
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 16px;
     margin: 0 auto 32px auto;
   }
 
   @media (max-width: $max-width-mobile-landscape) {
     font-size: 16px;
-    line-height: 24px;
     max-width: 440px;
     padding: 0 16px 0 16px;
   }
