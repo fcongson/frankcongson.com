@@ -15,11 +15,15 @@ export const query = graphql`
               uid
               type
             }
+            hero_image
             page_header
             seo_title
             seo_description
             seo_keywords
             seo_image
+            images {
+              image
+            }
           }
         }
       }
@@ -31,6 +35,11 @@ const Photography = ({ photography }) => (
   <div className='section'>
     <div className='container'>
       <h1 className='section-header'>{RichText.asText(photography.page_header)}</h1>
+    </div>
+    <div className='container photography-container'>
+      {photography.images.map(({ image, index }) => {
+        return <img key={index} className='photography-image' src={image.url} alt={image.alt} />
+      })}
     </div>
   </div>
 )

@@ -7,12 +7,38 @@
         "placeholder": "unique-identifier-for-page-url"
       }
     },
+    "hero_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200
+        },
+        "thumbnails": [],
+        "label": "Hero Image"
+      }
+    },
     "page_header": {
       "type": "StructuredText",
       "config": {
         "single": "heading1",
         "label": "Page Header",
         "placeholder": "Page Header..."
+      }
+    },
+    "images": {
+      "type": "Group",
+      "config": {
+        "fields": {
+          "image": {
+            "type": "Image",
+            "config": {
+              "constraint": {},
+              "thumbnails": [],
+              "label": "Image"
+            }
+          }
+        },
+        "label": "Images"
       }
     }
   },
