@@ -29,12 +29,14 @@ export const query = graphql`
 `
 
 const Blog = ({ blog }) => (
-  <div className='section'>
-    <div className='container'>
-      <h1 className='section-header'>{RichText.asText(blog.page_header)}</h1>
-      <BlogPosts />
+  <>
+    <div className='section'>
+      <div className='container'>
+        <h1 className='section-header'>{RichText.asText(blog.page_header)}</h1>
+      </div>
     </div>
-  </div>
+    <BlogPosts />
+  </>
 )
 
 export default ({ data }) => {

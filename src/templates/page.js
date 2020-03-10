@@ -3,6 +3,7 @@ import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
+import { ImageCaption, Quote, Text } from '../components/slices'
 
 export const query = graphql`
   query PageQuery($uid: String) {
@@ -15,11 +16,64 @@ export const query = graphql`
               uid
               type
             }
+            hero_image
             page_header
             seo_title
             seo_description
             seo_keywords
             seo_image
+            body {
+              __typename
+              ...BodyText
+              ...BodyQuote
+              ...BodyImage
+              ...BodyFeatured
+            }
+          }
+        }
+      }
+    }
+  }
+
+  fragment BodyText on PRISMIC_PageBodyText {
+    type
+    label
+    primary {
+      text
+    }
+  }
+
+  fragment BodyQuote on PRISMIC_PageBodyQuote {
+    type
+    label
+    primary {
+      quote
+    }
+  }
+
+  fragment BodyImage on PRISMIC_PageBodyImage_with_caption {
+    type
+    label
+    primary {
+      image
+      caption
+    }
+  }
+
+  fragment BodyFeatured on PRISMIC_PageBodyFeatured_section {
+    type
+    label
+    primary {
+      section_image
+      section_header
+      section_text
+      call_to_action_text
+      call_to_action {
+        _linkType
+        __typename
+        ... on PRISMIC__Document {
+          _meta {
+            uid
           }
         }
       }
@@ -27,12 +81,52 @@ export const query = graphql`
   }
 `
 
+const PageSlices = ({ slices }) => {
+  return slices.map((slice, index) => {
+    const res = (() => {
+      switch (slice.type) {
+        case 'text':
+          return (
+            <div key={index} className='slice-wrapper'>
+              {<Text slice={slice} />}
+            </div>
+          )
+
+        case 'quote':
+          return (
+            <div key={index} className='slice-wrapper'>
+              {<Quote slice={slice} />}
+            </div>
+          )
+
+        case 'image_with_caption':
+          return (
+            <div key={index} className='slice-wrapper'>
+              {<ImageCaption slice={slice} />}
+            </div>
+          )
+
+        default:
+          return
+      }
+    })()
+    return res
+  })
+}
+
 const Page = ({ page }) => (
-  <div className='section'>
-    <div className='container'>
-      <h1 className='section-header'>{RichText.asText(page.page_header)}</h1>
+  <>
+    <div className='section'>
+      <div className='container'>
+        <h1 className='section-header'>{RichText.asText(page.page_header)}</h1>
+      </div>
     </div>
-  </div>
+    <div className='section'>
+      <div className='container page-container'>
+        <PageSlices slices={page.body} />
+      </div>
+    </div>
+  </>
 )
 
 export default ({ data }) => {

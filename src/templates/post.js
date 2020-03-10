@@ -57,21 +57,21 @@ const PostSlices = ({ slices }) => {
       switch (slice.type) {
         case 'text':
           return (
-            <div key={index} className='homepage-slice-wrapper'>
+            <div key={index} className='slice-wrapper'>
               {<Text slice={slice} />}
             </div>
           )
 
         case 'quote':
           return (
-            <div key={index} className='homepage-slice-wrapper'>
+            <div key={index} className='slice-wrapper'>
               {<Quote slice={slice} />}
             </div>
           )
 
         case 'image_with_caption':
           return (
-            <div key={index} className='homepage-slice-wrapper'>
+            <div key={index} className='slice-wrapper'>
               {<ImageCaption slice={slice} />}
             </div>
           )
