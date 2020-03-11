@@ -1,3 +1,14 @@
 .page-container {
   max-width: 800px;
 }
+
+a {
+  font-weight: 600;
+  padding-bottom: 4px;
+  border-bottom: 1px solid transparent;
+  transition: border-bottom 100ms ease-in-out;
+
+  &:hover {
+    border-bottom: 1px solid $grey-dark-40;
+  }
+}
