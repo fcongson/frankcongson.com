@@ -66,7 +66,7 @@ const Slices = ({ slices }) => {
 
 const Home = ({ home }) => (
   <>
-    <div className='section' data-wio-id={home._meta.id}>
+    <div className='section'>
       <div className='container'>
         <img className='hero-image' src={home.hero_image.url} alt={home.hero_image.alt} />
       </div>

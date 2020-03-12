@@ -94,8 +94,7 @@ const PostBody = ({ blogPost }) => {
           <div className='back'>
             <Link to='/blog'>back to list</Link>
           </div>
-          {/* Render the edit button */}
-          <h1 data-wio-id={blogPost._meta.id}>{titled ? RichText.asText(blogPost.title) : 'Untitled'}</h1>
+          <h1>{titled ? RichText.asText(blogPost.title) : 'Untitled'}</h1>
         </div>
       </div>
       {/* Go through the slices of the post and render the appropiate one */}

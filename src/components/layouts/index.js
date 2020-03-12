@@ -44,11 +44,6 @@ const Layout = props => {
     }
   }, [])
 
-  // Load the Prismic edit button
-  if (typeof window !== 'undefined' && window.prismic) {
-    window.prismic.setupEditButton()
-  }
-
   return (
     <>
       <Helmet>
@@ -62,7 +57,6 @@ const Layout = props => {
           href='https://fonts.googleapis.com/css?family=Domine:400,700&display=swap'
           rel='stylesheet'
           type='text/css'></link>
-        <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'></link>
         <body className={noFocusOutline ? 'no-focus-outline' : ''} />
         <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
       </Helmet>
