@@ -27,7 +27,10 @@ export default () => {
               Blog
             </Link>
           </div>
-          <button className='navigation-menu-toggle' onClick={() => setOpen(!open)}>
+          <button
+            aria-label={`${open ? 'Close' : 'Open'} navigation menu`}
+            className='navigation-menu-toggle'
+            onClick={() => setOpen(!open)}>
             <div className={`toggle-line top${open ? ' open' : ''}`} />
             <div className={`toggle-line bottom${open ? ' open' : ''}`} />
           </button>

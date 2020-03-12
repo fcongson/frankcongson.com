@@ -64,10 +64,7 @@ const Layout = props => {
           type='text/css'></link>
         <link href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'></link>
         <body className={noFocusOutline ? 'no-focus-outline' : ''} />
-        <meta
-          name='viewport'
-          content='width=device-width,minimum-scale=1.0,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,viewport-fit=cover'
-        />
+        <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
       </Helmet>
       <SEO />
       <Header />
