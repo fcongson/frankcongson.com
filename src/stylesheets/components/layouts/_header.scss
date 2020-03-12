@@ -82,16 +82,16 @@ header {
     background-color: $grey-dark-40;
     transition: transform 100ms ease-in-out 0ms, top 100ms ease-in-out 100ms;
     &.top {
-      top: 33px;
+      top: 1px;
       &.open {
-        top: 40px;
+        top: 8px;
         transform: rotate(45deg);
       }
     }
     &.bottom {
-      top: 45px;
+      top: 13px;
       &.open {
-        top: 38px;
+        top: 6px;
         transform: rotate(-45deg);
       }
     }

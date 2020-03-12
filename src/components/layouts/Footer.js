@@ -18,7 +18,7 @@ export default ({ social }) => (
         <div className='footer-content'>
           <div className='social-links'>
             <a href={social.facebookUrl}>
-              <FontAwesomeIcon className='social-icon' icon={faFacebookF} />
+              <FontAwesomeIcon icon={faFacebookF} />
             </a>
             <a href={social.instagramUrl}>
               <FontAwesomeIcon icon={faInstagram} />

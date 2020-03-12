@@ -27,17 +27,10 @@ export default () => {
               Blog
             </Link>
           </div>
-          <div
-            className='navigation-menu-toggle'
-            onClick={() => setOpen(!open)}
-            onKeyUp={({ keyCode }) => {
-              if (keyCode === 13) setOpen(!open)
-            }}
-            role='button'
-            tabIndex={0}>
+          <button className='navigation-menu-toggle' onClick={() => setOpen(!open)}>
             <div className={`toggle-line top${open ? ' open' : ''}`} />
             <div className={`toggle-line bottom${open ? ' open' : ''}`} />
-          </div>
+          </button>
         </div>
       </div>
     </header>

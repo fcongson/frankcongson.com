@@ -1,4 +1,7 @@
-button {
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 48px;
   width: fit-content;
   border: 1px solid $grey-dark-40;
