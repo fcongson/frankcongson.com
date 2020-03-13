@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
 import Helmet from 'react-helmet'
@@ -7,8 +7,8 @@ import Twitter from './Twitter'
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
 
-const SEO = ({ title, desc, keywords, image, pathname, article }) => {
-  const { site } = useStaticQuery(query)
+const SEO = ({ data, title, desc, keywords, image, pathname, article }) => {
+  const { site } = data
 
   const {
     buildTime,
@@ -97,8 +97,18 @@ const SEO = ({ title, desc, keywords, image, pathname, article }) => {
     </>
   )
 }
-export default SEO
+
+export default props => (
+  <StaticQuery
+    query={query}
+    render={data => {
+      return <SEO data={data} {...props} />
+    }}
+  />
+)
+
 SEO.propTypes = {
+  data: PropTypes.object,
   title: PropTypes.string,
   desc: PropTypes.string,
   image: PropTypes.string,
@@ -106,7 +116,9 @@ SEO.propTypes = {
   article: PropTypes.bool,
   node: PropTypes.object
 }
+
 SEO.defaultProps = {
+  data: null,
   title: null,
   desc: null,
   image: null,
@@ -114,6 +126,7 @@ SEO.defaultProps = {
   article: false,
   node: null
 }
+
 const query = graphql`
   query SEO {
     site {

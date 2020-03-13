@@ -1,4 +1,4 @@
-import { graphql, useStaticQuery } from 'gatsby'
+import { graphql, StaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import '../../stylesheets/main.scss'
@@ -23,7 +23,7 @@ const query = graphql`
 `
 
 const Layout = props => {
-  const { site } = useStaticQuery(query)
+  const { site } = props.data
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
   const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl } = site.siteMetadata
@@ -77,4 +77,4 @@ const Layout = props => {
   )
 }
 
-export default Layout
+export default props => <StaticQuery query={query} render={data => <Layout data={data} {...props} />} />

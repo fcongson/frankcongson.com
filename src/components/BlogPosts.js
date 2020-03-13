@@ -1,4 +1,4 @@
-import { graphql, Link, useStaticQuery } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import { Date, RichText } from 'prismic-reactjs'
 import React from 'react'
 import { linkResolver } from '../utils/linkResolver'
@@ -88,11 +88,9 @@ const PostSummary = ({ post }) => {
   )
 }
 
-export default () => {
-  const data = useStaticQuery(query)
-
+const BlogPosts = props => {
   // Define the Blog Post content returned from Prismic
-  const posts = data.prismic.allPosts.edges
+  const posts = props.data.prismic.allPosts.edges
 
   if (!posts) return null
 
@@ -106,3 +104,5 @@ export default () => {
     </div>
   )
 }
+
+export default () => <StaticQuery query={query} render={data => <BlogPosts data={data} />} />
