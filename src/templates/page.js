@@ -17,6 +17,13 @@ export const query = graphql`
               type
             }
             hero_image
+            hero_imageSharp {
+              childImageSharp {
+                fluid(maxWidth: 1120, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             page_header
             seo_title
             seo_description
@@ -24,10 +31,10 @@ export const query = graphql`
             seo_image
             body {
               __typename
-              ...BodyText
-              ...BodyQuote
-              ...BodyImage
-              ...BodyFeatured
+              ...PageBodyText
+              ...PageBodyQuote
+              ...PageBodyImage
+              ...PageBodyFeatured
             }
           }
         }
@@ -35,7 +42,7 @@ export const query = graphql`
     }
   }
 
-  fragment BodyText on PRISMIC_PageBodyText {
+  fragment PageBodyText on PRISMIC_PageBodyText {
     type
     label
     primary {
@@ -43,7 +50,7 @@ export const query = graphql`
     }
   }
 
-  fragment BodyQuote on PRISMIC_PageBodyQuote {
+  fragment PageBodyQuote on PRISMIC_PageBodyQuote {
     type
     label
     primary {
@@ -51,7 +58,7 @@ export const query = graphql`
     }
   }
 
-  fragment BodyImage on PRISMIC_PageBodyImage_with_caption {
+  fragment PageBodyImage on PRISMIC_PageBodyImage_with_caption {
     type
     label
     primary {
@@ -60,7 +67,7 @@ export const query = graphql`
     }
   }
 
-  fragment BodyFeatured on PRISMIC_PageBodyFeatured_section {
+  fragment PageBodyFeatured on PRISMIC_PageBodyFeatured_section {
     type
     label
     primary {
