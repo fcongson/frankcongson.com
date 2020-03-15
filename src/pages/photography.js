@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
@@ -16,6 +17,13 @@ export const query = graphql`
               type
             }
             hero_image
+            hero_imageSharp {
+              childImageSharp {
+                fluid(maxWidth: 1120, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             page_header
             seo_title
             seo_description
@@ -23,6 +31,13 @@ export const query = graphql`
             seo_image
             images {
               image
+              imageSharp {
+                childImageSharp {
+                  fluid(maxWidth: 1120, quality: 100) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
           }
         }
@@ -37,9 +52,11 @@ const Photography = ({ photography }) => (
       <h1 className='section-header'>{RichText.asText(photography.page_header)}</h1>
     </div>
     <div className='container photography-container'>
-      {photography.images.map(({ image, index }) => {
-        return <img key={index} className='photography-image' src={image.url} alt={image.alt} />
-      })}
+      {photography.images.map(({ image, imageSharp }) => (
+        <div className='photography-image' key={image.url}>
+          <Img fluid={imageSharp.childImageSharp.fluid} alt={image.alt} />
+        </div>
+      ))}
     </div>
   </div>
 )

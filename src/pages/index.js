@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
@@ -15,6 +16,13 @@ export const query = graphql`
               type
             }
             hero_image
+            hero_imageSharp {
+              childImageSharp {
+                fluid(maxWidth: 1120, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             page_header
             page_text
             body {
@@ -24,6 +32,13 @@ export const query = graphql`
                 label
                 primary {
                   section_image
+                  section_imageSharp {
+                    childImageSharp {
+                      fluid(maxWidth: 1120, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
                   section_header
                   section_text
                   call_to_action_text
@@ -68,7 +83,9 @@ const Home = ({ home }) => (
   <>
     <div className='section'>
       <div className='container'>
-        <img className='hero-image' src={home.hero_image.url} alt={home.hero_image.alt} />
+        <div className='hero-image'>
+          <Img fluid={home.hero_imageSharp.childImageSharp.fluid} alt={home.hero_image.alt} />
+        </div>
       </div>
     </div>
     <div className='section'>

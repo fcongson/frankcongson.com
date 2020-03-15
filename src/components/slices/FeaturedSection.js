@@ -1,4 +1,5 @@
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import htmlSerializer from '../../utils/htmlSerializer'
@@ -9,7 +10,9 @@ export default ({ slice }) => {
     <>
       <div className='section'>
         <div className='container'>
-          <img className='featured-image' src={slice.primary.section_image.url} alt={slice.primary.section_image.alt} />
+          <div className='featured-image'>
+            <Img fluid={slice.primary.section_imageSharp.childImageSharp.fluid} alt={slice.primary.section_image.alt} />
+          </div>
         </div>
       </div>
       <div className='section'>
