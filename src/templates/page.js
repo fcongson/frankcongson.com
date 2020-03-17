@@ -3,7 +3,7 @@ import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
-import { ImageCaption, Quote, Text } from '../components/slices'
+import { Slices } from '../components/slices'
 
 export const query = graphql`
   query PageQuery($uid: String) {
@@ -87,41 +87,6 @@ export const query = graphql`
     }
   }
 `
-
-const Slices = ({ slices }) => {
-  return (
-    slices?.map((slice, index) => {
-      const res = (() => {
-        switch (slice.type) {
-          case 'text':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<Text slice={slice} />}
-              </div>
-            )
-
-          case 'quote':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<Quote slice={slice} />}
-              </div>
-            )
-
-          case 'image_with_caption':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<ImageCaption slice={slice} />}
-              </div>
-            )
-
-          default:
-            return
-        }
-      })()
-      return res
-    }) ?? null
-  )
-}
 
 const Page = ({ page }) => (
   <>

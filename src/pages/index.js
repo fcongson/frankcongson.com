@@ -3,7 +3,7 @@ import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
-import { FeaturedSection } from '../components/slices'
+import { Slices } from '../components/slices'
 
 export const query = graphql`
   {
@@ -60,26 +60,6 @@ export const query = graphql`
     }
   }
 `
-
-const Slices = ({ slices }) => {
-  return (
-    slices?.map((slice, index) => {
-      const res = (() => {
-        switch (slice.type) {
-          case 'featured_section':
-            return (
-              <div key={index}>
-                <FeaturedSection slice={slice} />
-              </div>
-            )
-          default:
-            return
-        }
-      })()
-      return res
-    }) ?? null
-  )
-}
 
 const Home = ({ home }) => (
   <>

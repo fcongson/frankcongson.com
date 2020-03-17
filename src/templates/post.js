@@ -2,7 +2,7 @@ import { graphql, Link } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
-import { ImageCaption, Quote, Text } from '../components/slices'
+import { Slices } from '../components/slices'
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
@@ -49,42 +49,6 @@ export const query = graphql`
     }
   }
 `
-
-// Sort and display the different slice options
-const Slices = ({ slices }) => {
-  return (
-    slices?.map((slice, index) => {
-      const res = (() => {
-        switch (slice.type) {
-          case 'text':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<Text slice={slice} />}
-              </div>
-            )
-
-          case 'quote':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<Quote slice={slice} />}
-              </div>
-            )
-
-          case 'image_with_caption':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<ImageCaption slice={slice} />}
-              </div>
-            )
-
-          default:
-            return
-        }
-      })()
-      return res
-    }) ?? null
-  )
-}
 
 // Display the title, date, and content of the Post
 const PostBody = ({ blogPost }) => {
