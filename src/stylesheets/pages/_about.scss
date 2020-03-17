@@ -31,4 +31,15 @@
 
 .about-container {
   max-width: 800px;
+
+  a {
+    font-weight: 600;
+    padding-bottom: 4px;
+    border-bottom: 2px solid $olive-light-40;
+    transition: border-bottom 200ms ease-in-out;
+
+    &:hover {
+      border-bottom: 2px solid $grey-dark-40;
+    }
+  }
 }
