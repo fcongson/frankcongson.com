@@ -4,6 +4,7 @@ import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
+import { FeaturedSection, ImageCaption, Text } from '../components/slices'
 
 export const query = graphql`
   {
@@ -79,18 +80,58 @@ export const query = graphql`
   }
 `
 
+const Slices = ({ slices }) => {
+  return (
+    slices?.map((slice, index) => {
+      const res = (() => {
+        switch (slice.type) {
+          case 'text':
+            return (
+              <div key={index} className='slice-wrapper'>
+                {<Text slice={slice} />}
+              </div>
+            )
+
+          case 'image_with_caption':
+            return (
+              <div key={index} className='slice-wrapper'>
+                {<ImageCaption slice={slice} />}
+              </div>
+            )
+
+          case 'featured_section':
+            return (
+              <div key={index}>
+                <FeaturedSection slice={slice} />
+              </div>
+            )
+
+          default:
+            return
+        }
+      })()
+      return res
+    }) ?? null
+  )
+}
+
 const About = ({ about }) => (
   <>
     <div className='section'>
-      <div className='container'>
-        <div className='hero-image'>
-          <Img fluid={about.hero_imageSharp.childImageSharp.fluid} alt={about.hero_image.alt} />
+      <div className='container about-header'>
+        <div className='container hero-image'>
+          <div className='hero-image'>
+            <Img fluid={about.hero_imageSharp.childImageSharp.fluid} alt={about.hero_image.alt} />
+          </div>
+        </div>
+        <div className='container section-header'>
+          <h1 className='section-header'>{RichText.asText(about.page_header)}</h1>
         </div>
       </div>
     </div>
     <div className='section'>
-      <div className='container'>
-        <h1 className='section-header'>{RichText.asText(about.page_header)}</h1>
+      <div className='container about-container'>
+        <Slices slices={about.body} />
       </div>
     </div>
   </>

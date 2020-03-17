@@ -88,37 +88,39 @@ export const query = graphql`
   }
 `
 
-const PageSlices = ({ slices }) => {
-  return slices.map((slice, index) => {
-    const res = (() => {
-      switch (slice.type) {
-        case 'text':
-          return (
-            <div key={index} className='slice-wrapper'>
-              {<Text slice={slice} />}
-            </div>
-          )
+const Slices = ({ slices }) => {
+  return (
+    slices?.map((slice, index) => {
+      const res = (() => {
+        switch (slice.type) {
+          case 'text':
+            return (
+              <div key={index} className='slice-wrapper'>
+                {<Text slice={slice} />}
+              </div>
+            )
 
-        case 'quote':
-          return (
-            <div key={index} className='slice-wrapper'>
-              {<Quote slice={slice} />}
-            </div>
-          )
+          case 'quote':
+            return (
+              <div key={index} className='slice-wrapper'>
+                {<Quote slice={slice} />}
+              </div>
+            )
 
-        case 'image_with_caption':
-          return (
-            <div key={index} className='slice-wrapper'>
-              {<ImageCaption slice={slice} />}
-            </div>
-          )
+          case 'image_with_caption':
+            return (
+              <div key={index} className='slice-wrapper'>
+                {<ImageCaption slice={slice} />}
+              </div>
+            )
 
-        default:
-          return
-      }
-    })()
-    return res
-  })
+          default:
+            return
+        }
+      })()
+      return res
+    }) ?? null
+  )
 }
 
 const Page = ({ page }) => (
@@ -130,7 +132,7 @@ const Page = ({ page }) => (
     </div>
     <div className='section'>
       <div className='container page-container'>
-        <PageSlices slices={page.body} />
+        <Slices slices={page.body} />
       </div>
     </div>
   </>

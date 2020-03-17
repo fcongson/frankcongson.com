@@ -43,7 +43,7 @@
                   "multi": "paragraph, preformatted, heading2, heading3, strong, em, hyperlink, embed, list-item, o-list-item, o-list-item",
                   "allowTargetBlank": true,
                   "label": "Text",
-                  "placeholder": "Post text..."
+                  "placeholder": "Slice text..."
                 }
               }
             },
