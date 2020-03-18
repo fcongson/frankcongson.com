@@ -3,7 +3,7 @@ import { RichText } from 'prismic-reactjs'
 
 // Default Image
 const DefaultImage = ({ slice }) => (
-  <div className='post-image'>
+  <div className='slice-image'>
     <figcaption className='block-img'>
       <img src={slice.primary.image.url} alt={slice.primary.image.alt} />
       {slice.primary.caption && RichText.asText(slice.primary.caption) !== '' ? (
@@ -15,7 +15,7 @@ const DefaultImage = ({ slice }) => (
 
 // Emphasized Image
 const EmphasizedImage = ({ slice }) => (
-  <div className='post-image'>
+  <div className='slice-image'>
     <figcaption className='block-img emphasized'>
       <img src={slice.primary.image.url} alt={slice.primary.image.alt} />
       {slice.primary.caption && RichText.asText(slice.primary.caption) !== '' ? (
@@ -27,7 +27,7 @@ const EmphasizedImage = ({ slice }) => (
 
 // Full Width Image
 const FullWidthImage = ({ slice }) => (
-  <div className='post-image full-width-image' style={{ backgroundImage: 'url(' + slice.primary.image.url + ')' }}>
+  <div className='slice-image full-width-image' style={{ backgroundImage: 'url(' + slice.primary.image.url + ')' }}>
     <div className='wrapper'>
       {slice.primary.caption && RichText.asText(slice.primary.caption) !== '' ? (
         <span className='image-label'>{RichText.asText(slice.primary.caption)}</span>
