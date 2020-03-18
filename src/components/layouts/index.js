@@ -54,6 +54,10 @@ const Layout = props => {
         <link rel='preconnect' href='https://frankcongson.prismic.io' crossorigin></link>
         <link rel='preconnect' href='https://code.jquery.com' crossorigin></link>
         <link rel='preconnect' href='https://fonts.gstatic.com/' crossorigin></link>
+        <link
+          href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Domine:400,700&display=swap'
+          rel='stylesheet'
+          type='text/css'></link>
       </Helmet>
       <SEO />
       <Header />
@@ -68,10 +72,6 @@ const Layout = props => {
           githubUrl
         }}
       />
-      <link
-        href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Domine:400,700&display=swap'
-        rel='stylesheet'
-        type='text/css'></link>
     </>
   )
 }
