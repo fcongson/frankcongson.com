@@ -10,8 +10,8 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    min-height: 256px;
+    align-items: flex-start;
+    min-height: 128px;
     margin: 0 auto;
   }
 
@@ -23,15 +23,16 @@ footer {
   .footer-content {
     display: flex;
     flex-direction: column;
-    height: 64px;
-    justify-content: space-between;
     text-align: right;
   }
 
   .social-links {
     font-size: 24px;
+    margin-right: -16px;
+    padding: 16px 0 16px 0;
+
     & a {
-      padding-left: 16px;
+      padding: 16px;
     }
     & svg {
       width: 24px;
