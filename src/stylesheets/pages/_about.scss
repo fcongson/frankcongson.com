@@ -1,3 +1,6 @@
+$about-block: 672px;
+$about-gutter: 128px;
+
 .about-header {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
@@ -36,7 +39,7 @@
 
     &:nth-of-type(1) {
       .slice-text {
-        margin-left: 128px;
+        margin-left: $about-gutter;
 
         @media (max-width: $max-width-mobile-landscape) {
           margin-left: auto;
@@ -47,7 +50,7 @@
 
     &:nth-of-type(2) {
       .slice-text {
-        max-width: 672px;
+        max-width: $about-block;
         margin-right: auto;
       }
     }
@@ -69,7 +72,7 @@
         margin-right: auto;
 
         div {
-          max-width: 672px;
+          max-width: $about-block;
           margin-left: auto;
           padding-top: 64px;
           padding-bottom: 64px;
@@ -82,6 +85,48 @@
             padding-top: 16px;
             padding-bottom: 16px;
           }
+        }
+      }
+    }
+
+    &:nth-of-type(4) {
+      .slice-text {
+        text-align: center;
+
+        @media (max-width: $max-width-mobile-landscape) {
+          text-align: left;
+        }
+      }
+    }
+
+    &:nth-of-type(5) {
+      .slice-text {
+        max-width: $about-block;
+        margin-right: auto;
+      }
+    }
+
+    &:nth-of-type(6) {
+      .slice-text {
+        max-width: $about-block;
+        margin-left: auto;
+      }
+    }
+
+    &:nth-of-type(7) {
+      .slice-text {
+        max-width: $about-block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    &:nth-of-type(8) {
+      .slice-text {
+        text-align: center;
+
+        @media (max-width: $max-width-mobile-landscape) {
+          text-align: left;
         }
       }
     }
