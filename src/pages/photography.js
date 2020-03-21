@@ -1,7 +1,8 @@
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
-import React from 'react'
+import React, { useReducer } from 'react'
+import InfiniteScroll from 'react-infinite-scroll-component'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
 
@@ -46,20 +47,41 @@ export const query = graphql`
   }
 `
 
-const Photography = ({ photography }) => (
-  <div className='section'>
-    <div className='container'>
-      <h1 className='section-header'>{RichText.asText(photography.page_header)}</h1>
+const limit = 5
+
+const Photography = ({ photography }) => {
+  const [{ images }, dispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case 'next':
+          return { images: photography.images.slice(0, state.images.length + limit) }
+        default:
+          return
+      }
+    },
+    { images: photography.images.slice(0, limit) }
+  )
+
+  return (
+    <div className='section'>
+      <div className='container'>
+        <h1 className='section-header'>{RichText.asText(photography.page_header)}</h1>
+      </div>
+      <div className='container photography-container'>
+        <InfiniteScroll
+          dataLength={images.length}
+          next={() => dispatch({ type: 'next' })}
+          hasMore={images.length < photography.images.length}>
+          {images.map(({ image, imageSharp }) => (
+            <div className='photography-image' key={image.url}>
+              <Img fluid={imageSharp.childImageSharp.fluid} alt={image.alt} />
+            </div>
+          ))}
+        </InfiniteScroll>
+      </div>
     </div>
-    <div className='container photography-container'>
-      {photography.images.map(({ image, imageSharp }) => (
-        <div className='photography-image' key={image.url}>
-          <Img fluid={imageSharp.childImageSharp.fluid} alt={image.alt} />
-        </div>
-      ))}
-    </div>
-  </div>
-)
+  )
+}
 
 export default ({ data }) => {
   const doc = data.prismic.allPhotographys.edges.slice(0, 1).pop()
