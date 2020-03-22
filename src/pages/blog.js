@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import BlogPosts from '../components/BlogPosts'
@@ -16,6 +17,14 @@ export const query = graphql`
               uid
               type
             }
+            hero_image
+            hero_imageSharp {
+              childImageSharp {
+                fluid(maxWidth: 1120, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             page_header
             seo_title
             seo_description
@@ -31,7 +40,10 @@ export const query = graphql`
 const Blog = ({ blog }) => (
   <>
     <div className='section'>
-      <div className='container'>
+      <div className='container blog-header'>
+        <div className='hero-image'>
+          <Img fluid={blog.hero_imageSharp.childImageSharp.fluid} alt={blog.hero_image.alt} />
+        </div>
         <h1 className='section-header'>{RichText.asText(blog.page_header)}</h1>
       </div>
     </div>

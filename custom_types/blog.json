@@ -7,6 +7,16 @@
         "placeholder": "unique-identifier-for-page-url"
       }
     },
+    "hero_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200
+        },
+        "thumbnails": [],
+        "label": "Hero Image"
+      }
+    },
     "page_header": {
       "type": "StructuredText",
       "config": {
