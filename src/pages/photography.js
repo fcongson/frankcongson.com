@@ -64,7 +64,10 @@ const Photography = ({ photography }) => {
 
   return (
     <div className='section'>
-      <div className='container'>
+      <div className='container photography-header'>
+        <div className='hero-image'>
+          <Img fluid={photography.hero_imageSharp.childImageSharp.fluid} alt={photography.hero_image.alt} />
+        </div>
         <h1 className='section-header'>{RichText.asText(photography.page_header)}</h1>
       </div>
       <div className='container photography-container'>
