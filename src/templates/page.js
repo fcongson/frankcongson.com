@@ -63,6 +63,13 @@ export const query = graphql`
     label
     primary {
       image
+      imageSharp {
+        childImageSharp {
+          fluid(maxWidth: 1120, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       caption
     }
   }
