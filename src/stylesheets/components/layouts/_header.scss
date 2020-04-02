@@ -1,16 +1,17 @@
 header {
   display: block;
+  z-index: 1000;
 }
 
 .header-container {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   margin: 0 auto 64px auto;
 
   @media (max-width: $max-width-tablet-landscape) {
     margin: 0 auto;
     flex-wrap: wrap;
-    justify-content: space-between;
   }
 }
 
@@ -35,6 +36,10 @@ header {
     &.open {
       height: 312px;
       padding-bottom: 64px;
+    }
+    &.overlay {
+      position: absolute;
+      top: 80px;
     }
   }
 }

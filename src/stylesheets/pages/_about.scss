@@ -12,6 +12,7 @@ $about-gutter: 128px;
 
   .container.hero-image {
     grid-area: 1 / 1 / span 1 / span 5;
+    width: 100%;
     margin: 0;
 
     @media (max-width: $max-width-tablet-landscape) {

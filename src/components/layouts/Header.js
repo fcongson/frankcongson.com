@@ -2,7 +2,7 @@ import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import logo from '../../images/logo.svg'
 
-export default () => {
+export default ({ page }) => {
   const [open, setOpen] = useState(false)
   return (
     <header>
@@ -13,7 +13,7 @@ export default () => {
               <img className='header-logo' src={logo} alt='Frank Congson logo' />
             </Link>
           </div>
-          <div className={`navigation-container${open ? ' open' : ''}`}>
+          <div className={`navigation-container${open ? ' open' : ''}${page === 'home' ? ' overlay' : ''}`}>
             <Link className='navigation-link' to='/'>
               Home
             </Link>

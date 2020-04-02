@@ -28,7 +28,7 @@ const SEO = ({ data, title, desc, keywords, image, pathname, article }) => {
   } = site
 
   const seo = {
-    title: title || defaultTitle,
+    title: `${title ? `${title} - ` : ''}${defaultTitle}`,
     description: desc || defaultDescription,
     keywords: keywords || defaultKeywords,
     author: author,
