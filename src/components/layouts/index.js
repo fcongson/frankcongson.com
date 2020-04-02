@@ -22,8 +22,8 @@ const query = graphql`
   }
 `
 
-const Layout = props => {
-  const { site } = props.data
+const Layout = ({ data, page, children }) => {
+  const { site } = data
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
   const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl } = site.siteMetadata
@@ -60,8 +60,8 @@ const Layout = props => {
           type='text/css'></link>
       </Helmet>
       <SEO />
-      <Header />
-      <main>{props.children}</main>
+      <Header page={page} />
+      <main>{children}</main>
       <Footer
         social={{
           twitterUrl,

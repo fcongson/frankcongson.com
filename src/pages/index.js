@@ -18,7 +18,7 @@ export const query = graphql`
             hero_image
             hero_imageSharp {
               childImageSharp {
-                fluid(maxWidth: 1120, quality: 100) {
+                fluid(maxWidth: 2000, quality: 100) {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -63,20 +63,23 @@ export const query = graphql`
 
 const Home = ({ home }) => (
   <>
-    <div className='section'>
-      <div className='container'>
-        <div className='hero-image'>
-          <Img fluid={home.hero_imageSharp.childImageSharp.fluid} alt={home.hero_image.alt} />
+    <div className='hero-image home-hero-image'>
+      <Img
+        fluid={home.hero_imageSharp.childImageSharp.fluid}
+        alt={home.hero_image.alt}
+        style={{ height: '100%' }}
+        imgStyle={{ objectPosition: 'center bottom' }}
+      />
+    </div>
+    <div className='home-content'>
+      <div className='section'>
+        <div className='container'>
+          <h1 className='section-header'>{RichText.asText(home.page_header)}</h1>
+          <p className='section-text'>{RichText.asText(home.page_text)}</p>
         </div>
       </div>
+      <Slices slices={home.body} />
     </div>
-    <div className='section'>
-      <div className='container'>
-        <h1 className='section-header'>{RichText.asText(home.page_header)}</h1>
-        <p className='section-text'>{RichText.asText(home.page_text)}</p>
-      </div>
-    </div>
-    <Slices slices={home.body} />
   </>
 )
 
@@ -86,7 +89,7 @@ export default ({ data }) => {
   if (!doc) return null
 
   return (
-    <Layout>
+    <Layout page='home'>
       <Home home={doc.node} />
     </Layout>
   )

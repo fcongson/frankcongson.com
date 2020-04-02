@@ -4,7 +4,7 @@
       "type": "Image",
       "config": {
         "constraint": {
-          "width": 1200
+          "width": 2000
         },
         "thumbnails": [],
         "label": "Hero Image"
