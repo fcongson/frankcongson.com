@@ -1,8 +1,10 @@
 import { graphql, StaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
+import { ThemeProvider } from 'styled-components'
 import '../../stylesheets/main.scss'
 import SEO from '../SEO'
+import theme from '../styles'
 import Footer from './Footer'
 import Header from './Header'
 
@@ -60,18 +62,20 @@ const Layout = ({ data, page, children }) => {
           type='text/css'></link>
       </Helmet>
       <SEO />
-      <Header page={page} />
-      <main>{children}</main>
-      <Footer
-        social={{
-          twitterUrl,
-          facebookUrl,
-          instagramUrl,
-          youtubeUrl,
-          linkedinUrl,
-          githubUrl
-        }}
-      />
+      <ThemeProvider theme={theme}>
+        <Header page={page} />
+        <main>{children}</main>
+        <Footer
+          social={{
+            twitterUrl,
+            facebookUrl,
+            instagramUrl,
+            youtubeUrl,
+            linkedinUrl,
+            githubUrl
+          }}
+        />
+      </ThemeProvider>
     </>
   )
 }
