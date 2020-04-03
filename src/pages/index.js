@@ -10,11 +10,12 @@ import { Container, Section } from '../components/styles'
 export const query = graphql`
   {
     prismic {
-      allHomes(uid: null) {
+      allHomes(uid: "home") {
         edges {
           node {
             _meta {
               id
+              uid
               type
             }
             hero_image
@@ -27,6 +28,14 @@ export const query = graphql`
             }
             page_header
             page_text
+            image
+            imageSharp {
+              childImageSharp {
+                fluid(maxWidth: 1200, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             body {
               __typename
               ... on PRISMIC_HomeBodyFeatured_section {
@@ -36,7 +45,7 @@ export const query = graphql`
                   section_image
                   section_imageSharp {
                     childImageSharp {
-                      fluid(maxWidth: 1120, quality: 100) {
+                      fluid(maxWidth: 2000, quality: 100) {
                         ...GatsbyImageSharpFluid
                       }
                     }
@@ -75,21 +84,33 @@ const HeroImage = styled.div`
 const HomeContent = styled.div`
   margin-top: 100vh;
   text-align: center;
+`
+
+const HomeDescription = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+    flex-direction: column;
+  }
 
   h1 {
     font-weight: bold;
-    font-size: 121.5px;
-    line-height: 148px;
-    margin: 0 auto 64px auto;
+    font-size: 81px;
+    line-height: 99px;
+    text-align: right;
+    margin: 0 auto 4rem auto;
 
     @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
       font-size: 54px;
       line-height: 66px;
-      margin: 0 auto 32px auto;
+      margin: 0 auto 2rem auto;
     }
 
     @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
       font-size: 36px;
+      text-align: center;
       line-height: 44px;
     }
   }
@@ -97,17 +118,48 @@ const HomeContent = styled.div`
   p {
     font-weight: normal;
     font-size: 20px;
-    max-width: 544px;
-    margin: 0 auto 64px auto;
+    text-align: left;
+    margin: 0 auto 4rem auto;
 
     @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
       font-size: 16px;
-      margin: 0 auto 32px auto;
+      margin: 0 auto 2rem auto;
     }
 
     @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
-      max-width: 440px;
-      padding: 0 16px 0 16px;
+      padding: 0 1rem 0 1rem;
+    }
+  }
+
+  div.text {
+    width: 352px;
+    padding-top: 2rem;
+
+    @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+      padding-top: 4rem;
+    }
+
+    @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+      width: 100%;
+      padding-top: 0;
+    }
+  }
+
+  div.image {
+    width: 448px;
+    height: 598px;
+    margin-left: 8rem;
+
+    @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+      height: 448px;
+      margin-left: 2rem;
+    }
+
+    @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+      width: 100%;
+      height: 100%;
+      margin-left: 0;
+      padding: 0 1rem 0 1rem;
     }
   }
 `
@@ -125,8 +177,22 @@ const Home = ({ home }) => (
     <HomeContent>
       <Section>
         <Container>
-          <h1>{RichText.asText(home.page_header)}</h1>
-          <p>{RichText.asText(home.page_text)}</p>
+          <HomeDescription>
+            <div className='text'>
+              <h1>{RichText.asText(home.page_header)}</h1>
+              <p>{RichText.asText(home.page_text)}</p>
+            </div>
+            {!!home.imageSharp && (
+              <div className='image'>
+                <Img
+                  fluid={home.imageSharp.childImageSharp.fluid}
+                  alt={home.image.alt}
+                  style={{ height: '100%' }}
+                  imgStyle={{ objectPosition: 'center center' }}
+                />
+              </div>
+            )}
+          </HomeDescription>
         </Container>
       </Section>
       <Slices slices={home.body} />

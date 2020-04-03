@@ -1,5 +1,12 @@
 {
   "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "UID",
+        "placeholder": "unique-identifier-for-page-url"
+      }
+    },
     "hero_image": {
       "type": "Image",
       "config": {
@@ -26,18 +33,37 @@
         "placeholder": "Page Text..."
       }
     },
+    "image": {
+      "type": "Image",
+      "config": {
+        "constraint": {
+          "width": 1200
+        },
+        "thumbnails": [],
+        "label": "Image"
+      }
+    },
     "body": {
       "type": "Slices",
       "fieldset": "Slice zone",
       "config": {
         "labels": {
-          "featured_section": []
+          "featured_section": [
+            {
+              "name": "image_background",
+              "display": "Image Background"
+            },
+            {
+              "name": "color_background",
+              "display": "Color Background"
+            }
+          ]
         },
         "choices": {
           "featured_section": {
             "type": "Slice",
             "fieldset": "Featured Section",
-            "description": "A section for featured content with call to action",
+            "description": "A section for content with call to action",
             "icon": "featured_video",
             "display": "list",
             "non-repeat": {
@@ -45,7 +71,7 @@
                 "type": "Image",
                 "config": {
                   "constraint": {
-                    "width": 1200
+                    "width": 2000
                   },
                   "thumbnails": [],
                   "label": "Section Image"
