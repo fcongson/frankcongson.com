@@ -48,7 +48,8 @@ module.exports = {
             path: '/page-preview',
             component: require.resolve('./src/templates/page.js')
           }
-        ]
+        ],
+        omitPrismicScript: true
       }
     },
     `gatsby-plugin-sass`,
