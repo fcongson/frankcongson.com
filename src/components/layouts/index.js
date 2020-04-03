@@ -54,7 +54,6 @@ const Layout = ({ data, page, children }) => {
         <body className={noFocusOutline ? 'no-focus-outline' : ''} />
         <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
         <link rel='preconnect' href='https://frankcongson.prismic.io' crossorigin></link>
-        <link rel='preconnect' href='https://code.jquery.com' crossorigin></link>
         <link rel='preconnect' href='https://fonts.gstatic.com/' crossorigin></link>
         <link
           href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Domine:400,700&display=swap'
