@@ -92,58 +92,6 @@
               }
             },
             "repeat": {}
-          },
-          "featured_section": {
-            "type": "Slice",
-            "fieldset": "Featured Section",
-            "description": "A section for featured content with call to action",
-            "icon": "featured_video",
-            "display": "list",
-            "non-repeat": {
-              "section_image": {
-                "type": "Image",
-                "config": {
-                  "constraint": {
-                    "width": 1200
-                  },
-                  "thumbnails": [],
-                  "label": "Section Image"
-                }
-              },
-              "section_header": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "heading2",
-                  "label": "Section Header",
-                  "placeholder": "Section Header..."
-                }
-              },
-              "section_text": {
-                "type": "StructuredText",
-                "config": {
-                  "multi": "paragraph",
-                  "label": "Section Text",
-                  "placeholder": "Section Text..."
-                }
-              },
-              "call_to_action_text": {
-                "type": "StructuredText",
-                "config": {
-                  "single": "paragraph",
-                  "label": "Call To Action Text",
-                  "placeholder": "Call To Action Text..."
-                }
-              },
-              "call_to_action": {
-                "type": "Link",
-                "config": {
-                  "select": "document",
-                  "label": "Call To Action",
-                  "placeholder": "Call To Action..."
-                }
-              }
-            },
-            "repeat": {}
           }
         }
       }

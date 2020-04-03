@@ -34,7 +34,6 @@ export const query = graphql`
               ...PageBodyText
               ...PageBodyQuote
               ...PageBodyImage
-              ...PageBodyFeatured
             }
           }
         }
@@ -71,26 +70,6 @@ export const query = graphql`
         }
       }
       caption
-    }
-  }
-
-  fragment PageBodyFeatured on PRISMIC_PageBodyFeatured_section {
-    type
-    label
-    primary {
-      section_image
-      section_header
-      section_text
-      call_to_action_text
-      call_to_action {
-        _linkType
-        __typename
-        ... on PRISMIC__Document {
-          _meta {
-            uid
-          }
-        }
-      }
     }
   }
 `
