@@ -77,16 +77,15 @@ const HeroImage = styled.div`
   top: 0;
   width: 100%;
   height: 100vh;
-  min-height: 400px;
   z-index: -1000;
 `
 
-const HomeContent = styled.div`
+const HomeContainer = styled.div`
   margin-top: 100vh;
   text-align: center;
 `
 
-const HomeDescription = styled.div`
+const HomeContent = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -95,45 +94,27 @@ const HomeDescription = styled.div`
     flex-direction: column;
   }
 
-  h1 {
-    font-weight: bold;
-    font-size: 81px;
-    line-height: 99px;
-    text-align: right;
-    margin: 0 auto 4rem auto;
-
-    @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
-      font-size: 54px;
-      line-height: 66px;
-      margin: 0 auto 2rem auto;
-    }
-
-    @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
-      font-size: 36px;
-      text-align: center;
-      line-height: 44px;
-    }
-  }
-
-  p {
-    font-weight: normal;
-    font-size: 20px;
-    text-align: left;
-    margin: 0 auto 4rem auto;
-
-    @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
-      font-size: 16px;
-      margin: 0 auto 2rem auto;
-    }
-
-    @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
-      padding: 0 1rem 0 1rem;
-    }
-  }
-
   div.text {
     width: 352px;
     padding-top: 2rem;
+
+    h1 {
+      text-align: right;
+
+      @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+        text-align: center;
+      }
+    }
+
+    p {
+      text-align: left;
+      padding: 0;
+
+      @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+        text-align: center;
+        padding: 0 1rem 0 1rem;
+      }
+    }
 
     @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
       padding-top: 4rem;
@@ -174,10 +155,10 @@ const Home = ({ home }) => (
         imgStyle={{ objectPosition: 'center bottom' }}
       />
     </HeroImage>
-    <HomeContent>
+    <HomeContainer>
       <Section>
         <Container>
-          <HomeDescription>
+          <HomeContent>
             <div className='text'>
               <h1>{RichText.asText(home.page_header)}</h1>
               <p>{RichText.asText(home.page_text)}</p>
@@ -192,11 +173,11 @@ const Home = ({ home }) => (
                 />
               </div>
             )}
-          </HomeDescription>
+          </HomeContent>
         </Container>
       </Section>
       <Slices slices={home.body} />
-    </HomeContent>
+    </HomeContainer>
   </>
 )
 
