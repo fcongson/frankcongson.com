@@ -47,7 +47,8 @@ const fonts = {
 
 const layout = {
   maxWidthSection: '1800px',
-  maxWidthContainer: '1120px'
+  maxWidthContainer: '1120px',
+  minWidthEmph: '1120px'
 }
 
 const theme = {
