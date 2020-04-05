@@ -1,12 +1,17 @@
 import { graphql, StaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
-import { ThemeProvider } from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import '../../stylesheets/main.scss'
 import SEO from '../SEO'
 import theme from '../styles'
 import Footer from './Footer'
 import Header from './Header'
+
+const Main = styled.main`
+  flex: 1 0 auto;
+  min-height: auto;
+`
 
 const query = graphql`
   query SiteQuery {
@@ -24,7 +29,7 @@ const query = graphql`
   }
 `
 
-const Layout = ({ data, page, children }) => {
+const Layout = ({ data, navigationOverlay, children }) => {
   const { site } = data
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
@@ -62,8 +67,8 @@ const Layout = ({ data, page, children }) => {
       </Helmet>
       <SEO />
       <ThemeProvider theme={theme}>
-        <Header page={page} />
-        <main>{children}</main>
+        <Header navigationOverlay={navigationOverlay} />
+        <Main>{children}</Main>
         <Footer
           social={{
             twitterUrl,

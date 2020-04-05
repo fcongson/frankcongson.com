@@ -40,6 +40,11 @@ const colors = {
   violetLight40: '#b289b3'
 }
 
+const fonts = {
+  sansSerif: `'Montserrat', sans-serif`,
+  serif: `'Domine', serif`
+}
+
 const layout = {
   maxWidthSection: '1800px',
   maxWidthContainer: '1120px'
@@ -48,6 +53,7 @@ const layout = {
 const theme = {
   breakpoints,
   colors,
+  fonts,
   layout
 }
 

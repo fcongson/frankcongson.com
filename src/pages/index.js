@@ -187,7 +187,7 @@ export default ({ data }) => {
   if (!doc) return null
 
   return (
-    <Layout page='home'>
+    <Layout navigationOverlay>
       <Home home={doc.node} />
     </Layout>
   )
