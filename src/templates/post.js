@@ -1,10 +1,11 @@
 import { graphql, Link } from 'gatsby'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
+import styled from 'styled-components'
 import Layout from '../components/layouts'
 import { Slices } from '../components/slices'
+import { Container, Section } from '../components/styles'
 
-// Query for the Blog Post content in Prismic
 export const query = graphql`
   query BlogPostQuery($uid: String) {
     prismic {
@@ -57,38 +58,73 @@ export const query = graphql`
   }
 `
 
-// Display the title, date, and content of the Post
-const PostBody = ({ blogPost }) => {
-  const titled = blogPost.title.length !== 0
-  return (
-    <>
-      <div className='section'>
-        <div className='container post-header post-container'>
-          <div className='back'>
-            <Link to='/blog'>back to list</Link>
-          </div>
-          <h1>{titled ? RichText.asText(blogPost.title) : 'Untitled'}</h1>
-        </div>
-      </div>
-      {/* Go through the slices of the post and render the appropiate one */}
-      <div className='section'>
-        <div className='container post-container'>
-          <Slices slices={blogPost.body} />
-        </div>
-      </div>
-    </>
-  )
-}
+const Post = styled.div`
+  margin: 0 auto 8rem auto;
+
+  @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+    margin: 0 auto 4rem auto;
+  }
+
+  ${Container} {
+    max-width: 800px;
+    margin-bottom: 0;
+  }
+`
+
+const PostHeader = styled.div`
+  padding: 20px;
+
+  .back {
+    color: ${props => props.theme.colors.greyDark20};
+    display: block;
+    max-width: ${props => props.theme.layout.maxWidthContainer};
+    margin: 0 auto 2em auto;
+    font-family: ${props => props.theme.fonts.sanSerif};
+    font-size: 16px;
+
+    &:before {
+      content: '←';
+      display: inline-block;
+      position: relative;
+      margin-right: 0.5rem;
+    }
+
+    a {
+      color: ${props => props.theme.colors.greyDark20};
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 100ms ease-in-out;
+
+      &:hover {
+        border-bottom: 1px solid ${props => props.theme.colors.greyDark20};
+      }
+    }
+  }
+`
 
 export default props => {
-  // Define the Post content returned from Prismic
   const doc = props.data.prismic.allPosts.edges.slice(0, 1).pop()
 
   if (!doc) return null
 
+  const { title, body } = doc.node
+  const titled = title.length !== 0
+
   return (
     <Layout>
-      <PostBody blogPost={doc.node} />
+      <Post>
+        <Section>
+          <Container>
+            <PostHeader>
+              <div className='back'>
+                <Link to='/blog'>back to list</Link>
+              </div>
+              <h1>{titled ? RichText.asText(title) : 'Untitled'}</h1>
+            </PostHeader>
+          </Container>
+        </Section>
+        <Slices slices={body} />
+      </Post>
     </Layout>
   )
 }

@@ -1,6 +1,7 @@
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import styled from 'styled-components'
+import { Container, Section } from '../styles'
 
 const SliceQuote = styled.div`
   blockquote {
@@ -11,7 +12,7 @@ const SliceQuote = styled.div`
     font-family: ${props => props.theme.fonts.serif};
     font-style: italic;
     font-size: 16px;
-    color: ${props => props.theme.colors.grey};
+    color: ${props => props.theme.colors.greyDark20};
 
     @media screen and (min-width: ${props => props.theme.layout.minWidthEmph}) {
       width: 130%;
@@ -43,6 +44,10 @@ const SliceQuote = styled.div`
 
 export default ({ slice }) => (
   <SliceQuote>
-    <blockquote>{RichText.asText(slice.primary.quote)}</blockquote>
+    <Section>
+      <Container>
+        <blockquote>{RichText.asText(slice.primary.quote)}</blockquote>
+      </Container>
+    </Section>
   </SliceQuote>
 )

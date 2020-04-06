@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import htmlSerializer from '../../utils/htmlSerializer'
 import { linkResolver } from '../../utils/linkResolver'
+import { Container, Section } from '../styles'
 
 const SliceText = styled.div`
   a {
@@ -30,6 +31,10 @@ const SliceText = styled.div`
 
 export default ({ slice }) => (
   <SliceText>
-    <div>{RichText.render(slice.primary.text, linkResolver, htmlSerializer)}</div>
+    <Section>
+      <Container>
+        <div>{RichText.render(slice.primary.text, linkResolver, htmlSerializer)}</div>
+      </Container>
+    </Section>
   </SliceText>
 )
