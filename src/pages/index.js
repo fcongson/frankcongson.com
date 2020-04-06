@@ -99,20 +99,40 @@ const HomeContent = styled.div`
     padding-top: 2rem;
 
     h1 {
+      font-weight: bold;
+      font-size: 81px;
+      line-height: 99px;
       text-align: right;
+      margin: 0 auto 4rem auto;
+
+      @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+        font-size: 54px;
+        line-height: 66px;
+        margin: 0 auto 2rem auto;
+      }
 
       @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+        font-size: 36px;
+        line-height: 44px;
         text-align: center;
       }
     }
 
     p {
+      font-weight: normal;
+      font-size: 20px;
       text-align: left;
+      margin: 0 auto 4rem auto;
       padding: 0;
+
+      @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+        font-size: 16px;
+        margin: 0 auto 2rem auto;
+        padding: 0 1rem 0 1rem;
+      }
 
       @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
         text-align: center;
-        padding: 0 1rem 0 1rem;
       }
     }
 

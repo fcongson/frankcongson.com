@@ -6,9 +6,8 @@ import htmlSerializer from '../../utils/htmlSerializer'
 import { linkResolver } from '../../utils/linkResolver'
 import { Container, LinkButton, Section } from '../styles'
 
-const FeaturedContainer = styled.div`
+const FeaturedSection = styled.div`
   display: grid;
-  grid-template-columns: 1fr;
 
   ${props =>
     props.imageBackground &&
@@ -55,8 +54,36 @@ const FeaturedContainer = styled.div`
     flex-direction: column;
     justify-content: center;
     
+    h2 {
+      font-weight: bold;
+      font-size: 81px;
+      line-height: 99px;
+      margin: 0 auto 4rem auto;
+
+      @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+        font-size: 54px;
+        line-height: 66px;
+        margin: 0 auto 2rem auto;
+      }
+
+      @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+        font-size: 36px;
+        line-height: 44px;
+      }
+    }
+
     p {
+      font-weight: normal;
+      font-size: 20px;
       text-align: center;
+      margin: 0 auto 4rem auto;
+      padding: 0 2rem 0 2rem;
+
+      @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+        font-size: 16px;
+        margin: 0 auto 2rem auto;
+        padding: 0 1rem 0 1rem;
+      }
     }
   }
 
@@ -68,7 +95,7 @@ const FeaturedContainer = styled.div`
 // Image Background
 const ImageBackground = ({ slice }) => {
   return (
-    <FeaturedContainer imageBackground>
+    <FeaturedSection imageBackground>
       {!!slice.primary.section_imageSharp && (
         <div className='image'>
           <Img
@@ -90,14 +117,14 @@ const ImageBackground = ({ slice }) => {
           </div>
         </Container>
       </Section>
-    </FeaturedContainer>
+    </FeaturedSection>
   )
 }
 
 // Color Background
 const ColorBackground = ({ slice }) => {
   return (
-    <FeaturedContainer colorBackground>
+    <FeaturedSection colorBackground>
       <Section>
         <Container>
           {!!slice.primary.section_imageSharp && (
@@ -117,7 +144,7 @@ const ColorBackground = ({ slice }) => {
           </div>
         </Container>
       </Section>
-    </FeaturedContainer>
+    </FeaturedSection>
   )
 }
 

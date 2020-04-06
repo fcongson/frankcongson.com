@@ -1,7 +1,9 @@
 import { graphql, Link, StaticQuery } from 'gatsby'
 import { Date, RichText } from 'prismic-reactjs'
 import React from 'react'
+import styled from 'styled-components'
 import { linkResolver } from '../utils/linkResolver'
+import { Container, Section } from './styles'
 
 // Query for the Blog Post content in Prismic
 export const query = graphql`
@@ -30,6 +32,24 @@ export const query = graphql`
         }
       }
     }
+  }
+`
+
+const PostSummaryContainer = styled.div`
+  margin: 0 auto 3rem auto;
+  max-width: 736px;
+
+  h2 {
+    margin: 0;
+    color: $grey-dark-40;
+    text-align: left;
+  }
+
+  .blog-post-meta {
+    margin-bottom: 8px;
+    font-size: 16px;
+    font-family: $font-sans-serif;
+    color: $grey;
   }
 `
 
@@ -72,7 +92,7 @@ const PostSummary = ({ post }) => {
   const defaultTitle = 'Untitled'
 
   return (
-    <div className='post-summary' key={post.id}>
+    <PostSummaryContainer key={post.id}>
       <h2>
         {/* We render a link to a particular post using the linkResolver for the url and its title */}
         <Link to={linkResolver(post._meta)}>
@@ -84,7 +104,7 @@ const PostSummary = ({ post }) => {
       </p>
       {/* Renders a small preview of the post's text */}
       {firstParagraph(post)}
-    </div>
+    </PostSummaryContainer>
   )
 }
 
@@ -95,13 +115,13 @@ const BlogPosts = props => {
   if (!posts) return null
 
   return (
-    <div className='section'>
-      <div className='blog-posts container'>
+    <Section>
+      <Container>
         {posts.map(post => {
           return <PostSummary post={post.node} key={post.node._meta.id} />
         })}
-      </div>
-    </div>
+      </Container>
+    </Section>
   )
 }
 
