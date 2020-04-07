@@ -153,7 +153,7 @@ const query = graphql`
   }
 `
 
-const Layout = ({ data, navigationOverlay, children }) => {
+const Layout = ({ data, overlayHeader, children }) => {
   const { site } = data
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
@@ -192,7 +192,7 @@ const Layout = ({ data, navigationOverlay, children }) => {
       <SEO />
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header navigationOverlay={navigationOverlay} />
+        <Header overlay={overlayHeader} />
         <Main>{children}</Main>
         <Footer
           social={{

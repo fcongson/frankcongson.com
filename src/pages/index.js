@@ -73,15 +73,16 @@ export const query = graphql`
 `
 
 const HeroImage = styled.div`
-  position: absolute;
-  top: 0;
   width: 100%;
   height: 100vh;
-  z-index: -1000;
+  margin: 0 auto 8rem auto;
+
+  @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+    margin: 0 auto 4rem auto;
+  }
 `
 
 const HomeContainer = styled.div`
-  margin-top: 100vh;
   text-align: center;
 `
 
@@ -207,7 +208,7 @@ export default ({ data }) => {
   if (!doc) return null
 
   return (
-    <Layout navigationOverlay>
+    <Layout overlayHeader>
       <Home home={doc.node} />
     </Layout>
   )
