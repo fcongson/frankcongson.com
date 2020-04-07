@@ -6,6 +6,8 @@ import { Container, Section } from '../styles'
 
 const Header = styled.header`
   display: block;
+  position: ${props => (props.overlay ? 'absolute' : 'relative')};
+  width: 100%;
   z-index: 1000;
 
   ${Container} {
@@ -45,13 +47,6 @@ const NavigationMenu = styled.div`
       `
       height: 312px;
       padding-bottom: 4rem;
-      `}
-
-    ${props =>
-      props.overlay &&
-      `
-        position: absolute;
-        top: 80px;
       `}
   }
 
@@ -138,10 +133,10 @@ const NavigationToggle = styled.button`
   }
 `
 
-export default ({ navigationOverlay }) => {
+export default ({ overlay }) => {
   const [open, setOpen] = useState(false)
   return (
-    <Header>
+    <Header overlay={overlay}>
       <Section>
         <Container>
           <div className='logo-container'>
@@ -149,7 +144,7 @@ export default ({ navigationOverlay }) => {
               <img src={logo} alt='Frank Congson logo' />
             </Link>
           </div>
-          <NavigationMenu open={open} overlay={navigationOverlay}>
+          <NavigationMenu open={open}>
             <Link className='navigation-link' to='/'>
               Home
             </Link>
