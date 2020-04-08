@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container, Section } from '../styles'
 
-const SliceQuote = styled.div`
+const Quote = styled.div`
   blockquote {
     margin-bottom: 2rem;
     padding-left: 1rem;
@@ -43,11 +43,11 @@ const SliceQuote = styled.div`
 `
 
 export default ({ slice }) => (
-  <SliceQuote>
+  <Quote>
     <Section>
       <Container>
         <blockquote>{RichText.asText(slice.primary.quote)}</blockquote>
       </Container>
     </Section>
-  </SliceQuote>
+  </Quote>
 )

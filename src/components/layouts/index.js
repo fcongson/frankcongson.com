@@ -20,13 +20,17 @@ const GlobalStyle = createGlobalStyle`
     background: ${props => props.theme.colors.oliveLight40}; /* Gecko Browsers */
   }
 
-  html {
-    .no-focus-outline a:focus,
-    .no-focus-outline button:focus,
-    .no-focus-outline div[role='button']:focus {
-      outline: none;
+  ${props =>
+    props.noFocusOutline &&
+    `
+    html {
+      a:focus,
+      button:focus,
+      div[role='button']:focus {
+        outline: none;
+      }
     }
-  }
+    `}
 
   html,
   body,
@@ -180,7 +184,7 @@ const Layout = ({ data, overlayHeader, children }) => {
       <Helmet>
         <meta charSet='utf-8' />
         <title>{title}</title>
-        <body className={noFocusOutline ? 'no-focus-outline' : ''} />
+        <body />
         <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
         <link rel='preconnect' href='https://frankcongson.prismic.io' crossorigin></link>
         <link rel='preconnect' href='https://fonts.gstatic.com/' crossorigin></link>
@@ -191,7 +195,7 @@ const Layout = ({ data, overlayHeader, children }) => {
       </Helmet>
       <SEO />
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
+        <GlobalStyle noFocusOutline={noFocusOutline} />
         <Header overlay={overlayHeader} />
         <Main>{children}</Main>
         <Footer

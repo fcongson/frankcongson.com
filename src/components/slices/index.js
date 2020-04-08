@@ -10,32 +10,16 @@ export const Slices = ({ slices }) => {
       const res = (() => {
         switch (slice.type) {
           case 'featured_section':
-            return (
-              <div key={index}>
-                <FeaturedSection slice={slice} />
-              </div>
-            )
+            return <FeaturedSection key={index} slice={slice} />
 
           case 'image_with_caption':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<ImageCaption slice={slice} />}
-              </div>
-            )
+            return <ImageCaption key={index} slice={slice} />
 
           case 'quote':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<Quote slice={slice} />}
-              </div>
-            )
+            return <Quote key={index} slice={slice} />
 
           case 'text':
-            return (
-              <div key={index} className='slice-wrapper'>
-                {<Text slice={slice} />}
-              </div>
-            )
+            return <Text key={index} slice={slice} />
 
           default:
             return

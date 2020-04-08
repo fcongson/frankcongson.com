@@ -5,7 +5,7 @@ import htmlSerializer from '../../utils/htmlSerializer'
 import { linkResolver } from '../../utils/linkResolver'
 import { Container, Section } from '../styles'
 
-const SliceText = styled.div`
+const Text = styled.div`
   a {
     text-decoration: none;
     font-weight: 600;
@@ -30,11 +30,11 @@ const SliceText = styled.div`
 `
 
 export default ({ slice }) => (
-  <SliceText>
+  <Text>
     <Section>
       <Container>
         <div>{RichText.render(slice.primary.text, linkResolver, htmlSerializer)}</div>
       </Container>
     </Section>
-  </SliceText>
+  </Text>
 )
