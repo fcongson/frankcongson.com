@@ -2,9 +2,12 @@ import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
+import styled from 'styled-components'
+import Hero from '../components/Hero'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
 import { Slices } from '../components/slices'
+import { PageHeader } from '../components/styles'
 
 export const query = graphql`
   {
@@ -87,25 +90,27 @@ export const query = graphql`
   }
 `
 
+const AboutContainer = styled.div`
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+`
+
 const About = ({ about }) => (
   <>
-    <div className='section'>
-      <div className='container about-header'>
-        <div className='container hero-image'>
-          <div className='hero-image'>
-            <Img fluid={about.hero_imageSharp.childImageSharp.fluid} alt={about.hero_image.alt} />
-          </div>
-        </div>
-        <div className='container section-header'>
-          <h1 className='section-header'>{RichText.asText(about.page_header)}</h1>
-        </div>
-      </div>
-    </div>
-    <div className='section'>
-      <div className='container about-container'>
-        <Slices slices={about.body} />
-      </div>
-    </div>
+    <Hero
+      image={
+        <Img
+          fluid={about.hero_imageSharp.childImageSharp.fluid}
+          alt={about.hero_image.alt}
+          style={{ height: '100%' }}
+          imgStyle={{ opacity: 0.25 }}
+        />
+      }
+      content={<PageHeader>{RichText.asText(about.page_header)}</PageHeader>}
+    />
+    <AboutContainer>
+      <Slices slices={about.body} />
+    </AboutContainer>
   </>
 )
 
@@ -117,7 +122,7 @@ export default ({ data }) => {
   const { seo_title, seo_description, seo_keywords, seo_image, _meta } = doc.node
 
   return (
-    <Layout>
+    <Layout overlayHeader>
       <SEO
         title={seo_title}
         desc={seo_description}

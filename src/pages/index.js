@@ -3,6 +3,7 @@ import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import styled from 'styled-components'
+import Hero from '../components/Hero'
 import Layout from '../components/layouts'
 import { Slices } from '../components/slices'
 import { Container, Section } from '../components/styles'
@@ -69,16 +70,6 @@ export const query = graphql`
         }
       }
     }
-  }
-`
-
-const HeroImage = styled.div`
-  width: 100%;
-  height: 100vh;
-  margin: 0 auto 8rem auto;
-
-  @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
-    margin: 0 auto 4rem auto;
   }
 `
 
@@ -168,14 +159,16 @@ const HomeContent = styled.div`
 
 const Home = ({ home }) => (
   <>
-    <HeroImage>
-      <Img
-        fluid={home.hero_imageSharp.childImageSharp.fluid}
-        alt={home.hero_image.alt}
-        style={{ height: '100%' }}
-        imgStyle={{ objectPosition: 'center bottom' }}
-      />
-    </HeroImage>
+    <Hero
+      image={
+        <Img
+          fluid={home.hero_imageSharp.childImageSharp.fluid}
+          alt={home.hero_image.alt}
+          style={{ height: '100%' }}
+          imgStyle={{ objectPosition: 'center bottom' }}
+        />
+      }
+    />
     <HomeContainer>
       <Section>
         <Container>
