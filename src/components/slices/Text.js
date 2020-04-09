@@ -7,6 +7,7 @@ import { Container, Section } from '../styles'
 
 const Text = styled.div`
   a {
+    color: ${props => props.theme.colors.greyDark40};
     text-decoration: none;
     font-weight: 600;
     padding-bottom: 4px;
@@ -18,13 +19,14 @@ const Text = styled.div`
     }
   }
 
-  .block-img {
-    img {
-      max-width: 100%;
-    }
-
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     a {
-      background: none;
+      font-weight: inherit;
     }
   }
 `

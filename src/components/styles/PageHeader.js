@@ -10,13 +10,13 @@ export const PageHeader = styled.h1`
   margin: 0 auto 4rem auto;
 
   @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
-    font-size: 54px;
-    line-height: 66px;
+    font-size: 81px;
+    line-height: 99px;
     margin: 0 auto 2rem auto;
   }
 
   @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 54px;
+    line-height: 66px;
   }
 `
