@@ -1,7 +1,7 @@
 import { graphql, StaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Helmet from 'react-helmet'
+import { Helmet } from 'react-helmet'
 import Facebook from './Facebook'
 import Twitter from './Twitter'
 
@@ -23,8 +23,8 @@ const SEO = ({ data, title, desc, keywords, image, pathname, article }) => {
       siteLocale,
       author,
       twitter,
-      facebook
-    }
+      facebook,
+    },
   } = site
 
   const seo = {
@@ -33,7 +33,7 @@ const SEO = ({ data, title, desc, keywords, image, pathname, article }) => {
     keywords: keywords || defaultKeywords,
     author: author,
     image: `${siteUrl}${image || defaultImage}`,
-    url: `${siteUrl}${pathname || ''}`
+    url: `${siteUrl}${pathname || ''}`,
   }
 
   // schema.org in JSONLD format
@@ -51,27 +51,27 @@ const SEO = ({ data, title, desc, keywords, image, pathname, article }) => {
     name: defaultTitle,
     author: {
       '@type': 'Person',
-      name: author
+      name: author,
     },
     copyrightHolder: {
       '@type': 'Person',
-      name: author
+      name: author,
     },
     copyrightYear: `${new Date().getFullYear()}`,
     creator: {
       '@type': 'Person',
-      name: author
+      name: author,
     },
     publisher: {
       '@type': 'Person',
-      name: author
+      name: author,
     },
     datePublished: '2020-02-28T00:00:00+13:00',
     dateModified: buildTime,
     image: {
       '@type': 'ImageObject',
-      url: `${siteUrl}${defaultImage}`
-    }
+      url: `${siteUrl}${defaultImage}`,
+    },
   }
 
   return (
@@ -98,10 +98,10 @@ const SEO = ({ data, title, desc, keywords, image, pathname, article }) => {
   )
 }
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={query}
-    render={data => {
+    render={(data) => {
       return <SEO data={data} {...props} />
     }}
   />
@@ -114,7 +114,7 @@ SEO.propTypes = {
   image: PropTypes.string,
   pathname: PropTypes.string,
   article: PropTypes.bool,
-  node: PropTypes.object
+  node: PropTypes.object,
 }
 
 SEO.defaultProps = {
@@ -124,7 +124,7 @@ SEO.defaultProps = {
   image: null,
   pathname: null,
   article: false,
-  node: null
+  node: null,
 }
 
 const query = graphql`

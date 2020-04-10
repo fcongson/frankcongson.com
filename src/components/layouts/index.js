@@ -13,13 +13,13 @@ const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
   ::selection {
-    background: ${props => props.theme.colors.oliveLight40}; /* WebKit/Blink Browsers */
+    background: ${(props) => props.theme.colors.oliveLight40}; /* WebKit/Blink Browsers */
   }
   ::-moz-selection {
-    background: ${props => props.theme.colors.oliveLight40}; /* Gecko Browsers */
+    background: ${(props) => props.theme.colors.oliveLight40}; /* Gecko Browsers */
   }
 
-  ${props =>
+  ${(props) =>
     props.noFocusOutline &&
     `
     html {
@@ -42,16 +42,16 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     padding: 0;
-    color: ${props => props.theme.colors.greyDark40};
+    color: ${(props) => props.theme.colors.greyDark40};
     line-height: 1.7;
-    font-family: ${props => props.theme.fonts.sansSerif};
+    font-family: ${(props) => props.theme.fonts.sansSerif};
     font-size: 16px;
   }
 
   /* typography */
 
   a {
-    color: ${props => props.theme.colors.greyDark20};
+    color: ${(props) => props.theme.colors.greyDark20};
     text-decoration: none;
     background-repeat: repeat-x;
     background-size: 2px 2px;
@@ -63,7 +63,7 @@ const GlobalStyle = createGlobalStyle`
   h4,
   h5,
   h6 {
-    font-family: ${props => props.theme.fonts.sansSerif};
+    font-family: ${(props) => props.theme.fonts.sansSerif};
   }
   h1 {
     margin-bottom: 1rem;
@@ -115,7 +115,7 @@ const GlobalStyle = createGlobalStyle`
     font-style: italic;
   }
 
-  @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletPortrait}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
     h1 {
       font-size: 36px;
       line-height: 45px;
@@ -204,7 +204,7 @@ const Layout = ({ data, overlayHeader, children }) => {
             instagramUrl,
             youtubeUrl,
             linkedinUrl,
-            githubUrl
+            githubUrl,
           }}
         />
       </ThemeProvider>
@@ -212,4 +212,4 @@ const Layout = ({ data, overlayHeader, children }) => {
   )
 }
 
-export default props => <StaticQuery query={query} render={data => <Layout data={data} {...props} />} />
+export default (props) => <StaticQuery query={query} render={(data) => <Layout data={data} {...props} />} />

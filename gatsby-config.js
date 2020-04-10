@@ -2,7 +2,7 @@ const { apiEndpoint } = require('./prismic-config')
 var repo = /([^\/]+)\.prismic\.io\/graphql/.exec(apiEndpoint)
 
 require('dotenv').config({
-  path: `.env.${process.env.NODE_ENV}`
+  path: `.env.${process.env.NODE_ENV}`,
 })
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
     instagramUrl: `https://www.instagram.com/fcongson`,
     youtubeUrl: `https://www.youtube.com/channel/UCY6yq-YHsNzdchUlMlUn3TQ`,
     linkedinUrl: `https://www.linkedin.com/in/fcongson`,
-    githubUrl: `https://github.com/fcongson`
+    githubUrl: `https://github.com/fcongson`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -40,19 +40,18 @@ module.exports = {
             type: 'Post',
             match: '/blog/:uid',
             path: '/blog-preview',
-            component: require.resolve('./src/templates/post.js')
+            component: require.resolve('./src/templates/post.js'),
           },
           {
             type: 'Page',
             match: '/:uid',
             path: '/page-preview',
-            component: require.resolve('./src/templates/page.js')
-          }
+            component: require.resolve('./src/templates/page.js'),
+          },
         ],
-        omitPrismicScript: true
-      }
+        omitPrismicScript: true,
+      },
     },
-    `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -63,8 +62,8 @@ module.exports = {
         background_color: `#222222`,
         theme_color: `#222222`,
         display: `minimal-ui`,
-        icon: `src/images/webclip.png` // This path is relative to the root of the site.
-      }
+        icon: `src/images/webclip.png`, // This path is relative to the root of the site.
+      },
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
@@ -72,11 +71,11 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`
-      }
-    }
+        path: `${__dirname}/src/images`,
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // 'gatsby-plugin-offline',
-  ]
+  ],
 }
