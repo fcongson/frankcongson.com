@@ -16,7 +16,7 @@ module.exports = {
     siteUrl: `https://www.frankcongson.com`,
     siteLanguage: `en`,
     siteLocale: `en_US`,
-    image: `/images/logo.svg`,
+    image: `/images/logo.jpg`,
     twitter: `@fcongson`,
     twitterUrl: `https://twitter.com/fcongson`,
     facebook: `Frank Congson`,
