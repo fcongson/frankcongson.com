@@ -1,7 +1,9 @@
 import { graphql } from 'gatsby'
+import Img from 'gatsby-image'
 import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import styled from 'styled-components'
+import Hero from '../components/Hero'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
 import { Slices } from '../components/slices'
@@ -83,7 +85,7 @@ const Page = styled.div`
 `
 
 const PageHeader = styled.h1`
-  font-family: ${props => props.theme.fonts.sanSerif};
+  font-family: ${(props) => props.theme.fonts.sanSerif};
   font-style: normal;
   font-weight: bold;
   font-size: 121.5px;
@@ -91,13 +93,13 @@ const PageHeader = styled.h1`
   text-align: center;
   margin: 0 auto 4rem auto;
 
-  @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
     font-size: 54px;
     line-height: 66px;
     margin: 0 auto 2rem auto;
   }
 
-  @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
     font-size: 36px;
     line-height: 44px;
   }
@@ -108,10 +110,20 @@ export default ({ data }) => {
 
   if (!doc) return null
 
-  const { seo_title, seo_description, seo_keywords, seo_image, _meta, page_header, body } = doc.node
+  const {
+    seo_title,
+    seo_description,
+    seo_keywords,
+    seo_image,
+    _meta,
+    hero_image,
+    hero_imageSharp,
+    page_header,
+    body,
+  } = doc.node
 
   return (
-    <Layout>
+    <Layout overlayHeader={!!hero_image}>
       <SEO
         title={seo_title}
         desc={seo_description}
@@ -119,12 +131,27 @@ export default ({ data }) => {
         image={seo_image}
         pathname={`/${_meta.uid}`}
       />
+      {!!hero_image && (
+        <Hero
+          image={
+            <Img
+              fluid={hero_imageSharp.childImageSharp.fluid}
+              alt={hero_image.alt}
+              style={{ height: '100%' }}
+              imgStyle={{ opacity: 0.25 }}
+            />
+          }
+          content={<PageHeader>{RichText.asText(page_header)}</PageHeader>}
+        />
+      )}
       <Page>
-        <Section>
-          <Container>
-            <PageHeader>{RichText.asText(page_header)}</PageHeader>
-          </Container>
-        </Section>
+        {!hero_image && (
+          <Section>
+            <Container>
+              <PageHeader>{RichText.asText(page_header)}</PageHeader>
+            </Container>
+          </Section>
+        )}
         <Slices slices={body} />
       </Page>
     </Layout>
