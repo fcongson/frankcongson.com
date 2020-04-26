@@ -1,8 +1,7 @@
 import Img from 'gatsby-image'
-import { RichText } from 'prismic-reactjs'
-import React, { Fragment } from 'react'
+import React from 'react'
 import styled from 'styled-components'
-import { Container, Section } from '../styles'
+import { Container, Section } from './styles'
 
 const Image = styled.div`
   .block-img {
@@ -15,7 +14,7 @@ const Image = styled.div`
   }
 
   .emphasized {
-    @media screen and (min-width: ${props => props.theme.layout.minWidthEmph}) {
+    @media screen and (min-width: ${(props) => props.theme.layout.minWidthEmph}) {
       width: 130%;
       margin: 0 -15% 2rem -15%;
     }
@@ -30,13 +29,11 @@ const Image = styled.div`
     text-align: center;
     font-style: italic;
     font-size: 14px;
-    color: ${props => props.theme.colors.greyDark20};
+    color: ${(props) => props.theme.colors.greyDark20};
   }
 `
 
-// Default Image
-const DefaultImage = ({ slice }) => {
-  const { image, imageSharp, caption } = slice.primary
+const DefaultImage = ({ image, imageSharp, caption }) => {
   return (
     <Image>
       <Section>
@@ -47,9 +44,7 @@ const DefaultImage = ({ slice }) => {
             ) : (
               <img src={image.url} alt={image.alt} />
             )}
-            {caption && RichText.asText(caption) !== '' ? (
-              <figcaption className='image-label'>{RichText.asText(caption)}</figcaption>
-            ) : null}
+            {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
           </figcaption>
         </Container>
       </Section>
@@ -57,9 +52,7 @@ const DefaultImage = ({ slice }) => {
   )
 }
 
-// Emphasized Image
-const EmphasizedImage = ({ slice }) => {
-  const { image, imageSharp, caption } = slice.primary
+const EmphasizedImage = ({ image, imageSharp, caption }) => {
   return (
     <Image>
       <Section>
@@ -70,9 +63,7 @@ const EmphasizedImage = ({ slice }) => {
             ) : (
               <img src={image.url} alt={image.alt} />
             )}
-            {caption && RichText.asText(caption) !== '' ? (
-              <figcaption className='image-label'>{RichText.asText(caption)}</figcaption>
-            ) : null}
+            {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
           </figcaption>
         </Container>
       </Section>
@@ -80,9 +71,7 @@ const EmphasizedImage = ({ slice }) => {
   )
 }
 
-// Full Width Image
-const FullWidthImage = ({ slice }) => {
-  const { image, imageSharp, caption } = slice.primary
+const FullWidthImage = ({ image, imageSharp, caption }) => {
   return (
     <Image>
       <figcaption className='block-img full-width'>
@@ -96,26 +85,17 @@ const FullWidthImage = ({ slice }) => {
         ) : (
           <img src={image.url} alt={image.alt} />
         )}
-        {caption && RichText.asText(caption) !== '' ? (
-          <figcaption className='image-label'>{RichText.asText(caption)}</figcaption>
-        ) : null}
+        {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
       </figcaption>
     </Image>
   )
 }
 
-// Function to determine the image type
-const renderSwitch = function(slice) {
-  switch (slice.label) {
-    case 'image-full-width':
-      return <FullWidthImage slice={slice} />
-    case 'emphasized':
-      return <EmphasizedImage slice={slice} />
-    default:
-      return <DefaultImage slice={slice} />
-  }
+const ImageCaption = (props) => {
+  const { emphasized, fullwidth } = props
+  if (emphasized) return <EmphasizedImage {...props} />
+  if (fullwidth) return <FullWidthImage {...props} />
+  return <DefaultImage {...props} />
 }
 
-export default ({ slice }) => {
-  return <Fragment>{renderSwitch(slice)}</Fragment>
-}
+export default ImageCaption

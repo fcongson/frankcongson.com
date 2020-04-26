@@ -1,8 +1,8 @@
 import React from 'react'
-import FeaturedSection from './FeaturedSection'
-import ImageCaption from './ImageCaption'
-import Quote from './Quote'
-import Text from './Text'
+import FeaturedSectionSlice from './FeaturedSectionSlice'
+import ImageCaptionSlice from './ImageCaptionSlice'
+import QuoteSlice from './QuoteSlice'
+import TextSlice from './TextSlice'
 
 export const Slices = ({ slices }) => {
   return (
@@ -10,16 +10,16 @@ export const Slices = ({ slices }) => {
       const res = (() => {
         switch (slice.type) {
           case 'featured_section':
-            return <FeaturedSection key={index} slice={slice} />
+            return <FeaturedSectionSlice key={index} slice={slice} />
 
           case 'image_with_caption':
-            return <ImageCaption key={index} slice={slice} />
+            return <ImageCaptionSlice key={index} slice={slice} />
 
           case 'quote':
-            return <Quote key={index} slice={slice} />
+            return <QuoteSlice key={index} slice={slice} />
 
           case 'text':
-            return <Text key={index} slice={slice} />
+            return <TextSlice key={index} slice={slice} />
 
           default:
             return

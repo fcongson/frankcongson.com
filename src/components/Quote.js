@@ -1,30 +1,29 @@
-import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import styled from 'styled-components'
-import { Container, Section } from '../styles'
+import { Container, Section } from './styles'
 
-const Quote = styled.div`
+const QuoteContainer = styled.div`
   blockquote {
     margin-bottom: 2rem;
     padding-left: 1rem;
-    border-left: 2px solid ${props => props.theme.colors.greyDark40};
+    border-left: 2px solid ${(props) => props.theme.colors.greyDark40};
     display: inline-block;
-    font-family: ${props => props.theme.fonts.serif};
+    font-family: ${(props) => props.theme.fonts.serif};
     font-style: italic;
     font-size: 16px;
-    color: ${props => props.theme.colors.greyDark20};
+    color: ${(props) => props.theme.colors.greyDark20};
 
-    @media screen and (min-width: ${props => props.theme.layout.minWidthEmph}) {
+    @media screen and (min-width: ${(props) => props.theme.layout.minWidthEmph}) {
       width: 130%;
       margin: 0 -15% 2rem -15%;
       font-size: 24px;
       padding-left: 2rem;
-      border-left: 4px solid ${props => props.theme.colors.greyDark40};
+      border-left: 4px solid ${(props) => props.theme.colors.greyDark40};
     }
 
     &:before {
       content: open-quote;
-      font-family: ${props => props.theme.fonts.serif};
+      font-family: ${(props) => props.theme.fonts.serif};
       font-size: 2em;
       line-height: 0.1em;
       margin-right: 0.25em;
@@ -33,7 +32,7 @@ const Quote = styled.div`
 
     &:after {
       content: close-quote;
-      font-family: ${props => props.theme.fonts.serif};
+      font-family: ${(props) => props.theme.fonts.serif};
       font-size: 2em;
       line-height: 0.1em;
       margin-left: 0.025em;
@@ -42,12 +41,14 @@ const Quote = styled.div`
   }
 `
 
-export default ({ slice }) => (
-  <Quote>
+const Quote = ({ quote }) => (
+  <QuoteContainer>
     <Section>
       <Container>
-        <blockquote>{RichText.asText(slice.primary.quote)}</blockquote>
+        <blockquote>{quote}</blockquote>
       </Container>
     </Section>
-  </Quote>
+  </QuoteContainer>
 )
+
+export default Quote
