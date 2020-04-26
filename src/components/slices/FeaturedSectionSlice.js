@@ -17,7 +17,7 @@ const FeaturedSectionSlice = ({ slice }) => {
       imageSharp={section_imageSharp}
       header={RichText.asText(section_header, linkResolver, htmlSerializer)}
       text={RichText.asText(section_text, linkResolver, htmlSerializer)}
-      callToAction={call_to_action}
+      callToAction={call_to_action._meta.uid}
       callToActionText={RichText.asText(call_to_action_text, linkResolver, htmlSerializer)}
     />
   )
