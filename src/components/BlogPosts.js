@@ -1,4 +1,5 @@
 import { graphql, Link, StaticQuery } from 'gatsby'
+import Img from 'gatsby-image'
 import { Date, RichText } from 'prismic-reactjs'
 import React from 'react'
 import styled from 'styled-components'
@@ -25,6 +26,21 @@ export const query = graphql`
                 label
                 primary {
                   text
+                }
+              }
+              ... on PRISMIC_PostBodyImage_with_caption {
+                type
+                label
+                primary {
+                  image
+                  imageSharp {
+                    childImageSharp {
+                      fluid(maxWidth: 1120, quality: 100) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                  caption
                 }
               }
             }
@@ -54,9 +70,9 @@ const PostSummaryContainer = styled.div`
 `
 
 // Function to retrieve a small preview of the post's text
-const firstParagraph = post => {
+const firstParagraph = (post) => {
   // Find the first text slice of post's body
-  let firstTextSlice = post.body.find(slice => slice.type === 'text')
+  let firstTextSlice = post.body.find((slice) => slice.type === 'text')
   if (firstTextSlice != null) {
     // Set the character limit for the text we'll show in the homepage
     const textLimit = 300
@@ -76,6 +92,21 @@ const firstParagraph = post => {
   }
 }
 
+// Function to retrieve the first image
+const firstImage = (post) => {
+  let firstImageSlice = post.body.find((slice) => slice.type === 'image_with_caption')
+  if (firstImageSlice != null) {
+    const { image, imageSharp } = firstImageSlice.primary
+    return imageSharp ? (
+      <Img fluid={imageSharp.childImageSharp.fluid} alt={image.alt} />
+    ) : (
+      <img src={image.url} alt={image.alt} />
+    )
+  } else {
+    return null
+  }
+}
+
 // A summary of the Blog Post
 const PostSummary = ({ post }) => {
   // Store and format the blog post's publication date
@@ -84,7 +115,7 @@ const PostSummary = ({ post }) => {
     ? new Intl.DateTimeFormat('en-US', {
         month: 'short',
         day: '2-digit',
-        year: 'numeric'
+        year: 'numeric',
       }).format(postDate)
     : ''
 
@@ -93,6 +124,7 @@ const PostSummary = ({ post }) => {
 
   return (
     <PostSummaryContainer key={post.id}>
+      <Link to={linkResolver(post._meta)}>{firstImage(post)}</Link>
       <h2>
         {/* We render a link to a particular post using the linkResolver for the url and its title */}
         <Link to={linkResolver(post._meta)}>
@@ -108,7 +140,7 @@ const PostSummary = ({ post }) => {
   )
 }
 
-const BlogPosts = props => {
+const BlogPosts = (props) => {
   // Define the Blog Post content returned from Prismic
   const posts = props.data.prismic.allPosts.edges
 
@@ -117,7 +149,7 @@ const BlogPosts = props => {
   return (
     <Section>
       <Container>
-        {posts.map(post => {
+        {posts.map((post) => {
           return <PostSummary post={post.node} key={post.node._meta.id} />
         })}
       </Container>
@@ -125,4 +157,4 @@ const BlogPosts = props => {
   )
 }
 
-export default () => <StaticQuery query={query} render={data => <BlogPosts data={data} />} />
+export default () => <StaticQuery query={query} render={(data) => <BlogPosts data={data} />} />
