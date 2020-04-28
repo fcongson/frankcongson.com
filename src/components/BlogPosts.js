@@ -52,20 +52,21 @@ export const query = graphql`
 `
 
 const PostSummaryContainer = styled.div`
-  margin: 0 auto 3rem auto;
-  max-width: 736px;
+  ${Container} {
+    max-width: 736px;
+  }
 
   h2 {
-    margin: 0;
-    color: $grey-dark-40;
+    margin: 1rem 0;
+    color: ${(props) => props.theme.colors.greyDark40};
     text-align: left;
   }
 
   .blog-post-meta {
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
     font-size: 16px;
-    font-family: $font-sans-serif;
-    color: $grey;
+    font-family: ${(props) => props.theme.fonts.sansSerif};
+    color: ${(props) => props.theme.colors.greyDark20};
   }
 `
 
@@ -75,7 +76,7 @@ const firstParagraph = (post) => {
   let firstTextSlice = post.body.find((slice) => slice.type === 'text')
   if (firstTextSlice != null) {
     // Set the character limit for the text we'll show in the homepage
-    const textLimit = 300
+    const textLimit = 140
     let text = RichText.asText(firstTextSlice.primary.text)
     let limitedText = text.substring(0, textLimit)
 
@@ -124,18 +125,22 @@ const PostSummary = ({ post }) => {
 
   return (
     <PostSummaryContainer key={post.id}>
-      <Link to={linkResolver(post._meta)}>{firstImage(post)}</Link>
-      <h2>
-        {/* We render a link to a particular post using the linkResolver for the url and its title */}
-        <Link to={linkResolver(post._meta)}>
-          {RichText.asText(post.title).length !== 0 ? RichText.asText(post.title) : defaultTitle}
-        </Link>
-      </h2>
-      <p className='blog-post-meta'>
-        <time>{postDate}</time>
-      </p>
-      {/* Renders a small preview of the post's text */}
-      {firstParagraph(post)}
+      <Section>
+        <Container>
+          <Link to={linkResolver(post._meta)}>{firstImage(post)}</Link>
+          <h2>
+            {/* We render a link to a particular post using the linkResolver for the url and its title */}
+            <Link to={linkResolver(post._meta)}>
+              {RichText.asText(post.title).length !== 0 ? RichText.asText(post.title) : defaultTitle}
+            </Link>
+          </h2>
+          <p className='blog-post-meta'>
+            <time>{postDate}</time>
+          </p>
+          {/* Renders a small preview of the post's text */}
+          {firstParagraph(post)}
+        </Container>
+      </Section>
     </PostSummaryContainer>
   )
 }
@@ -146,15 +151,7 @@ const BlogPosts = (props) => {
 
   if (!posts) return null
 
-  return (
-    <Section>
-      <Container>
-        {posts.map((post) => {
-          return <PostSummary post={post.node} key={post.node._meta.id} />
-        })}
-      </Container>
-    </Section>
-  )
+  return posts.map((post) => <PostSummary post={post.node} key={post.node._meta.id} />)
 }
 
 export default () => <StaticQuery query={query} render={(data) => <BlogPosts data={data} />} />

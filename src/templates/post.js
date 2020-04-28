@@ -3,6 +3,7 @@ import { RichText } from 'prismic-reactjs'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layouts'
+import SEO from '../components/SEO'
 import { Slices } from '../components/slices'
 import { Container, Section } from '../components/styles'
 
@@ -19,6 +20,10 @@ export const query = graphql`
             }
             title
             date
+            seo_title
+            seo_description
+            seo_keywords
+            seo_image
             body {
               __typename
               ... on PRISMIC_PostBodyText {
@@ -61,7 +66,7 @@ export const query = graphql`
 const Post = styled.div`
   margin: 0 auto 8rem auto;
 
-  @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
     margin: 0 auto 4rem auto;
   }
 
@@ -72,14 +77,14 @@ const Post = styled.div`
 `
 
 const PostHeader = styled.div`
-  padding: 20px;
+  padding-bottom: 2rem;
 
   .back {
-    color: ${props => props.theme.colors.greyDark20};
+    color: ${(props) => props.theme.colors.greyDark20};
     display: block;
-    max-width: ${props => props.theme.layout.maxWidthContainer};
+    max-width: ${(props) => props.theme.layout.maxWidthContainer};
     margin: 0 auto 2em auto;
-    font-family: ${props => props.theme.fonts.sanSerif};
+    font-family: ${(props) => props.theme.fonts.sanSerif};
     font-size: 16px;
 
     &:before {
@@ -90,28 +95,59 @@ const PostHeader = styled.div`
     }
 
     a {
-      color: ${props => props.theme.colors.greyDark20};
+      color: ${(props) => props.theme.colors.greyDark20};
       padding-bottom: 0.25rem;
       border-bottom: 1px solid transparent;
       transition: border-bottom 100ms ease-in-out;
 
       &:hover {
-        border-bottom: 1px solid ${props => props.theme.colors.greyDark20};
+        border-bottom: 1px solid ${(props) => props.theme.colors.greyDark20};
       }
     }
   }
 `
 
-export default props => {
+const PostFooter = styled.div`
+  background-color: ${(props) => props.theme.colors.greyLight40};
+
+  ${Container} {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+    max-width: 800px;
+    margin-bottom: 0;
+  }
+
+  a {
+    color: ${(props) => props.theme.colors.greyDark40};
+    text-decoration: none;
+    padding-bottom: 4px;
+    border-bottom: 2px solid ${(props) => props.theme.colors.oliveLight40};
+    transition: border-bottom 200ms ease-in-out;
+
+    &:hover {
+      border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
+    }
+  }
+`
+
+export default (props) => {
   const doc = props.data.prismic.allPosts.edges.slice(0, 1).pop()
 
   if (!doc) return null
 
-  const { title, body } = doc.node
+  const { title, body, seo_title, seo_description, seo_keywords, seo_image, _meta } = doc.node
   const titled = title.length !== 0
 
   return (
     <Layout>
+      <SEO
+        title={seo_title}
+        desc={seo_description}
+        keywords={seo_keywords}
+        image={seo_image}
+        pathname={`/${_meta.uid}`}
+        article
+      />
       <Post>
         <Section>
           <Container>
@@ -125,6 +161,19 @@ export default props => {
         </Section>
         <Slices slices={body} />
       </Post>
+      <PostFooter>
+        <Section>
+          <Container>
+            <h3>
+              Thoughts? Send me a{' '}
+              <a href='https://twitter.com/fcongson' target='_blank' rel='noopener noreferrer'>
+                tweet
+              </a>
+              !
+            </h3>
+          </Container>
+        </Section>
+      </PostFooter>
     </Layout>
   )
 }

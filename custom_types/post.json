@@ -103,5 +103,36 @@
         }
       }
     }
+  },
+  "SEO": {
+    "seo_title": {
+      "type": "Text",
+      "config": {
+        "label": "Title",
+        "placeholder": "SEO Title..."
+      }
+    },
+    "seo_description": {
+      "type": "Text",
+      "config": {
+        "label": "Description",
+        "placeholder": "SEO Description..."
+      }
+    },
+    "seo_keywords": {
+      "type": "Text",
+      "config": {
+        "label": "Keywords",
+        "placeholder": "SEO Keywords..."
+      }
+    },
+    "seo_image": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Image"
+      }
+    }
   }
 }
