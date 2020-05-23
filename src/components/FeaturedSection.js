@@ -28,8 +28,13 @@ const FeaturedSectionContainer = styled.div`
       background-color: ${props.backgroundColor || props.theme.colors.greyLight40};
 
       ${Container} {
-        padding-top: 8rem;
-        padding-bottom: 8rem;
+        padding-top: 12rem;
+        padding-bottom: 12rem;
+
+        @media (max-width: ${props.theme.breakpoints.maxWidthTabletLandscape}) {
+          padding-top: 8rem;
+          padding-bottom: 8rem;
+        }
       }
     `}
 

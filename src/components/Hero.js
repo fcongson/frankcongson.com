@@ -3,9 +3,10 @@ import styled from 'styled-components'
 
 const HeroContainer = styled.div`
   display: grid;
+  overflow: hidden;
   margin: 0 auto 8rem auto;
 
-  @media (max-width: ${props => props.theme.breakpoints.maxWidthMobileLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
     margin: 0 auto 4rem auto;
   }
 `
@@ -21,6 +22,7 @@ const HeroContent = styled.div`
   justify-self: center;
   align-self: center;
   z-index: 1;
+  overflow: hidden;
 `
 
 export default ({ image, content }) => (

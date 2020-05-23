@@ -6,8 +6,8 @@ import logo from '../../images/logo-light.svg'
 import { Container, Section } from '../styles'
 
 const Footer = styled.footer`
-  background-color: ${props => props.theme.colors.black};
-  color: ${props => props.theme.colors.greyLight40};
+  background-color: ${(props) => props.theme.colors.black};
+  color: ${(props) => props.theme.colors.greyLight40};
   text-align: center;
   flex-shrink: 0;
 
@@ -16,8 +16,12 @@ const Footer = styled.footer`
     flex-direction: row;
     justify-content: space-between;
     align-items: flex-start;
-    min-height: 128px;
+    min-height: 256px;
     margin: 0 auto;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+      min-height: 128px;
+    }
   }
 
   .footer-logo {
@@ -42,7 +46,7 @@ const Footer = styled.footer`
       & svg {
         width: 1.5rem;
         height: 1.5rem;
-        color: ${props => props.theme.colors.greyLight40};
+        color: ${(props) => props.theme.colors.greyLight40};
       }
     }
 
