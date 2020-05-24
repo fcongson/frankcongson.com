@@ -11,13 +11,13 @@ const NotFound = styled.div`
   align-items: center;
 
   a {
-    color: ${props => props.theme.colors.greyDark20};
+    color: ${(props) => props.theme.colors.greyDark20};
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
     transition: border-bottom 100ms ease-in-out;
 
     &:hover {
-      border-bottom: 1px solid ${props => props.theme.colors.greyDark20};
+      border-bottom: 1px solid ${(props) => props.theme.colors.greyDark20};
     }
   }
 `

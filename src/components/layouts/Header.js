@@ -6,7 +6,7 @@ import { Container, Section } from '../styles'
 
 const Header = styled.header`
   display: block;
-  position: ${props => (props.overlay ? 'absolute' : 'relative')};
+  position: ${(props) => (props.overlay ? 'absolute' : 'relative')};
   width: 100%;
   z-index: 1000;
 
@@ -16,7 +16,7 @@ const Header = styled.header`
     justify-content: space-between;
     margin: 0 auto 4rem auto;
 
-    @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
       margin: 0 auto;
       flex-wrap: wrap;
     }
@@ -33,7 +33,7 @@ const NavigationMenu = styled.div`
   justify-content: flex-start;
   align-items: stretch;
 
-  @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
     flex-direction: column;
     margin-top: 2rem;
     order: 2;
@@ -42,7 +42,7 @@ const NavigationMenu = styled.div`
     overflow: hidden;
     transition: height 200ms ease-in-out, padding-bottom 200ms ease-in-out;
 
-    ${props =>
+    ${(props) =>
       props.open &&
       `
       height: 312px;
@@ -60,28 +60,28 @@ const NavigationMenu = styled.div`
     padding: 30px 0 0 0;
     border-bottom: 2px solid transparent;
     transition: border-bottom 200ms ease-in-out;
-    color: ${props => props.theme.colors.greyDark40};
+    color: ${(props) => props.theme.colors.greyDark40};
 
     &:hover {
-      border-bottom: 2px solid ${props => props.theme.colors.greyDark40};
+      border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
     }
 
     &[aria-current='page'] {
-      border-bottom: 2px solid ${props => props.theme.colors.greyDark40};
+      border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
     }
 
-    @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
       font-size: 36px;
       line-height: 44px;
       margin: 0 0 8px 0;
       padding: 0 0 8px 0;
 
       &:hover {
-        border-bottom: 2px solid ${props => props.theme.colors.greyDark40};
+        border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
       }
 
       &[aria-current='page'] {
-        border-bottom: 2px solid ${props => props.theme.colors.greyDark40};
+        border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
       }
     }
   }
@@ -95,7 +95,7 @@ const NavigationToggle = styled.button`
     position: relative;
     width: 32px;
     height: 2px;
-    background-color: ${props => props.theme.colors.greyDark40};
+    background-color: ${(props) => props.theme.colors.greyDark40};
     transition: transform 100ms ease-in-out 0ms, top 100ms ease-in-out 100ms;
 
     &.top {
@@ -106,7 +106,7 @@ const NavigationToggle = styled.button`
       top: 13px;
     }
 
-    ${props =>
+    ${(props) =>
       props.open &&
       `
         transition: top 100ms ease-in-out 0ms, transform 100ms ease-in-out 100ms;
@@ -127,7 +127,7 @@ const NavigationToggle = styled.button`
     cursor: pointer;
   }
 
-  @media (max-width: ${props => props.theme.breakpoints.maxWidthTabletLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
     display: block;
     order: 1;
   }

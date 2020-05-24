@@ -2,7 +2,7 @@ const breakpoints = {
   maxWidthMobilePortrait: '320px',
   maxWidthMobileLandscape: '568px',
   maxWidthTabletPortrait: '768px',
-  maxWidthTabletLandscape: '992px'
+  maxWidthTabletLandscape: '992px',
 }
 
 const colors = {
@@ -37,25 +37,25 @@ const colors = {
   // violet
   violet: '#442c45',
   violetLight20: '#815483',
-  violetLight40: '#b289b3'
+  violetLight40: '#b289b3',
 }
 
 const fonts = {
   sansSerif: `'Montserrat', sans-serif`,
-  serif: `'Domine', serif`
+  serif: `'Domine', serif`,
 }
 
 const layout = {
   maxWidthSection: '1800px',
   maxWidthContainer: '1120px',
-  minWidthEmph: '1120px'
+  minWidthEmph: '1120px',
 }
 
 const theme = {
   breakpoints,
   colors,
   fonts,
-  layout
+  layout,
 }
 
 export default theme

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Section = styled.div`
   width: 100%;
-  max-width: ${props => props.theme.layout.maxWidthSection};
+  max-width: ${(props) => props.theme.layout.maxWidthSection};
   margin: 0 auto;
 
   /* Fallback */
