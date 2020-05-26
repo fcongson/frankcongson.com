@@ -71,7 +71,7 @@ const Post = styled.div`
   }
 
   ${Container} {
-    max-width: 800px;
+    max-width: ${(props) => props.theme.layout.maxWidthPage};
     margin-bottom: 0;
   }
 `
@@ -113,7 +113,7 @@ const PostFooter = styled.div`
   ${Container} {
     padding-top: 8rem;
     padding-bottom: 8rem;
-    max-width: 800px;
+    max-width: ${(props) => props.theme.layout.maxWidthPage};
     margin-bottom: 0;
   }
 

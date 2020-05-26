@@ -56,7 +56,7 @@ const NavigationMenu = styled.div`
     font-size: 16px;
     line-height: 20px;
     width: fit-content;
-    margin: 0 0 0 32px;
+    margin: 0 0 0 2rem;
     padding: 30px 0 0 0;
     border-bottom: 2px solid transparent;
     transition: border-bottom 200ms ease-in-out;

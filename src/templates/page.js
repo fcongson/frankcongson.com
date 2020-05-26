@@ -7,7 +7,7 @@ import Hero from '../components/Hero'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
 import { Slices } from '../components/slices'
-import { Container, Section } from '../components/styles'
+import { Container, PageHeader, Section } from '../components/styles'
 
 export const query = graphql`
   query PageQuery($uid: String) {
@@ -80,28 +80,7 @@ export const query = graphql`
 
 const Page = styled.div`
   ${Container} {
-    max-width: 800px;
-  }
-`
-
-const PageHeader = styled.h1`
-  font-family: ${(props) => props.theme.fonts.sanSerif};
-  font-style: normal;
-  font-weight: bold;
-  font-size: 121.5px;
-  line-height: 148px;
-  text-align: center;
-  margin: 0 auto 4rem auto;
-
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
-    font-size: 54px;
-    line-height: 66px;
-    margin: 0 auto 2rem auto;
-  }
-
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
-    font-size: 36px;
-    line-height: 44px;
+    max-width: ${(props) => props.theme.layout.maxWidthPage};
   }
 `
 

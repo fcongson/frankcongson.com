@@ -91,7 +91,7 @@ export const query = graphql`
 `
 
 const AboutContainer = styled.div`
-  max-width: 800px;
+  max-width: ${(props) => props.theme.layout.maxWidthPage};
   margin: 0 auto 4rem auto;
 `
 

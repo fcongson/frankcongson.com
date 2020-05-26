@@ -183,7 +183,6 @@ const Layout = ({ data, overlayHeader, children }) => {
       <Helmet>
         <meta charSet='utf-8' />
         <title>{title}</title>
-        <body />
         <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
         <link rel='preconnect' href='https://frankcongson.prismic.io' crossorigin></link>
         <link rel='preconnect' href='https://fonts.gstatic.com/' crossorigin></link>
