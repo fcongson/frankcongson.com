@@ -1,5 +1,6 @@
 import { faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
 import logo from '../../images/logo-light.svg'
@@ -32,7 +33,30 @@ const Footer = styled.footer`
   .footer-content {
     display: flex;
     flex-direction: column;
-    text-align: right;
+    align-items: flex-end;
+
+    .content-links {
+      display: flex;
+      flex-direction: row;
+      margin: 2rem 0;
+      & a {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        width: fit-content;
+        margin: 0 0 0 2rem;
+        color: ${(props) => props.theme.colors.greyLight40};
+      }
+
+      @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+        flex-direction: column;
+        align-items: flex-end;
+        & a {
+          margin: 0 0 1rem 0;
+        }
+      }
+    }
 
     .social-links {
       font-size: 1.5rem;
@@ -54,7 +78,7 @@ const Footer = styled.footer`
       font-style: normal;
       font-weight: normal;
       font-size: 12px;
-      margin: 0;
+      margin: 0 0 2rem 0;
     }
   }
 `
@@ -63,8 +87,18 @@ export default ({ social }) => (
   <Footer>
     <Section>
       <Container>
-        <img className='footer-logo' src={logo} alt='Frank Congson logo' />
+        <Link to='/'>
+          <img className='footer-logo' src={logo} alt='Frank Congson logo' />
+        </Link>
         <div className='footer-content'>
+          <div className='content-links'>
+            <Link to='/photography'>Photography</Link>
+            <Link to='/about'>About</Link>
+            <Link className='navigation-link' to='/blog'>
+              Blog
+            </Link>
+            <Link to='/uses'>Uses</Link>
+          </div>
           <div className='social-links'>
             <a href={social.instagramUrl} aria-label='Instagram'>
               <FontAwesomeIcon icon={faInstagram} />
