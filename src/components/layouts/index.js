@@ -1,3 +1,4 @@
+import * as Sentry from '@sentry/browser'
 import { graphql, StaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
@@ -7,6 +8,8 @@ import SEO from '../SEO'
 import theme from '../styles'
 import Footer from './Footer'
 import Header from './Header'
+
+Sentry.init({ dsn: process.env.SENTRY_DSN })
 
 const GlobalStyle = createGlobalStyle`
   * {
