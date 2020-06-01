@@ -6,7 +6,7 @@ import Text from '../Text'
 
 const TextSlice = ({ slice }) => {
   const { text } = slice.primary
-  return <Text text={RichText.render(text, linkResolver, htmlSerializer)} />
+  return <Text>{RichText.render(text, linkResolver, htmlSerializer)}</Text>
 }
 
 export default TextSlice

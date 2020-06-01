@@ -98,6 +98,7 @@ export default ({ social }) => (
               Blog
             </Link>
             <Link to='/uses'>Uses</Link>
+            <Link to='/style-guide'>Style Guide</Link>
           </div>
           <div className='social-links'>
             <a href={social.instagramUrl} aria-label='Instagram'>
