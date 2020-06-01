@@ -60,6 +60,7 @@ const FeaturedSectionContainer = styled.div`
       font-weight: bold;
       font-size: 81px;
       line-height: 99px;
+      text-align: center;
       margin: 0 auto 4rem auto;
 
       @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {

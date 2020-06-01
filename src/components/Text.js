@@ -28,12 +28,10 @@ const TextContainer = styled.div`
   }
 `
 
-const Text = ({ text }) => (
+const Text = ({ children }) => (
   <TextContainer>
     <Section>
-      <Container>
-        <div>{text}</div>
-      </Container>
+      <Container>{children}</Container>
     </Section>
   </TextContainer>
 )

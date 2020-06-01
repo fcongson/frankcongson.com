@@ -41,11 +41,11 @@ const QuoteContainer = styled.div`
   }
 `
 
-const Quote = ({ quote }) => (
+const Quote = ({ children }) => (
   <QuoteContainer>
     <Section>
       <Container>
-        <blockquote>{quote}</blockquote>
+        <blockquote>{children}</blockquote>
       </Container>
     </Section>
   </QuoteContainer>
