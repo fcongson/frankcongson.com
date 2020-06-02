@@ -12,6 +12,14 @@ const Footer = styled.footer`
   text-align: center;
   flex-shrink: 0;
 
+  a {
+    padding: 0;
+    border: none;
+    &:hover {
+      border: none;
+    }
+  }
+
   ${Container} {
     display: flex;
     flex-direction: row;

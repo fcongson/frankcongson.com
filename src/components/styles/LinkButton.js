@@ -17,4 +17,8 @@ export const LinkButton = styled(Link)`
   font-size: 16px;
   line-height: 20px;
   color: ${(props) => props.theme.colors.greyDark40};
+
+  &:hover {
+    border: 1px solid ${(props) => props.theme.colors.greyDark40};
+  }
 `
