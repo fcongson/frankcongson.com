@@ -96,9 +96,10 @@ const PostHeader = styled.div`
 
     a {
       color: ${(props) => props.theme.colors.greyDark20};
+      font-weight: normal;
       padding-bottom: 0.25rem;
       border-bottom: 1px solid transparent;
-      transition: border-bottom 100ms ease-in-out;
+      transition: border-bottom 200ms ease-in-out;
 
       &:hover {
         border-bottom: 1px solid ${(props) => props.theme.colors.greyDark20};
