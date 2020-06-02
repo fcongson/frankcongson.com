@@ -54,12 +54,18 @@ const GlobalStyle = createGlobalStyle`
   /* typography */
 
   a {
-    color: ${(props) => props.theme.colors.greyDark20};
+    color: ${(props) => props.theme.colors.greyDark40};
     text-decoration: none;
-    background-repeat: repeat-x;
-    background-size: 2px 2px;
-    background-position: 0 23px;
+    font-weight: 600;
+    padding-bottom: 4px;
+    border-bottom: 2px solid ${(props) => props.theme.colors.oliveLight40};
+    transition: border-bottom 200ms ease-in-out;
+
+    &:hover {
+      border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
+    }
   }
+
   h1,
   h2,
   h3,
@@ -85,6 +91,17 @@ const GlobalStyle = createGlobalStyle`
     font-size: 24px;
     font-weight: 700;
     line-height: 29px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    a {
+      font-weight: inherit;
+    }
   }
 
   p,
