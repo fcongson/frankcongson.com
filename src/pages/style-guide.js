@@ -3,7 +3,7 @@ import BlogPosts from '../components/BlogPosts'
 import FeaturedSection from '../components/FeaturedSection'
 import Layout from '../components/layouts'
 import Quote from '../components/Quote'
-import { Container, LinkButton, PageHeader, Section } from '../components/styles'
+import theme, { Container, LinkButton, PageHeader, Section } from '../components/styles'
 import Text from '../components/Text'
 
 export default () => (
@@ -17,7 +17,10 @@ export default () => (
       <Container>
         <Text>
           <h2>This is my style guide.</h2>
-          <p>Its main purpose is for me to keep track of how things look as I grow the designs for my website.</p>
+          <p>
+            This style guide will be a living document to showcase the designs I have incorporated into my website. It
+            will help me keep track of things as I grow this space.
+          </p>
         </Text>
       </Container>
     </Section>
@@ -67,6 +70,36 @@ export default () => (
           nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
           id est laborum.
         </p>
+        <p>
+          <strong>Bold. Lorem ipsum dolor sit amet</strong>
+        </p>
+        <p>
+          <em>Italic. Lorem ipsum dolor sit amet</em>
+        </p>
+      </Container>
+    </Section>
+    <Section>
+      <Container>
+        <FeaturedSection
+          header='Layout.'
+          text='Layouts using the <Section /> and <Container /> components.'
+          callToAction='style-guide/#layout'
+          callToActionText='↓'
+        />
+      </Container>
+    </Section>
+    <Section>
+      <Container id='layout'>
+        <h2>{'<Section />'}</h2>
+        <p>
+          {`The <Section /> component creates a full width wrapper around body content with a max width of ${theme.layout.maxWidthSection}.`}
+        </p>
+        <h2>{'<Container />'}</h2>
+        <p>
+          {`The <Container /> component creates a responsive wrapper around body content with a max width of ${
+            theme.layout.maxWidthContainer
+          }. This component is used within the ${'<Section />'} component.`}
+        </p>
       </Container>
     </Section>
     <Section>
@@ -81,13 +114,13 @@ export default () => (
     </Section>
     <Section>
       <Container id='page-header'>
-        <PageHeader>Page Header</PageHeader>
+        <PageHeader>Lorem Ipsum</PageHeader>
       </Container>
     </Section>
     <Section>
       <Container>
         <FeaturedSection
-          header='Text Component.'
+          header='Text.'
           text='Typography using the <Text /> component. This component adds spacing around blocks of text using the <Section /> and <Container /> components.'
           callToAction='style-guide/#text'
           callToActionText='↓'
@@ -146,12 +179,18 @@ export default () => (
             deserunt mollit anim id est laborum.
           </p>
         </Text>
+        <Text>
+          <strong>Bold. Lorem ipsum dolor sit amet</strong>
+        </Text>
+        <Text>
+          <em>Italic. Lorem ipsum dolor sit amet</em>
+        </Text>
       </Container>
     </Section>
     <Section>
       <Container>
         <FeaturedSection
-          header='Quote Component.'
+          header='Quote.'
           text='Quotes using the <Quote /> component. This component provides responsive quote blocks that are emphasized on larger screens.'
           callToAction='style-guide/#quote'
           callToActionText='↓'
@@ -160,10 +199,10 @@ export default () => (
     </Section>
     <Section>
       <Container id='quote'>
-        <Quote>Short quote</Quote>
-        <Quote>Medium quote, Lorem ipsum dolor sit amet, consectetur adipiscing elit</Quote>
+        <Quote>Short quote.</Quote>
+        <Quote>Medium quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</Quote>
         <Quote>
-          Long quote, Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore
+          Long quote. Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore
           et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
           ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
           nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
@@ -174,7 +213,7 @@ export default () => (
     <Section>
       <Container>
         <FeaturedSection
-          header='Image Caption Component.'
+          header='Image Caption.'
           text='Images with caption using the <ImageCaption /> component. This component provides responsive images with optional comments. Images also have the option of being emphasized or fullwidth.'
           callToAction='style-guide/#image-caption'
           callToActionText='↓'
@@ -187,7 +226,7 @@ export default () => (
     <Section>
       <Container>
         <FeaturedSection
-          header='Featured Section Component.'
+          header='Featured Section.'
           text='Featured sections using the <FeaturedSection /> component. This component provides a featured section with header, text, and call to action.'
           callToAction='style-guide/#featured-section'
           callToActionText='↓'
@@ -200,7 +239,7 @@ export default () => (
     <Section>
       <Container>
         <FeaturedSection
-          header='Blog Posts Component.'
+          header='Blog Posts.'
           text='Blog posts using the <BlogPosts /> component. This component provides a single column layout of blog posts in descending date order.'
           callToAction='style-guide/#blog-posts'
           callToActionText='↓'
@@ -215,7 +254,7 @@ export default () => (
     <Section>
       <Container>
         <FeaturedSection
-          header='Link Button Component.'
+          header='Link Button.'
           text='Link button using the <LinkButton /> component.'
           callToAction='style-guide/#link-button'
           callToActionText='↓'
