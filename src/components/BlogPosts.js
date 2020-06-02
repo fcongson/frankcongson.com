@@ -62,6 +62,14 @@ const PostSummaryContainer = styled.div`
     text-align: left;
   }
 
+  a {
+    padding: 0;
+    border: none;
+    &:hover {
+      border: none;
+    }
+  }
+
   .blog-post-meta {
     margin-bottom: 0.5rem;
     font-size: 16px;

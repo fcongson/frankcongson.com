@@ -12,9 +12,10 @@ const NotFound = styled.div`
 
   a {
     color: ${(props) => props.theme.colors.greyDark20};
+    font-weight: normal;
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
-    transition: border-bottom 100ms ease-in-out;
+    transition: border-bottom 200ms ease-in-out;
 
     &:hover {
       border-bottom: 1px solid ${(props) => props.theme.colors.greyDark20};
@@ -26,7 +27,7 @@ export default () => (
   <Layout>
     <NotFound>
       <PageHeader>404</PageHeader>
-      <h2>Document not found</h2>
+      <h2>Page not found</h2>
       <p>
         <a href='/'>Return to homepage</a>
       </p>
