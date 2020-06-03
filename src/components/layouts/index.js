@@ -53,6 +53,11 @@ const GlobalStyle = createGlobalStyle`
 
   /* typography */
 
+  @font-face {
+    font-family: 'silkamono';
+    src: url('/fonts/silkamono-regular-webfont.woff2') format('woff2');
+  }
+
   a {
     color: ${(props) => props.theme.colors.greyDark40};
     text-decoration: none;
@@ -106,6 +111,11 @@ const GlobalStyle = createGlobalStyle`
   ol li {
     margin-left: 1em;
     margin-bottom: 1em;
+  }
+
+  code,
+  pre {
+    font-family: 'silkamono', monospace;
   }
 
   pre {

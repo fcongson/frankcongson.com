@@ -72,13 +72,19 @@ export default () => (
         <p>
           <em>Italic. Lorem ipsum dolor sit amet</em>
         </p>
+        <p>
+          <code>Code. Lorem ipsum dolor sit amet</code>
+        </p>
+        <p>
+          <pre>Preformatted. Lorem ipsum dolor sit amet</pre>
+        </p>
       </Container>
     </Section>
     <Section>
       <Container>
         <FeaturedSection
           header='Page Header.'
-          text='Page header using the <PageHeader /> component.'
+          text={['Page header using the ', <code>{'<PageHeader />'}</code>, ' component.']}
           callToAction='style-guide/#page-header'
           callToActionText='↓'
         />
@@ -93,7 +99,11 @@ export default () => (
       <Container>
         <FeaturedSection
           header='Quote.'
-          text='Quotes using the <Quote /> component. This component provides responsive quote blocks that are emphasized on larger screens.'
+          text={[
+            'Quotes using the ',
+            <code>{'<Quote />'}</code>,
+            ' component. This component provides responsive quote blocks that are emphasized on larger screens.',
+          ]}
           callToAction='style-guide/#quote'
           callToActionText='↓'
         />
@@ -130,7 +140,13 @@ export default () => (
       <Container>
         <FeaturedSection
           header='Layout.'
-          text='Layouts using the <Section /> and <Container /> components.'
+          text={[
+            'Layouts using the ',
+            <code>{'<Section />'}</code>,
+            ' and ',
+            <code>{'<Container />'}</code>,
+            ' components.',
+          ]}
           callToAction='style-guide/#layout'
           callToActionText='↓'
         />
@@ -138,15 +154,20 @@ export default () => (
     </Section>
     <Section>
       <Container id='layout'>
-        <h2>{'<Section />'}</h2>
+        <h2>
+          <code>{'<Section />'}</code>
+        </h2>
         <p>
-          {`The <Section /> component creates a full width wrapper around body content with a max width of ${theme.layout.maxWidthSection}.`}
+          The <code>{'<Section />'}</code> component creates a full width wrapper around body content with a max width
+          of <code>{`${theme.layout.maxWidthSection}`}</code>.
         </p>
-        <h2>{'<Container />'}</h2>
+        <h2>
+          <code>{'<Container />'}</code>
+        </h2>
         <p>
-          {`The <Container /> component creates a responsive wrapper around body content with a max width of ${
-            theme.layout.maxWidthContainer
-          }. This component is used within the ${'<Section />'} component.`}
+          The <code>{'<Container />'}</code> component creates a responsive wrapper around body content with a max width
+          of <code>{`${theme.layout.maxWidthContainer}`}</code>. This component is used within the{' '}
+          <code>{'<Section />'}</code> component.
         </p>
       </Container>
     </Section>
@@ -154,7 +175,11 @@ export default () => (
       <Container>
         <FeaturedSection
           header='Image Caption.'
-          text='Images with caption using the <ImageCaption /> component. This component provides responsive images with optional comments. Images also have the option of being emphasized or fullwidth.'
+          text={[
+            'Images with caption using the ',
+            <code>{'<ImageCaption />'}</code>,
+            ' component. This component provides responsive images with optional comments. Images also have the option of being emphasized or fullwidth.',
+          ]}
           callToAction='style-guide/#image-caption'
           callToActionText='↓'
         />
@@ -167,7 +192,11 @@ export default () => (
       <Container>
         <FeaturedSection
           header='Featured Section.'
-          text='Featured sections using the <FeaturedSection /> component. This component provides a featured section with header, text, and call to action.'
+          text={[
+            'Featured sections using the ',
+            <code>{'<FeaturedSection />'}</code>,
+            ' component. This component provides a featured section with header, text, and call to action.',
+          ]}
           callToAction='style-guide/#featured-section'
           callToActionText='↓'
         />
@@ -180,7 +209,11 @@ export default () => (
       <Container>
         <FeaturedSection
           header='Blog Posts.'
-          text='Blog posts using the <BlogPosts /> component. This component provides a single column layout of blog posts in descending date order.'
+          text={[
+            'Blog posts using the ',
+            <code>{'<BlogPosts />'}</code>,
+            ' component. This component provides a single column layout of blog posts in descending date order.',
+          ]}
           callToAction='style-guide/#blog-posts'
           callToActionText='↓'
         />
@@ -195,7 +228,7 @@ export default () => (
       <Container>
         <FeaturedSection
           header='Link Button.'
-          text='Link button using the <LinkButton /> component.'
+          text={['Link button using the ', <code>{'<LinkButton />'}</code>, ' component.']}
           callToAction='style-guide/#link-button'
           callToActionText='↓'
         />
