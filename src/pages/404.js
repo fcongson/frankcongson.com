@@ -7,7 +7,6 @@ const NotFound = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 50vw;
   align-items: center;
 
   a {

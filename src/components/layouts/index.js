@@ -73,35 +73,23 @@ const GlobalStyle = createGlobalStyle`
   h5,
   h6 {
     font-family: ${(props) => props.theme.fonts.sansSerif};
-  }
-  h1 {
-    margin-bottom: 1rem;
-    font-size: 54px;
     font-weight: 700;
-    line-height: 66px;
-  }
-  h2 {
     margin-bottom: 1rem;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 44px;
-  }
-  h3 {
-    margin-bottom: 1rem;
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 29px;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
     a {
       font-weight: inherit;
     }
+  }
+  h1 {
+    font-size: 54px;
+    line-height: 66px;
+  }
+  h2 {
+    font-size: 36px;
+    line-height: 44px;
+  }
+  h3 {
+    font-size: 24px;
+    line-height: 29px;
   }
 
   p,
@@ -138,13 +126,15 @@ const GlobalStyle = createGlobalStyle`
   @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
     h1 {
       font-size: 36px;
-      line-height: 45px;
+      line-height: 44px;
     }
     h2 {
       font-size: 24px;
+      line-height: 29px;
     }
     h3 {
       font-size: 16px;
+      line-height: 1.7;
     }
     p {
       font-size: 16px;
