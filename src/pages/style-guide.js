@@ -266,7 +266,7 @@ export default ({ data }) => {
         text='Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         callToAction='style-guide/#featured-section'
         callToActionText='Lorem ipsum dolor sit amet'
-        image={image}
+        imageAlt={image.alt}
         imageSharp={imageSharp}
         imageAsBackground
       />
@@ -275,6 +275,15 @@ export default ({ data }) => {
         text='Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         callToAction='style-guide/#featured-section'
         callToActionText='Lorem ipsum dolor sit amet'
+      />
+      <FeaturedSection
+        header='Lorem Ipsum.'
+        text='Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        callToAction='style-guide/#featured-section'
+        callToActionText='Lorem ipsum dolor sit amet'
+        imageAlt={image.alt}
+        imageSharp={imageSharp}
+        backgroundColor={theme.colors.oliveLight40}
       />
 
       {/* Hero */}

@@ -13,7 +13,7 @@ const FeaturedSectionSlice = ({ slice }) => {
   return (
     <FeaturedSection
       imageAsBackground={label === 'image_background'}
-      image={section_image}
+      imageAlt={section_image?.alt}
       imageSharp={section_imageSharp}
       header={RichText.asText(section_header, linkResolver, htmlSerializer)}
       text={RichText.asText(section_text, linkResolver, htmlSerializer)}

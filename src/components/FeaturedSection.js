@@ -27,6 +27,10 @@ const FeaturedSectionContainer = styled.div`
     `
       background-color: ${props.backgroundColor || props.theme.colors.greyLight40};
 
+      div.image {
+        padding-bottom: 4rem;
+      }
+
       ${Container} {
         padding-top: 12rem;
         padding-bottom: 12rem;
@@ -95,14 +99,14 @@ const FeaturedSectionContainer = styled.div`
   }
 `
 
-const ImageBackground = ({ image, imageSharp, header, text, callToAction, callToActionText }) => {
+const ImageBackground = ({ imageAlt, imageSharp, header, text, callToAction, callToActionText }) => {
   return (
     <FeaturedSectionContainer imageAsBackground>
       {!!imageSharp && (
         <div className='image'>
           <Img
             fluid={imageSharp.childImageSharp.fluid}
-            alt={image.alt}
+            alt={imageAlt}
             style={{ height: '100%' }}
             imgStyle={{ objectPosition: 'center center' }}
           />
@@ -111,9 +115,11 @@ const ImageBackground = ({ image, imageSharp, header, text, callToAction, callTo
       <Section>
         <Container>
           <div className='text'>
-            <h2>{header}</h2>
-            <p>{text}</p>
-            <LinkButton to={`/${callToAction}`}>{callToActionText}</LinkButton>
+            {!!header && <h2>{header}</h2>}
+            {!!text && <p>{text}</p>}
+            {!!callToAction && !!callToActionText && (
+              <LinkButton to={`/${callToAction}`}>{callToActionText}</LinkButton>
+            )}
           </div>
         </Container>
       </Section>
@@ -121,20 +127,22 @@ const ImageBackground = ({ image, imageSharp, header, text, callToAction, callTo
   )
 }
 
-const ColorBackground = ({ backgroundColor, image, imageSharp, header, text, callToAction, callToActionText }) => {
+const ColorBackground = ({ backgroundColor, imageAlt, imageSharp, header, text, callToAction, callToActionText }) => {
   return (
     <FeaturedSectionContainer colorAsBackground backgroundColor={backgroundColor}>
       <Section>
         <Container>
           {!!imageSharp && (
             <div className='image'>
-              <Img fluid={imageSharp.childImageSharp.fluid} alt={image.alt} />
+              <Img fluid={imageSharp.childImageSharp.fluid} alt={imageAlt} />
             </div>
           )}
           <div className='text'>
-            <h2>{header}</h2>
-            <p>{text}</p>
-            <LinkButton to={`/${callToAction}`}>{callToActionText}</LinkButton>
+            {!!header && <h2>{header}</h2>}
+            {!!text && <p>{text}</p>}
+            {!!callToAction && !!callToActionText && (
+              <LinkButton to={`/${callToAction}`}>{callToActionText}</LinkButton>
+            )}
           </div>
         </Container>
       </Section>
