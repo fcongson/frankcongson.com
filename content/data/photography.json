@@ -1,0 +1,19 @@
+{
+  "heroImage": {
+    "file": "iceland-west-coast.jpg",
+    "altText": "A close up of a field in the Snæfellsnes peninsula of western Iceland"
+  },
+  "pageHeader": "Photography.",
+  "sections": [
+    {
+      "__typename": "imageCaption",
+      "emphasized": false,
+      "fullwidth": false,
+      "image": {
+        "file": "",
+        "altText": ""
+      },
+      "caption": ""
+    }
+  ]
+}

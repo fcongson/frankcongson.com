@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import logo from '../../images/logo-light.svg'
+import logo from '../../../content/images/logo-light.svg'
 import { Container, Section } from '../styles'
 
 const Footer = styled.footer`

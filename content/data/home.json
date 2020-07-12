@@ -1,0 +1,44 @@
+{
+  "heroImage": {
+    "file": "iceland-village.jpg",
+    "altText": "A village in the Snæfellsnes peninsula of western Iceland"
+  },
+  "mainContent": {
+    "header": "Hello.",
+    "text": "<p>I’m Frank Congson. Welcome to my digital home. Join me as I share my photography, travels, and other stories along the way.</p>",
+    "image": {
+      "file": "frank-huacachina-peru.jpeg",
+      "altText": "Frank in Huacachina, Peru"
+    }
+  },
+  "sections": [
+    {
+      "__typename": "featuredSection",
+      "header": "Photography.",
+      "text": "Photography is one of my passions in life. I love incorporating it into other aspects of my life and capturing the world around me.",
+      "callToAction": {
+        "url": "/photography",
+        "text": "See my photography"
+      },
+      "image": {
+        "file": "banff-gondola-1.jpg",
+        "altText": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
+      },
+      "color": ""
+    },
+    {
+      "__typename": "featuredSection",
+      "header": "Me.",
+      "text": "I’m a dad, husband, traveler, minimalist, full stack developer, and rock climber.",
+      "callToAction": {
+        "url": "/about",
+        "text": "Learn about me"
+      },
+      "image": {
+        "file": "",
+        "altText": ""
+      },
+      "color": ""
+    }
+  ]
+}

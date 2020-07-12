@@ -1,7 +1,7 @@
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import logo from '../../images/logo.svg'
+import logo from '../../../content/images/logo.svg'
 import { Container, Section } from '../styles'
 
 const Header = styled.header`
