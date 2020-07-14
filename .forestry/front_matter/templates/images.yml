@@ -1,0 +1,14 @@
+---
+label: images
+hide_body: true
+fields:
+- type: field_group_list
+  name: Images
+  label: Images
+  fields:
+  - type: file
+    name: file
+    label: file
+  - type: text
+    name: altText
+    label: altText
