@@ -26,10 +26,10 @@ fields:
       required: false
       options: []
       source:
-        type: simple
+        type: documents
         section: 
-        file: 
-        path: 
+        file: content/data/sectionTypes.json
+        path: sectionTypes
     label: __typename
   - name: text
     type: textarea
