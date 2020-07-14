@@ -40,3 +40,5 @@ fields:
       schema:
         format: html-blocks
     label: text
+pages:
+- content/data/about.json
