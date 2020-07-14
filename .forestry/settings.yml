@@ -35,6 +35,10 @@ sections:
 - type: document
   path: content/data/siteMetadata.json
   label: Site Metadata
+- type: document
+  path: content/data/sectionTypes.json
+  label: Section Types
+  match: "**/*"
 upload_dir: content/images
 public_path: "/content/images"
 front_matter_path: ''
