@@ -10,6 +10,36 @@ sections:
   path: content/data/home.json
   label: Home
   match: "**/*"
+- type: document
+  path: content/data/photography.json
+  label: Photography
+  match: "**/*"
+- type: document
+  path: content/data/about.json
+  label: About
+  match: "**/*"
+- type: document
+  path: content/data/images.json
+  label: Images
+  match: "**/*"
+- type: directory
+  path: content/pages
+  label: Pages
+  create: all
+  match: "**/*"
+  new_doc_ext: ".json"
+- type: directory
+  path: content/posts
+  label: Posts
+  create: all
+  match: "**/*"
+  new_doc_ext: ".mdx"
+- type: heading
+  label: Config
+- type: document
+  path: content/data/siteMetadata.json
+  label: Site Metadata
+  match: "**/*"
 upload_dir: uploads
 public_path: "/uploads"
 front_matter_path: ''
