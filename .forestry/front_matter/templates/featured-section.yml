@@ -1,4 +1,29 @@
 ---
 label: Featured Section
 hide_body: true
-fields: []
+fields:
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: image
+- name: header
+  type: text
+  config:
+    required: false
+  label: header
+- name: text
+  type: text
+  config:
+    required: false
+  label: text
+- name: call_to_action
+  type: text
+  config:
+    required: false
+  label: callToAction
+- name: call_to_action_text
+  type: text
+  config:
+    required: false
+  label: callToActionText
