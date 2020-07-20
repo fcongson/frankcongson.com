@@ -37,5 +37,11 @@
       "__typename": "text",
       "text": "<h2>If you'd like to send me a personal message, you can find me on <a href= \"https://www.instagram.com/fcongson \" target= \"_blank \" rel= \"noopener \">Instagram</a> and <a href= \"https://twitter.com/fcongson \" target= \"_blank \" rel= \"noopener \">Twitter</a>.</h2>"
     }
+  ],
+  "sections": [
+    {
+      "template": "text",
+      "text": "<h2>Hello, I'm Frank.</h2>"
+    }
   ]
 }
