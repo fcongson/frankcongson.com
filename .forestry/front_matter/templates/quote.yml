@@ -1,4 +1,9 @@
 ---
 label: Quote
 hide_body: true
-fields: []
+fields:
+- name: quote
+  type: text
+  config:
+    required: false
+  label: quote
