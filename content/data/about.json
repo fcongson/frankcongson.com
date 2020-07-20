@@ -54,6 +54,14 @@
     {
       "template": "text",
       "text": "<h2>What can you expect here?</h2>"
+    },
+    {
+      "template": "text",
+      "text": "<p>The idea of this website is to have a place to showcase my favorite images through my photography journey. I've taken so many photos over the years. It's time to go back, find the best, and give them a home here.</p><p>Have a look at <a href=\"https://frankcongson.com/photography\"><strong>the highlights</strong></a>.</p>"
+    },
+    {
+      "template": "text",
+      "text": "<p>As for the blog, that will be a place to share a bit more about me. It will include stories about my family and the photographs I take throughout our life. I'll also share thoughts about other interests of mine (look out for posts about coffee and minimalism - <a href=\"https://frankcongson.com/uses\"><strong>the essentials</strong></a>) and my process in how I work (what's involved in design and development).</p><p>Have a read of <a href=\"https://frankcongson.com/blog\"><strong>the blog</strong></a>.</p>"
     }
   ]
 }
