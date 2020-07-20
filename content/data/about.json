@@ -4,7 +4,7 @@
     "altText": "Frank in Huacachina, Peru"
   },
   "pageHeader": "About.",
-  "sections": [
+  "sectionsOld": [
     {
       "__typename": "text",
       "text": "<h2>Hello, I'm Frank.</h2>"
