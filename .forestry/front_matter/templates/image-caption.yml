@@ -1,4 +1,20 @@
 ---
 label: Image Caption
 hide_body: true
-fields: []
+fields:
+- name: image
+  type: file
+  config:
+    maxSize: 64
+  label: image
+- name: caption
+  type: text
+  config:
+    required: false
+  label: caption
+- name: emphasized
+  type: boolean
+  label: emphasized
+- name: fullwidth
+  type: boolean
+  label: fullwidth
