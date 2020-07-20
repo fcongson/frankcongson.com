@@ -15,30 +15,16 @@ fields:
 - type: text
   name: pageHeader
   label: pageHeader
-- type: field_group_list
-  name: sections
+- name: sections
+  type: blocks
   label: sections
-  fields:
-  - name: __typename
-    type: select
-    default: ''
-    config:
-      required: false
-      options: []
-      source:
-        type: documents
-        section: 
-        file: content/data/sectionTypes.json
-        path: sectionTypes
-    label: __typename
-  - name: text
-    type: textarea
-    default: ''
-    config:
-      required: false
-      wysiwyg: true
-      schema:
-        format: html-blocks
-    label: text
+  template_types:
+  - text
+  - quote
+  - image-caption
+  - featured-section
+  config:
+    min: 
+    max: 
 pages:
 - content/data/about.json
