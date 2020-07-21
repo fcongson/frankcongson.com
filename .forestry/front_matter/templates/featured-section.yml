@@ -3,9 +3,9 @@ label: Featured Section
 hide_body: true
 display_field: header
 fields:
-- name: background_color
+- name: backgroundColor
   type: color
-  label: backgroundColor
+  label: Background Color
   config:
     required: false
     color_format: Hex
@@ -13,24 +13,24 @@ fields:
   type: file
   config:
     maxSize: 64
-  label: image
+  label: Image
 - name: header
   type: text
   config:
     required: false
-  label: header
+  label: Header
 - name: text
   type: text
   config:
     required: false
-  label: text
-- name: call_to_action
+  label: Text
+- name: callToAction
   type: text
   config:
     required: false
-  label: callToAction
-- name: call_to_action_text
+  label: Call To Action
+- name: callToActionText
   type: text
   config:
     required: false
-  label: callToActionText
+  label: Call To Action Text
