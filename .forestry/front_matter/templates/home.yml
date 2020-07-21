@@ -1,4 +1,50 @@
 ---
 label: home
 hide_body: true
-fields: []
+fields:
+- name: hero_image
+  type: include
+  config: {}
+  template: hero
+  label: Hero Image
+- name: page_header
+  type: text
+  config:
+    required: false
+  label: Page Header
+- name: main_content
+  type: field_group
+  config: {}
+  fields:
+  - name: header
+    type: text
+    config:
+      required: false
+    label: Header
+  - name: text
+    type: text
+    config:
+      required: false
+    label: Text
+  - name: image
+    type: file
+    config:
+      maxSize: 64
+    label: Image
+  - name: alt_text
+    type: text
+    config:
+      required: false
+    label: Alt Text
+  label: Main Content
+- name: sections
+  type: blocks
+  label: Sections
+  template_types:
+  - text
+  - quote
+  - image-caption
+  - featured-section
+  config:
+    min: 
+    max: 
