@@ -1,6 +1,7 @@
 ---
 label: Image Caption
 hide_body: true
+display_field: alt_text
 fields:
 - name: image
   type: file
