@@ -1,6 +1,7 @@
 ---
 label: Featured Section
 hide_body: true
+display_field: header
 fields:
 - name: background_color
   type: color
