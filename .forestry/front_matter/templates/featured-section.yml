@@ -2,6 +2,12 @@
 label: Featured Section
 hide_body: true
 fields:
+- name: background_color
+  type: color
+  label: backgroundColor
+  config:
+    required: false
+    color_format: Hex
 - name: image
   type: file
   config:
