@@ -7,4 +7,4 @@ fields:
   type: text
   config:
     required: false
-  label: quote
+  label: Quote
