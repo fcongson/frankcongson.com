@@ -16,6 +16,10 @@ sections:
   path: content/data/about.json
   label: About
 - type: document
+  path: content/data/blog.json
+  label: Blog
+  match: "**/*"
+- type: document
   path: content/data/images.json
   label: Images
 - type: directory
