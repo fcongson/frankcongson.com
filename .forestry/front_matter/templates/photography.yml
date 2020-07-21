@@ -2,16 +2,11 @@
 label: photography
 hide_body: true
 fields:
-- type: field_group
-  name: heroImage
+- name: hero_image
+  type: include
+  config: {}
+  template: hero
   label: Hero Image
-  fields:
-  - type: file
-    name: file
-    label: File
-  - type: text
-    name: altText
-    label: Alt Text
 - type: text
   name: pageHeader
   label: Page Header
