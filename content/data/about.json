@@ -4,40 +4,6 @@
     "altText": "Frank in Huacachina, Peru"
   },
   "pageHeader": "About.",
-  "sectionsOld": [
-    {
-      "__typename": "text",
-      "text": "<h2>Hello, I'm Frank.</h2>"
-    },
-    {
-      "__typename": "text",
-      "text": "<p>Photography has always been a passion of mine. As a young child, I loved taking pictures with my dad's camera when we would go on trips.</p><p>Years later, I took my first class in photography, where I learned how to develop film and fell in love with the craft all over again.</p><p>I always try to incorporate photography into my other passions in life. Most recently, that involves photographing my son, Luca, as he grows into his first year of life.</p>"
-    },
-    {
-      "__typename": "text",
-      "text": "<p>My wife, Jami, and I currently live in New Zealand with our son, but we didn't begin that way. Jami and I have a shared passion for travel (we even started a <a href=\"https://www.heythereeverywhere.com/\" target=\"_blank\" rel=\"noopener\">travel blog</a>).</p><p>Originally from the United States, we were only able to explore the world two weeks at a time. We decided that it wasn't enough. So, we sold everything, embraced the minimalist lifestyle, quit our jobs, and packed what we had left on a trip around the world.</p><p>We left our home in Seattle and traveled through South America, Africa, Asia, the South Pacific, and ended up here, living in New Zealand and having our first child.</p>"
-    },
-    {
-      "__typename": "text",
-      "text": "<h2>What can you expect here?</h2>"
-    },
-    {
-      "__typename": "text",
-      "text": "<p>The idea of this website is to have a place to showcase my favorite images through my photography journey. I've taken so many photos over the years. It's time to go back, find the best, and give them a home here.</p><p>Have a look at <a href=\"/photography\">the highlights</a>.</p>"
-    },
-    {
-      "__typename": "text",
-      "text": "<p>As for the blog, that will be a place to share a bit more about me. It will include stories about my family and the photographs I take throughout our life. I'll also share thoughts about other interests of mine (look out for posts about coffee and minimalism - <a href=\"/uses\">the essentials</a>) and my process in how I work (what's involved in design and development).</p><p>Have a read of <a href=\"/blog\">the blog</a>.</p>"
-    },
-    {
-      "__typename": "text",
-      "text": "<p>This website also gave me the perfect opportunity to practice my craft as a full stack developer. I decided to redesign and rebuild my old website. I designed this in <a href=\"https://www.figma.com/\" target=\"_blank\" rel=\"noopener\">Figma</a>, built it using <a href= \"https://www.gatsbyjs.org/ \" target= \"_blank \" rel= \"noopener \">Gatsby</a> and <a href= \"https://reactjs.org/ \" target= \"_blank \" rel= \"noopener \">React</a>, managed content using <a href= \"https://prismic.io/ \" target= \"_blank \" rel= \"noopener \">Prismic</a>, and hosted on <a href= \"https://www.netlify.com/ \" target= \"_blank \" rel= \"noopener \">Netlify</a>.</p><p>Check out the code on <a href= \"https://github.com/fcongson/frankcongson.com \" target= \"_blank \" rel= \"noopener \">GitHub</a>.</p><p>Want to work together? Let's connect on <a href= \"https://www.linkedin.com/in/fcongson/ \" target= \"_blank \" rel= \"noopener \">LinkedIn</a>.</p>"
-    },
-    {
-      "__typename": "text",
-      "text": "<h2>If you'd like to send me a personal message, you can find me on <a href= \"https://www.instagram.com/fcongson \" target= \"_blank \" rel= \"noopener \">Instagram</a> and <a href= \"https://twitter.com/fcongson \" target= \"_blank \" rel= \"noopener \">Twitter</a>.</h2>"
-    }
-  ],
   "sections": [
     {
       "template": "text",
