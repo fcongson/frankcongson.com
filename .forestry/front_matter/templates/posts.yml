@@ -1,0 +1,22 @@
+---
+label: posts
+hide_body: false
+fields:
+- type: text
+  name: title
+  label: title
+- type: text
+  name: description
+  label: description
+- type: datetime
+  name: date
+  label: date
+- type: text
+  name: slug
+  label: slug
+- type: text
+  name: featuredImage
+  label: featuredImage
+- type: list
+  name: keywords
+  label: keywords
