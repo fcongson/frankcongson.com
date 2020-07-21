@@ -8,7 +8,7 @@ fields:
   template: hero
   label: Hero Image
 - type: text
-  name: pageHeader
+  name: page_header
   label: Page Header
 - name: sections
   type: blocks
