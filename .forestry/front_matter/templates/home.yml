@@ -48,3 +48,5 @@ fields:
   config:
     min: 
     max: 
+pages:
+- content/data/home.json
