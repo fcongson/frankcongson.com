@@ -1,4 +1,25 @@
 ---
 label: pages
 hide_body: true
-fields: []
+fields:
+- name: hero_image
+  type: include
+  config: {}
+  template: hero
+  label: Hero Image
+- name: page_header
+  type: text
+  config:
+    required: false
+  label: Page Header
+- name: sections
+  type: blocks
+  label: Sections
+  template_types:
+  - text
+  - quote
+  - image-caption
+  - featured-section
+  config:
+    min: 
+    max: 
