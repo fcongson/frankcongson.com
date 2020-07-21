@@ -8,9 +8,9 @@ fields:
   fields:
   - type: file
     name: file
-    label: file
+    label: File
   - type: text
     name: altText
-    label: altText
+    label: Alt Text
 pages:
 - content/data/images.json
