@@ -37,5 +37,10 @@
       "template": "text",
       "text": "<h2>If you'd like to send me a personal message, you can find me on <a href=\"https://www.instagram.com/fcongson\">Instagram</a> and <a href=\"https://twitter.com/fcongson\">Twitter</a>.</h2>"
     }
-  ]
+  ],
+  "hero_image": {
+    "image": "/content/images/frank-huacachina-peru.jpeg",
+    "alt_text": "Frank in Huacachina, Peru"
+  },
+  "page_header": "About."
 }
