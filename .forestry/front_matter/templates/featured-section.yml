@@ -30,12 +30,17 @@ fields:
     required: false
   label: Text
 - name: call_to_action
-  type: text
-  config:
-    required: false
+  type: field_group
+  config: {}
+  fields:
+  - name: url
+    type: text
+    config:
+      required: false
+    label: URL
+  - name: text
+    type: text
+    config:
+      required: false
+    label: Text
   label: Call To Action
-- name: call_to_action_text
-  type: text
-  config:
-    required: false
-  label: Call To Action Text
