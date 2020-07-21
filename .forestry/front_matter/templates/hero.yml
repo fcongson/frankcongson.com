@@ -1,7 +1,7 @@
 ---
-label: Hero
+label: Hero Image
 hide_body: true
-display_field: page_header
+display_field: alt_text
 fields:
 - name: image
   type: file
@@ -13,8 +13,3 @@ fields:
   config:
     required: false
   label: Alt Text
-- name: page_header
-  type: text
-  config:
-    required: false
-  label: Page Header
