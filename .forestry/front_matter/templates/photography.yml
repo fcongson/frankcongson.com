@@ -15,29 +15,14 @@ fields:
 - type: text
   name: pageHeader
   label: pageHeader
-- type: field_group_list
-  name: sections
+- name: sections
+  type: blocks
   label: sections
-  fields:
-  - type: text
-    name: __typename
-    label: __typename
-  - type: boolean
-    name: emphasized
-    label: emphasized
-  - type: boolean
-    name: fullwidth
-    label: fullwidth
-  - type: field_group
-    name: image
-    label: image
-    fields:
-    - type: text
-      name: file
-      label: file
-    - type: text
-      name: altText
-      label: altText
-  - type: text
-    name: caption
-    label: caption
+  template_types:
+  - text
+  - quote
+  - image-caption
+  - featured-section
+  config:
+    min: 
+    max: 
