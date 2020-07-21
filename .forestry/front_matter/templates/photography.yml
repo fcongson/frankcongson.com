@@ -26,3 +26,5 @@ fields:
   config:
     min: 
     max: 
+pages:
+- content/data/photography.json
