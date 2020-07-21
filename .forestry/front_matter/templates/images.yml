@@ -7,8 +7,8 @@ fields:
   label: Images
   fields:
   - type: file
-    name: file
-    label: File
+    name: image
+    label: Image
   - type: text
     name: alt_text
     label: Alt Text
