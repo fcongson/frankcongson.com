@@ -12,3 +12,5 @@ fields:
   config:
     required: false
   label: Page Header
+pages:
+- content/data/blog.json
