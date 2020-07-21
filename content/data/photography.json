@@ -76,6 +76,78 @@
       "caption": "",
       "emphasized": false,
       "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/norway-flam.jpg",
+      "alt_text": "Jami standing on a dock at Flåm, a village in southwestern Norway",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/norway-bergen.jpg",
+      "alt_text": "Jami walking through Bergen, a city on Norway’s southwestern coast",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/sydney-opera-house-1.jpg",
+      "alt_text": "The Sydney Opera House in New South Wales, Australia",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/sydney-opera-house-2.jpg",
+      "alt_text": "The Sydney Opera House in New South Wales, Australia",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/jami-sydney-australia.jpg",
+      "alt_text": "Jami on a rocky beach in Sydney, Australia",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/sydney-australia.jpg",
+      "alt_text": "Overlooking blue water in Sydney, Australia",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/whitsundays-queensland-australia-1.jpg",
+      "alt_text": "Hill Inlet Lookout in Whitsunday Islands National Park in Queensland, Australia",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/whitsundays-queensland-australia-2.jpg",
+      "alt_text": "Jami walking on a beach towards our boat in Whitsunday Islands National Park in Queensland, Australia",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/jami-san-francisco-kirby-cove.jpg",
+      "alt_text": "A portrait of Jami at Kirby Cove in San Francisco, California",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
     }
   ]
 }
