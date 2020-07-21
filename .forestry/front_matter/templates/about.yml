@@ -4,20 +4,20 @@ hide_body: true
 fields:
 - type: field_group
   name: heroImage
-  label: heroImage
+  label: Hero Image
   fields:
   - type: file
     name: file
-    label: file
+    label: File
   - type: text
     name: altText
-    label: altText
+    label: Alt Text
 - type: text
   name: pageHeader
-  label: pageHeader
+  label: Page Header
 - name: sections
   type: blocks
-  label: sections
+  label: Sections
   template_types:
   - text
   - quote
