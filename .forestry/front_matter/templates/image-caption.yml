@@ -7,20 +7,20 @@ fields:
   type: file
   config:
     maxSize: 64
-  label: image
-- name: alt_text
+  label: Image
+- name: altText
   type: text
   config:
     required: false
-  label: altText
+  label: Alt Text
 - name: caption
   type: text
   config:
     required: false
-  label: caption
+  label: Caption
 - name: emphasized
   type: boolean
-  label: emphasized
+  label: Emphasized
 - name: fullwidth
   type: boolean
-  label: fullwidth
+  label: Fullwidth
