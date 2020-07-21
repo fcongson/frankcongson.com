@@ -1,44 +1,38 @@
 {
-  "heroImage": {
-    "file": "iceland-village.jpg",
+  "hero_image": {
+    "image": "/content/images/iceland-village.jpg",
     "altText": "A village in the Snæfellsnes peninsula of western Iceland"
   },
-  "mainContent": {
+  "main_content": {
     "header": "Hello.",
     "text": "<p>I’m Frank Congson. Welcome to my digital home. Join me as I share my photography, travels, and other stories along the way.</p>",
-    "image": {
-      "file": "frank-huacachina-peru.jpeg",
-      "altText": "Frank in Huacachina, Peru"
-    }
+    "image": "frank-huacachina-peru.jpeg",
+    "alt_text": "Frank in Huacachina, Peru"
   },
   "sections": [
     {
-      "__typename": "featuredSection",
+      "template": "featured-section",
+      "background_color": "",
+      "image": "/content/images/banff-gondola-1.jpg",
+      "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada",
       "header": "Photography.",
       "text": "Photography is one of my passions in life. I love incorporating it into other aspects of my life and capturing the world around me.",
-      "callToAction": {
+      "call_to_action": {
         "url": "/photography",
         "text": "See my photography"
-      },
-      "image": {
-        "file": "banff-gondola-1.jpg",
-        "altText": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
-      },
-      "color": ""
+      }
     },
     {
-      "__typename": "featuredSection",
+      "template": "featured-section",
+      "background_color": "",
+      "image": "",
+      "alt_text": "",
       "header": "Me.",
       "text": "I’m a dad, husband, traveler, minimalist, full stack developer, and rock climber.",
-      "callToAction": {
+      "call_to_action": {
         "url": "/about",
         "text": "Learn about me"
-      },
-      "image": {
-        "file": "",
-        "altText": ""
-      },
-      "color": ""
+      }
     }
   ]
 }
