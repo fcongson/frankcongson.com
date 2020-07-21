@@ -12,6 +12,70 @@
       "caption": "",
       "emphasized": false,
       "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/banff-gondola-1.jpg",
+      "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/banff-gondola-2.jpg",
+      "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/indonesia-borobudur-1.jpg",
+      "alt_text": "Jami at Borobudur Buddhist temple in Central Java, Indonesia",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/indonesia-borobudur-2.jpg",
+      "alt_text": "Jami at Borobudur Buddhist temple in Central Java, Indonesia",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/iceland-church-1.jpg",
+      "alt_text": "An Icelandic Church in the Snæfellsnes peninsula of western Iceland",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/iceland-church-2.jpg",
+      "alt_text": "An Icelandic Church in the Snæfellsnes peninsula of western Iceland",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/iceland-village.jpg",
+      "alt_text": "A village in the Snæfellsnes peninsula of western Iceland",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
+    },
+    {
+      "template": "image-caption",
+      "image": "/content/images/iceland-west-coast.jpg",
+      "alt_text": "A close up of a field in the Snæfellsnes peninsula of western Iceland",
+      "caption": "",
+      "emphasized": false,
+      "fullwidth": false
     }
   ]
 }
