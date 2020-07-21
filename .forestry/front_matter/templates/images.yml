@@ -10,7 +10,7 @@ fields:
     name: file
     label: File
   - type: text
-    name: altText
+    name: alt_text
     label: Alt Text
 pages:
 - content/data/images.json
