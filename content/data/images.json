@@ -1,98 +1,98 @@
 [
   {
-    "file": "frank-huacachina-peru.jpeg",
-    "altText": "Frank in Huacachina, Peru"
+    "image": "/content/images/frank-huacachina-peru.jpeg",
+    "alt_text": "Frank in Huacachina, Peru"
   },
   {
-    "file": "desk-setup.jpg",
-    "altText": "Frank's desk setup and essential items"
+    "image": "/content/images/desk-setup.jpg",
+    "alt_text": "Frank's desk setup and essential items"
   },
   {
-    "file": "banff-gondola-1.jpg",
-    "altText": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
+    "image": "/content/images/banff-gondola-1.jpg",
+    "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
   },
   {
-    "file": "banff-gondola-2.jpg",
-    "altText": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
+    "image": "/content/images/banff-gondola-2.jpg",
+    "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
   },
   {
-    "file": "banff-vermillion-lakes.jpg",
-    "altText": "Jami sitting at the end of a dock at Vermillion Lakes located within Banff National Park in Alberta, Canada"
+    "image": "/content/images/banff-vermillion-lakes.jpg",
+    "alt_text": "Jami sitting at the end of a dock at Vermillion Lakes located within Banff National Park in Alberta, Canada"
   },
   {
-    "file": "iceland-church-1.jpg",
-    "altText": "An Icelandic Church in the Snæfellsnes peninsula of western Iceland"
+    "image": "/content/images/iceland-church-1.jpg",
+    "alt_text": "An Icelandic Church in the Snæfellsnes peninsula of western Iceland"
   },
   {
-    "file": "iceland-church-2.jpg",
-    "altText": "An Icelandic Church in the Snæfellsnes peninsula of western Iceland"
+    "image": "/content/images/iceland-church-2.jpg",
+    "alt_text": "An Icelandic Church in the Snæfellsnes peninsula of western Iceland"
   },
   {
-    "file": "iceland-village.jpg",
-    "altText": "A village in the Snæfellsnes peninsula of western Iceland"
+    "image": "/content/images/iceland-village.jpg",
+    "alt_text": "A village in the Snæfellsnes peninsula of western Iceland"
   },
   {
-    "file": "iceland-west-coast.jpg",
-    "altText": "A close up of a field in the Snæfellsnes peninsula of western Iceland"
+    "image": "/content/images/iceland-west-coast.jpg",
+    "alt_text": "A close up of a field in the Snæfellsnes peninsula of western Iceland"
   },
   {
-    "file": "indonesia-borobudur-1.jpg",
-    "altText": "Jami at Borobudur Buddhist temple in Central Java, Indonesia"
+    "image": "/content/images/indonesia-borobudur-1.jpg",
+    "alt_text": "Jami at Borobudur Buddhist temple in Central Java, Indonesia"
   },
   {
-    "file": "indonesia-borobudur-2.jpg",
-    "altText": "Jami at Borobudur Buddhist temple in Central Java, Indonesia"
+    "image": "/content/images/indonesia-borobudur-2.jpg",
+    "alt_text": "Jami at Borobudur Buddhist temple in Central Java, Indonesia"
   },
   {
-    "file": "jami-san-francisco-kirby-cove.jpg",
-    "altText": "A portrait of Jami at Kirby Cove in San Francisco, California"
+    "image": "/content/images/jami-san-francisco-kirby-cove.jpg",
+    "alt_text": "A portrait of Jami at Kirby Cove in San Francisco, California"
   },
   {
-    "file": "jami-sydney-australia.jpg",
-    "altText": "Jami on a rocky beach in Sydney, Australia"
+    "image": "/content/images/jami-sydney-australia.jpg",
+    "alt_text": "Jami on a rocky beach in Sydney, Australia"
   },
   {
-    "file": "norway-bergen.jpg",
-    "altText": "Jami walking through Bergen, a city on Norway’s southwestern coast"
+    "image": "/content/images/norway-bergen.jpg",
+    "alt_text": "Jami walking through Bergen, a city on Norway’s southwestern coast"
   },
   {
-    "file": "norway-flam.jpg",
-    "altText": "Jami standing on a dock at Flåm, a village in southwestern Norway"
+    "image": "/content/images/norway-flam.jpg",
+    "alt_text": "Jami standing on a dock at Flåm, a village in southwestern Norway"
   },
   {
-    "file": "sydney-australia.jpg",
-    "altText": "Overlooking blue water in Sydney, Australia"
+    "image": "/content/images/sydney-australia.jpg",
+    "alt_text": "Overlooking blue water in Sydney, Australia"
   },
   {
-    "file": "sydney-opera-house-1.jpg",
-    "altText": "The Sydney Opera House in New South Wales, Australia"
+    "image": "/content/images/sydney-opera-house-1.jpg",
+    "alt_text": "The Sydney Opera House in New South Wales, Australia"
   },
   {
-    "file": "sydney-opera-house-2.jpg",
-    "altText": "The Sydney Opera House in New South Wales, Australia"
+    "image": "/content/images/sydney-opera-house-2.jpg",
+    "alt_text": "The Sydney Opera House in New South Wales, Australia"
   },
   {
-    "file": "whitsundays-queensland-australia-1.jpg",
-    "altText": "Hill Inlet Lookout in Whitsunday Islands National Park in Queensland, Australia"
+    "image": "/content/images/whitsundays-queensland-australia-1.jpg",
+    "alt_text": "Hill Inlet Lookout in Whitsunday Islands National Park in Queensland, Australia"
   },
   {
-    "file": "whitsundays-queensland-australia-2.jpg",
-    "altText": "Jami walking on a beach towards our boat in Whitsunday Islands National Park in Queensland, Australia"
+    "image": "/content/images/whitsundays-queensland-australia-2.jpg",
+    "alt_text": "Jami walking on a beach towards our boat in Whitsunday Islands National Park in Queensland, Australia"
   },
   {
-    "file": "new-website-screenshot-fullscreen.jpg",
-    "altText": "Redesigned FrankCongson.com in a browser window"
+    "image": "/content/images/new-website-screenshot-fullscreen.jpg",
+    "alt_text": "Redesigned FrankCongson.com in a browser window"
   },
   {
-    "file": "new-website-screenshot-fullscreen.png",
-    "altText": "Redesigned FrankCongson.com in a browser window"
+    "image": "/content/images/new-website-screenshot-fullscreen.png",
+    "alt_text": "Redesigned FrankCongson.com in a browser window"
   },
   {
-    "file": "new-website-screenshot.jpg",
-    "altText": "Redesigned FrankCongson.com in a browser window"
+    "image": "/content/images/new-website-screenshot.jpg",
+    "alt_text": "Redesigned FrankCongson.com in a browser window"
   },
   {
-    "file": "new-website-screenshot.png",
-    "altText": "Redesigned FrankCongson.com in a browser window"
+    "image": "/content/images/new-website-screenshot.png",
+    "alt_text": "Redesigned FrankCongson.com in a browser window"
   }
 ]
