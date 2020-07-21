@@ -1,7 +1,6 @@
 ---
 label: about
 hide_body: true
-display_field: pageHeader
 fields:
 - type: field_group
   name: heroImage
