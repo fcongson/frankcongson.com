@@ -27,12 +27,16 @@ sections:
   create: all
   match: "**/*"
   new_doc_ext: json
+  templates:
+  - pages
 - type: directory
   path: content/posts
   label: Posts
   create: all
   match: "**/*"
   new_doc_ext: mdx
+  templates:
+  - posts
 - type: heading
   label: Config
 - type: document
