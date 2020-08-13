@@ -1,6 +1,7 @@
 import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
+import { useImageSharp } from '../utils/useImageSharp'
 import { Container, LinkButton, Section } from './styles'
 
 const FeaturedSectionContainer = styled.div`
@@ -150,9 +151,11 @@ const ColorBackground = ({ backgroundColor, imageAlt, imageSharp, header, text, 
   )
 }
 
-const FeaturedSection = (props) => {
-  if (props.imageAsBackground) return <ImageBackground {...props} />
-  return <ColorBackground {...props} />
+const FeaturedSection = ({ imageAsBackground, image, ...restProps }) => {
+  const imageSharp = useImageSharp()(image)
+
+  if (imageAsBackground) return <ImageBackground {...restProps} imageSharp={imageSharp} />
+  return <ColorBackground {...restProps} imageSharp={imageSharp} />
 }
 
 export default FeaturedSection

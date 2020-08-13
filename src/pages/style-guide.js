@@ -18,6 +18,27 @@ export const query = graphql`
         }
       }
     }
+    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 3, skip: 0) {
+      edges {
+        node {
+          id
+          excerpt
+          frontmatter {
+            title
+            date(formatString: "MMM DD, YYYY")
+            slug
+            tags
+            featured_image {
+              childImageSharp {
+                fluid(maxWidth: 1120, quality: 100) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `
 
@@ -31,8 +52,9 @@ const StyleGuideContainer = styled(Container)`
 
 export default ({ data }) => {
   const imageSharp = data.file
-  const image = { alt: 'Sample image' }
-  console.log(data)
+  const image = '/content/images/sample-image.jpg'
+  const altText = 'Sample image'
+
   return (
     <Layout>
       <Section>
@@ -226,14 +248,9 @@ export default ({ data }) => {
           </p>
         </Container>
       </Section>
-      <ImageCaption
-        imageSharp={imageSharp}
-        image={image}
-        caption='Default. Lorem ipsum dolor sit amet'
-        id='image-caption'
-      />
-      <ImageCaption imageSharp={imageSharp} image={image} caption='Emphasized. Lorem ipsum dolor sit amet' emphasized />
-      <ImageCaption imageSharp={imageSharp} image={image} caption='Fullwidth. Lorem ipsum dolor sit amet' fullwidth />
+      <ImageCaption image={image} altText={altText} caption='Default. Lorem ipsum dolor sit amet' id='image-caption' />
+      <ImageCaption image={image} altText={altText} caption='Emphasized. Lorem ipsum dolor sit amet' emphasized />
+      <ImageCaption image={image} altText={altText} caption='Fullwidth. Lorem ipsum dolor sit amet' fullwidth />
 
       {/* Featured Section */}
 
@@ -266,8 +283,8 @@ export default ({ data }) => {
         text='Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         callToAction='style-guide/#featured-section'
         callToActionText='Lorem ipsum dolor sit amet'
-        imageAlt={image.alt}
-        imageSharp={imageSharp}
+        imageAlt={altText}
+        image={image}
         imageAsBackground
       />
       <FeaturedSection
@@ -281,8 +298,8 @@ export default ({ data }) => {
         text='Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
         callToAction='style-guide/#featured-section'
         callToActionText='Lorem ipsum dolor sit amet'
-        imageAlt={image.alt}
-        imageSharp={imageSharp}
+        imageAlt={altText}
+        image={image}
         backgroundColor={theme.colors.oliveLight40}
       />
 
@@ -335,7 +352,7 @@ export default ({ data }) => {
       </Section>
       <Section>
         <Container id='blog-posts'>
-          <BlogPosts />
+          <BlogPosts posts={data.allMdx.edges} />
         </Container>
       </Section>
 

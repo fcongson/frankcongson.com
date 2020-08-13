@@ -1,6 +1,7 @@
 import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
+import { useImageSharp } from '../utils/useImageSharp'
 import { Container, Section } from './styles'
 
 const Image = styled.div`
@@ -33,17 +34,13 @@ const Image = styled.div`
   }
 `
 
-const DefaultImage = ({ image, imageSharp, caption }) => {
+const DefaultImage = ({ imageSharp, altText, caption }) => {
   return (
     <Image>
       <Section>
         <Container>
           <figcaption className='block-img'>
-            {imageSharp ? (
-              <Img fluid={imageSharp.childImageSharp.fluid} alt={image.alt} />
-            ) : (
-              <img src={image.url} alt={image.alt} />
-            )}
+            <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
             {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
           </figcaption>
         </Container>
@@ -52,17 +49,13 @@ const DefaultImage = ({ image, imageSharp, caption }) => {
   )
 }
 
-const EmphasizedImage = ({ image, imageSharp, caption }) => {
+const EmphasizedImage = ({ imageSharp, altText, caption }) => {
   return (
     <Image>
       <Section>
         <Container>
           <figcaption className='block-img emphasized'>
-            {imageSharp ? (
-              <Img fluid={imageSharp.childImageSharp.fluid} alt={image.alt} />
-            ) : (
-              <img src={image.url} alt={image.alt} />
-            )}
+            <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
             {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
           </figcaption>
         </Container>
@@ -71,31 +64,28 @@ const EmphasizedImage = ({ image, imageSharp, caption }) => {
   )
 }
 
-const FullWidthImage = ({ image, imageSharp, caption }) => {
+const FullWidthImage = ({ imageSharp, altText, caption }) => {
   return (
     <Image>
       <figcaption className='block-img full-width'>
-        {imageSharp ? (
-          <Img
-            fluid={imageSharp.childImageSharp.fluid}
-            alt={image.alt}
-            style={{ maxHeight: '100vh' }}
-            imgStyle={{ objectPosition: 'center center' }}
-          />
-        ) : (
-          <img src={image.url} alt={image.alt} />
-        )}
+        <Img
+          fluid={imageSharp.childImageSharp.fluid}
+          alt={altText}
+          style={{ maxHeight: '100vh' }}
+          imgStyle={{ objectPosition: 'center center' }}
+        />
         {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
       </figcaption>
     </Image>
   )
 }
 
-const ImageCaption = (props) => {
-  const { emphasized, fullwidth } = props
-  if (emphasized) return <EmphasizedImage {...props} />
-  if (fullwidth) return <FullWidthImage {...props} />
-  return <DefaultImage {...props} />
+const ImageCaption = ({ emphasized, fullwidth, image, ...restProps }) => {
+  const imageSharp = useImageSharp()(image)
+
+  if (emphasized) return <EmphasizedImage {...restProps} imageSharp={imageSharp} />
+  if (fullwidth) return <FullWidthImage {...restProps} imageSharp={imageSharp} />
+  return <DefaultImage {...restProps} imageSharp={imageSharp} />
 }
 
 export default ImageCaption

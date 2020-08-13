@@ -1,54 +1,12 @@
-import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import { RichText } from 'prismic-reactjs'
 import React, { useReducer } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import styled from 'styled-components'
+import photography from '../../content/data/photography.json'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
-import SEO from '../components/SEO'
 import { Container, PageHeader, Section } from '../components/styles'
-
-export const query = graphql`
-  {
-    prismic {
-      allPhotographys(uid: "photography") {
-        edges {
-          node {
-            _meta {
-              id
-              uid
-              type
-            }
-            hero_image
-            hero_imageSharp {
-              childImageSharp {
-                fluid(maxWidth: 1120, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            page_header
-            seo_title
-            seo_description
-            seo_keywords
-            seo_image
-            images {
-              image
-              imageSharp {
-                childImageSharp {
-                  fluid(maxWidth: 1120, quality: 100) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+import { useImageSharp } from '../utils/useImageSharp'
 
 const PhotographyImage = styled.div`
   height: 100vh;
@@ -117,77 +75,66 @@ const PhotographyImage = styled.div`
 
 const limit = 5
 
-const Photography = ({ photography }) => {
+const Photography = () => {
+  const getImageSharp = useImageSharp()
+  const image = getImageSharp(photography.hero_image.image)
+  const totalImages = photography.sections.length
+
   const [{ images }, dispatch] = useReducer(
     (state, action) => {
       switch (action.type) {
         case 'next':
-          return { images: photography.images.slice(0, state.images.length + limit) }
+          return { images: photography.sections.slice(0, state.images.length + limit) }
         default:
           return
       }
     },
-    { images: photography.images.slice(0, limit) }
+    { images: photography.sections.slice(0, limit) }
   )
 
   return (
-    <>
+    <Layout overlayHeader>
+      {/* <SEO title={seo_title} desc={seo_description} keywords={seo_keywords} image={seo_image} pathname='/photography' /> */}
       <Hero
         image={
           <Img
-            fluid={photography.hero_imageSharp.childImageSharp.fluid}
-            alt={photography.hero_image.alt}
+            fluid={image.childImageSharp.fluid}
+            alt={photography.hero_image.alt_text}
             style={{ height: '100%' }}
             imgStyle={{ opacity: 0.5 }}
           />
         }
-        content={<PageHeader>{RichText.asText(photography.page_header)}</PageHeader>}
+        content={<PageHeader>{photography.page_header}</PageHeader>}
       />
       <InfiniteScroll
         dataLength={images.length}
         next={() => dispatch({ type: 'next' })}
-        hasMore={images.length < photography.images.length}>
-        {images.map(({ image, imageSharp }, index) => (
-          <PhotographyImage key={image.url}>
-            <Section>
-              <Container>
-                <div className='description'>
-                  {index + 1} / {photography.images.length}
-                </div>
-                <div className='image'>
-                  <Img
-                    fluid={imageSharp.childImageSharp.fluid}
-                    alt={image.alt}
-                    style={{ maxHeight: 'inherit' }}
-                    imgStyle={{ objectFit: 'contain', objectPosition: 'inherit' }}
-                  />
-                </div>
-              </Container>
-            </Section>
-          </PhotographyImage>
-        ))}
+        hasMore={images.length < totalImages}>
+        {images.map(({ image, alt_text, caption }, index) => {
+          const imageSharp = getImageSharp(image)
+          return (
+            <PhotographyImage key={image}>
+              <Section>
+                <Container>
+                  <div className='description'>
+                    {index + 1} / {totalImages}
+                  </div>
+                  <div className='image'>
+                    <Img
+                      fluid={imageSharp.childImageSharp.fluid}
+                      alt={alt_text}
+                      style={{ maxHeight: 'inherit' }}
+                      imgStyle={{ objectFit: 'contain', objectPosition: 'inherit' }}
+                    />
+                  </div>
+                </Container>
+              </Section>
+            </PhotographyImage>
+          )
+        })}
       </InfiniteScroll>
-    </>
-  )
-}
-
-export default ({ data }) => {
-  const doc = data.prismic.allPhotographys.edges.slice(0, 1).pop()
-
-  if (!doc) return null
-
-  const { seo_title, seo_description, seo_keywords, seo_image, _meta } = doc.node
-
-  return (
-    <Layout overlayHeader>
-      <SEO
-        title={seo_title}
-        desc={seo_description}
-        keywords={seo_keywords}
-        image={seo_image}
-        pathname={`/${_meta.uid}`}
-      />
-      <Photography photography={doc.node} />
     </Layout>
   )
 }
+
+export default Photography

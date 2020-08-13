@@ -1,6 +1,4 @@
 const siteMetadata = require('./content/data/siteMetadata.json')
-const { apiEndpoint } = require('./prismic-config')
-var repo = /([^\/]+)\.prismic\.io\/graphql/.exec(apiEndpoint)
 
 require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
@@ -10,30 +8,6 @@ module.exports = {
   siteMetadata,
   plugins: [
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-source-prismic-graphql`,
-      options: {
-        repositoryName: repo[1], // Loads the repo name from prismic configuration
-        accessToken: `${process.env.API_KEY}`,
-        path: '/preview',
-        previews: true,
-        pages: [
-          {
-            type: 'Post',
-            match: '/blog/:uid',
-            path: '/blog-preview',
-            component: require.resolve('./src/templates/post.js'),
-          },
-          {
-            type: 'Page',
-            match: '/:uid',
-            path: '/page-preview',
-            component: require.resolve('./src/templates/page.js'),
-          },
-        ],
-        omitPrismicScript: true,
-      },
-    },
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-plugin-manifest`,
@@ -54,6 +28,37 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/content/images`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/content/posts`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/content/pages`,
+      },
+    },
+    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: `gatsby-remark-relative-images`,
+          },
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 1200,
+            },
+          },
+        ],
       },
     },
     {

@@ -1,60 +1,28 @@
+import { MDXProvider } from '@mdx-js/react'
 import { graphql, Link } from 'gatsby'
-import { RichText } from 'prismic-reactjs'
+import Img from 'gatsby-image'
+import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layouts'
-import SEO from '../components/SEO'
-import { Slices } from '../components/slices'
 import { Container, Section } from '../components/styles'
 
-export const query = graphql`
-  query BlogPostQuery($uid: String) {
-    prismic {
-      allPosts(uid: $uid) {
-        edges {
-          node {
-            _meta {
-              id
-              uid
-              type
-            }
-            title
-            date
-            seo_title
-            seo_description
-            seo_keywords
-            seo_image
-            body {
-              __typename
-              ... on PRISMIC_PostBodyText {
-                type
-                label
-                primary {
-                  text
-                }
-              }
-              ... on PRISMIC_PostBodyQuote {
-                type
-                label
-                primary {
-                  quote
-                }
-              }
-              ... on PRISMIC_PostBodyImage_with_caption {
-                type
-                label
-                primary {
-                  image
-                  imageSharp {
-                    childImageSharp {
-                      fluid(maxWidth: 1120, quality: 100) {
-                        ...GatsbyImageSharpFluid
-                      }
-                    }
-                  }
-                  caption
-                }
-              }
+const shortcodes = { Link } // Provide common components here
+
+export const pageQuery = graphql`
+  query BlogPostQuery($id: String) {
+    mdx(id: { eq: $id }) {
+      id
+      body
+      frontmatter {
+        title
+        date(formatString: "MMM DD, YYYY")
+        tags
+        slug
+        featured_image {
+          childImageSharp {
+            fluid(maxWidth: 1120, quality: 100) {
+              ...GatsbyImageSharpFluid
             }
           }
         }
@@ -72,7 +40,7 @@ const Post = styled.div`
 
   ${Container} {
     max-width: ${(props) => props.theme.layout.maxWidthPage};
-    margin-bottom: 0;
+    /* margin-bottom: 0; */
   }
 `
 
@@ -131,24 +99,22 @@ const PostFooter = styled.div`
   }
 `
 
-export default (props) => {
-  const doc = props.data.prismic.allPosts.edges.slice(0, 1).pop()
-
-  if (!doc) return null
-
-  const { title, body, seo_title, seo_description, seo_keywords, seo_image, _meta } = doc.node
-  const titled = title.length !== 0
+export default function PageTemplate({ data }) {
+  const {
+    frontmatter: { title, slug, featured_image },
+    body,
+  } = data.mdx
 
   return (
     <Layout>
-      <SEO
+      {/* <SEO
         title={seo_title}
         desc={seo_description}
         keywords={seo_keywords}
         image={seo_image}
-        pathname={`/${_meta.uid}`}
+        pathname={`/${slug}`}
         article
-      />
+      /> */}
       <Post>
         <Section>
           <Container>
@@ -156,11 +122,20 @@ export default (props) => {
               <div className='back'>
                 <Link to='/blog'>back to list</Link>
               </div>
-              <h1>{titled ? RichText.asText(title) : 'Untitled'}</h1>
+              <h1>{title ? title : 'Untitled'}</h1>
             </PostHeader>
           </Container>
         </Section>
-        <Slices slices={body} />
+        <Section>
+          <Container>{!!featured_image && <Img fluid={featured_image.childImageSharp.fluid} alt={title} />}</Container>
+        </Section>
+        <Section>
+          <Container>
+            <MDXProvider components={shortcodes}>
+              <MDXRenderer>{body}</MDXRenderer>
+            </MDXProvider>
+          </Container>
+        </Section>
       </Post>
       <PostFooter>
         <Section>
