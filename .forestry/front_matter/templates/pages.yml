@@ -2,6 +2,11 @@
 label: pages
 hide_body: true
 fields:
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
 - name: hero_image
   type: include
   config: {}
