@@ -37,5 +37,14 @@
       "template": "text",
       "text": "<h2>If you'd like to send me a personal message, you can find me on <a href=\"https://www.instagram.com/fcongson\">Instagram</a> and <a href=\"https://twitter.com/fcongson\">Twitter</a>.</h2>"
     }
-  ]
+  ],
+  "seo": {
+    "title": "About",
+    "description": "I’m a dad, husband, traveler, minimalist, full-stack developer, and aspiring designer.",
+    "keywords": [
+
+    ],
+    "image": "",
+    "alt_text": ""
+  }
 }
