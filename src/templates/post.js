@@ -121,7 +121,7 @@ export default function PageTemplate({ data }) {
         title={seo?.title}
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}
-        image={seo?.image.publicURL}
+        image={seo?.image?.publicURL}
         pathname={`/${slug}`}
         article
       />
