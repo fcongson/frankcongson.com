@@ -33,12 +33,4 @@ fields:
     config:
       required: false
     label: Alt Text
-  - name: pathname
-    type: text
-    config:
-      required: false
-    label: Pathname
-  - name: article
-    type: boolean
-    label: Article
   label: SEO
