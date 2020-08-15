@@ -21,7 +21,8 @@
       "call_to_action": {
         "url": "/photography",
         "text": "See my photography"
-      }
+      },
+      "image_as_background": true
     },
     {
       "template": "featured-section",
@@ -33,7 +34,8 @@
       "call_to_action": {
         "url": "/about",
         "text": "Learn about me"
-      }
+      },
+      "image_as_background": false
     }
   ],
   "page_header": ""
