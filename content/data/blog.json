@@ -3,5 +3,14 @@
     "image": "/content/images/banff-gondola-2.jpg",
     "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
   },
-  "page_header": "Blog."
+  "page_header": "Blog.",
+  "seo": {
+    "title": "Blog",
+    "description": "",
+    "keywords": [
+
+    ],
+    "image": "",
+    "alt_text": ""
+  }
 }
