@@ -2,6 +2,11 @@
 label: pages
 hide_body: true
 fields:
+- name: slug
+  type: text
+  config:
+    required: false
+  label: Slug
 - name: seo
   type: include
   config: {}
