@@ -10,7 +10,7 @@ const getSection = (section, index) => {
       return (
         <FeaturedSection
           key={key}
-          imageAsBackground={!!section.image} // todo: add boolean to forestry template
+          imageAsBackground={section.image_as_background}
           backgroundColor={section.background_color}
           imageAlt={section.alt_text}
           image={section.image}

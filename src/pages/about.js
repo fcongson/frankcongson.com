@@ -5,8 +5,9 @@ import about from '../../content/data/about.json'
 import ForestrySections from '../components/forestry'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
+import SEO from '../components/SEO'
 import { PageHeader } from '../components/styles'
-import { useImageSharp } from '../utils/useImageSharp'
+import { useImage } from '../utils/useImage'
 
 const AboutContainer = styled.div`
   max-width: ${(props) => props.theme.layout.maxWidthPage};
@@ -14,15 +15,24 @@ const AboutContainer = styled.div`
 `
 
 const About = () => {
-  const image = useImageSharp()(about.hero_image.image)
+  const getImage = useImage()
+  const heroImage = getImage(about.hero_image.image)
+  const seoImage = getImage(about.seo.image)
+  const { seo } = about
 
   return (
     <Layout overlayHeader>
-      {/* <SEO title={seo_title} desc={seo_description} keywords={seo_keywords} image={seo_image} pathname='/about' /> */}
+      <SEO
+        title={seo.title}
+        desc={seo.description}
+        keywords={seo.keywords.join(', ')}
+        image={seoImage?.publicURL}
+        pathname='/about'
+      />
       <Hero
         image={
           <Img
-            fluid={image.childImageSharp.fluid}
+            fluid={heroImage.childImageSharp.fluid}
             alt={about.hero_image.alt_text}
             style={{ height: '100%' }}
             imgStyle={{ opacity: 0.25 }}

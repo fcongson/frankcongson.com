@@ -27,7 +27,7 @@ export const query = graphql`
             title
             date(formatString: "MMM DD, YYYY")
             slug
-            tags
+            keywords
             featured_image {
               childImageSharp {
                 fluid(maxWidth: 1120, quality: 100) {

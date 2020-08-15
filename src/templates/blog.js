@@ -6,8 +6,9 @@ import blog from '../../content/data/blog.json'
 import BlogPosts from '../components/BlogPosts'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
+import SEO from '../components/SEO'
 import { Container, PageHeader, Section } from '../components/styles'
-import { useImageSharp } from '../utils/useImageSharp'
+import { useImage } from '../utils/useImage'
 
 export const query = graphql`
   query blogListQuery($skip: Int!, $limit: Int!) {
@@ -20,7 +21,7 @@ export const query = graphql`
             title
             date(formatString: "MMM DD, YYYY")
             slug
-            tags
+            keywords
             featured_image {
               childImageSharp {
                 fluid(maxWidth: 1120, quality: 100) {
@@ -75,15 +76,24 @@ const Pagination = ({ numPages, currentPage }) => {
 }
 
 const Blog = ({ data: { allMdx }, pageContext: { numPages, currentPage } }) => {
-  const image = useImageSharp()(blog.hero_image.image)
+  const getImage = useImage()
+  const heroImage = getImage(blog.hero_image.image)
+  const seoImage = getImage(blog.seo.image)
+  const { seo } = blog
 
   return (
     <Layout overlayHeader>
-      {/* <SEO title={seo_title} desc={seo_description} keywords={seo_keywords} image={seo_image} pathname='/blog' /> */}
+      <SEO
+        title={seo.title}
+        desc={seo.description}
+        keywords={seo.keywords.join(', ')}
+        image={seoImage?.publicURL}
+        pathname='/blog'
+      />
       <Hero
         image={
           <Img
-            fluid={image.childImageSharp.fluid}
+            fluid={heroImage.childImageSharp.fluid}
             alt={blog.hero_image.alt_text}
             style={{ height: '100%' }}
             imgStyle={{ opacity: 0.5 }}

@@ -5,6 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layouts'
+import SEO from '../components/SEO'
 import { Container, Section } from '../components/styles'
 
 const shortcodes = { Link } // Provide common components here
@@ -15,9 +16,18 @@ export const pageQuery = graphql`
       id
       body
       frontmatter {
+        seo {
+          title
+          description
+          keywords
+          image {
+            publicURL
+          }
+          alt_text
+        }
         title
         date(formatString: "MMM DD, YYYY")
-        tags
+        keywords
         slug
         featured_image {
           childImageSharp {
@@ -101,20 +111,20 @@ const PostFooter = styled.div`
 
 export default function PageTemplate({ data }) {
   const {
-    frontmatter: { title, slug, featured_image },
+    frontmatter: { title, slug, featured_image, seo },
     body,
   } = data.mdx
 
   return (
     <Layout>
-      {/* <SEO
-        title={seo_title}
-        desc={seo_description}
-        keywords={seo_keywords}
-        image={seo_image}
+      <SEO
+        title={seo.title}
+        desc={seo.description}
+        keywords={seo.keywords.join(', ')}
+        image={seo.image.publicURL}
         pathname={`/${slug}`}
         article
-      /> */}
+      />
       <Post>
         <Section>
           <Container>

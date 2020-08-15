@@ -82,7 +82,7 @@ const SEO = ({ data, title, desc, keywords, image, pathname, article }) => {
         <meta name='keywords' content={seo.keywords} />
         <meta name='author' content={seo.author} />
         <meta name='image' content={seo.image} />
-        <script type='application/ld+json'>{JSON.stringify(schemaOrgWebPage)}</script>}
+        <script type='application/ld+json'>{JSON.stringify(schemaOrgWebPage)}</script>
       </Helmet>
       <Facebook
         desc={seo.description}

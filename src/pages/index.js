@@ -6,7 +6,7 @@ import ForestrySections from '../components/forestry'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
 import { Container, Section } from '../components/styles'
-import { useImageSharp } from '../utils/useImageSharp'
+import { useImage } from '../utils/useImage'
 
 const HomeContainer = styled.div`
   text-align: center;
@@ -93,9 +93,9 @@ const HomeContent = styled.div`
 `
 
 const Home = () => {
-  const getImageSharp = useImageSharp()
-  const heroImage = getImageSharp(home.hero_image.image)
-  const mainContentImage = getImageSharp(home.main_content.image)
+  const getImage = useImage()
+  const heroImage = getImage(home.hero_image.image)
+  const mainContentImage = getImage(home.main_content.image)
 
   return (
     <Layout overlayHeader>

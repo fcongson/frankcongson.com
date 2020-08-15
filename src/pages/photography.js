@@ -5,8 +5,9 @@ import styled from 'styled-components'
 import photography from '../../content/data/photography.json'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
+import SEO from '../components/SEO'
 import { Container, PageHeader, Section } from '../components/styles'
-import { useImageSharp } from '../utils/useImageSharp'
+import { useImage } from '../utils/useImage'
 
 const PhotographyImage = styled.div`
   height: 100vh;
@@ -76,9 +77,11 @@ const PhotographyImage = styled.div`
 const limit = 5
 
 const Photography = () => {
-  const getImageSharp = useImageSharp()
-  const image = getImageSharp(photography.hero_image.image)
+  const getImage = useImage()
+  const heroImage = getImage(photography.hero_image.image)
+  const seoImage = getImage(photography.seo.image)
   const totalImages = photography.sections.length
+  const { seo } = photography
 
   const [{ images }, dispatch] = useReducer(
     (state, action) => {
@@ -94,11 +97,17 @@ const Photography = () => {
 
   return (
     <Layout overlayHeader>
-      {/* <SEO title={seo_title} desc={seo_description} keywords={seo_keywords} image={seo_image} pathname='/photography' /> */}
+      <SEO
+        title={seo.title}
+        desc={seo.description}
+        keywords={seo.keywords.join(', ')}
+        image={seoImage?.publicURL}
+        pathname='/photography'
+      />
       <Hero
         image={
           <Img
-            fluid={image.childImageSharp.fluid}
+            fluid={heroImage.childImageSharp.fluid}
             alt={photography.hero_image.alt_text}
             style={{ height: '100%' }}
             imgStyle={{ opacity: 0.5 }}
@@ -111,7 +120,7 @@ const Photography = () => {
         next={() => dispatch({ type: 'next' })}
         hasMore={images.length < totalImages}>
         {images.map(({ image, alt_text, caption }, index) => {
-          const imageSharp = getImageSharp(image)
+          const imageSharp = getImage(image)
           return (
             <PhotographyImage key={image}>
               <Section>

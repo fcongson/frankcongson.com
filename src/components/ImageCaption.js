@@ -1,7 +1,7 @@
 import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
-import { useImageSharp } from '../utils/useImageSharp'
+import { useImage } from '../utils/useImage'
 import { Container, Section } from './styles'
 
 const Image = styled.div`
@@ -81,7 +81,7 @@ const FullWidthImage = ({ imageSharp, altText, caption }) => {
 }
 
 const ImageCaption = ({ emphasized, fullwidth, image, ...restProps }) => {
-  const imageSharp = useImageSharp()(image)
+  const imageSharp = useImage()(image)
 
   if (emphasized) return <EmphasizedImage {...restProps} imageSharp={imageSharp} />
   if (fullwidth) return <FullWidthImage {...restProps} imageSharp={imageSharp} />

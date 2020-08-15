@@ -11,16 +11,26 @@ exports.createSchemaCustomization = ({ actions }) => {
   const typeDefs = `
     type MdxFrontmatter implements Node {
       title: String!
+      description: String
       date: Date! @dateformat
       slug: String!
       featured_image: File @fileByRelativePath
-      tags: [String]
+      alt_text: String
+      keywords: [String]
+      seo: SEO
     }
     type Mdx implements Node {
       fields: Fields
     }
     type Fields {
       slug: String
+    }
+    type SEO {
+      title: String!
+      description: String
+      keywords: [String]
+      image: File @fileByRelativePath
+      alt_text: String
     }
   `
   createTypes(typeDefs)
