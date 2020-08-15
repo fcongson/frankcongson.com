@@ -23,9 +23,9 @@ const About = () => {
   return (
     <Layout overlayHeader>
       <SEO
-        title={seo.title}
-        desc={seo.description}
-        keywords={seo.keywords.join(', ')}
+        title={seo?.title}
+        desc={seo?.description}
+        keywords={seo?.keywords.join(', ')}
         image={seoImage?.publicURL}
         pathname='/about'
       />

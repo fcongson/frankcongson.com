@@ -118,10 +118,10 @@ export default function PageTemplate({ data }) {
   return (
     <Layout>
       <SEO
-        title={seo.title}
-        desc={seo.description}
-        keywords={seo.keywords.join(', ')}
-        image={seo.image.publicURL}
+        title={seo?.title}
+        desc={seo?.description}
+        keywords={seo?.keywords.join(', ')}
+        image={seo?.image.publicURL}
         pathname={`/${slug}`}
         article
       />
