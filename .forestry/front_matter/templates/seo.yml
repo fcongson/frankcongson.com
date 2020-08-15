@@ -34,3 +34,6 @@ fields:
   config:
     required: false
   label: Pathname
+- name: article
+  type: boolean
+  label: Article
