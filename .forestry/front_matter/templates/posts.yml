@@ -2,6 +2,11 @@
 label: posts
 hide_body: false
 fields:
+- name: seo
+  type: include
+  config: {}
+  template: seo
+  label: SEO
 - type: text
   name: title
   label: Title
