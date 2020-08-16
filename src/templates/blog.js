@@ -10,7 +10,7 @@ import SEO from '../components/SEO'
 import { Container, PageHeader, Section } from '../components/styles'
 import { useImage } from '../utils/useImage'
 
-export const query = graphql`
+export const blogListQuery = graphql`
   query blogListQuery($skip: Int!, $limit: Int!) {
     allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: $limit, skip: $skip) {
       edges {

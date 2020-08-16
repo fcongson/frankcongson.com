@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 
 const allImagesQuery = graphql`
-  query allImages {
+  query allImagesQuery {
     allFile(filter: { extension: { regex: "/(jpg)|(png)|(jpeg)/" } }) {
       edges {
         node {
@@ -19,10 +19,9 @@ const allImagesQuery = graphql`
 `
 
 export const useImage = () => {
-  const data = useStaticQuery(allImagesQuery)
+  const { allFile } = useStaticQuery(allImagesQuery)
 
-  const getImage = (image) =>
-    !image ? null : data.allFile.edges.find(({ node }) => node.absolutePath.includes(image)).node
+  const getImage = (image) => (!image ? null : allFile.edges.find(({ node }) => node.absolutePath.includes(image)).node)
 
   return getImage
 }

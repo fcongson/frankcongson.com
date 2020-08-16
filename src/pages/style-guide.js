@@ -9,8 +9,8 @@ import ImageCaption from '../components/ImageCaption'
 import Layout from '../components/layouts'
 import theme, { Container, LinkButton, PageHeader, Quote, Section } from '../components/styles'
 
-export const query = graphql`
-  {
+export const styleGuideQuery = graphql`
+  query styleGuideQuery {
     file(relativePath: { eq: "sample-image.jpg" }) {
       childImageSharp {
         fluid(maxWidth: 1120, quality: 100) {

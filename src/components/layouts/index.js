@@ -1,5 +1,5 @@
 import * as Sentry from '@sentry/browser'
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components'
@@ -160,7 +160,7 @@ const Main = styled.main`
   min-height: auto;
 `
 
-const query = graphql`
+const siteQuery = graphql`
   query SiteQuery {
     site {
       siteMetadata {
@@ -176,8 +176,8 @@ const query = graphql`
   }
 `
 
-const Layout = ({ data, overlayHeader, children }) => {
-  const { site } = data
+const Layout = ({ overlayHeader, children }) => {
+  const { site } = useStaticQuery(siteQuery)
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
   const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl } = site.siteMetadata
@@ -230,4 +230,4 @@ const Layout = ({ data, overlayHeader, children }) => {
   )
 }
 
-export default (props) => <StaticQuery query={query} render={(data) => <Layout data={data} {...props} />} />
+export default Layout
