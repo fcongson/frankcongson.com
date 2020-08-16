@@ -51,6 +51,15 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      allPagesJson {
+        totalCount
+        edges {
+          node {
+            id
+            slug
+          }
+        }
+      }
     }
   `)
 
@@ -58,9 +67,9 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
   }
 
-  // Create blog post pages
+  // Create post pages from mdx files
   const posts = result.data.allMdx.edges
-  posts.forEach(({ node }, index) => {
+  posts.forEach(({ node }) => {
     createPage({
       // This is the slug you created before
       // (or `node.frontmatter.slug`)
@@ -86,6 +95,16 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         numPages,
         currentPage: i + 1,
       },
+    })
+  })
+
+  // Create pages from json files
+  const pages = result.data.allPagesJson.edges
+  pages.forEach(({ node }) => {
+    createPage({
+      path: `/${node.slug}`,
+      component: path.resolve(`./src/templates/page.js`),
+      context: { id: node.id },
     })
   })
 }

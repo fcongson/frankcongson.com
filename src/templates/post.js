@@ -10,7 +10,7 @@ import { Container, Section } from '../components/styles'
 
 const shortcodes = { Link } // Provide common components here
 
-export const pageQuery = graphql`
+export const blogPostQuery = graphql`
   query BlogPostQuery($id: String) {
     mdx(id: { eq: $id }) {
       id
@@ -109,7 +109,7 @@ const PostFooter = styled.div`
   }
 `
 
-export default function PageTemplate({ data }) {
+export default ({ data }) => {
   const {
     frontmatter: { title, slug, featured_image, seo },
     body,
