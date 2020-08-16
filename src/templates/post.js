@@ -50,12 +50,13 @@ const Post = styled.div`
 
   ${Container} {
     max-width: ${(props) => props.theme.layout.maxWidthPage};
-    /* margin-bottom: 0; */
   }
 `
 
 const PostHeader = styled.div`
-  padding-bottom: 2rem;
+  h1 {
+    padding-bottom: 2rem;
+  }
 
   .back {
     color: ${(props) => props.theme.colors.greyDark20};
@@ -83,6 +84,10 @@ const PostHeader = styled.div`
         border-bottom: 1px solid ${(props) => props.theme.colors.greyDark20};
       }
     }
+  }
+
+  ${Container} {
+    margin-bottom: 2rem;
   }
 `
 
@@ -126,19 +131,17 @@ export default ({ data }) => {
         article
       />
       <Post>
-        <Section>
-          <Container>
-            <PostHeader>
+        <PostHeader>
+          <Section>
+            <Container>
               <div className='back'>
                 <Link to='/blog'>back to list</Link>
               </div>
               <h1>{title ? title : 'Untitled'}</h1>
-            </PostHeader>
-          </Container>
-        </Section>
-        <Section>
-          <Container>{!!featured_image && <Img fluid={featured_image.childImageSharp.fluid} alt={title} />}</Container>
-        </Section>
+              {!!featured_image && <Img fluid={featured_image.childImageSharp.fluid} alt={title} />}
+            </Container>
+          </Section>
+        </PostHeader>
         <Section>
           <Container>
             <MDXProvider components={shortcodes}>
