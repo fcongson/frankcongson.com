@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Section = styled.div`
+export const Section = styled.section`
   width: 100%;
   max-width: ${(props) => props.theme.layout.maxWidthSection};
   margin: 0 auto;

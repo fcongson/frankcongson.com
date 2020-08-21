@@ -39,10 +39,10 @@ const DefaultImage = ({ imageSharp, altText, caption }) => {
     <Image>
       <Section>
         <Container>
-          <figcaption className='block-img'>
+          <figure className='block-img'>
             <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
             {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
-          </figcaption>
+          </figure>
         </Container>
       </Section>
     </Image>
@@ -54,10 +54,10 @@ const EmphasizedImage = ({ imageSharp, altText, caption }) => {
     <Image>
       <Section>
         <Container>
-          <figcaption className='block-img emphasized'>
+          <figure className='block-img emphasized'>
             <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
             {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
-          </figcaption>
+          </figure>
         </Container>
       </Section>
     </Image>
@@ -67,7 +67,7 @@ const EmphasizedImage = ({ imageSharp, altText, caption }) => {
 const FullWidthImage = ({ imageSharp, altText, caption }) => {
   return (
     <Image>
-      <figcaption className='block-img full-width'>
+      <figure className='block-img full-width'>
         <Img
           fluid={imageSharp.childImageSharp.fluid}
           alt={altText}
@@ -75,7 +75,7 @@ const FullWidthImage = ({ imageSharp, altText, caption }) => {
           imgStyle={{ objectPosition: 'center center' }}
         />
         {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
-      </figcaption>
+      </figure>
     </Image>
   )
 }

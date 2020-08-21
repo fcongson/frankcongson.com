@@ -35,7 +35,7 @@ const Header = styled.header`
   }
 `
 
-const NavigationMenu = styled.div`
+const NavigationMenu = styled.nav`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

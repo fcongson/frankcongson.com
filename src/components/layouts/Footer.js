@@ -122,7 +122,7 @@ export default ({ social }) => (
               <FontAwesomeIcon icon={faGithub} />
             </a>
           </div>
-          <p className='copyright'>Copyright © {new Date().getFullYear()} Frank Congson</p>
+          <small className='copyright'>Copyright © {new Date().getFullYear()} Frank Congson</small>
         </div>
       </Container>
     </Section>

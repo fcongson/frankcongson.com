@@ -41,19 +41,15 @@ export const blogPostQuery = graphql`
   }
 `
 
-const Post = styled.div`
-  margin: 0 auto 8rem auto;
-
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
-    margin: 0 auto 4rem auto;
-  }
+const Post = styled.article`
+  margin: 0 auto 0 auto;
 
   ${Container} {
     max-width: ${(props) => props.theme.layout.maxWidthPage};
   }
 `
 
-const PostHeader = styled.div`
+const PostHeader = styled.header`
   h1 {
     padding-bottom: 2rem;
   }
@@ -91,7 +87,7 @@ const PostHeader = styled.div`
   }
 `
 
-const PostFooter = styled.div`
+const PostFooter = styled.footer`
   background-color: ${(props) => props.theme.colors.greyLight40};
 
   ${Container} {
@@ -149,20 +145,20 @@ export default ({ data }) => {
             </MDXProvider>
           </Container>
         </Section>
+        <PostFooter>
+          <Section>
+            <Container>
+              <h3>
+                Thoughts? Send me a{' '}
+                <a href='https://twitter.com/fcongson' target='_blank' rel='noopener noreferrer'>
+                  tweet
+                </a>
+                !
+              </h3>
+            </Container>
+          </Section>
+        </PostFooter>
       </Post>
-      <PostFooter>
-        <Section>
-          <Container>
-            <h3>
-              Thoughts? Send me a{' '}
-              <a href='https://twitter.com/fcongson' target='_blank' rel='noopener noreferrer'>
-                tweet
-              </a>
-              !
-            </h3>
-          </Container>
-        </Section>
-      </PostFooter>
     </Layout>
   )
 }
