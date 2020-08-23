@@ -141,9 +141,7 @@ const ColorBackground = ({ backgroundColor, imageAlt, imageSharp, header, text, 
           <div className='text'>
             {!!header && <h2>{header}</h2>}
             {!!text && <p>{text}</p>}
-            {!!callToAction && !!callToActionText && (
-              <LinkButton to={`/${callToAction}`}>{callToActionText}</LinkButton>
-            )}
+            {!!callToAction && !!callToActionText && <LinkButton to={`${callToAction}`}>{callToActionText}</LinkButton>}
           </div>
         </Container>
       </Section>
