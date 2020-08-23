@@ -23,6 +23,7 @@ export const blogPostQuery = graphql`
           alt_text
         }
         title
+        description
         date(formatString: "MMM DD, YYYY")
         keywords
         slug
