@@ -17,9 +17,6 @@ export const blogPostQuery = graphql`
       body
       frontmatter {
         seo {
-          title
-          description
-          keywords
           image {
             publicURL
           }
@@ -112,16 +109,16 @@ const PostFooter = styled.footer`
 
 export default ({ data }) => {
   const {
-    frontmatter: { title, slug, featured_image, seo },
+    frontmatter: { title, description, keywords, slug, featured_image, seo },
     body,
   } = data.mdx
 
   return (
     <Layout>
       <SEO
-        title={seo?.title}
-        desc={seo?.description}
-        keywords={seo?.keywords.join(', ')}
+        title={title}
+        desc={description}
+        keywords={keywords.join(', ')}
         image={seo?.image?.publicURL}
         pathname={`/${slug}`}
         article

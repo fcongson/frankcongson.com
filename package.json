@@ -8,9 +8,9 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.30",
     "@fortawesome/free-brands-svg-icons": "^5.14.0",
     "@fortawesome/react-fontawesome": "^0.1.11",
-    "@sentry/browser": "^5.20.1",
+    "@sentry/browser": "^5.21.3",
     "babel-plugin-styled-components": "^1.11.1",
-    "gatsby": "^2.24.45",
+    "gatsby": "^2.24.47",
     "gatsby-image": "^2.4.16",
     "gatsby-plugin-google-analytics": "^2.3.13",
     "gatsby-plugin-manifest": "^2.4.23",
@@ -36,7 +36,7 @@
     "dotenv": "^8.2.0",
     "husky": "^4.2.5",
     "prettier": "^2.0.5",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^3.0.0"
   },
   "keywords": [
     "gatsby"

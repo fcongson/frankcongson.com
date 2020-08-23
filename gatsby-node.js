@@ -18,6 +18,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       alt_text: String
       keywords: [String]
       seo: SEO
+      published: Boolean
     }
     type Mdx implements Node {
       fields: Fields
@@ -26,9 +27,6 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
     }
     type SEO {
-      title: String!
-      description: String
-      keywords: [String]
       image: File @fileByRelativePath
       alt_text: String
     }
@@ -41,7 +39,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const result = await graphql(`
     query {
-      allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 1000) {
+      allMdx(
+        filter: { frontmatter: { published: { eq: true } } }
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 1000
+      ) {
         edges {
           node {
             id
