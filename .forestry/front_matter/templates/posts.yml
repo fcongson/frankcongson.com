@@ -2,6 +2,9 @@
 label: posts
 hide_body: false
 fields:
+- name: published
+  type: boolean
+  label: Published
 - name: seo
   type: include
   config: {}
