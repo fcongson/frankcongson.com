@@ -107,11 +107,13 @@ const Blog = ({ data: { allMdx }, pageContext: { numPages, currentPage } }) => {
         content={<PageHeader>{blog.page_header}</PageHeader>}
       />
       <BlogPosts posts={allMdx.edges} />
-      <Section>
-        <Container>
-          <Pagination numPages={numPages} currentPage={currentPage} />
-        </Container>
-      </Section>
+      {numPages > 1 && (
+        <Section>
+          <Container>
+            <Pagination numPages={numPages} currentPage={currentPage} />
+          </Container>
+        </Section>
+      )}
     </Layout>
   )
 }
