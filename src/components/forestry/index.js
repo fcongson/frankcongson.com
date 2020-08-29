@@ -44,7 +44,7 @@ const getSection = (section, index) => {
 
     case 'text':
       return (
-        <Section key={`${section.template}.${index}`}>
+        <Section key={key}>
           <Container>
             <div dangerouslySetInnerHTML={{ __html: section.text }} />
           </Container>

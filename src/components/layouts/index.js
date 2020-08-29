@@ -133,6 +133,35 @@ const GlobalStyle = createGlobalStyle`
     font-style: italic;
   }
 
+  /* todo remove this blockquote style in favor of the Quote component once Quote is mdx compatible */
+  blockquote {
+    margin-bottom: 2rem;
+    padding-left: 1rem;
+    border-left: 4px solid ${(props) => props.theme.colors.greyDark40};
+    display: inline-block;
+    font-family: ${(props) => props.theme.fonts.serif};
+    font-style: italic;
+    font-size: 24px;
+    color: ${(props) => props.theme.colors.greyDark20};
+
+    @media screen and (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+      border-left: 2px solid ${(props) => props.theme.colors.greyDark40};
+      font-size: 16px;
+    }
+
+    @media screen and (min-width: ${(props) => props.theme.layout.minWidthEmph}) {
+      width: 130%;
+      margin: 0 -15% 2rem -15%;
+      font-size: 24px;
+      padding-left: 2rem;
+      border-left: 4px solid ${(props) => props.theme.colors.greyDark40};
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
   @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
     h1 {
       font-size: 36px;
