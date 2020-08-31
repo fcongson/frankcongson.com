@@ -23,7 +23,7 @@ export const Quote = styled.blockquote`
     border-left: 4px solid ${(props) => props.theme.colors.greyDark40};
   }
 
-  &:before {
+  & > :first-child:before {
     content: open-quote;
     font-family: ${(props) => props.theme.fonts.serif};
     font-size: 2em;
@@ -32,12 +32,16 @@ export const Quote = styled.blockquote`
     vertical-align: -0.4em;
   }
 
-  &:after {
+  & > :last-child:after {
     content: close-quote;
     font-family: ${(props) => props.theme.fonts.serif};
     font-size: 2em;
     line-height: 0.1em;
     margin-left: 0.025em;
     vertical-align: -0.4em;
+  }
+
+  & > :last-child {
+    margin-bottom: 0;
   }
 `
