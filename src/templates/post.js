@@ -117,9 +117,9 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO
-        title={title}
-        desc={description}
-        keywords={keywords.join(', ')}
+        title={seo.title || title}
+        desc={seo.description || description}
+        keywords={[...(seo?.keywords ?? []), ...(keywords ?? [])].join(', ')}
         image={seo?.image?.publicURL}
         pathname={`/${slug}`}
         article

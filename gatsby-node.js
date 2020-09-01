@@ -27,6 +27,9 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String
     }
     type SEO {
+      title: String
+      description: String
+      keywords: [String]
       image: File @fileByRelativePath
       alt_text: String
     }
