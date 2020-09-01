@@ -6,6 +6,20 @@ fields:
   type: field_group
   config: {}
   fields:
+  - name: title
+    type: text
+    config:
+      required: false
+    label: Title
+  - name: description
+    type: text
+    config:
+      required: false
+    label: Description
+  - name: keywords
+    type: tag_list
+    default: []
+    label: Keywords
   - name: image
     type: file
     config:
