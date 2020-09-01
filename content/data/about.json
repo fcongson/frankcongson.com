@@ -40,9 +40,14 @@
   ],
   "seo": {
     "title": "About",
-    "description": "I’m a dad, husband, traveler, minimalist, full-stack developer, and aspiring designer.",
+    "description": "I’m a dad, husband, traveler, minimalist, full stack developer, and rock climber.",
     "keywords": [
-
+      "dad",
+      "husband",
+      "traveler",
+      "minimalist",
+      "full stack developer",
+      "rock climber"
     ],
     "image": "",
     "alt_text": ""
