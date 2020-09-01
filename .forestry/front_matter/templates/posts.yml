@@ -36,11 +36,10 @@ fields:
   config:
     required: false
   label: Alt Text
-- type: list
-  name: keywords
+- name: keywords
+  type: tag_list
+  default: []
   label: Keywords
-  config:
-    use_select: false
 pages:
 - content/posts/00-website-redesign-rebuild/index.mdx
 - content/posts/01-design-style-guide/index.mdx
