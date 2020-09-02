@@ -79,7 +79,7 @@ export default ({ data }) => {
           <FeaturedSection
             header='Typography.'
             text='Typography styles'
-            callToAction='style-guide/#typography'
+            callToAction='#typography'
             callToActionText='↓'
           />
         </StyleGuideContainer>
@@ -128,7 +128,7 @@ export default ({ data }) => {
           <FeaturedSection
             header='Page Header.'
             text={['Page header using the ', <code>{'<PageHeader />'}</code>, ' component.']}
-            callToAction='style-guide/#page-header'
+            callToAction='#page-header'
             callToActionText='↓'
           />
         </StyleGuideContainer>
@@ -150,7 +150,7 @@ export default ({ data }) => {
               <code>{'<Quote />'}</code>,
               ' component. This component provides responsive quote blocks that are emphasized on larger screens.',
             ]}
-            callToAction='style-guide/#quote'
+            callToAction='#quote'
             callToActionText='↓'
           />
         </StyleGuideContainer>
@@ -227,7 +227,7 @@ export default ({ data }) => {
               <code>{'<Container />'}</code>,
               ' components.',
             ]}
-            callToAction='style-guide/#layout'
+            callToAction='#layout'
             callToActionText='↓'
           />
         </StyleGuideContainer>
@@ -263,7 +263,7 @@ export default ({ data }) => {
               <code>{'<ImageCaption />'}</code>,
               ' component. This component provides responsive images with optional comments. Images also have the option of being emphasized or fullwidth.',
             ]}
-            callToAction='style-guide/#image-caption'
+            callToAction='#image-caption'
             callToActionText='↓'
           />
         </StyleGuideContainer>
@@ -294,7 +294,7 @@ export default ({ data }) => {
               <code>{'<FeaturedSection />'}</code>,
               ' component. This component provides a featured section with header, text, and call to action.',
             ]}
-            callToAction='style-guide/#featured-section'
+            callToAction='#featured-section'
             callToActionText='↓'
           />
         </StyleGuideContainer>
@@ -312,7 +312,7 @@ export default ({ data }) => {
       <FeaturedSection
         header='Lorem Ipsum.'
         text='Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        callToAction='style-guide/#featured-section'
+        callToAction='#featured-section'
         callToActionText='Lorem ipsum dolor sit amet'
         imageAlt={altText}
         image={image}
@@ -321,13 +321,13 @@ export default ({ data }) => {
       <FeaturedSection
         header='Lorem Ipsum.'
         text='Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        callToAction='style-guide/#featured-section'
+        callToAction='#featured-section'
         callToActionText='Lorem ipsum dolor sit amet'
       />
       <FeaturedSection
         header='Lorem Ipsum.'
         text='Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        callToAction='style-guide/#featured-section'
+        callToAction='#featured-section'
         callToActionText='Lorem ipsum dolor sit amet'
         imageAlt={altText}
         image={image}
@@ -345,7 +345,7 @@ export default ({ data }) => {
               <code>{'<Hero />'}</code>,
               ' component. This component provides full width and full height section, displaying content in front of a provided image.',
             ]}
-            callToAction='style-guide/#hero'
+            callToAction='#hero'
             callToActionText='↓'
           />
         </StyleGuideContainer>
@@ -376,7 +376,7 @@ export default ({ data }) => {
               <code>{'<BlogPosts />'}</code>,
               ' component. This component provides a single column layout of blog posts in descending date order.',
             ]}
-            callToAction='style-guide/#blog-posts'
+            callToAction='#blog-posts'
             callToActionText='↓'
           />
         </StyleGuideContainer>
@@ -394,7 +394,7 @@ export default ({ data }) => {
           <FeaturedSection
             header='Link Button.'
             text={['Link button using the ', <code>{'<LinkButton />'}</code>, ' component.']}
-            callToAction='style-guide/#link-button'
+            callToAction='#link-button'
             callToActionText='↓'
           />
         </StyleGuideContainer>
