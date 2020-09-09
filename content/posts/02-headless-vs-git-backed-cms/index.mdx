@@ -3,27 +3,24 @@ title: Prismic Headless CMS vs Forestry Git Backed CMS
 description: Where should I keep my content? It depends.
 date: 2020-07-20
 slug: headless-vs-git-backed-cms
-featured_image: ''
-alt_text: ''
+featured_image: '/content/images/forestry-dev-illustration.jpg'
+alt_text: Forestry.io dev illustration
 keywords:
-- headless cms
-- cms
-- git backed cms
-- git
-- mdx
-- markdown
-- forestry.io
-- prismic.io
-- sanity.io
-published: true
+  - headless cms
+  - cms
+  - git backed cms
+  - git
+  - mdx
+  - markdown
+  - forestry.io
+  - prismic.io
+  - sanity.io
 seo:
   image: ''
   alt_text: ''
-  title: ''
-  description: ''
-  keywords: []
-
+published: true
 ---
+
 When I began thinking about how I would rebuild my website, I always thought I would use a [Headless CMS](https://headlesscms.org/about). The idea of having a dedicated place to create and manage content was familiar since I was coming from [WordPress](https://wordpress.org/). As I was transitioning to the idea of building with the [Jamstack](https://jamstack.org/), a Headless CMS seemed to fit the API portion of the JAM. So began my journey of finding the right Headless CMS. The two that I landed on were [Sanity](https://www.sanity.io/) and [Prismic](https://prismic.io/). Both provided enough from their free tier, both provided GraphQL endpoints, and both recommended by [Wes Bos](https://twitter.com/wesbos) and [Scott Tolinski](https://twitter.com/stolinski) in their [Syntax Podcast](https://syntax.fm/) (such a great podcast by the way 👍).
 
 ## Going Headless
@@ -43,7 +40,11 @@ I missed the editing experience of having a dedicated place like Forestry to edi
 import { Quote } from '../../../src/components/styles'
 
 <Quote>
+
+
 The main thing to understand is that Forestry – unlike other content management systems – is entirely backed by Git. To put it simply, Forestry is an editor-friendly interface over Git. This means that developers and editors can now use the same workflow and tool set. This also means that all of your content and code always belongs to you, and is not stored in a database in the cloud out of your reach.
+
 </Quote>
+
 
 Forestry provides a beautiful editing experience, similar to a Headless CMS, and it creates content in Markdown, committing the changes directly into my [GitHub](https://github.com/fcongson) repository. As a bonus, there are no additional dependencies to using Forestry. My code continued to read the content from Markdown. Forestry provides an elegant workflow that fits my needs.
