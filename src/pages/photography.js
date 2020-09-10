@@ -129,12 +129,7 @@ const Photography = () => {
                     {index + 1} / {totalImages}
                   </div>
                   <div className='image'>
-                    <Img
-                      fluid={imageSharp.childImageSharp.fluid}
-                      alt={alt_text}
-                      style={{ maxHeight: 'inherit' }}
-                      imgStyle={{ objectFit: 'contain', objectPosition: 'inherit' }}
-                    />
+                    <Img fluid={imageSharp.childImageSharp.fluid} alt={alt_text} />
                   </div>
                 </Container>
               </Section>
