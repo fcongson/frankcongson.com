@@ -17,8 +17,16 @@ export const LinkButton = styled(Link)`
   font-size: 16px;
   line-height: 20px;
   color: ${(props) => props.theme.colors.greyDark40};
+  transition: transform 200ms ease-in-out;
 
   &:hover {
     border: 1px solid ${(props) => props.theme.colors.greyDark40};
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    border: 1px solid ${(props) => props.theme.colors.greyDark40};
+    transform: translateY(1px);
+    transition: transform 100ms ease-in-out;
   }
 `

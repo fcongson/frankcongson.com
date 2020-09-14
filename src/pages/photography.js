@@ -129,7 +129,11 @@ const Photography = () => {
                     {index + 1} / {totalImages}
                   </div>
                   <div className='image'>
-                    <Img fluid={imageSharp.childImageSharp.fluid} alt={alt_text} />
+                    <Img
+                      fluid={imageSharp.childImageSharp.fluid}
+                      alt={alt_text}
+                      style={{ boxShadow: '0 30px 60px -10px rgba(0,0,0,0.3), 0 18px 36px -18px rgba(0,0,0,0.33)' }}
+                    />
                   </div>
                 </Container>
               </Section>
