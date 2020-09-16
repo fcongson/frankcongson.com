@@ -65,17 +65,20 @@ const Pagination = ({ numPages, currentPage }) => {
   const nextTo = `/blog/page/${nextPage}`
   return (
     <PaginationContainer>
-      {currentPage > 1 && (
-        <Link className='previous' to={previousTo}>
-          ← Newer
-        </Link>
-      )}
-      Page {currentPage} of {numPages}
-      {currentPage < numPages && (
-        <Link className='next' to={nextTo}>
-          Older →
-        </Link>
-      )}
+      <Section>
+        <Container>
+          {currentPage > 1 && (
+            <Link className='previous' to={previousTo}>
+              ← Newer
+            </Link>
+          )}
+          {currentPage < numPages && (
+            <Link className='next' to={nextTo}>
+              Older →
+            </Link>
+          )}
+        </Container>
+      </Section>
     </PaginationContainer>
   )
 }
@@ -107,13 +110,7 @@ const Blog = ({ data: { allMdx }, pageContext: { numPages, currentPage } }) => {
         content={<PageHeader>{blog.page_header}</PageHeader>}
       />
       <BlogPosts posts={allMdx.edges} />
-      {numPages > 1 && (
-        <Section>
-          <Container>
-            <Pagination numPages={numPages} currentPage={currentPage} />
-          </Container>
-        </Section>
-      )}
+      {numPages > 1 && <Pagination numPages={numPages} currentPage={currentPage} />}
     </Layout>
   )
 }
