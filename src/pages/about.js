@@ -6,11 +6,14 @@ import ForestrySections from '../components/forestry'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
-import { PageHeader } from '../components/styles'
+import { Container, PageHeader } from '../components/styles'
 import { useImage } from '../utils/useImage'
 
 const AboutContainer = styled.div`
-  max-width: ${(props) => props.theme.layout.maxWidthPage};
+  ${Container} {
+    max-width: ${(props) => props.theme.layout.maxWidthContent};
+  }
+
   margin: 0 auto 4rem auto;
 `
 

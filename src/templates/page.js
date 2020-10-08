@@ -36,7 +36,7 @@ export const pageQuery = graphql`
 
 const Page = styled.div`
   ${Container} {
-    max-width: ${(props) => props.theme.layout.maxWidthPage};
+    max-width: ${(props) => props.theme.layout.maxWidthContent};
   }
 `
 

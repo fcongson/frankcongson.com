@@ -43,7 +43,7 @@ const Post = styled.article`
   margin: 0 auto 0 auto;
 
   ${Container} {
-    max-width: ${(props) => props.theme.layout.maxWidthPage};
+    max-width: ${(props) => props.theme.layout.maxWidthContent};
   }
 `
 
@@ -91,7 +91,7 @@ const PostFooter = styled.footer`
   ${Container} {
     padding-top: 8rem;
     padding-bottom: 8rem;
-    max-width: ${(props) => props.theme.layout.maxWidthPage};
+    max-width: ${(props) => props.theme.layout.maxWidthContent};
     margin-bottom: 0;
   }
 

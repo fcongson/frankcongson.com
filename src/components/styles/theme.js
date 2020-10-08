@@ -49,7 +49,7 @@ const layout = {
   maxWidthSection: '1800px',
   maxWidthContainer: '1120px',
   minWidthEmph: '1456px', // maxWidthContainer * 1.3
-  maxWidthPage: '800px',
+  maxWidthContent: '800px',
 }
 
 const theme = {

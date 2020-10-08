@@ -8,10 +8,6 @@ import Layout from '../components/layouts'
 import { Container, Section } from '../components/styles'
 import { useImage } from '../utils/useImage'
 
-const HomeContainer = styled.div`
-  text-align: center;
-`
-
 const HomeContent = styled.div`
   display: flex;
   flex-direction: row;
@@ -109,29 +105,27 @@ const Home = () => {
           />
         }
       />
-      <HomeContainer>
-        <Section>
-          <Container>
-            <HomeContent>
-              <div className='text'>
-                <h1>{home.main_content.header}</h1>
-                <p>{home.main_content.text}</p>
+      <Section>
+        <Container>
+          <HomeContent>
+            <div className='text'>
+              <h1>{home.main_content.header}</h1>
+              <p>{home.main_content.text}</p>
+            </div>
+            {!!mainContentImage && (
+              <div className='image'>
+                <Img
+                  fluid={mainContentImage.childImageSharp.fluid}
+                  alt={home.main_content.alt_text}
+                  style={{ height: '100%' }}
+                  imgStyle={{ objectPosition: 'center center' }}
+                />
               </div>
-              {!!mainContentImage && (
-                <div className='image'>
-                  <Img
-                    fluid={mainContentImage.childImageSharp.fluid}
-                    alt={home.main_content.alt_text}
-                    style={{ height: '100%' }}
-                    imgStyle={{ objectPosition: 'center center' }}
-                  />
-                </div>
-              )}
-            </HomeContent>
-          </Container>
-        </Section>
-        <ForestrySections sections={home.sections} />
-      </HomeContainer>
+            )}
+          </HomeContent>
+        </Container>
+      </Section>
+      <ForestrySections sections={home.sections} />
     </Layout>
   )
 }

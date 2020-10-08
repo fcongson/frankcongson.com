@@ -23,6 +23,11 @@ const Image = styled.div`
 
   .full-width {
     max-height: 100vh;
+    margin-bottom: 8rem;
+
+    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
+      margin-bottom: 4rem;
+    }
   }
 
   .image-label {
