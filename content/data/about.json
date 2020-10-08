@@ -19,8 +19,8 @@
     },
     {
       "template": "image-caption",
-      "image": "/content/images/iceland-west-coast.jpg",
-      "alt_text": "A close up of a field in the Snæfellsnes peninsula of western Iceland",
+      "image": "/content/images/banff-vermillion-lakes.jpg",
+      "alt_text": "Jami sitting at the end of a dock at Vermillion Lakes located within Banff National Park in Alberta, Canada",
       "fullwidth": true,
       "caption": "",
       "emphasized": false
