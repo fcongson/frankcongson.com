@@ -18,6 +18,14 @@
       "text": "<p>My wife, Jami, and I currently live in New Zealand with our son, but we didn't begin that way. Jami and I have a shared passion for travel (we even started a <a href=\"https://www.heythereeverywhere.com/\"><strong>travel blog</strong></a>).</p><p>Originally from the United States, we were only able to explore the world two weeks at a time. We decided that it wasn't enough. So, we sold everything, embraced the minimalist lifestyle, quit our jobs, and packed what we had left on a trip around the world.</p><p>We left our home in Seattle and traveled through South America, Africa, Asia, the South Pacific, and ended up here, living in New Zealand and having our first child.</p>"
     },
     {
+      "template": "image-caption",
+      "image": "/content/images/iceland-west-coast.jpg",
+      "alt_text": "A close up of a field in the Snæfellsnes peninsula of western Iceland",
+      "fullwidth": true,
+      "caption": "",
+      "emphasized": false
+    },
+    {
       "template": "text",
       "text": "<h2>What can you expect here?</h2>"
     },
