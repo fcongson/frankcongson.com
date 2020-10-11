@@ -1,28 +1,42 @@
 import Img from 'gatsby-image'
-import React, { useReducer } from 'react'
-import InfiniteScroll from 'react-infinite-scroll-component'
+import React from 'react'
 import styled from 'styled-components'
 import photography from '../../content/data/photography.json'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
-import { Container, PageHeader, Section } from '../components/styles'
+import { Container, PageHeader } from '../components/styles'
 import { useImage } from '../utils/useImage'
 
+const PhotographyContainer = styled.div`
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+`
+
 const PhotographyImage = styled.div`
-  height: 100vh;
   display: grid;
   align-items: center;
-  margin: 0 auto 4rem auto;
+  padding: 0 2rem;
+  scroll-snap-align: center;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
-    margin: 0 auto 2rem auto;
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+    padding: 0 1rem;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+    min-height: 80vh;
+  }
+
+  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
+    padding: 0 0.5rem;
   }
 
   ${Container} {
     display: flex;
     flex-direction: row;
-    margin: 0 auto;
 
     @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
       flex-direction: column-reverse;
@@ -30,7 +44,7 @@ const PhotographyImage = styled.div`
   }
 
   div.description {
-    width: 160px;
+    width: 140px;
     background-color: ${(props) => props.theme.colors.greyDark40};
     color: ${(props) => props.theme.colors.greyLight40};
     font-size: 36px;
@@ -50,21 +64,12 @@ const PhotographyImage = styled.div`
   }
 
   div.image {
-    width: 100%;
-    max-height: calc(100vh - 4rem); /* 100vh - margins */
-    margin: 0 0 0 2rem;
-
-    picture {
-      object-position: left center;
-    }
-
-    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
-      max-height: calc(100vh - 2rem); /* 100vh - margins */
-      margin: 0 0 0 1rem;
-    }
+    /* width = container width - description width - padding */
+    width: calc(min(${(props) => props.theme.layout.maxWidthContainer}, 80vw) - 140px - 1rem);
+    margin: 0 0 0 1rem;
 
     @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
-      max-height: calc(100vh - 3rem - 64px); /* 100vh - margins - description height */
+      width: 80vw;
       margin: 0 0 1rem 0;
 
       picture {
@@ -74,26 +79,11 @@ const PhotographyImage = styled.div`
   }
 `
 
-const limit = 5
-
 const Photography = () => {
   const getImage = useImage()
   const heroImage = getImage(photography.hero_image.image)
   const seoImage = getImage(photography.seo.image)
-  const totalImages = photography.sections.length
-  const { seo } = photography
-
-  const [{ images }, dispatch] = useReducer(
-    (state, action) => {
-      switch (action.type) {
-        case 'next':
-          return { images: photography.sections.slice(0, state.images.length + limit) }
-        default:
-          return
-      }
-    },
-    { images: photography.sections.slice(0, limit) }
-  )
+  const { seo, sections: images } = photography
 
   return (
     <Layout overlayHeader>
@@ -115,32 +105,23 @@ const Photography = () => {
         }
         content={<PageHeader>{photography.page_header}</PageHeader>}
       />
-      <InfiniteScroll
-        dataLength={images.length}
-        next={() => dispatch({ type: 'next' })}
-        hasMore={images.length < totalImages}>
+      <PhotographyContainer>
         {images.map(({ image, alt_text, caption }, index) => {
           const imageSharp = getImage(image)
           return (
             <PhotographyImage key={image}>
-              <Section>
-                <Container>
-                  <div className='description'>
-                    {index + 1} / {totalImages}
-                  </div>
-                  <div className='image'>
-                    <Img
-                      fluid={imageSharp.childImageSharp.fluid}
-                      alt={alt_text}
-                      style={{ boxShadow: '0 30px 60px -10px rgba(0,0,0,0.3), 0 18px 36px -18px rgba(0,0,0,0.33)' }}
-                    />
-                  </div>
-                </Container>
-              </Section>
+              <Container>
+                <div className='description'>
+                  {index + 1} / {images.length}
+                </div>
+                <div className='image'>
+                  <Img fluid={imageSharp.childImageSharp.fluid} alt={alt_text} />
+                </div>
+              </Container>
             </PhotographyImage>
           )
         })}
-      </InfiniteScroll>
+      </PhotographyContainer>
     </Layout>
   )
 }
