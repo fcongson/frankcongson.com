@@ -3,7 +3,8 @@ import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
 import BlogPosts from '../components/BlogPosts'
-import FeaturedSection from '../components/FeaturedSection'
+import CallToAction from '../components/CallToAction'
+import FeaturedSectionRefactor from '../components/FeaturedSectionRefactor'
 import Hero from '../components/Hero'
 import ImageCaption from '../components/ImageCaption'
 import Layout from '../components/layouts'
@@ -71,17 +72,17 @@ export default ({ data }) => {
           </p>
         </Container>
       </Section>
-
       {/* Typography */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Typography.'
-            text='Typography styles'
-            callToAction='#typography'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Typography.'
+              text='Typography styles'
+              callToAction='style-guide/#typography'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -100,11 +101,11 @@ export default ({ data }) => {
             deserunt mollit anim id est laborum.
           </p>
           <p>
-            Paragraph. <a href='#typography'>Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
+            Paragraph. <a href='style-guide/#typography'>Lorem ipsum dolor sit amet</a>, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+            in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </p>
           <p>
             <strong>Bold. Lorem ipsum dolor sit amet</strong>
@@ -120,17 +121,17 @@ export default ({ data }) => {
           </p>
         </Container>
       </Section>
-
       {/* Page Header */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Page Header.'
-            text={['Page header using the ', <code>{'<PageHeader />'}</code>, ' component.']}
-            callToAction='#page-header'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Page Header.'
+              text={['Page header using the ', <code>{'<PageHeader />'}</code>, ' component.']}
+              callToAction='style-guide/#page-header'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -138,21 +139,21 @@ export default ({ data }) => {
           <PageHeader>Lorem Ipsum</PageHeader>
         </Container>
       </Section>
-
       {/* Quote */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Quote.'
-            text={[
-              'Quotes using the ',
-              <code>{'<Quote />'}</code>,
-              ' component. This component provides responsive quote blocks that are emphasized on larger screens.',
-            ]}
-            callToAction='#quote'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Quote.'
+              text={[
+                'Quotes using the ',
+                <code>{'<Quote />'}</code>,
+                ' component. This component provides responsive quote blocks that are emphasized on larger screens.',
+              ]}
+              callToAction='style-guide/#quote'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -213,23 +214,23 @@ export default ({ data }) => {
           </Quote>
         </Container>
       </Section>
-
       {/* Layout */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Layout.'
-            text={[
-              'Layouts using the ',
-              <code>{'<Section />'}</code>,
-              ' and ',
-              <code>{'<Container />'}</code>,
-              ' components.',
-            ]}
-            callToAction='#layout'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Layout.'
+              text={[
+                'Layouts using the ',
+                <code>{'<Section />'}</code>,
+                ' and ',
+                <code>{'<Container />'}</code>,
+                ' components.',
+              ]}
+              callToAction='style-guide/#layout'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -251,21 +252,21 @@ export default ({ data }) => {
           </p>
         </Container>
       </Section>
-
       {/* Image Caption */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Image Caption.'
-            text={[
-              'Images with caption using the ',
-              <code>{'<ImageCaption />'}</code>,
-              ' component. This component provides responsive images with optional comments. Images also have the option of being emphasized or fullwidth.',
-            ]}
-            callToAction='#image-caption'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Image Caption.'
+              text={[
+                'Images with caption using the ',
+                <code>{'<ImageCaption />'}</code>,
+                ' component. This component provides responsive images with optional comments. Images also have the option of being emphasized or fullwidth.',
+              ]}
+              callToAction='style-guide/#image-caption'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -282,72 +283,66 @@ export default ({ data }) => {
       <ImageCaption image={image} altText={altText} caption='Default. Lorem ipsum dolor sit amet' id='image-caption' />
       <ImageCaption image={image} altText={altText} caption='Emphasized. Lorem ipsum dolor sit amet' emphasized />
       <ImageCaption image={image} altText={altText} caption='Fullwidth. Lorem ipsum dolor sit amet' fullwidth />
-
       {/* Featured Section */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Featured Section.'
-            text={[
-              'Featured sections using the ',
-              <code>{'<FeaturedSection />'}</code>,
-              ' component. This component provides a featured section with header, text, and call to action.',
-            ]}
-            callToAction='#featured-section'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Featured Section.'
+              text={[
+                'Featured sections using the ',
+                <code>{'<FeaturedSectionRefactor />'}</code>,
+                ' component. This component provides a featured section with header, text, and call to action.',
+              ]}
+              callToAction='style-guide/#featured-section'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
         <Container id='featured-section'>
           <h2>Variations</h2>
           <p>
-            There are three variations of the <code>{'<FeaturedSection />'}</code> component. The default will put
-            content in front of a color background. The <code>imageAsBackground</code> variation will put content in
+            There are three variations of the <code>{'<FeaturedSectionRefactor />'}</code> component. The default will
+            put content in front of a color background. The <code>imageAsBackground</code> variation will put content in
             front of a provided image with the image at 50% opacity.
           </p>
         </Container>
       </Section>
-      <FeaturedSection
-        header='Lorem Ipsum.'
-        text='Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        callToAction='#featured-section'
-        callToActionText='Lorem ipsum dolor sit amet'
-        imageAlt={altText}
-        image={image}
-        imageAsBackground
-      />
-      <FeaturedSection
-        header='Lorem Ipsum.'
-        text='Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        callToAction='#featured-section'
-        callToActionText='Lorem ipsum dolor sit amet'
-      />
-      <FeaturedSection
-        header='Lorem Ipsum.'
-        text='Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
-        callToAction='#featured-section'
-        callToActionText='Lorem ipsum dolor sit amet'
-        imageAlt={altText}
-        image={image}
-        backgroundColor={theme.colors.oliveLight40}
-      />
-
+      <FeaturedSectionRefactor imageAlt={altText} image={image} imageAsBackground>
+        <p>Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </FeaturedSectionRefactor>
+      <FeaturedSectionRefactor>
+        <p>Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </FeaturedSectionRefactor>
+      <FeaturedSectionRefactor backgroundColor={theme.colors.oliveLight40}>
+        <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
+        <p>Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </FeaturedSectionRefactor>
+      <FeaturedSectionRefactor>
+        <CallToAction
+          header='Lorem Ipsum.'
+          text='With Call To Action. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+          callToAction='style-guide/#featured-section'
+          callToActionText='Lorem ipsum dolor sit amet'
+        />
+      </FeaturedSectionRefactor>
       {/* Hero */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Hero.'
-            text={[
-              'Hero using the ',
-              <code>{'<Hero />'}</code>,
-              ' component. This component provides full width and full height section, displaying content in front of a provided image.',
-            ]}
-            callToAction='#hero'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Hero.'
+              text={[
+                'Hero using the ',
+                <code>{'<Hero />'}</code>,
+                ' component. This component provides full width and full height section, displaying content in front of a provided image.',
+              ]}
+              callToAction='style-guide/#hero'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -364,21 +359,21 @@ export default ({ data }) => {
         }
         content={<PageHeader>Lorem Ipsum</PageHeader>}
       />
-
       {/* Blog Posts */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Blog Posts.'
-            text={[
-              'Blog posts using the ',
-              <code>{'<BlogPosts />'}</code>,
-              ' component. This component provides a single column layout of blog posts in descending date order.',
-            ]}
-            callToAction='#blog-posts'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Blog Posts.'
+              text={[
+                'Blog posts using the ',
+                <code>{'<BlogPosts />'}</code>,
+                ' component. This component provides a single column layout of blog posts in descending date order.',
+              ]}
+              callToAction='style-guide/#blog-posts'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -386,22 +381,22 @@ export default ({ data }) => {
           <BlogPosts posts={data.allMdx.edges} />
         </Container>
       </Section>
-
       {/* Link Button */}
-
       <Section>
         <StyleGuideContainer>
-          <FeaturedSection
-            header='Link Button.'
-            text={['Link button using the ', <code>{'<LinkButton />'}</code>, ' component.']}
-            callToAction='#link-button'
-            callToActionText='↓'
-          />
+          <FeaturedSectionRefactor>
+            <CallToAction
+              header='Link Button.'
+              text={['Link button using the ', <code>{'<LinkButton />'}</code>, ' component.']}
+              callToAction='style-guide/#link-button'
+              callToActionText='↓'
+            />
+          </FeaturedSectionRefactor>
         </StyleGuideContainer>
       </Section>
       <Section>
         <Container id='link-button'>
-          <LinkButton to='style-guide/#link-button'>Link button</LinkButton>
+          <LinkButton to='style-guide/style-guide/#link-button'>Link button</LinkButton>
         </Container>
       </Section>
     </Layout>
