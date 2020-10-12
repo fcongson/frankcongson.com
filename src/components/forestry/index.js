@@ -1,19 +1,34 @@
 import React from 'react'
-import FeaturedSection from '../FeaturedSection'
+import CallToAction from '../CallToAction'
+import FeaturedSectionRefactor from '../FeaturedSectionRefactor'
 import ImageCaption from '../ImageCaption'
 import { Container, Quote, Section } from '../styles'
 
-const getSection = (section, index) => {
+const Wrapper = ({ children }) => (
+  <Section>
+    <Container>{children}</Container>
+  </Section>
+)
+
+const getSection = (section, unwrapped, index) => {
   const key = `${section.template}.${index}`
   switch (section.template) {
     case 'featured-section':
       return (
-        <FeaturedSection
+        <FeaturedSectionRefactor
           key={key}
           imageAsBackground={section.image_as_background}
           backgroundColor={section.background_color}
           imageAlt={section.alt_text}
-          image={section.image}
+          image={section.image}>
+          <ForestrySections sections={section.sections} unwrapped />
+        </FeaturedSectionRefactor>
+      )
+
+    case 'call-to-action':
+      return (
+        <CallToAction
+          key={key}
           header={section.header}
           text={section.text}
           callToAction={section.call_to_action.url}
@@ -34,21 +49,21 @@ const getSection = (section, index) => {
       )
 
     case 'quote':
-      return (
-        <Section key={key}>
-          <Container>
-            <Quote>{section.quote}</Quote>
-          </Container>
-        </Section>
+      return unwrapped ? (
+        <Quote key={key}>{section.quote}</Quote>
+      ) : (
+        <Wrapper key={key}>
+          <Quote>{section.quote}</Quote>
+        </Wrapper>
       )
 
     case 'text':
-      return (
-        <Section key={key}>
-          <Container>
-            <div dangerouslySetInnerHTML={{ __html: section.text }} />
-          </Container>
-        </Section>
+      return unwrapped ? (
+        <div key={key} dangerouslySetInnerHTML={{ __html: section.text }} />
+      ) : (
+        <Wrapper key={key}>
+          <div dangerouslySetInnerHTML={{ __html: section.text }} />
+        </Wrapper>
       )
 
     default:
@@ -56,6 +71,7 @@ const getSection = (section, index) => {
   }
 }
 
-export const ForestrySections = ({ sections }) => (!sections ? null : Array.from(sections).map(getSection))
+export const ForestrySections = ({ sections, unwrapped = false }) =>
+  !sections ? null : Array.from(sections).map((section, index) => getSection(section, unwrapped, index))
 
 export default ForestrySections

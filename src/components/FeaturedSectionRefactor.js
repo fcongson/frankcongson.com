@@ -40,6 +40,10 @@ const FeaturedSectionContainer = styled.div`
         padding-top: 8rem;
         padding-bottom: 8rem;
       }
+
+      div:not(:last-of-type) {
+        padding-bottom: 8rem;
+      }
     }
     `}
 

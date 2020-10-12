@@ -15,12 +15,6 @@
       "background_color": "",
       "image": "/content/images/banff-gondola-1.jpg",
       "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada",
-      "header": "Photography.",
-      "text": "Photography is one of my passions in life. I love incorporating it into other aspects of my life and capturing the world around me.",
-      "call_to_action": {
-        "url": "photography",
-        "text": "See my photography"
-      },
       "image_as_background": true,
       "sections": [
         {
@@ -39,12 +33,6 @@
       "background_color": "",
       "image": "",
       "alt_text": "",
-      "header": "Me.",
-      "text": "I’m a dad, husband, traveler, minimalist, full stack developer, and rock climber.",
-      "call_to_action": {
-        "url": "about",
-        "text": "Learn about me"
-      },
       "image_as_background": false,
       "sections": [
         {
@@ -63,9 +51,7 @@
   "seo": {
     "title": "",
     "description": "",
-    "keywords": [
-
-    ],
+    "keywords": [],
     "image": "",
     "alt_text": ""
   }

@@ -14,7 +14,7 @@ const AboutContainer = styled.div`
     max-width: ${(props) => props.theme.layout.maxWidthContent};
   }
 
-  margin: 0 auto 4rem auto;
+  /* margin: 0 auto 4rem auto; */
 `
 
 const About = () => {
