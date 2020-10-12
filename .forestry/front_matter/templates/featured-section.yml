@@ -9,17 +9,34 @@ fields:
   config:
     required: false
     color_format: Hex
+- name: image_as_background
+  type: boolean
+  label: Image As Background
+  default: true
 - name: image
   type: file
   config:
     maxSize: 64
   label: Image
-- name: image_as_background
-  type: boolean
-  label: Image As Background
-  default: true
+  showOnly:
+    field: image_as_background
+    value: true
 - name: alt_text
   type: text
   config:
     required: false
   label: Alt Text
+  showOnly:
+    field: image_as_background
+    value: true
+- name: sections
+  type: blocks
+  label: Sections
+  template_types:
+  - call-to-action
+  - image-caption
+  - quote
+  - text
+  config:
+    min: 
+    max: 
