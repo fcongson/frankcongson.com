@@ -289,11 +289,7 @@ export default ({ data }) => {
           <FeaturedSection>
             <CallToAction
               header='Featured Section.'
-              text={[
-                'Featured sections using the ',
-                <code>{'<FeaturedSection />'}</code>,
-                ' component. This component provides a featured section with header, text, and call to action.',
-              ]}
+              text={['Featured sections using the ', <code>{'<FeaturedSection />'}</code>, ' component.']}
               callToAction='style-guide/#featured-section'
               callToActionText='↓'
             />
@@ -328,6 +324,33 @@ export default ({ data }) => {
           callToActionText='Lorem ipsum dolor sit amet'
         />
       </FeaturedSection>
+      {/* Call To Action */}
+      <Section>
+        <StyleGuideContainer>
+          <FeaturedSection>
+            <CallToAction
+              header='Call To Action.'
+              text={[
+                'Call to action using the ',
+                <code>{'<CallToAction />'}</code>,
+                ' component. This component provides a header, text, and button.',
+              ]}
+              callToAction='style-guide/#call-to-action'
+              callToActionText='↓'
+            />
+          </FeaturedSection>
+        </StyleGuideContainer>
+      </Section>
+      <Section>
+        <Container id='call-to-action'>
+          <CallToAction
+            header='Lorem Ipsum.'
+            text='With Call To Action. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+            callToAction='style-guide/#call-to-action'
+            callToActionText='Lorem ipsum dolor sit amet'
+          />
+        </Container>
+      </Section>
       {/* Hero */}
       <Section>
         <StyleGuideContainer>
