@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 import BlogPosts from '../components/BlogPosts'
 import CallToAction from '../components/CallToAction'
-import FeaturedSectionRefactor from '../components/FeaturedSectionRefactor'
+import FeaturedSection from '../components/FeaturedSection'
 import Hero from '../components/Hero'
 import ImageCaption from '../components/ImageCaption'
 import Layout from '../components/layouts'
@@ -75,14 +75,14 @@ export default ({ data }) => {
       {/* Typography */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Typography.'
               text='Typography styles'
               callToAction='style-guide/#typography'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -124,14 +124,14 @@ export default ({ data }) => {
       {/* Page Header */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Page Header.'
               text={['Page header using the ', <code>{'<PageHeader />'}</code>, ' component.']}
               callToAction='style-guide/#page-header'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -142,7 +142,7 @@ export default ({ data }) => {
       {/* Quote */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Quote.'
               text={[
@@ -153,7 +153,7 @@ export default ({ data }) => {
               callToAction='style-guide/#quote'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -217,7 +217,7 @@ export default ({ data }) => {
       {/* Layout */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Layout.'
               text={[
@@ -230,7 +230,7 @@ export default ({ data }) => {
               callToAction='style-guide/#layout'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -255,7 +255,7 @@ export default ({ data }) => {
       {/* Image Caption */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Image Caption.'
               text={[
@@ -266,7 +266,7 @@ export default ({ data }) => {
               callToAction='style-guide/#image-caption'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -286,52 +286,52 @@ export default ({ data }) => {
       {/* Featured Section */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Featured Section.'
               text={[
                 'Featured sections using the ',
-                <code>{'<FeaturedSectionRefactor />'}</code>,
+                <code>{'<FeaturedSection />'}</code>,
                 ' component. This component provides a featured section with header, text, and call to action.',
               ]}
               callToAction='style-guide/#featured-section'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>
         <Container id='featured-section'>
           <h2>Variations</h2>
           <p>
-            There are three variations of the <code>{'<FeaturedSectionRefactor />'}</code> component. The default will
-            put content in front of a color background. The <code>imageAsBackground</code> variation will put content in
+            There are three variations of the <code>{'<FeaturedSection />'}</code> component. The default will put
+            content in front of a color background. The <code>imageAsBackground</code> variation will put content in
             front of a provided image with the image at 50% opacity.
           </p>
         </Container>
       </Section>
-      <FeaturedSectionRefactor imageAlt={altText} image={image} imageAsBackground>
+      <FeaturedSection imageAlt={altText} image={image} imageAsBackground>
         <p>Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </FeaturedSectionRefactor>
-      <FeaturedSectionRefactor>
+      </FeaturedSection>
+      <FeaturedSection>
         <p>Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </FeaturedSectionRefactor>
-      <FeaturedSectionRefactor backgroundColor={theme.colors.oliveLight40}>
+      </FeaturedSection>
+      <FeaturedSection backgroundColor={theme.colors.oliveLight40}>
         <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
         <p>Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </FeaturedSectionRefactor>
-      <FeaturedSectionRefactor>
+      </FeaturedSection>
+      <FeaturedSection>
         <CallToAction
           header='Lorem Ipsum.'
           text='With Call To Action. Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
           callToAction='style-guide/#featured-section'
           callToActionText='Lorem ipsum dolor sit amet'
         />
-      </FeaturedSectionRefactor>
+      </FeaturedSection>
       {/* Hero */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Hero.'
               text={[
@@ -342,7 +342,7 @@ export default ({ data }) => {
               callToAction='style-guide/#hero'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -362,7 +362,7 @@ export default ({ data }) => {
       {/* Blog Posts */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Blog Posts.'
               text={[
@@ -373,7 +373,7 @@ export default ({ data }) => {
               callToAction='style-guide/#blog-posts'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>
@@ -384,14 +384,14 @@ export default ({ data }) => {
       {/* Link Button */}
       <Section>
         <StyleGuideContainer>
-          <FeaturedSectionRefactor>
+          <FeaturedSection>
             <CallToAction
               header='Link Button.'
               text={['Link button using the ', <code>{'<LinkButton />'}</code>, ' component.']}
               callToAction='style-guide/#link-button'
               callToActionText='↓'
             />
-          </FeaturedSectionRefactor>
+          </FeaturedSection>
         </StyleGuideContainer>
       </Section>
       <Section>

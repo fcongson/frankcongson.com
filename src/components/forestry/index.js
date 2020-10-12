@@ -1,6 +1,6 @@
 import React from 'react'
 import CallToAction from '../CallToAction'
-import FeaturedSectionRefactor from '../FeaturedSectionRefactor'
+import FeaturedSection from '../FeaturedSection'
 import ImageCaption from '../ImageCaption'
 import { Container, Quote, Section } from '../styles'
 
@@ -15,14 +15,14 @@ const getSection = (section, unwrapped, index) => {
   switch (section.template) {
     case 'featured-section':
       return (
-        <FeaturedSectionRefactor
+        <FeaturedSection
           key={key}
           imageAsBackground={section.image_as_background}
           backgroundColor={section.background_color}
           imageAlt={section.alt_text}
           image={section.image}>
           <ForestrySections sections={section.sections} unwrapped />
-        </FeaturedSectionRefactor>
+        </FeaturedSection>
       )
 
     case 'call-to-action':

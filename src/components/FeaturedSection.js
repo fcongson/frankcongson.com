@@ -2,7 +2,7 @@ import Img from 'gatsby-image'
 import React from 'react'
 import styled from 'styled-components'
 import { useImage } from '../utils/useImage'
-import { Container, LinkButton, Section } from './styles'
+import { Container, Section } from './styles'
 
 const FeaturedSectionContainer = styled.div`
   display: grid;
@@ -21,26 +21,34 @@ const FeaturedSectionContainer = styled.div`
       ${Section} {
         z-index: 1;
       }
-    `}
+      `}
 
   ${(props) =>
     props.colorAsBackground &&
     `
-      background-color: ${props.backgroundColor || props.theme.colors.greyLight40};
-
-      div.image {
-        padding-bottom: 4rem;
+    background-color: ${props.backgroundColor || props.theme.colors.greyLight40};
+    
+    div.image {
+      padding-bottom: 4rem;
+    }
+    
+    ${Container} {
+      padding-top: 12rem;
+      padding-bottom: 12rem;
+      
+      @media (max-width: ${props.theme.breakpoints.maxWidthTabletLandscape}) {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
       }
 
-      ${Container} {
-        padding-top: 12rem;
-        padding-bottom: 12rem;
+      div:not(:last-of-type) {
+        margin-bottom: 8rem;
 
-        @media (max-width: ${props.theme.breakpoints.maxWidthTabletLandscape}) {
-          padding-top: 8rem;
-          padding-bottom: 8rem;
+        @media (max-width: ${props.theme.breakpoints.maxWidthMobileLandscape}) {
+          margin-bottom: 4rem;
         }
       }
+    }
     `}
 
   ${Section} {
@@ -55,52 +63,15 @@ const FeaturedSectionContainer = styled.div`
   div.image {
     width: 100%;
   }
-  
-  div.text {
+
+  div.content {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
-    h2 {
-      font-weight: bold;
-      font-size: 81px;
-      line-height: 99px;
-      text-align: center;
-      margin: 0 auto 4rem auto;
-
-      @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
-        font-size: 54px;
-        line-height: 66px;
-        margin: 0 auto 2rem auto;
-      }
-
-      @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
-        font-size: 36px;
-        line-height: 44px;
-      }
-    }
-
-    p {
-      font-weight: normal;
-      font-size: 20px;
-      text-align: center;
-      margin: 0 auto 4rem auto;
-      padding: 0 2rem 0 2rem;
-
-      @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
-        font-size: 16px;
-        margin: 0 auto 2rem auto;
-        padding: 0 1rem 0 1rem;
-      }
-    }
-  }
-
-  ${LinkButton} {
-    margin: 0 auto;
   }
 `
 
-const ImageBackground = ({ imageAlt, imageSharp, header, text, callToAction, callToActionText }) => {
+const ImageBackground = ({ imageAlt, imageSharp, children }) => {
   return (
     <FeaturedSectionContainer imageAsBackground>
       {!!imageSharp && (
@@ -115,35 +86,18 @@ const ImageBackground = ({ imageAlt, imageSharp, header, text, callToAction, cal
       )}
       <Section>
         <Container>
-          <div className='text'>
-            {!!header && <h2>{header}</h2>}
-            {!!text && <p>{text}</p>}
-            {!!callToAction && !!callToActionText && (
-              <LinkButton to={`/${callToAction}`}>{callToActionText}</LinkButton>
-            )}
-          </div>
+          <div className='content'>{children}</div>
         </Container>
       </Section>
     </FeaturedSectionContainer>
   )
 }
 
-const ColorBackground = ({ backgroundColor, imageAlt, imageSharp, header, text, callToAction, callToActionText }) => {
+const ColorBackground = ({ backgroundColor, children }) => {
   return (
     <FeaturedSectionContainer colorAsBackground backgroundColor={backgroundColor}>
       <Section>
-        <Container>
-          {!!imageSharp && (
-            <div className='image'>
-              <Img fluid={imageSharp.childImageSharp.fluid} alt={imageAlt} />
-            </div>
-          )}
-          <div className='text'>
-            {!!header && <h2>{header}</h2>}
-            {!!text && <p>{text}</p>}
-            {!!callToAction && !!callToActionText && <LinkButton to={`${callToAction}`}>{callToActionText}</LinkButton>}
-          </div>
-        </Container>
+        <Container>{children}</Container>
       </Section>
     </FeaturedSectionContainer>
   )
@@ -152,8 +106,8 @@ const ColorBackground = ({ backgroundColor, imageAlt, imageSharp, header, text, 
 const FeaturedSection = ({ imageAsBackground, image, ...restProps }) => {
   const imageSharp = useImage()(image)
 
-  if (imageAsBackground) return <ImageBackground {...restProps} imageSharp={imageSharp} />
-  return <ColorBackground {...restProps} imageSharp={imageSharp} />
+  if (imageAsBackground) return <ImageBackground imageSharp={imageSharp} {...restProps} />
+  return <ColorBackground {...restProps} />
 }
 
 export default FeaturedSection
