@@ -1,4 +1,29 @@
 ---
 label: Call To Action
 hide_body: true
-fields: []
+fields:
+- name: header
+  type: text
+  config:
+    required: false
+  label: Header
+- name: text
+  type: text
+  config:
+    required: false
+  label: Text
+- name: call_to_action
+  type: field_group
+  config: {}
+  fields:
+  - name: url
+    type: text
+    config:
+      required: false
+    label: URL
+  - name: text
+    type: text
+    config:
+      required: false
+    label: Text
+  label: Call To Action
