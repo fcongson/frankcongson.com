@@ -6,9 +6,17 @@ import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layouts'
 import SEO from '../components/SEO'
-import { Container, Section } from '../components/styles'
+import { Container, Quote, Section } from '../components/styles'
 
-const shortcodes = { Link } // Provide common components here
+const shortcodes = {
+  Link,
+  wrapper: ({ children }) => (
+    <Section>
+      <Container>{children}</Container>
+    </Section>
+  ),
+  blockquote: Quote,
+}
 
 export const blogPostQuery = graphql`
   query BlogPostQuery($id: String) {
@@ -136,13 +144,9 @@ export default ({ data }) => {
             </Container>
           </Section>
         </PostHeader>
-        <Section>
-          <Container>
-            <MDXProvider components={shortcodes}>
-              <MDXRenderer>{body}</MDXRenderer>
-            </MDXProvider>
-          </Container>
-        </Section>
+        <MDXProvider components={shortcodes}>
+          <MDXRenderer>{body}</MDXRenderer>
+        </MDXProvider>
         <PostFooter>
           <Section>
             <Container>

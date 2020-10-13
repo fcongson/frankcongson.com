@@ -21,7 +21,12 @@ const allImagesQuery = graphql`
 export const useImage = () => {
   const { allFile } = useStaticQuery(allImagesQuery)
 
-  const getImage = (image) => (!image ? null : allFile.edges.find(({ node }) => node.absolutePath.includes(image)).node)
+  const getImage = (image) => {
+    if (!image) return
+    // get the filename from the path
+    const filename = image.split('/').pop()
+    return allFile.edges.find(({ node }) => node.absolutePath.includes(filename)).node
+  }
 
   return getImage
 }
