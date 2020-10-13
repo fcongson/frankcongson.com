@@ -43,7 +43,7 @@
       "sections": [
         {
           "template": "text",
-          "text": "<p>This website also gave me the perfect opportunity to practice my craft as a full stack developer. I decided to redesign and rebuild my old website. I designed this in <a href=\"https://www.figma.com/\" target=\"_blank\"><strong>Figma</strong></a>, built it using <a href=\"https://www.gatsbyjs.org/\" target=\"_blank\"><strong>Gatsby</strong></a> and <a href=\"https://reactjs.org/\" target=\"_blank\"><strong>React</strong></a>, managed content using <a href=\"https://prismic.io/\" target=\"_blank\"><strong>Prismic</strong></a>, and hosted on <a href=\"https://www.netlify.com/\" target=\"_blank\"><strong>Netlify</strong></a>.</p><p>Check out the code on <a href=\"https://github.com/fcongson/frankcongson.com\" target=\"_blank\"><strong>GitHub</strong></a>.</p><p>Want to work together? Let's connect on <a href=\"https://www.linkedin.com/in/fcongson/\" target=\"_blank\"><strong>LinkedIn</strong></a>.</p>"
+          "text": "<p>This website also gave me the perfect opportunity to practice my craft as a full stack developer. I decided to redesign and rebuild my old website. I designed this in <a href=\"https://www.figma.com/\"><strong>Figma</strong></a>, built it using <a href=\"https://www.gatsbyjs.org/\"><strong>Gatsby</strong></a> and <a href=\"https://reactjs.org/\"><strong>React</strong></a>, managed content using <a href=\"https://forestry.io/\" title=\"\"><strong>Forestry</strong></a>, and hosted on <a href=\"https://www.netlify.com/\"><strong>Netlify</strong></a>.</p><p>Check out the code on <a href=\"https://github.com/fcongson/frankcongson.com\"><strong>GitHub</strong></a>.</p><p>Want to work together? Let's connect on <a href=\"https://www.linkedin.com/in/fcongson/\"><strong>LinkedIn</strong></a>.</p>"
         },
         {
           "template": "text",
@@ -58,7 +58,14 @@
   "seo": {
     "title": "About",
     "description": "I’m a dad, husband, traveler, minimalist, full stack developer, and rock climber.",
-    "keywords": ["dad", "husband", "traveler", "minimalist", "full stack developer", "rock climber"],
+    "keywords": [
+      "dad",
+      "husband",
+      "traveler",
+      "minimalist",
+      "full stack developer",
+      "rock climber"
+    ],
     "image": "",
     "alt_text": ""
   }
