@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import React, { useState } from 'react'
+import { useState } from 'react'
 import styled from 'styled-components'
 import logo from '../../../content/images/logo.svg'
 import { Container, Section } from '../styles'
@@ -83,14 +83,6 @@ const NavigationMenu = styled.nav`
       line-height: 44px;
       margin: 0 0 8px 0;
       padding: 0 0 8px 0;
-
-      &:hover {
-        border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
-      }
-
-      &[aria-current='page'] {
-        border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
-      }
     }
   }
 `

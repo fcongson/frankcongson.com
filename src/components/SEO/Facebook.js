@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types'
-import React from 'react'
 import { Helmet } from 'react-helmet'
 
 const Facebook = ({ url, name, type, title, desc, image, locale }) => (

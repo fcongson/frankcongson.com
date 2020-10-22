@@ -1,6 +1,5 @@
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
-import React from 'react'
 import styled from 'styled-components'
 import ForestrySections from '../components/forestry'
 import Hero from '../components/Hero'

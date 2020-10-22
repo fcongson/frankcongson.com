@@ -1,7 +1,6 @@
 import { faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
-import React from 'react'
 import styled from 'styled-components'
 import logo from '../../../content/images/logo-light.svg'
 import { Container, Section } from '../styles'

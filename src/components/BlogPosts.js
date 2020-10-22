@@ -1,6 +1,5 @@
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
-import React from 'react'
 import styled from 'styled-components'
 import { Container, LinkButton, Section } from './styles'
 
