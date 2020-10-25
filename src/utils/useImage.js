@@ -25,7 +25,7 @@ export const useImage = () => {
     if (!image) return
     // get the filename from the path
     const filename = image.split('/').pop()
-    return allFile.edges.find(({ node }) => node.absolutePath.includes(filename)).node
+    return allFile.edges.find(({ node }) => node.absolutePath.split('/').pop() === filename).node
   }
 
   return getImage
