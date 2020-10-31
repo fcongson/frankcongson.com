@@ -24,7 +24,7 @@ const Header = styled.header`
     justify-content: space-between;
     margin: 0 auto 4rem auto;
 
-    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+    @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
       margin: 0 auto;
       flex-wrap: wrap;
     }
@@ -41,7 +41,7 @@ const NavigationMenu = styled.nav`
   justify-content: flex-start;
   align-items: stretch;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
     flex-direction: column;
     margin-top: 2rem;
     order: 2;
@@ -68,17 +68,17 @@ const NavigationMenu = styled.nav`
     padding: 30px 0 0 0;
     border-bottom: 2px solid transparent;
     transition: border-bottom 200ms ease-in-out;
-    color: ${(props) => props.theme.colors.greyDark40};
+    color: ${(props) => props.theme.colors.greys[0]};
 
     &:hover {
-      border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
+      border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
     }
 
     &[aria-current='page'] {
-      border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
+      border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
     }
 
-    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+    @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
       font-size: 36px;
       line-height: 44px;
       margin: 0 0 8px 0;
@@ -95,7 +95,7 @@ const NavigationToggle = styled.button`
     position: relative;
     width: 32px;
     height: 2px;
-    background-color: ${(props) => props.theme.colors.greyDark40};
+    background-color: ${(props) => props.theme.colors.greys[0]};
     transition: transform 100ms ease-in-out 0ms, top 100ms ease-in-out 100ms;
 
     &.top {
@@ -127,7 +127,7 @@ const NavigationToggle = styled.button`
     cursor: pointer;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
     display: block;
     order: 1;
   }

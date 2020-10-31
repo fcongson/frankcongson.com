@@ -14,7 +14,7 @@ const Image = styled.div`
   }
 
   .emphasized {
-    @media screen and (min-width: ${(props) => props.theme.layout.minWidthEmph}) {
+    @media screen and (min-width: ${(props) => props.theme.sizes.minWidthEmph}) {
       width: 130%;
       margin: 0 -15% 2rem -15%;
     }
@@ -24,7 +24,7 @@ const Image = styled.div`
     max-height: 100vh;
     margin-bottom: 8rem;
 
-    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
+    @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
       margin-bottom: 4rem;
     }
   }
@@ -34,7 +34,7 @@ const Image = styled.div`
     text-align: center;
     font-style: italic;
     font-size: 14px;
-    color: ${(props) => props.theme.colors.greyDark20};
+    color: ${(props) => props.theme.colors.greys[1]};
   }
 `
 

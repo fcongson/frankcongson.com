@@ -50,7 +50,7 @@ const Post = styled.article`
   margin: 0 auto 0 auto;
 
   ${Container} {
-    max-width: ${(props) => props.theme.layout.maxWidthContent};
+    max-width: ${(props) => props.theme.sizes.maxWidthContent};
   }
 `
 
@@ -60,9 +60,9 @@ const PostHeader = styled.header`
   }
 
   .back {
-    color: ${(props) => props.theme.colors.greyDark20};
+    color: ${(props) => props.theme.colors.greys[1]};
     display: block;
-    max-width: ${(props) => props.theme.layout.maxWidthContainer};
+    max-width: ${(props) => props.theme.sizes.maxWidthContainer};
     margin: 0 auto 2em auto;
     font-family: ${(props) => props.theme.fonts.sanSerif};
     font-size: 16px;
@@ -75,14 +75,14 @@ const PostHeader = styled.header`
     }
 
     a {
-      color: ${(props) => props.theme.colors.greyDark20};
+      color: ${(props) => props.theme.colors.greys[1]};
       font-weight: normal;
       padding-bottom: 0.25rem;
       border-bottom: 1px solid transparent;
       transition: border-bottom 200ms ease-in-out;
 
       &:hover {
-        border-bottom: 1px solid ${(props) => props.theme.colors.greyDark20};
+        border-bottom: 1px solid ${(props) => props.theme.colors.greys[1]};
       }
     }
   }
@@ -93,24 +93,24 @@ const PostHeader = styled.header`
 `
 
 const PostFooter = styled.footer`
-  background-color: ${(props) => props.theme.colors.greyLight40};
+  background-color: ${(props) => props.theme.colors.greys[4]};
 
   ${Container} {
     padding-top: 8rem;
     padding-bottom: 8rem;
-    max-width: ${(props) => props.theme.layout.maxWidthContent};
+    max-width: ${(props) => props.theme.sizes.maxWidthContent};
     margin-bottom: 0;
   }
 
   a {
-    color: ${(props) => props.theme.colors.greyDark40};
+    color: ${(props) => props.theme.colors.greys[0]};
     text-decoration: none;
     padding-bottom: 4px;
-    border-bottom: 2px solid ${(props) => props.theme.colors.oliveLight40};
+    border-bottom: 2px solid ${(props) => props.theme.colors.olives[2]};
     transition: border-bottom 200ms ease-in-out;
 
     &:hover {
-      border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
+      border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
     }
   }
 `

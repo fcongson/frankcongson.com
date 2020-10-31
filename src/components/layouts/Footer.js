@@ -2,14 +2,14 @@ import { faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/fre
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import styled from 'styled-components'
+import { color, flexbox, typography } from 'styled-system'
 import logo from '../../../content/images/logo-light.svg'
 import { Container, Section } from '../styles'
 
 const Footer = styled.footer`
-  background-color: ${(props) => props.theme.colors.black};
-  color: ${(props) => props.theme.colors.greyLight40};
-  text-align: center;
-  flex-shrink: 0;
+  ${color}
+  ${typography}
+  ${flexbox}
 
   a {
     padding: 0;
@@ -27,7 +27,7 @@ const Footer = styled.footer`
     min-height: 256px;
     margin: 0 auto;
 
-    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+    @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
       min-height: 128px;
     }
   }
@@ -53,10 +53,10 @@ const Footer = styled.footer`
         line-height: 20px;
         width: fit-content;
         margin: 0 0 0 2rem;
-        color: ${(props) => props.theme.colors.greyLight40};
+        color: ${(props) => props.theme.colors.greys[4]};
       }
 
-      @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+      @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
         flex-direction: column;
         align-items: flex-end;
         & a {
@@ -77,7 +77,7 @@ const Footer = styled.footer`
       & svg {
         width: 1.5rem;
         height: 1.5rem;
-        color: ${(props) => props.theme.colors.greyLight40};
+        color: ${(props) => props.theme.colors.greys[4]};
       }
     }
 
@@ -90,8 +90,15 @@ const Footer = styled.footer`
   }
 `
 
-export default ({ social }) => (
-  <Footer>
+Footer.defaultProps = {
+  bg: 'black',
+  color: 'greys.4',
+  textAlign: 'center',
+  flexShrink: 0,
+}
+
+export default ({ social, ...restProps }) => (
+  <Footer {...restProps}>
     <Section>
       <Container>
         <Link to='/'>

@@ -21,15 +21,15 @@ const PhotographyImage = styled.div`
   padding: 0 2rem;
   scroll-snap-align: center;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
     padding: 0 1rem;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
     min-height: 80vh;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
     padding: 0 0.5rem;
   }
 
@@ -37,15 +37,15 @@ const PhotographyImage = styled.div`
     display: flex;
     flex-direction: row;
 
-    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
+    @media (max-width: ${(props) => props.theme.breakpoints[2]}) {
       flex-direction: column-reverse;
     }
   }
 
   div.description {
     width: 140px;
-    background-color: ${(props) => props.theme.colors.greyDark40};
-    color: ${(props) => props.theme.colors.greyLight40};
+    background-color: ${(props) => props.theme.colors.greys[0]};
+    color: ${(props) => props.theme.colors.greys[4]};
     font-size: 36px;
     line-height: 44px;
     padding-top: 2rem;
@@ -53,7 +53,7 @@ const PhotographyImage = styled.div`
     justify-content: center;
     text-align: center;
 
-    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
+    @media (max-width: ${(props) => props.theme.breakpoints[2]}) {
       width: 100%;
       height: 64px;
       font-size: 24px;
@@ -64,10 +64,10 @@ const PhotographyImage = styled.div`
 
   div.image {
     /* width = container width - description width - padding */
-    width: calc(min(${(props) => props.theme.layout.maxWidthContainer}, 80vw) - 140px - 1rem);
+    width: calc(min(${(props) => props.theme.sizes.maxWidthContainer}, 80vw) - 140px - 1rem);
     margin: 0 0 0 1rem;
 
-    @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
+    @media (max-width: ${(props) => props.theme.breakpoints[2]}) {
       width: 80vw;
       margin: 0 0 1rem 0;
 

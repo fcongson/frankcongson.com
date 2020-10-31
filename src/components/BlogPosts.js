@@ -10,7 +10,7 @@ const PostSummaryContainer = styled.div`
 
   h2 {
     margin: 1rem 0;
-    color: ${(props) => props.theme.colors.greyDark40};
+    color: ${(props) => props.theme.colors.greys[0]};
     text-align: left;
     a {
       padding: 0;

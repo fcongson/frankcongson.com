@@ -5,10 +5,10 @@ export const GlobalStyle = createGlobalStyle`
     -webkit-font-smoothing: antialiased;
   }
   ::selection {
-    background: ${(props) => props.theme.colors.oliveLight40}; /* WebKit/Blink Browsers */
+    background: ${(props) => props.theme.colors.olives[2]}; /* WebKit/Blink Browsers */
   }
   ::-moz-selection {
-    background: ${(props) => props.theme.colors.oliveLight40}; /* Gecko Browsers */
+    background: ${(props) => props.theme.colors.olives[2]}; /* Gecko Browsers */
   }
 
   ${(props) =>
@@ -34,7 +34,7 @@ export const GlobalStyle = createGlobalStyle`
 
   body {
     padding: 0;
-    color: ${(props) => props.theme.colors.greyDark40};
+    color: ${(props) => props.theme.colors.greys[0]};
     line-height: 1.7;
     font-family: ${(props) => props.theme.fonts.sansSerif};
     font-size: 16px;
@@ -48,15 +48,15 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   a {
-    color: ${(props) => props.theme.colors.greyDark40};
+    color: ${(props) => props.theme.colors.greys[0]};
     text-decoration: none;
     font-weight: 600;
     padding-bottom: 4px;
-    border-bottom: 2px solid ${(props) => props.theme.colors.oliveLight40};
+    border-bottom: 2px solid ${(props) => props.theme.colors.olives[2]};
     transition: border-bottom 200ms ease-in-out;
 
     &:hover {
-      border-bottom: 2px solid ${(props) => props.theme.colors.greyDark40};
+      border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
     }
   }
 
@@ -104,7 +104,7 @@ export const GlobalStyle = createGlobalStyle`
 
   code,
   pre {
-    font-family: 'silkamono', monospace;
+    font-family: ${(props) => props.theme.fonts.monospace};
   }
 
   pre {
@@ -122,7 +122,7 @@ export const GlobalStyle = createGlobalStyle`
     font-style: italic;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletPortrait}) {
+  @media (max-width: ${(props) => props.theme.breakpoints[2]}) {
     h1 {
       font-size: 36px;
       line-height: 44px;

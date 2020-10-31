@@ -10,7 +10,7 @@ import { useImage } from '../utils/useImage'
 
 const AboutContainer = styled.div`
   ${Container} {
-    max-width: ${(props) => props.theme.layout.maxWidthContent};
+    max-width: ${(props) => props.theme.sizes.maxWidthContent};
   }
 
   /* margin: 0 auto 4rem auto; */
