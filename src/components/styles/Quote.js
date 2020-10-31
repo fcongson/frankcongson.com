@@ -3,24 +3,24 @@ import styled from 'styled-components'
 export const Quote = styled.blockquote`
   margin-bottom: 2rem;
   padding-left: 1rem;
-  border-left: 4px solid ${(props) => props.theme.colors.greyDark40};
+  border-left: 4px solid ${(props) => props.theme.colors.greys[0]};
   display: inline-block;
   font-family: ${(props) => props.theme.fonts.serif};
   font-style: italic;
   font-size: 24px;
-  color: ${(props) => props.theme.colors.greyDark20};
+  color: ${(props) => props.theme.colors.greys[1]};
 
-  @media screen and (max-width: ${(props) => props.theme.breakpoints.maxWidthTabletLandscape}) {
-    border-left: 2px solid ${(props) => props.theme.colors.greyDark40};
+  @media screen and (max-width: ${(props) => props.theme.breakpoints[3]}) {
+    border-left: 2px solid ${(props) => props.theme.colors.greys[0]};
     font-size: 16px;
   }
 
-  @media screen and (min-width: ${(props) => props.theme.layout.minWidthEmph}) {
+  @media screen and (min-width: ${(props) => props.theme.sizes.minWidthEmph}) {
     width: 130%;
     margin: 0 -15% 2rem -15%;
     font-size: 24px;
     padding-left: 2rem;
-    border-left: 4px solid ${(props) => props.theme.colors.greyDark40};
+    border-left: 4px solid ${(props) => props.theme.colors.greys[0]};
   }
 
   & > :first-child:before {

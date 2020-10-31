@@ -25,7 +25,7 @@ const FeaturedSectionContainer = styled.div`
   ${(props) =>
     props.colorAsBackground &&
     `
-    background-color: ${props.backgroundColor || props.theme.colors.greyLight40};
+    background-color: ${props.backgroundColor || props.theme.colors.greys[4]};
     
     div.image {
       padding-bottom: 4rem;
@@ -35,7 +35,7 @@ const FeaturedSectionContainer = styled.div`
       padding-top: 12rem;
       padding-bottom: 12rem;
       
-      @media (max-width: ${props.theme.breakpoints.maxWidthTabletLandscape}) {
+      @media (max-width: ${props.theme.breakpoints[3]}) {
         padding-top: 8rem;
         padding-bottom: 8rem;
       }
@@ -43,7 +43,7 @@ const FeaturedSectionContainer = styled.div`
       div:not(:last-of-type) {
         margin-bottom: 8rem;
 
-        @media (max-width: ${props.theme.breakpoints.maxWidthMobileLandscape}) {
+        @media (max-width: ${props.theme.breakpoints[1]}) {
           margin-bottom: 4rem;
         }
       }

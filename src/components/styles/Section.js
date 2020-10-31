@@ -1,9 +1,9 @@
 import styled from 'styled-components'
+import { layout, space } from 'styled-system'
 
 export const Section = styled.section`
-  width: 100%;
-  max-width: ${(props) => props.theme.layout.maxWidthSection};
-  margin: 0 auto;
+  ${space}
+  ${layout}
 
   /* Fallback */
   padding: 0 1rem;
@@ -16,3 +16,8 @@ export const Section = styled.section`
   padding-left: calc(max(1rem, env(safe-area-inset-left)));
   padding-right: calc(max(1rem, env(safe-area-inset-right)));
 `
+
+Section.defaultProps = {
+  maxWidth: 'maxWidthSection',
+  margin: '0 auto',
+}

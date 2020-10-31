@@ -1,10 +1,13 @@
 import styled from 'styled-components'
+import { layout, space } from 'styled-system'
 
 export const Container = styled.div`
-  max-width: ${(props) => props.theme.layout.maxWidthContainer};
-  margin: 0 auto 8rem auto;
-
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
-    margin: 0 auto 4rem auto;
-  }
+  ${space}
+  ${layout}
 `
+
+Container.defaultProps = {
+  maxWidth: 'maxWidthContainer',
+  margin: '0 auto',
+  marginBottom: [4, null, 5, null],
+}

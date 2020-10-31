@@ -45,7 +45,7 @@ export const styleGuideQuery = graphql`
 const StyleGuideContainer = styled(Container)`
   margin: 8rem auto;
 
-  @media (max-width: ${(props) => props.theme.breakpoints.maxWidthMobileLandscape}) {
+  @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
     margin: 4rem auto;
   }
 `
@@ -239,14 +239,14 @@ export default ({ data }) => {
           </h2>
           <p>
             The <code>{'<Section />'}</code> component creates a full width wrapper around body content with a max width
-            of <code>{`${theme.layout.maxWidthSection}`}</code>.
+            of <code>{`${theme.sizes.maxWidthSection}`}</code>.
           </p>
           <h2>
             <code>{'<Container />'}</code>
           </h2>
           <p>
             The <code>{'<Container />'}</code> component creates a responsive wrapper around body content with a max
-            width of <code>{`${theme.layout.maxWidthContainer}`}</code>. This component is used within the{' '}
+            width of <code>{`${theme.sizes.maxWidthContainer}`}</code>. This component is used within the{' '}
             <code>{'<Section />'}</code> component.
           </p>
         </Container>
@@ -311,7 +311,7 @@ export default ({ data }) => {
       <FeaturedSection>
         <p>Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
-      <FeaturedSection backgroundColor={theme.colors.oliveLight40}>
+      <FeaturedSection backgroundColor={theme.colors.olives[2]}>
         <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
         <p>Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
