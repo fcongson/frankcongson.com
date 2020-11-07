@@ -9,5 +9,5 @@ export const Container = styled.div`
 Container.defaultProps = {
   maxWidth: 'maxWidthContainer',
   margin: '0 auto',
-  marginBottom: [4, null, 5, null],
+  marginBottom: [5, null, 6, null],
 }
