@@ -8,9 +8,9 @@ export const PageHeader = styled.h1`
 
 PageHeader.defaultProps = {
   fontFamily: 'sansSerif',
-  fontWeight: 'bold',
+  fontWeight: 'header',
   fontSize: [6, null, 7, null, 8],
-  lineHeight: [3, null, 4, null, 5],
+  lineHeight: [6, null, 7, null, 8],
   textAlign: 'center',
   margin: '0 auto',
   marginBottom: [4, null, null, null, 5],
