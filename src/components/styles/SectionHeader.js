@@ -8,9 +8,9 @@ export const SectionHeader = styled.h2`
 
 SectionHeader.defaultProps = {
   fontFamily: 'sansSerif',
-  fontWeight: 'bold',
+  fontWeight: 'header',
   fontSize: [5, null, 6, null, 7],
-  lineHeight: [2, null, 3, null, 4],
+  lineHeight: [5, null, 6, null, 7],
   textAlign: 'center',
   margin: '0 auto',
   marginBottom: [4, null, null, null, 5],

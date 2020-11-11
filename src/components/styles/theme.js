@@ -32,8 +32,10 @@ fontSizes.body = fontSizes[2]
 
 const fontWeights = [400, 600, 700]
 fontWeights.body = fontWeights[0]
+fontWeights.header = fontWeights[2]
+fontWeights.link = fontWeights[1]
 
-const lineHeights = ['20px', '29px', '44px', '66px', '99px', '148px']
+const lineHeights = ['15px', '17px', '20px', '24px', '29px', '44px', '66px', '99px', '148px']
 lineHeights.body = 1.7
 
 const space = [0, 4, 8, 16, 32, 64, 128]
