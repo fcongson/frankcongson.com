@@ -5,7 +5,7 @@ const HeroContainer = styled.div`
   overflow: hidden;
   margin: 0 auto 8rem auto;
 
-  @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+  ${(props) => props.theme.mediaQueries.small} {
     margin: 0 auto 4rem auto;
   }
 `

@@ -24,7 +24,7 @@ const Image = styled.div`
     max-height: 100vh;
     margin-bottom: 8rem;
 
-    @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+    ${(props) => props.theme.mediaQueries.small} {
       margin-bottom: 4rem;
     }
   }

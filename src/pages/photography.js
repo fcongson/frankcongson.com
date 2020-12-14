@@ -21,15 +21,15 @@ const PhotographyImage = styled.div`
   padding: 0 2rem;
   scroll-snap-align: center;
 
-  @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+  ${(props) => props.theme.mediaQueries.large} {
     padding: 0 1rem;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+  ${(props) => props.theme.mediaQueries.large} {
     min-height: 80vh;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+  ${(props) => props.theme.mediaQueries.small} {
     padding: 0 0.5rem;
   }
 
@@ -37,7 +37,7 @@ const PhotographyImage = styled.div`
     display: flex;
     flex-direction: row;
 
-    @media (max-width: ${(props) => props.theme.breakpoints[2]}) {
+    ${(props) => props.theme.mediaQueries.medium} {
       flex-direction: column-reverse;
     }
   }
@@ -53,7 +53,7 @@ const PhotographyImage = styled.div`
     justify-content: center;
     text-align: center;
 
-    @media (max-width: ${(props) => props.theme.breakpoints[2]}) {
+    ${(props) => props.theme.mediaQueries.medium} {
       width: 100%;
       height: 64px;
       font-size: 24px;
@@ -67,7 +67,7 @@ const PhotographyImage = styled.div`
     width: calc(min(${(props) => props.theme.sizes.maxWidthContainer}, 80vw) - 140px - 1rem);
     margin: 0 0 0 1rem;
 
-    @media (max-width: ${(props) => props.theme.breakpoints[2]}) {
+    ${(props) => props.theme.mediaQueries.medium} {
       width: 80vw;
       margin: 0 0 1rem 0;
 
