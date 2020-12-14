@@ -1,9 +1,13 @@
 const breakpoints = ['320px', '568px', '768px', '992px']
+breakpoints.mobilePortrait = breakpoints[0]
+breakpoints.mobileLandscape = breakpoints[1]
+breakpoints.tabletPortrait = breakpoints[2]
+breakpoints.tabletLandscape = breakpoints[3]
 const mediaQueries = {
-  xsmall: `@media screen and (max-width: ${breakpoints[0]})`,
-  small: `@media screen and (max-width: ${breakpoints[1]})`,
-  medium: `@media screen and (max-width: ${breakpoints[2]})`,
-  large: `@media screen and (max-width: ${breakpoints[3]})`,
+  xsmall: `@media screen and (max-width: ${breakpoints.mobilePortrait})`,
+  small: `@media screen and (max-width: ${breakpoints.mobileLandscape})`,
+  medium: `@media screen and (max-width: ${breakpoints.tabletPortrait})`,
+  large: `@media screen and (max-width: ${breakpoints.tabletLandscape})`,
 }
 
 const colors = {
@@ -40,10 +44,11 @@ lineHeights.body = 1.7
 
 const space = [0, 4, 8, 16, 32, 64, 128]
 
+const MAX_WIDTH_CONTAINER = 1120
 const sizes = {
   maxWidthSection: '1800px',
-  maxWidthContainer: '1120px',
-  minWidthEmph: '1456px', // maxWidthContainer * 1.3
+  maxWidthContainer: `${MAX_WIDTH_CONTAINER}px`,
+  minWidthEmph: `${MAX_WIDTH_CONTAINER * 1.3}px`,
   maxWidthContent: '800px',
 }
 

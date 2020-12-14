@@ -122,7 +122,7 @@ export const GlobalStyle = createGlobalStyle`
     font-style: italic;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints[2]}) {
+  ${(props) => props.theme.mediaQueries.medium} {
     h1 {
       font-size: 36px;
       line-height: 44px;

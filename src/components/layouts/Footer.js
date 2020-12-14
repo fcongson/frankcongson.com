@@ -27,7 +27,7 @@ const Footer = styled.footer`
     min-height: 256px;
     margin: 0 auto;
 
-    @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+    ${(props) => props.theme.mediaQueries.large} {
       min-height: 128px;
     }
   }
@@ -56,7 +56,7 @@ const Footer = styled.footer`
         color: ${(props) => props.theme.colors.greys[4]};
       }
 
-      @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+      ${(props) => props.theme.mediaQueries.large} {
         flex-direction: column;
         align-items: flex-end;
         & a {

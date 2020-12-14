@@ -45,7 +45,7 @@ export const styleGuideQuery = graphql`
 const StyleGuideContainer = styled(Container)`
   margin: 8rem auto;
 
-  @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+  ${(props) => props.theme.mediaQueries.small} {
     margin: 4rem auto;
   }
 `

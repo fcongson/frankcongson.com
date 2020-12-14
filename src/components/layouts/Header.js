@@ -24,7 +24,7 @@ const Header = styled.header`
     justify-content: space-between;
     margin: 0 auto 4rem auto;
 
-    @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+    ${(props) => props.theme.mediaQueries.large} {
       margin: 0 auto;
       flex-wrap: wrap;
     }
@@ -41,7 +41,7 @@ const NavigationMenu = styled.nav`
   justify-content: flex-start;
   align-items: stretch;
 
-  @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+  ${(props) => props.theme.mediaQueries.large} {
     flex-direction: column;
     margin-top: 2rem;
     order: 2;
@@ -78,7 +78,7 @@ const NavigationMenu = styled.nav`
       border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
     }
 
-    @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+    ${(props) => props.theme.mediaQueries.large} {
       font-size: 36px;
       line-height: 44px;
       margin: 0 0 8px 0;
@@ -127,7 +127,7 @@ const NavigationToggle = styled.button`
     cursor: pointer;
   }
 
-  @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+  ${(props) => props.theme.mediaQueries.large} {
     display: block;
     order: 1;
   }

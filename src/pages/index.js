@@ -12,7 +12,7 @@ const HomeContent = styled.div`
   flex-direction: row;
   justify-content: center;
 
-  @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+  ${(props) => props.theme.mediaQueries.small} {
     flex-direction: column;
   }
 
@@ -27,13 +27,13 @@ const HomeContent = styled.div`
       text-align: right;
       margin: 0 auto 4rem auto;
 
-      @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+      ${(props) => props.theme.mediaQueries.large} {
         font-size: 54px;
         line-height: 66px;
         margin: 0 auto 2rem auto;
       }
 
-      @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+      ${(props) => props.theme.mediaQueries.small} {
         font-size: 36px;
         line-height: 44px;
         text-align: center;
@@ -47,22 +47,22 @@ const HomeContent = styled.div`
       margin: 0 auto 4rem auto;
       padding: 0;
 
-      @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+      ${(props) => props.theme.mediaQueries.large} {
         font-size: 16px;
         margin: 0 auto 2rem auto;
         padding: 0 1rem 0 1rem;
       }
 
-      @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+      ${(props) => props.theme.mediaQueries.small} {
         text-align: center;
       }
     }
 
-    @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+    ${(props) => props.theme.mediaQueries.large} {
       padding-top: 4rem;
     }
 
-    @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+    ${(props) => props.theme.mediaQueries.small} {
       width: 100%;
       padding-top: 0;
     }
@@ -73,12 +73,12 @@ const HomeContent = styled.div`
     height: 598px;
     margin-left: 8rem;
 
-    @media (max-width: ${(props) => props.theme.breakpoints[3]}) {
+    ${(props) => props.theme.mediaQueries.large} {
       height: 448px;
       margin-left: 2rem;
     }
 
-    @media (max-width: ${(props) => props.theme.breakpoints[1]}) {
+    ${(props) => props.theme.mediaQueries.small} {
       width: 100%;
       height: 100%;
       margin-left: 0;
