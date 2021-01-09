@@ -1,6 +1,6 @@
 import * as Sentry from '@sentry/browser'
 import { graphql, useStaticQuery } from 'gatsby'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import styled, { ThemeProvider } from 'styled-components'
 import '../../stylesheets/resetr.css'

@@ -1,3 +1,4 @@
+import React from 'react'
 import CallToAction from '../CallToAction'
 import FeaturedSection from '../FeaturedSection'
 import ImageCaption from '../ImageCaption'

@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import logo from '../../../content/images/logo.svg'
 import { Container, Section } from '../styles'

@@ -1,4 +1,5 @@
 import Img from 'gatsby-image'
+import React from 'react'
 import styled from 'styled-components'
 import about from '../../content/data/about.json'
 import ForestrySections from '../components/forestry'

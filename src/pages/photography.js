@@ -1,4 +1,5 @@
 import Img from 'gatsby-image'
+import React from 'react'
 import styled from 'styled-components'
 import photography from '../../content/data/photography.json'
 import Hero from '../components/Hero'
