@@ -51,7 +51,7 @@ const StyleGuideContainer = styled(Container)`
   }
 `
 
-export default ({ data }) => {
+const StyleGuide = ({ data }) => {
   const imageSharp = data.file
   const image = '/content/images/sample-image.jpg'
   const altText = 'Sample image'
@@ -425,3 +425,5 @@ export default ({ data }) => {
     </Layout>
   )
 }
+
+export default StyleGuide

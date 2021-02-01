@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Layout from '../components/layouts'
 import { PageHeader } from '../components/styles'
 
-const NotFound = styled.div`
+const NotFoundContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,14 +22,16 @@ const NotFound = styled.div`
   }
 `
 
-export default () => (
+const NotFound = () => (
   <Layout>
-    <NotFound>
+    <NotFoundContent>
       <PageHeader>404</PageHeader>
       <h2>Page not found</h2>
       <p>
         <a href='/'>Return to homepage</a>
       </p>
-    </NotFound>
+    </NotFoundContent>
   </Layout>
 )
+
+export default NotFound

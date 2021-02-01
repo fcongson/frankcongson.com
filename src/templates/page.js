@@ -34,13 +34,13 @@ export const pageQuery = graphql`
   }
 `
 
-const Page = styled.div`
+const PageContent = styled.div`
   ${Container} {
     max-width: ${(props) => props.theme.sizes.maxWidthContent};
   }
 `
 
-export default ({ data }) => {
+const Page = ({ data }) => {
   const { slug, seo, hero_image, page_header, sections } = data.pagesJson
   const getImage = useImage()
   const heroImage = getImage(hero_image.image)
@@ -68,7 +68,7 @@ export default ({ data }) => {
           content={<PageHeader>{page_header}</PageHeader>}
         />
       )}
-      <Page>
+      <PageContent>
         {!hero_image && (
           <Section>
             <Container>
@@ -77,7 +77,9 @@ export default ({ data }) => {
           </Section>
         )}
         <ForestrySections sections={sections} />
-      </Page>
+      </PageContent>
     </Layout>
   )
 }
+
+export default Page

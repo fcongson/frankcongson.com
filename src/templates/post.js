@@ -47,7 +47,7 @@ export const blogPostQuery = graphql`
   }
 `
 
-const Post = styled.article`
+const PostContent = styled.article`
   margin: 0 auto 0 auto;
 
   ${Container} {
@@ -116,7 +116,7 @@ const PostFooter = styled.footer`
   }
 `
 
-export default ({ data }) => {
+const Post = ({ data }) => {
   const {
     frontmatter: { title, description, keywords, slug, featured_image, seo },
     body,
@@ -132,7 +132,7 @@ export default ({ data }) => {
         pathname={`/${slug}`}
         article
       />
-      <Post>
+      <PostContent>
         <PostHeader>
           <Section>
             <Container>
@@ -160,7 +160,9 @@ export default ({ data }) => {
             </Container>
           </Section>
         </PostFooter>
-      </Post>
+      </PostContent>
     </Layout>
   )
 }
+
+export default Post
