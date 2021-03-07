@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import logo from '../../../content/images/logo.svg'
 import { Container, Section } from '../styles'
 
-const Header = styled.header`
+const HeaderStyles = styled.header`
   display: block;
   position: ${(props) => (props.overlay ? 'absolute' : 'relative')};
   width: 100%;
@@ -133,10 +133,10 @@ const NavigationToggle = styled.button`
   }
 `
 
-export default ({ overlay }) => {
+const Header = ({ overlay }) => {
   const [open, setOpen] = useState(false)
   return (
-    <Header overlay={overlay}>
+    <HeaderStyles overlay={overlay}>
       <Section>
         <Container>
           <div className='logo-container'>
@@ -167,6 +167,8 @@ export default ({ overlay }) => {
           </NavigationToggle>
         </Container>
       </Section>
-    </Header>
+    </HeaderStyles>
   )
 }
+
+export default Header

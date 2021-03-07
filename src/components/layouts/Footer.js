@@ -7,7 +7,7 @@ import { color, flexbox, typography } from 'styled-system'
 import logo from '../../../content/images/logo-light.svg'
 import { Container, Section } from '../styles'
 
-const Footer = styled.footer`
+const FooterStyles = styled.footer`
   ${color}
   ${typography}
   ${flexbox}
@@ -91,15 +91,15 @@ const Footer = styled.footer`
   }
 `
 
-Footer.defaultProps = {
+FooterStyles.defaultProps = {
   bg: 'black',
   color: 'greys.4',
   textAlign: 'center',
   flexShrink: 0,
 }
 
-export default ({ social, ...restProps }) => (
-  <Footer {...restProps}>
+const Footer = ({ social, ...restProps }) => (
+  <FooterStyles {...restProps}>
     <Section>
       <Container>
         <Link to='/'>
@@ -133,5 +133,7 @@ export default ({ social, ...restProps }) => (
         </div>
       </Container>
     </Section>
-  </Footer>
+  </FooterStyles>
 )
+
+export default Footer

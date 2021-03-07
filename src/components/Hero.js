@@ -25,9 +25,11 @@ const HeroContent = styled.div`
   overflow: hidden;
 `
 
-export default ({ image, content }) => (
+const Hero = ({ image, content }) => (
   <HeroContainer>
     {!!image ? <HeroImage>{image}</HeroImage> : null}
     {!!content ? <HeroContent>{content}</HeroContent> : null}
   </HeroContainer>
 )
+
+export default Hero
