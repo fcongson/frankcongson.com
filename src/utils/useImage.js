@@ -8,9 +8,7 @@ const allImagesQuery = graphql`
           absolutePath
           publicURL
           childImageSharp {
-            fluid(maxWidth: 1120, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
         }
       }

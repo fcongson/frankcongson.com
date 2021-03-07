@@ -1,4 +1,4 @@
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import { useImage } from '../utils/useImage'
@@ -76,11 +76,11 @@ const ImageBackground = ({ imageAlt, imageSharp, children }) => {
     <FeaturedSectionContainer imageAsBackground>
       {!!imageSharp && (
         <div className='image'>
-          <Img
-            fluid={imageSharp.childImageSharp.fluid}
+          <GatsbyImage
+            image={imageSharp.childImageSharp.gatsbyImageData}
             alt={imageAlt}
             style={{ height: '100%' }}
-            imgStyle={{ objectPosition: 'center center' }}
+            objectPosition='center center'
           />
         </div>
       )}

@@ -1,5 +1,5 @@
 import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import BlogPosts from '../components/BlogPosts'
@@ -14,9 +14,7 @@ export const styleGuideQuery = graphql`
   query styleGuideQuery {
     file(relativePath: { eq: "sample-image.jpg" }) {
       childImageSharp {
-        fluid(maxWidth: 1120, quality: 100) {
-          ...GatsbyImageSharpFluid
-        }
+        gatsbyImageData(quality: 100, layout: FULL_WIDTH)
       }
     }
     allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 3, skip: 0) {
@@ -31,9 +29,7 @@ export const styleGuideQuery = graphql`
             keywords
             featured_image {
               childImageSharp {
-                fluid(maxWidth: 1120, quality: 100) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
           }
@@ -313,7 +309,7 @@ const StyleGuide = ({ data }) => {
         <p>Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
       <FeaturedSection backgroundColor={theme.colors.olives[2]}>
-        <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
+        <GatsbyImage image={imageSharp.childImageSharp.gatsbyImageData} alt={altText} />
         <p>Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
       <FeaturedSection>
@@ -373,11 +369,10 @@ const StyleGuide = ({ data }) => {
       </Section>
       <Hero
         image={
-          <Img
-            fluid={imageSharp.childImageSharp.fluid}
+          <GatsbyImage
+            image={imageSharp.childImageSharp.gatsbyImageData}
             alt={'Alt text'}
-            style={{ height: '100%' }}
-            imgStyle={{ opacity: 0.5 }}
+            style={{ height: '100%', opacity: 0.7 }}
           />
         }
         content={<PageHeader>Lorem Ipsum</PageHeader>}

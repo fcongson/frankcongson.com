@@ -21,6 +21,7 @@ module.exports = {
         icon: `content/images/webclip.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-json`,

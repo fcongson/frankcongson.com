@@ -1,5 +1,5 @@
 import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import { Container, LinkButton, Section } from './styles'
@@ -32,7 +32,7 @@ const PostSummary = ({ post }) => {
         <Container>
           {!!featured_image && (
             <Link to={to}>
-              <Img fluid={featured_image.childImageSharp.fluid} alt={title} />
+              <GatsbyImage image={featured_image.childImageSharp.gatsbyImageData} alt={title} />
             </Link>
           )}
           <h2>

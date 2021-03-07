@@ -1,4 +1,4 @@
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import about from '../../content/data/about.json'
@@ -34,11 +34,10 @@ const About = () => {
       />
       <Hero
         image={
-          <Img
-            fluid={heroImage.childImageSharp.fluid}
+          <GatsbyImage
+            image={heroImage.childImageSharp.gatsbyImageData}
             alt={about.hero_image.alt_text}
-            style={{ height: '100%' }}
-            imgStyle={{ opacity: 0.25 }}
+            style={{ height: '100%', opacity: 0.4 }}
           />
         }
         content={<PageHeader>{about.page_header}</PageHeader>}

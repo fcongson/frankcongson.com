@@ -1,4 +1,4 @@
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import photography from '../../content/data/photography.json'
@@ -96,11 +96,10 @@ const Photography = () => {
       />
       <Hero
         image={
-          <Img
-            fluid={heroImage.childImageSharp.fluid}
+          <GatsbyImage
+            image={heroImage.childImageSharp.gatsbyImageData}
             alt={photography.hero_image.alt_text}
-            style={{ height: '100%' }}
-            imgStyle={{ opacity: 0.5 }}
+            style={{ height: '100%', opacity: 0.7 }}
           />
         }
         content={<PageHeader>{photography.page_header}</PageHeader>}
@@ -115,7 +114,7 @@ const Photography = () => {
                   {index + 1} / {images.length}
                 </div>
                 <div className='image'>
-                  <Img fluid={imageSharp.childImageSharp.fluid} alt={alt_text} />
+                  <GatsbyImage image={imageSharp.childImageSharp.gatsbyImageData} alt={alt_text} />
                 </div>
               </Container>
             </PhotographyImage>

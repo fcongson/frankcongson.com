@@ -1,6 +1,6 @@
 import { MDXProvider } from '@mdx-js/react'
 import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import styled from 'styled-components'
@@ -37,9 +37,7 @@ export const blogPostQuery = graphql`
         slug
         featured_image {
           childImageSharp {
-            fluid(maxWidth: 1120, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
         }
       }
@@ -140,7 +138,7 @@ const Post = ({ data }) => {
                 <Link to='/blog'>back to list</Link>
               </div>
               <h1>{title ? title : 'Untitled'}</h1>
-              {!!featured_image && <Img fluid={featured_image.childImageSharp.fluid} alt={title} />}
+              {!!featured_image && <GatsbyImage image={featured_image.childImageSharp.gatsbyImageData} alt={title} />}
             </Container>
           </Section>
         </PostHeader>

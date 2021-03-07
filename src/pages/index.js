@@ -1,4 +1,4 @@
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import home from '../../content/data/home.json'
@@ -97,11 +97,11 @@ const Home = () => {
     <Layout overlayHeader>
       <Hero
         image={
-          <Img
-            fluid={heroImage.childImageSharp.fluid}
+          <GatsbyImage
+            image={heroImage.childImageSharp.gatsbyImageData}
             alt={home.hero_image.alt_text}
             style={{ height: '100%' }}
-            imgStyle={{ objectPosition: 'center bottom' }}
+            objectPosition='center bottom'
           />
         }
       />
@@ -114,11 +114,11 @@ const Home = () => {
             </div>
             {!!mainContentImage && (
               <div className='image'>
-                <Img
-                  fluid={mainContentImage.childImageSharp.fluid}
+                <GatsbyImage
+                  image={mainContentImage.childImageSharp.gatsbyImageData}
                   alt={home.main_content.alt_text}
                   style={{ height: '100%' }}
-                  imgStyle={{ objectPosition: 'center center' }}
+                  objectPosition='center center'
                 />
               </div>
             )}

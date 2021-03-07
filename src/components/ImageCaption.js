@@ -1,4 +1,4 @@
-import Img from 'gatsby-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import { useImage } from '../utils/useImage'
@@ -45,7 +45,7 @@ const DefaultImage = ({ imageSharp, altText, caption }) => {
       <Section>
         <Container>
           <figure className='block-img'>
-            <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
+            <GatsbyImage image={imageSharp.childImageSharp.gatsbyImageData} alt={altText} />
             {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
           </figure>
         </Container>
@@ -60,7 +60,7 @@ const EmphasizedImage = ({ imageSharp, altText, caption }) => {
       <Section>
         <Container>
           <figure className='block-img emphasized'>
-            <Img fluid={imageSharp.childImageSharp.fluid} alt={altText} />
+            <GatsbyImage image={imageSharp.childImageSharp.gatsbyImageData} alt={altText} />
             {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
           </figure>
         </Container>
@@ -73,11 +73,11 @@ const FullWidthImage = ({ imageSharp, altText, caption }) => {
   return (
     <Image>
       <figure className='block-img full-width'>
-        <Img
-          fluid={imageSharp.childImageSharp.fluid}
+        <GatsbyImage
+          image={imageSharp.childImageSharp.gatsbyImageData}
           alt={altText}
           style={{ maxHeight: '100vh' }}
-          imgStyle={{ objectPosition: 'center center' }}
+          objectPosition='center center'
         />
         {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
       </figure>
