@@ -1,7 +1,7 @@
 ---
 label: pages
 hide_body: true
-display_field: slug
+display_field: page_header
 fields:
 - name: slug
   type: text
