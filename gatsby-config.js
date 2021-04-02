@@ -73,7 +73,6 @@ module.exports = {
           `${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`, // Google Analytics / GA
         ],
         gtagConfig: {
-          optimize_id: 'OPT_CONTAINER_ID',
           anonymize_ip: true,
           cookie_expires: 0,
         },
