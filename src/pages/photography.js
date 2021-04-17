@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import photography from '../../content/data/photography.json'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
-import SEO from '../components/SEO'
+import Seo from '../components/SEO'
 import { Container, PageHeader } from '../components/styles'
 import { useImage } from '../utils/useImage'
 
@@ -39,7 +39,7 @@ const Photography = () => {
 
   return (
     <Layout overlayHeader>
-      <SEO
+      <Seo
         title={seo?.title}
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}

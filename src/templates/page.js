@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import ForestrySections from '../components/forestry'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
-import SEO from '../components/SEO'
+import Seo from '../components/SEO'
 import { Container, PageHeader, Section } from '../components/styles'
 import { useImage } from '../utils/useImage'
 
@@ -48,7 +48,7 @@ const Page = ({ data }) => {
 
   return (
     <Layout overlayHeader={!!hero_image}>
-      <SEO
+      <Seo
         title={seo?.title}
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}

@@ -6,7 +6,7 @@ import blog from '../../content/data/blog.json'
 import BlogPosts from '../components/BlogPosts'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
-import SEO from '../components/SEO'
+import Seo from '../components/SEO'
 import { Container, PageHeader, Section } from '../components/styles'
 import { useImage } from '../utils/useImage'
 
@@ -89,7 +89,7 @@ const Blog = ({ data: { allMdx }, pageContext: { numPages, currentPage } }) => {
 
   return (
     <Layout overlayHeader>
-      <SEO
+      <Seo
         title={seo?.title}
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}

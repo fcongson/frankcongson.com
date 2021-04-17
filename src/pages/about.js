@@ -5,7 +5,7 @@ import about from '../../content/data/about.json'
 import ForestrySections from '../components/forestry'
 import Hero from '../components/Hero'
 import Layout from '../components/layouts'
-import SEO from '../components/SEO'
+import Seo from '../components/SEO'
 import { Container, PageHeader } from '../components/styles'
 import { useImage } from '../utils/useImage'
 
@@ -25,7 +25,7 @@ const About = () => {
 
   return (
     <Layout overlayHeader>
-      <SEO
+      <Seo
         title={seo?.title}
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}

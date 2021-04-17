@@ -5,7 +5,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import React from 'react'
 import styled from 'styled-components'
 import Layout from '../components/layouts'
-import SEO from '../components/SEO'
+import Seo from '../components/SEO'
 import { Container, Quote, Section } from '../components/styles'
 
 const shortcodes = {
@@ -122,7 +122,7 @@ const Post = ({ data }) => {
 
   return (
     <Layout>
-      <SEO
+      <Seo
         title={seo.title || title}
         desc={seo.description || description}
         keywords={[...(seo?.keywords ?? []), ...(keywords ?? [])].join(', ')}

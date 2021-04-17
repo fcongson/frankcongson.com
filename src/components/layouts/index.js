@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import styled, { ThemeProvider } from 'styled-components'
 import '../../stylesheets/resetr.css'
-import SEO from '../SEO'
+import Seo from '../SEO'
 import theme, { GlobalStyle } from '../styles'
 import Footer from './Footer'
 import Header from './Header'
@@ -66,7 +66,7 @@ const Layout = ({ overlayHeader, children }) => {
           rel='stylesheet'
           type='text/css'></link>
       </Helmet>
-      <SEO />
+      <Seo />
       <ThemeProvider theme={theme}>
         <GlobalStyle noFocusOutline={noFocusOutline} />
         <Header overlay={overlayHeader} />
