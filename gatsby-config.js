@@ -18,7 +18,7 @@ module.exports = {
         background_color: `#222222`,
         theme_color: `#222222`,
         display: `minimal-ui`,
-        icon: `content/images/webclip.png`, // This path is relative to the root of the site.
+        icon: `content/images/webclip.png`,
       },
     },
     `gatsby-plugin-image`,
@@ -69,9 +69,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
-        trackingIds: [
-          `${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`, // Google Analytics / GA
-        ],
+        trackingIds: [`${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`],
         gtagConfig: {
           anonymize_ip: true,
           cookie_expires: 0,
@@ -82,8 +80,5 @@ module.exports = {
         },
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // 'gatsby-plugin-offline',
   ],
 }
