@@ -1,3 +1,11 @@
+const MAX_WIDTH_CONTAINER = 1120
+const sizes = {
+  maxWidthSection: '1800px',
+  maxWidthContainer: `${MAX_WIDTH_CONTAINER}px`,
+  minWidthEmph: `${MAX_WIDTH_CONTAINER * 1.3}px`,
+  maxWidthContent: '800px',
+}
+
 const breakpoints = ['320px', '568px', '768px', '992px']
 breakpoints.mobilePortrait = breakpoints[0]
 breakpoints.mobileLandscape = breakpoints[1]
@@ -8,6 +16,7 @@ const mediaQueries = {
   small: `@media screen and (max-width: ${breakpoints.mobileLandscape})`,
   medium: `@media screen and (max-width: ${breakpoints.tabletPortrait})`,
   large: `@media screen and (max-width: ${breakpoints.tabletLandscape})`,
+  emphasized: `@media screen and (min-width: ${sizes.minWidthEmph})`,
 }
 
 const colors = {
@@ -43,14 +52,6 @@ const lineHeights = ['15px', '17px', '20px', '24px', '29px', '44px', '66px', '99
 lineHeights.body = 1.7
 
 const space = [0, 4, 8, 16, 32, 64, 128]
-
-const MAX_WIDTH_CONTAINER = 1120
-const sizes = {
-  maxWidthSection: '1800px',
-  maxWidthContainer: `${MAX_WIDTH_CONTAINER}px`,
-  minWidthEmph: `${MAX_WIDTH_CONTAINER * 1.3}px`,
-  maxWidthContent: '800px',
-}
 
 /**
  * [Styled System Theme Specification](https://styled-system.com/theme-specification)

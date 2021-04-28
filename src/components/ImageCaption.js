@@ -15,7 +15,7 @@ const Image = styled.div`
   }
 
   .emphasized {
-    @media screen and (min-width: ${(props) => props.theme.sizes.minWidthEmph}) {
+    ${(props) => props.theme.mediaQueries.emphasized} {
       width: 130%;
       margin: 0 -15% 2rem -15%;
     }

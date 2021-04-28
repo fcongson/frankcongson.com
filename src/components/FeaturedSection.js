@@ -36,7 +36,7 @@ const FeaturedSectionContainer = styled.div`
       padding-top: 12rem;
       padding-bottom: 12rem;
       
-      @media (max-width: ${props.theme.breakpoints[3]}) {
+      ${props.theme.mediaQueries.large} {
         padding-top: 8rem;
         padding-bottom: 8rem;
       }
@@ -44,7 +44,7 @@ const FeaturedSectionContainer = styled.div`
       div:not(:last-of-type) {
         margin-bottom: 8rem;
 
-        @media (max-width: ${props.theme.breakpoints[1]}) {
+        ${props.theme.mediaQueries.small} {
           margin-bottom: 4rem;
         }
       }

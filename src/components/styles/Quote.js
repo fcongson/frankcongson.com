@@ -10,12 +10,12 @@ export const Quote = styled.blockquote`
   font-size: 24px;
   color: ${(props) => props.theme.colors.greys[1]};
 
-  @media screen and (max-width: ${(props) => props.theme.breakpoints[3]}) {
+  ${(props) => props.theme.mediaQueries.large} {
     border-left: 2px solid ${(props) => props.theme.colors.greys[0]};
     font-size: 16px;
   }
 
-  @media screen and (min-width: ${(props) => props.theme.sizes.minWidthEmph}) {
+  ${(props) => props.theme.mediaQueries.emphasized} {
     width: 130%;
     margin: 0 -15% 2rem -15%;
     font-size: 24px;
