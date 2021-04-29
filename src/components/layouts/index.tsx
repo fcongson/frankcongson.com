@@ -1,11 +1,11 @@
 import * as Sentry from '@sentry/browser'
+import Seo from 'components/SEO'
+import theme, { GlobalStyle } from 'components/styles'
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import styled, { ThemeProvider } from 'styled-components'
-import '../../stylesheets/resetr.css'
-import Seo from '../SEO'
-import theme, { GlobalStyle } from '../styles'
+import 'stylesheets/resetr.css'
 import Footer from './Footer'
 import Header from './Header'
 
@@ -16,8 +16,8 @@ const Main = styled.main`
   min-height: auto;
 `
 
-const siteQuery = graphql`
-  query SiteQuery {
+const SITE_QUERY = graphql`
+  query SITE {
     site {
       siteMetadata {
         title
@@ -32,13 +32,13 @@ const siteQuery = graphql`
   }
 `
 
-const Layout = ({ overlayHeader, children }) => {
-  const { site } = useStaticQuery(siteQuery)
+const Layout: React.FunctionComponent<{ overlayHeader?: boolean }> = ({ overlayHeader = false, children }) => {
+  const { site } = useStaticQuery(SITE_QUERY)
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
   const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl } = site.siteMetadata
 
-  const a11yHandler = ({ keyCode }) => {
+  const a11yHandler = ({ keyCode }: { keyCode: number }) => {
     // Add focus outline when tab key is pressed
     if (keyCode === 9) {
       setNoFocusOutline(false)
@@ -60,7 +60,7 @@ const Layout = ({ overlayHeader, children }) => {
         <meta charSet='utf-8' />
         <title>{title}</title>
         <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
-        <link rel='preconnect' href='https://fonts.gstatic.com/' crossorigin></link>
+        <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='true'></link>
         <link
           href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Domine:400,700&display=swap'
           rel='stylesheet'

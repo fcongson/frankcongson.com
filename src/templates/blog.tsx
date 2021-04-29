@@ -1,17 +1,17 @@
+import BlogPosts from 'components/BlogPosts'
+import Hero from 'components/Hero'
+import Layout from 'components/layouts'
+import Seo from 'components/SEO'
+import { Container, PageHeader, Section } from 'components/styles'
+import blog from 'content/data/blog.json'
 import { graphql, Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { Query } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
-import blog from '../../content/data/blog.json'
-import BlogPosts from '../components/BlogPosts'
-import Hero from '../components/Hero'
-import Layout from '../components/layouts'
-import Seo from '../components/SEO'
-import { Container, PageHeader, Section } from '../components/styles'
-import { useImage } from '../utils/useImage'
+import { useImage } from 'utils/useImage'
 
-export const blogListQuery = graphql`
-  query blogListQuery($skip: Int!, $limit: Int!) {
+export const BLOG_LIST_QUERY = graphql`
+  query BLOG_LIST($skip: Int!, $limit: Int!) {
     allMdx(
       filter: { frontmatter: { published: { eq: true } } }
       sort: { fields: [frontmatter___date], order: DESC }
@@ -56,7 +56,9 @@ const PaginationContainer = styled.div`
   }
 `
 
-const Pagination = ({ numPages, currentPage }) => {
+type PaginationProps = { numPages: number; currentPage: number }
+
+const Pagination: React.FunctionComponent<PaginationProps> = ({ numPages, currentPage }) => {
   const previousPage = currentPage - 1
   const nextPage = currentPage + 1
   const previousTo = previousPage > 1 ? `/blog/page/${previousPage}` : '/blog'
@@ -81,7 +83,10 @@ const Pagination = ({ numPages, currentPage }) => {
   )
 }
 
-const Blog = ({ data: { allMdx }, pageContext: { numPages, currentPage } }) => {
+const Blog: React.FunctionComponent<{ data: Query; pageContext: PaginationProps }> = ({
+  data: { allMdx },
+  pageContext: { numPages, currentPage },
+}) => {
   const getImage = useImage()
   const heroImage = getImage(blog.hero_image.image)
   const seoImage = getImage(blog.seo.image)
@@ -93,19 +98,17 @@ const Blog = ({ data: { allMdx }, pageContext: { numPages, currentPage } }) => {
         title={seo?.title}
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}
-        image={seoImage?.publicURL}
+        image={seoImage?.publicURL ?? undefined}
         pathname='/blog'
       />
       <Hero
-        image={
-          <GatsbyImage
-            image={heroImage.childImageSharp.gatsbyImageData}
-            alt={blog.hero_image.alt_text}
-            style={{ height: '100%', opacity: 0.7 }}
-          />
-        }
-        content={<PageHeader>{blog.page_header}</PageHeader>}
-      />
+        imageProps={{
+          image: heroImage?.childImageSharp?.gatsbyImageData,
+          alt: blog.hero_image.alt_text,
+          style: { height: '100%', opacity: 0.7 },
+        }}>
+        <PageHeader>{blog.page_header}</PageHeader>
+      </Hero>
       <BlogPosts posts={allMdx.edges} />
       {numPages > 1 && <Pagination numPages={numPages} currentPage={currentPage} />}
     </Layout>

@@ -1,10 +1,14 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { useImage } from '../utils/useImage'
+import { ImageNode, useImage } from 'utils/useImage'
 import { Container, Section } from './styles'
 
-const FeaturedSectionContainer = styled.div`
+const FeaturedSectionContainer = styled.div<{
+  imageAsBackground?: boolean
+  colorAsBackground?: boolean
+  backgroundColor?: string
+}>`
   display: grid;
 
   ${(props) =>
@@ -71,13 +75,15 @@ const FeaturedSectionContainer = styled.div`
   }
 `
 
-const ImageBackground = ({ imageAlt, imageSharp, children }) => {
+type ImageBackgroundProps = { imageAlt: string; imageSharp: ImageNode }
+
+const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({ imageAlt, imageSharp, children }) => {
   return (
     <FeaturedSectionContainer imageAsBackground>
       {!!imageSharp && (
         <div className='image'>
           <GatsbyImage
-            image={imageSharp.childImageSharp.gatsbyImageData}
+            image={imageSharp.childImageSharp?.gatsbyImageData}
             alt={imageAlt}
             style={{ height: '100%' }}
             objectPosition='center center'
@@ -93,7 +99,11 @@ const ImageBackground = ({ imageAlt, imageSharp, children }) => {
   )
 }
 
-const ColorBackground = ({ backgroundColor, children }) => {
+type ColorBackgroundProps = {
+  backgroundColor: string
+}
+
+const ColorBackground: React.FunctionComponent<ColorBackgroundProps> = ({ backgroundColor, children }) => {
   return (
     <FeaturedSectionContainer colorAsBackground backgroundColor={backgroundColor}>
       <Section>
@@ -103,8 +113,12 @@ const ColorBackground = ({ backgroundColor, children }) => {
   )
 }
 
-const FeaturedSection = ({ imageAsBackground, image, ...restProps }) => {
+const FeaturedSection: React.FunctionComponent<
+  { imageAsBackground?: boolean; image?: string } & Omit<ImageBackgroundProps, 'imageSharp'> & ColorBackgroundProps
+> = ({ imageAsBackground, image, ...restProps }) => {
   const imageSharp = useImage()(image)
+
+  if (!imageSharp) return null
 
   if (imageAsBackground) return <ImageBackground imageSharp={imageSharp} {...restProps} />
   return <ColorBackground {...restProps} />

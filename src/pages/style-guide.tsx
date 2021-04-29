@@ -1,17 +1,18 @@
+import BlogPosts from 'components/BlogPosts'
+import CallToAction from 'components/CallToAction'
+import FeaturedSection from 'components/FeaturedSection'
+import Hero from 'components/Hero'
+import ImageCaption from 'components/ImageCaption'
+import Layout from 'components/layouts'
+import theme, { Container, LinkButton, PageHeader, Quote, Section } from 'components/styles'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Style_GuideQuery } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
-import BlogPosts from '../components/BlogPosts'
-import CallToAction from '../components/CallToAction'
-import FeaturedSection from '../components/FeaturedSection'
-import Hero from '../components/Hero'
-import ImageCaption from '../components/ImageCaption'
-import Layout from '../components/layouts'
-import theme, { Container, LinkButton, PageHeader, Quote, Section } from '../components/styles'
 
-export const styleGuideQuery = graphql`
-  query styleGuideQuery {
+export const STYLE_GUIDE_QUERY = graphql`
+  query STYLE_GUIDE {
     file(relativePath: { eq: "sample-image.jpg" }) {
       childImageSharp {
         gatsbyImageData(quality: 100, layout: FULL_WIDTH)
@@ -47,7 +48,7 @@ const StyleGuideContainer = styled(Container)`
   }
 `
 
-const StyleGuide = ({ data }) => {
+const StyleGuide: React.FunctionComponent<{ data: Style_GuideQuery }> = ({ data }) => {
   const imageSharp = data.file
   const image = '/content/images/sample-image.jpg'
   const altText = 'Sample image'
@@ -309,7 +310,7 @@ const StyleGuide = ({ data }) => {
         <p>Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
       <FeaturedSection backgroundColor={theme.colors.olives[2]}>
-        <GatsbyImage image={imageSharp.childImageSharp.gatsbyImageData} alt={altText} />
+        <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={altText} />
         <p>Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
       <FeaturedSection>
@@ -368,15 +369,14 @@ const StyleGuide = ({ data }) => {
         <Container id='hero'></Container>
       </Section>
       <Hero
-        image={
-          <GatsbyImage
-            image={imageSharp.childImageSharp.gatsbyImageData}
-            alt={'Alt text'}
-            style={{ height: '100%', opacity: 0.7 }}
-          />
-        }
-        content={<PageHeader>Lorem Ipsum</PageHeader>}
-      />
+        imageProps={{
+          image: imageSharp?.childImageSharp?.gatsbyImageData,
+          alt: 'Alt text',
+          style: { height: '100%', opacity: 0.7 },
+        }}>
+        <PageHeader>Lorem Ipsum</PageHeader>
+      </Hero>
+
       {/* Blog Posts */}
       <Section>
         <StyleGuideContainer>

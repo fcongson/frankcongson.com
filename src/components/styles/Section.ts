@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { layout, space } from 'styled-system'
+import { layout, LayoutProps, space, SpaceProps } from 'styled-system'
 
-export const Section = styled.section`
+export const Section = styled.section<SpaceProps & LayoutProps>`
   ${space}
   ${layout}
 

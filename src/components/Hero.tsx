@@ -1,3 +1,4 @@
+import { GatsbyImage, GatsbyImageProps } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -25,10 +26,14 @@ const HeroContent = styled.div`
   overflow: hidden;
 `
 
-const Hero = ({ image, content }) => (
+const Hero: React.FunctionComponent<{ imageProps: GatsbyImageProps }> = ({ imageProps, children }) => (
   <HeroContainer>
-    {!!image ? <HeroImage>{image}</HeroImage> : null}
-    {!!content ? <HeroContent>{content}</HeroContent> : null}
+    {!!imageProps ? (
+      <HeroImage>
+        <GatsbyImage {...imageProps} />
+      </HeroImage>
+    ) : null}
+    {!!children ? <HeroContent>{children}</HeroContent> : null}
   </HeroContainer>
 )
 

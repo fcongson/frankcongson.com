@@ -26,7 +26,12 @@ const CallToActionContainer = styled.div`
   }
 `
 
-const CallToAction = ({ header, text, callToAction, callToActionText }) => (
+const CallToAction: React.FunctionComponent<{
+  header?: string
+  text?: string
+  callToAction?: string
+  callToActionText?: string
+}> = ({ header, text, callToAction, callToActionText }) => (
   <CallToActionContainer>
     {!!header && <SectionHeader>{header}</SectionHeader>}
     {!!text && <p>{text}</p>}

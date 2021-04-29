@@ -1,10 +1,10 @@
+import { Container, Section } from 'components/styles'
+import logo from 'content/images/logo.svg'
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import logo from '../../../content/images/logo.svg'
-import { Container, Section } from '../styles'
 
-const HeaderStyles = styled.header`
+const HeaderStyles = styled.header<{ overlay: boolean }>`
   display: block;
   position: ${(props) => (props.overlay ? 'absolute' : 'relative')};
   width: 100%;
@@ -35,7 +35,7 @@ const HeaderStyles = styled.header`
   }
 `
 
-const NavigationMenu = styled.nav`
+const NavigationMenu = styled.nav<{ open: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -87,7 +87,7 @@ const NavigationMenu = styled.nav`
   }
 `
 
-const NavigationToggle = styled.button`
+const NavigationToggle = styled.button<{ open: boolean }>`
   display: none;
   height: 64px;
 
@@ -133,7 +133,7 @@ const NavigationToggle = styled.button`
   }
 `
 
-const Header = ({ overlay }) => {
+const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay }) => {
   const [open, setOpen] = useState(false)
   return (
     <HeaderStyles overlay={overlay}>

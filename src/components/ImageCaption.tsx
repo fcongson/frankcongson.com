@@ -1,7 +1,7 @@
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import { useImage } from '../utils/useImage'
+import { ImageNode, useImage } from 'utils/useImage'
 import { Container, Section } from './styles'
 
 const Image = styled.div`
@@ -39,13 +39,19 @@ const Image = styled.div`
   }
 `
 
-const DefaultImage = ({ imageSharp, altText, caption }) => {
+type ImageProps = {
+  imageSharp: ImageNode
+  altText?: string
+  caption?: string
+}
+
+const DefaultImage: React.FunctionComponent<ImageProps> = ({ imageSharp, altText, caption }) => {
   return (
     <Image>
       <Section>
         <Container>
           <figure className='block-img'>
-            <GatsbyImage image={imageSharp.childImageSharp.gatsbyImageData} alt={altText} />
+            <GatsbyImage image={imageSharp.childImageSharp?.gatsbyImageData} alt={altText ?? ''} />
             {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
           </figure>
         </Container>
@@ -54,13 +60,13 @@ const DefaultImage = ({ imageSharp, altText, caption }) => {
   )
 }
 
-const EmphasizedImage = ({ imageSharp, altText, caption }) => {
+const EmphasizedImage: React.FunctionComponent<ImageProps> = ({ imageSharp, altText, caption }) => {
   return (
     <Image>
       <Section>
         <Container>
           <figure className='block-img emphasized'>
-            <GatsbyImage image={imageSharp.childImageSharp.gatsbyImageData} alt={altText} />
+            <GatsbyImage image={imageSharp.childImageSharp?.gatsbyImageData} alt={altText ?? ''} />
             {caption && caption !== '' ? <figcaption className='image-label'>{caption}</figcaption> : null}
           </figure>
         </Container>
@@ -69,13 +75,13 @@ const EmphasizedImage = ({ imageSharp, altText, caption }) => {
   )
 }
 
-const FullWidthImage = ({ imageSharp, altText, caption }) => {
+const FullWidthImage: React.FunctionComponent<ImageProps> = ({ imageSharp, altText, caption }) => {
   return (
     <Image>
       <figure className='block-img full-width'>
         <GatsbyImage
-          image={imageSharp.childImageSharp.gatsbyImageData}
-          alt={altText}
+          image={imageSharp.childImageSharp?.gatsbyImageData}
+          alt={altText ?? ''}
           style={{ maxHeight: '100vh' }}
           objectPosition='center center'
         />
@@ -85,8 +91,12 @@ const FullWidthImage = ({ imageSharp, altText, caption }) => {
   )
 }
 
-const ImageCaption = ({ emphasized, fullwidth, image, ...restProps }) => {
+const ImageCaption: React.FunctionComponent<
+  { emphasized: boolean; fullwidth: boolean; image: string } & ImageProps
+> = ({ emphasized, fullwidth, image, ...restProps }) => {
   const imageSharp = useImage()(image)
+
+  if (!imageSharp) return null
 
   if (emphasized) return <EmphasizedImage {...restProps} imageSharp={imageSharp} />
   if (fullwidth) return <FullWidthImage {...restProps} imageSharp={imageSharp} />
