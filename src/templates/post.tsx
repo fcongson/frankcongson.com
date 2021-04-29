@@ -1,12 +1,13 @@
 import { MDXProvider } from '@mdx-js/react'
+import Layout from 'components/layouts'
+import Seo from 'components/SEO'
+import { Container, Quote, Section } from 'components/styles'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
+import { Query } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
-import Layout from '../components/layouts'
-import Seo from '../components/SEO'
-import { Container, Quote, Section } from '../components/styles'
 
 const shortcodes = {
   Link,
@@ -18,8 +19,8 @@ const shortcodes = {
   blockquote: Quote,
 }
 
-export const blogPostQuery = graphql`
-  query BlogPostQuery($id: String) {
+export const BLOG_POST_QUERY = graphql`
+  query BLOG_POST($id: String) {
     mdx(id: { eq: $id }) {
       id
       body
@@ -114,19 +115,17 @@ const PostFooter = styled.footer`
   }
 `
 
-const Post = ({ data }) => {
-  const {
-    frontmatter: { title, description, keywords, slug, featured_image, seo },
-    body,
-  } = data.mdx
+const Post: React.FunctionComponent<{ data: Query }> = ({ data }) => {
+  const body = data.mdx?.body
+  const { title, description, keywords, slug, featured_image, seo } = data.mdx?.frontmatter ?? {}
 
   return (
     <Layout>
       <Seo
-        title={seo.title || title}
-        desc={seo.description || description}
+        title={seo?.title ?? title}
+        desc={seo?.description ?? description ?? undefined}
         keywords={[...(seo?.keywords ?? []), ...(keywords ?? [])].join(', ')}
-        image={seo?.image?.publicURL}
+        image={seo?.image?.publicURL ?? undefined}
         pathname={`/${slug}`}
         article
       />
@@ -138,13 +137,17 @@ const Post = ({ data }) => {
                 <Link to='/blog'>back to list</Link>
               </div>
               <h1>{title ? title : 'Untitled'}</h1>
-              {!!featured_image && <GatsbyImage image={featured_image.childImageSharp.gatsbyImageData} alt={title} />}
+              {!!featured_image && (
+                <GatsbyImage image={featured_image.childImageSharp?.gatsbyImageData} alt={title ?? ''} />
+              )}
             </Container>
           </Section>
         </PostHeader>
-        <MDXProvider components={shortcodes}>
-          <MDXRenderer>{body}</MDXRenderer>
-        </MDXProvider>
+        {body ? (
+          <MDXProvider components={shortcodes}>
+            <MDXRenderer>{body}</MDXRenderer>
+          </MDXProvider>
+        ) : null}
         <PostFooter>
           <Section>
             <Container>

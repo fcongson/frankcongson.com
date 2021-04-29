@@ -1,12 +1,12 @@
+import ForestrySections from 'components/forestry'
+import Hero from 'components/Hero'
+import Layout from 'components/layouts'
+import { Container, Section } from 'components/styles'
+import home from 'content/data/home.json'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import home from '../../content/data/home.json'
-import ForestrySections from '../components/forestry'
-import Hero from '../components/Hero'
-import Layout from '../components/layouts'
-import { Container, Section } from '../components/styles'
-import { useImage } from '../utils/useImage'
+import { useImage } from 'utils/useImage'
 
 const HomeContent = styled.div`
   display: flex;
@@ -88,7 +88,7 @@ const HomeContent = styled.div`
   }
 `
 
-const Home = () => {
+const Home: React.FunctionComponent = () => {
   const getImage = useImage()
   const heroImage = getImage(home.hero_image.image)
   const mainContentImage = getImage(home.main_content.image)
@@ -96,14 +96,12 @@ const Home = () => {
   return (
     <Layout overlayHeader>
       <Hero
-        image={
-          <GatsbyImage
-            image={heroImage.childImageSharp.gatsbyImageData}
-            alt={home.hero_image.alt_text}
-            style={{ height: '100%' }}
-            objectPosition='center bottom'
-          />
-        }
+        imageProps={{
+          image: heroImage?.childImageSharp?.gatsbyImageData,
+          alt: home.hero_image.alt_text,
+          style: { height: '100%' },
+          objectPosition: 'center bottom',
+        }}
       />
       <Section>
         <Container>
@@ -115,7 +113,7 @@ const Home = () => {
             {!!mainContentImage && (
               <div className='image'>
                 <GatsbyImage
-                  image={mainContentImage.childImageSharp.gatsbyImageData}
+                  image={mainContentImage.childImageSharp?.gatsbyImageData}
                   alt={home.main_content.alt_text}
                   style={{ height: '100%' }}
                   objectPosition='center center'

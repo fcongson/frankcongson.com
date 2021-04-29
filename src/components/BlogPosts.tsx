@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Mdx, MdxEdge } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
 import { Container, LinkButton, Section } from './styles'
@@ -23,8 +24,8 @@ const PostSummaryContainer = styled.div`
   }
 `
 
-const PostSummary = ({ post }) => {
-  const { slug, title, date, featured_image } = post.frontmatter
+const PostSummary: React.FunctionComponent<{ post: Mdx }> = ({ post }) => {
+  const { slug, title, date, featured_image } = post.frontmatter ?? {}
   const to = `/blog/${slug}`
   return (
     <PostSummaryContainer key={post.id}>
@@ -32,7 +33,7 @@ const PostSummary = ({ post }) => {
         <Container>
           {!!featured_image && (
             <Link to={to}>
-              <GatsbyImage image={featured_image.childImageSharp.gatsbyImageData} alt={title} />
+              <GatsbyImage image={featured_image.childImageSharp?.gatsbyImageData} alt={title ?? ''} />
             </Link>
           )}
           <h2>
@@ -49,10 +50,16 @@ const PostSummary = ({ post }) => {
   )
 }
 
-const BlogPosts = ({ posts }) => {
+const BlogPosts: React.FunctionComponent<{ posts: MdxEdge[] }> = ({ posts }) => {
   if (!posts) return null
 
-  return posts.map((post) => <PostSummary post={post.node} key={post.node.id} />)
+  return (
+    <>
+      {posts.map((post) => (
+        <PostSummary post={post.node} key={post.node.id} />
+      ))}
+    </>
+  )
 }
 
 export default BlogPosts

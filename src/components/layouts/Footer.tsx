@@ -1,13 +1,13 @@
 import { faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Container, Section } from 'components/styles'
+import logo from 'content/images/logo-light.svg'
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import { color, flexbox, typography } from 'styled-system'
-import logo from '../../../content/images/logo-light.svg'
-import { Container, Section } from '../styles'
+import { color, ColorProps, flexbox, FlexboxProps, typography, TypographyProps } from 'styled-system'
 
-const FooterStyles = styled.footer`
+const FooterStyles = styled.footer<ColorProps & TypographyProps & FlexboxProps>`
   ${color}
   ${typography}
   ${flexbox}
@@ -98,7 +98,7 @@ FooterStyles.defaultProps = {
   flexShrink: 0,
 }
 
-const Footer = ({ social, ...restProps }) => (
+const Footer: React.FunctionComponent<{ social: { [key: string]: string } }> = ({ social, ...restProps }) => (
   <FooterStyles {...restProps}>
     <Section>
       <Container>

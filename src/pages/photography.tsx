@@ -1,14 +1,14 @@
+import Hero from 'components/Hero'
+import Layout from 'components/layouts'
+import Seo from 'components/SEO'
+import { Container, PageHeader } from 'components/styles'
+import photography from 'content/data/photography.json'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
-import photography from '../../content/data/photography.json'
-import Hero from '../components/Hero'
-import Layout from '../components/layouts'
-import Seo from '../components/SEO'
-import { Container, PageHeader } from '../components/styles'
-import { useImage } from '../utils/useImage'
+import { useImage } from 'utils/useImage'
 
-const PhotographyImage = styled.div`
+const PhotographyImage = styled.div<{ label: string }>`
   display: grid;
   align-items: center;
 
@@ -30,7 +30,7 @@ const PhotographyImage = styled.div`
   }
 `
 
-const Photography = () => {
+const Photography: React.FunctionComponent = () => {
   const getImage = useImage()
   const heroImage = getImage(photography.hero_image.image)
   const seoImage = getImage(photography.seo.image)
@@ -43,26 +43,24 @@ const Photography = () => {
         title={seo?.title}
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}
-        image={seoImage?.publicURL}
+        image={seoImage?.publicURL ?? ''}
         pathname='/photography'
       />
       <Hero
-        image={
-          <GatsbyImage
-            image={heroImage.childImageSharp.gatsbyImageData}
-            alt={photography.hero_image.alt_text}
-            style={{ height: '100%', opacity: 0.7 }}
-          />
-        }
-        content={<PageHeader>{photography.page_header}</PageHeader>}
-      />
+        imageProps={{
+          image: heroImage?.childImageSharp?.gatsbyImageData,
+          alt: photography.hero_image.alt_text,
+          style: { height: '100%', opacity: 0.7 },
+        }}>
+        <PageHeader>{photography.page_header}</PageHeader>
+      </Hero>
       {images.map(({ image, alt_text, caption }, index) => {
         const imageSharp = getImage(image)
         return (
           <PhotographyImage key={image} label={`${index + 1} / ${totalImages}`}>
             <Container>
               <div className='image'>
-                <GatsbyImage image={imageSharp.childImageSharp.gatsbyImageData} alt={alt_text} />
+                <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={alt_text} />
               </div>
             </Container>
           </PhotographyImage>

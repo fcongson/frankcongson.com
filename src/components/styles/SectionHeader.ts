@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { space, typography } from 'styled-system'
+import { space, SpaceProps, typography, TypographyProps } from 'styled-system'
 
-export const SectionHeader = styled.h2`
+export const SectionHeader = styled.h2<TypographyProps & SpaceProps>`
   ${typography}
   ${space}
 `

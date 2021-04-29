@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { space, typography } from 'styled-system'
+import { space, SpaceProps, typography, TypographyProps } from 'styled-system'
 
-export const PageHeader = styled.h1`
+export const PageHeader = styled.h1<TypographyProps & SpaceProps>`
   ${typography}
   ${space}
 `

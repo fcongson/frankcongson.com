@@ -1,22 +1,22 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import PropTypes from 'prop-types'
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import Facebook from './Facebook'
-import Twitter from './Twitter'
+import { Query } from '../../../graphql-types'
+import { Facebook } from './Facebook'
+import { Twitter } from './Twitter'
 
 // Complete tutorial: https://www.gatsbyjs.org/docs/add-seo-component/
 
-const seoQuery = graphql`
-  query seoQuery {
+const SEO_QUERY = graphql`
+  query SEO {
     site {
       buildTime(formatString: "YYYY-MM-DD")
       siteMetadata {
         siteUrl
-        defaultTitle: title
-        defaultDescription: description
-        defaultKeywords: keywords
-        defaultImage: image
+        title
+        description
+        keywords
+        image
         headline
         siteLanguage
         siteLocale
@@ -28,25 +28,30 @@ const seoQuery = graphql`
   }
 `
 
-const SEO = ({ title, desc, keywords, image, pathname, article }) => {
-  const { site } = useStaticQuery(seoQuery)
+const SEO: React.FunctionComponent<{
+  title?: string
+  desc?: string
+  keywords?: string
+  image?: string
+  pathname?: string
+  article?: boolean
+}> = ({ title, desc, keywords, image, pathname, article = false }) => {
+  const { site } = useStaticQuery<Query>(SEO_QUERY)
 
+  const buildTime = site?.buildTime
   const {
-    buildTime,
-    siteMetadata: {
-      siteUrl,
-      defaultTitle,
-      defaultDescription,
-      defaultKeywords,
-      defaultImage,
-      headline,
-      siteLanguage,
-      siteLocale,
-      author,
-      twitter,
-      facebook,
-    },
-  } = site
+    siteUrl,
+    title: defaultTitle,
+    description: defaultDescription,
+    keywords: defaultKeywords,
+    image: defaultImage,
+    headline,
+    siteLanguage,
+    siteLocale,
+    author,
+    twitter,
+    facebook,
+  } = site?.siteMetadata ?? {}
 
   const seo = {
     title: `${title ? `${title} - ` : ''}${defaultTitle}`,
@@ -98,45 +103,25 @@ const SEO = ({ title, desc, keywords, image, pathname, article }) => {
   return (
     <>
       <Helmet title={seo.title}>
-        <html lang={siteLanguage} />
-        <meta name='description' content={seo.description} />
-        <meta name='keywords' content={seo.keywords} />
-        <meta name='author' content={seo.author} />
+        <html lang={siteLanguage ?? ''} />
+        <meta name='description' content={seo.description ?? ''} />
+        <meta name='keywords' content={seo.keywords ?? ''} />
+        <meta name='author' content={seo.author ?? ''} />
         <meta name='image' content={seo.image} />
         <script type='application/ld+json'>{JSON.stringify(schemaOrgWebPage)}</script>
       </Helmet>
       <Facebook
-        desc={seo.description}
+        desc={seo.description ?? ''}
         image={seo.image}
         title={seo.title}
         type={article ? 'article' : 'website'}
         url={seo.url}
-        locale={siteLocale}
-        name={facebook}
+        locale={siteLocale ?? ''}
+        name={facebook ?? ''}
       />
-      <Twitter title={seo.title} image={seo.image} desc={seo.description} username={twitter} />
+      <Twitter title={seo.title} image={seo.image} desc={seo.description ?? ''} username={twitter ?? ''} />
     </>
   )
-}
-
-SEO.propTypes = {
-  data: PropTypes.object,
-  title: PropTypes.string,
-  desc: PropTypes.string,
-  image: PropTypes.string,
-  pathname: PropTypes.string,
-  article: PropTypes.bool,
-  node: PropTypes.object,
-}
-
-SEO.defaultProps = {
-  data: null,
-  title: null,
-  desc: null,
-  image: null,
-  pathname: null,
-  article: false,
-  node: null,
 }
 
 export default SEO

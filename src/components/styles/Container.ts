@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import { layout, space } from 'styled-system'
+import { layout, LayoutProps, space, SpaceProps } from 'styled-system'
 
-export const Container = styled.div`
+export const Container = styled.div<SpaceProps & LayoutProps>`
   ${space}
   ${layout}
 `

@@ -71,7 +71,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   posts.forEach(({ node }) => {
     createPage({
       path: `/blog/${node.frontmatter.slug}`,
-      component: path.resolve(`./src/templates/post.js`),
+      component: path.resolve(`./src/templates/post.tsx`),
       context: { id: node.id },
     })
   })
@@ -82,7 +82,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: i === 0 ? `/blog` : `/blog/page/${i + 1}`,
-      component: path.resolve('./src/templates/blog.js'),
+      component: path.resolve('./src/templates/blog.tsx'),
       context: {
         limit: postsPerPage,
         skip: i * postsPerPage,
@@ -97,7 +97,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   pages.forEach(({ node }) => {
     createPage({
       path: `/${node.slug}`,
-      component: path.resolve(`./src/templates/page.js`),
+      component: path.resolve(`./src/templates/page.tsx`),
       context: { id: node.id },
     })
   })

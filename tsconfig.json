@@ -1,0 +1,24 @@
+{
+  "include": ["./src/**/*", "./content/**/*"],
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "commonjs",
+    "lib": ["dom", "es2017"],
+    "strict": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "jsx": "react",
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "resolveJsonModule": true,
+    "baseUrl": "./",
+    "paths": {
+      "content/*": ["content/*"],
+      "components/*": ["src/components/*"],
+      "pages/*": ["src/pages/*"],
+      "stylesheets/*": ["src/stylesheets/*"],
+      "templates/*": ["src/templates/*"],
+      "utils/*": ["src/utils/*"]
+    }
+  }
+}

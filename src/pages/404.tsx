@@ -1,7 +1,7 @@
+import Layout from 'components/layouts'
+import { PageHeader } from 'components/styles'
 import React from 'react'
 import styled from 'styled-components'
-import Layout from '../components/layouts'
-import { PageHeader } from '../components/styles'
 
 const NotFoundContent = styled.div`
   display: flex;
@@ -22,7 +22,7 @@ const NotFoundContent = styled.div`
   }
 `
 
-const NotFound = () => (
+const NotFound: React.FunctionComponent = () => (
   <Layout>
     <NotFoundContent>
       <PageHeader>404</PageHeader>

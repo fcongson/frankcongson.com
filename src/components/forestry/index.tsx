@@ -1,16 +1,21 @@
+import CallToAction from 'components/CallToAction'
+import FeaturedSection from 'components/FeaturedSection'
+import ImageCaption from 'components/ImageCaption'
+import { Container, Quote, Section } from 'components/styles'
 import React from 'react'
-import CallToAction from '../CallToAction'
-import FeaturedSection from '../FeaturedSection'
-import ImageCaption from '../ImageCaption'
-import { Container, Quote, Section } from '../styles'
 
-const Wrapper = ({ children }) => (
+export type ForestrySection = {
+  template: string
+  [key: string]: any
+}
+
+const Wrapper: React.FunctionComponent = ({ children }) => (
   <Section>
     <Container>{children}</Container>
   </Section>
 )
 
-const getSection = (section, unwrapped, index) => {
+const getSection = (section: ForestrySection, unwrapped: boolean, index: number): React.ReactElement | undefined => {
   const key = `${section.template}.${index}`
   switch (section.template) {
     case 'featured-section':
@@ -71,7 +76,10 @@ const getSection = (section, unwrapped, index) => {
   }
 }
 
-export const ForestrySections = ({ sections, unwrapped = false }) =>
-  !sections ? null : Array.from(sections).map((section, index) => getSection(section, unwrapped, index))
+export const ForestrySections: React.FunctionComponent<{
+  sections: ForestrySection[]
+  unwrapped?: boolean
+}> = ({ sections, unwrapped = false }) =>
+  !sections ? null : <>{Array.from(sections).map((section, index) => getSection(section, unwrapped, index))}</>
 
 export default ForestrySections
