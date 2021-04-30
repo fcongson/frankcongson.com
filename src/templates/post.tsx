@@ -1,6 +1,6 @@
 import { MDXProvider } from '@mdx-js/react'
-import Layout from 'components/layouts'
-import Seo from 'components/SEO'
+import { Layout } from 'components/layouts'
+import { SEO as Seo } from 'components/SEO'
 import { Container, Quote, Section } from 'components/styles'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'

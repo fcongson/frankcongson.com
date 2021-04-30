@@ -1,13 +1,13 @@
-import BlogPosts from 'components/BlogPosts'
-import CallToAction from 'components/CallToAction'
-import FeaturedSection from 'components/FeaturedSection'
-import Hero from 'components/Hero'
-import ImageCaption from 'components/ImageCaption'
-import Layout from 'components/layouts'
-import theme, { Container, LinkButton, PageHeader, Quote, Section } from 'components/styles'
+import { BlogPosts } from 'components/BlogPosts'
+import { CallToAction } from 'components/CallToAction'
+import { FeaturedSection } from 'components/FeaturedSection'
+import { Hero } from 'components/Hero'
+import { ImageCaption } from 'components/ImageCaption'
+import { Layout } from 'components/layouts'
+import { Container, LinkButton, PageHeader, Quote, Section, theme } from 'components/styles'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { Style_GuideQuery } from 'graphql-types'
+import { Query } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -48,7 +48,7 @@ const StyleGuideContainer = styled(Container)`
   }
 `
 
-const StyleGuide: React.FunctionComponent<{ data: Style_GuideQuery }> = ({ data }) => {
+const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
   const imageSharp = data.file
   const image = '/content/images/sample-image.jpg'
   const altText = 'Sample image'
@@ -277,7 +277,7 @@ const StyleGuide: React.FunctionComponent<{ data: Style_GuideQuery }> = ({ data 
           </p>
         </Container>
       </Section>
-      <ImageCaption image={image} altText={altText} caption='Default. Lorem ipsum dolor sit amet' id='image-caption' />
+      <ImageCaption image={image} altText={altText} caption='Default. Lorem ipsum dolor sit amet' />
       <ImageCaption image={image} altText={altText} caption='Emphasized. Lorem ipsum dolor sit amet' emphasized />
       <ImageCaption image={image} altText={altText} caption='Fullwidth. Lorem ipsum dolor sit amet' fullwidth />
       {/* Featured Section */}

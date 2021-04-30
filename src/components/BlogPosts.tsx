@@ -50,7 +50,7 @@ const PostSummary: React.FunctionComponent<{ post: Mdx }> = ({ post }) => {
   )
 }
 
-const BlogPosts: React.FunctionComponent<{ posts: MdxEdge[] }> = ({ posts }) => {
+export const BlogPosts: React.FunctionComponent<{ posts: MdxEdge[] }> = ({ posts }) => {
   if (!posts) return null
 
   return (
@@ -61,5 +61,3 @@ const BlogPosts: React.FunctionComponent<{ posts: MdxEdge[] }> = ({ posts }) => 
     </>
   )
 }
-
-export default BlogPosts

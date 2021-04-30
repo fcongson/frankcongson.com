@@ -73,7 +73,7 @@ export type ThemeType = {
 /**
  * [Styled System Theme Specification](https://styled-system.com/theme-specification)
  */
-const theme: ThemeType = {
+export const theme: ThemeType = {
   breakpoints,
   mediaQueries,
   colors,
@@ -84,5 +84,3 @@ const theme: ThemeType = {
   space,
   sizes,
 }
-
-export default theme

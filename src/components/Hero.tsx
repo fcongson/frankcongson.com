@@ -26,7 +26,7 @@ const HeroContent = styled.div`
   overflow: hidden;
 `
 
-const Hero: React.FunctionComponent<{ imageProps: GatsbyImageProps }> = ({ imageProps, children }) => (
+export const Hero: React.FunctionComponent<{ imageProps: GatsbyImageProps }> = ({ imageProps, children }) => (
   <HeroContainer>
     {!!imageProps ? (
       <HeroImage>
@@ -36,5 +36,3 @@ const Hero: React.FunctionComponent<{ imageProps: GatsbyImageProps }> = ({ image
     {!!children ? <HeroContent>{children}</HeroContent> : null}
   </HeroContainer>
 )
-
-export default Hero

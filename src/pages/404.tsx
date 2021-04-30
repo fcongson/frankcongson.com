@@ -1,4 +1,4 @@
-import Layout from 'components/layouts'
+import { Layout } from 'components/layouts'
 import { PageHeader } from 'components/styles'
 import React from 'react'
 import styled from 'styled-components'

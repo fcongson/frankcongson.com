@@ -98,7 +98,7 @@ FooterStyles.defaultProps = {
   flexShrink: 0,
 }
 
-const Footer: React.FunctionComponent<{ social: { [key: string]: string } }> = ({ social, ...restProps }) => (
+export const Footer: React.FunctionComponent<{ social: { [key: string]: string } }> = ({ social, ...restProps }) => (
   <FooterStyles {...restProps}>
     <Section>
       <Container>
@@ -135,5 +135,3 @@ const Footer: React.FunctionComponent<{ social: { [key: string]: string } }> = (
     </Section>
   </FooterStyles>
 )
-
-export default Footer

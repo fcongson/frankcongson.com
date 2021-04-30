@@ -1,6 +1,6 @@
-import CallToAction from 'components/CallToAction'
-import FeaturedSection from 'components/FeaturedSection'
-import ImageCaption from 'components/ImageCaption'
+import { CallToAction } from 'components/CallToAction'
+import { FeaturedSection } from 'components/FeaturedSection'
+import { ImageCaption } from 'components/ImageCaption'
 import { Container, Quote, Section } from 'components/styles'
 import React from 'react'
 
@@ -81,5 +81,3 @@ export const ForestrySections: React.FunctionComponent<{
   unwrapped?: boolean
 }> = ({ sections, unwrapped = false }) =>
   !sections ? null : <>{Array.from(sections).map((section, index) => getSection(section, unwrapped, index))}</>
-
-export default ForestrySections

@@ -28,7 +28,7 @@ const SEO_QUERY = graphql`
   }
 `
 
-const SEO: React.FunctionComponent<{
+export const SEO: React.FunctionComponent<{
   title?: string
   desc?: string
   keywords?: string
@@ -123,5 +123,3 @@ const SEO: React.FunctionComponent<{
     </>
   )
 }
-
-export default SEO

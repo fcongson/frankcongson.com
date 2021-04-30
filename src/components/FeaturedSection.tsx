@@ -75,9 +75,9 @@ const FeaturedSectionContainer = styled.div<{
   }
 `
 
-type ImageBackgroundProps = { imageAlt: string; imageSharp: ImageNode }
+type ImageBackgroundProps = { imageAlt?: string; imageSharp: ImageNode }
 
-const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({ imageAlt, imageSharp, children }) => {
+const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({ imageAlt = '', imageSharp, children }) => {
   return (
     <FeaturedSectionContainer imageAsBackground>
       {!!imageSharp && (
@@ -100,7 +100,7 @@ const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({ imageA
 }
 
 type ColorBackgroundProps = {
-  backgroundColor: string
+  backgroundColor?: string
 }
 
 const ColorBackground: React.FunctionComponent<ColorBackgroundProps> = ({ backgroundColor, children }) => {
@@ -113,15 +113,11 @@ const ColorBackground: React.FunctionComponent<ColorBackgroundProps> = ({ backgr
   )
 }
 
-const FeaturedSection: React.FunctionComponent<
+export const FeaturedSection: React.FunctionComponent<
   { imageAsBackground?: boolean; image?: string } & Omit<ImageBackgroundProps, 'imageSharp'> & ColorBackgroundProps
 > = ({ imageAsBackground, image, ...restProps }) => {
   const imageSharp = useImage()(image)
 
-  if (!imageSharp) return null
-
-  if (imageAsBackground) return <ImageBackground imageSharp={imageSharp} {...restProps} />
+  if (imageSharp && imageAsBackground) return <ImageBackground imageSharp={imageSharp} {...restProps} />
   return <ColorBackground {...restProps} />
 }
-
-export default FeaturedSection

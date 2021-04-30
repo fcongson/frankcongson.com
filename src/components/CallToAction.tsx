@@ -26,9 +26,9 @@ const CallToActionContainer = styled.div`
   }
 `
 
-const CallToAction: React.FunctionComponent<{
+export const CallToAction: React.FunctionComponent<{
   header?: string
-  text?: string
+  text?: string | JSX.Element | (string | JSX.Element)[]
   callToAction?: string
   callToActionText?: string
 }> = ({ header, text, callToAction, callToActionText }) => (
@@ -38,5 +38,3 @@ const CallToAction: React.FunctionComponent<{
     {!!callToAction && !!callToActionText && <LinkButton to={`/${callToAction}`}>{callToActionText}</LinkButton>}
   </CallToActionContainer>
 )
-
-export default CallToAction

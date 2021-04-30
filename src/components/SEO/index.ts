@@ -1,6 +1,3 @@
-import Seo from './SEO'
-
 export * from './Facebook'
+export * from './SEO'
 export * from './Twitter'
-
-export default Seo

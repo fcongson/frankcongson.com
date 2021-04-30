@@ -1,13 +1,13 @@
 import * as Sentry from '@sentry/browser'
-import Seo from 'components/SEO'
-import theme, { GlobalStyle } from 'components/styles'
+import { SEO as Seo } from 'components/SEO'
+import { GlobalStyle, theme } from 'components/styles'
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import styled, { ThemeProvider } from 'styled-components'
 import 'stylesheets/resetr.css'
-import Footer from './Footer'
-import Header from './Header'
+import { Footer } from './Footer'
+import { Header } from './Header'
 
 Sentry.init({ dsn: process.env.SENTRY_DSN })
 
@@ -32,7 +32,7 @@ const SITE_QUERY = graphql`
   }
 `
 
-const Layout: React.FunctionComponent<{ overlayHeader?: boolean }> = ({ overlayHeader = false, children }) => {
+export const Layout: React.FunctionComponent<{ overlayHeader?: boolean }> = ({ overlayHeader = false, children }) => {
   const { site } = useStaticQuery(SITE_QUERY)
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
@@ -85,5 +85,3 @@ const Layout: React.FunctionComponent<{ overlayHeader?: boolean }> = ({ overlayH
     </>
   )
 }
-
-export default Layout

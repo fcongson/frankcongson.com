@@ -91,8 +91,8 @@ const FullWidthImage: React.FunctionComponent<ImageProps> = ({ imageSharp, altTe
   )
 }
 
-const ImageCaption: React.FunctionComponent<
-  { emphasized: boolean; fullwidth: boolean; image: string } & ImageProps
+export const ImageCaption: React.FunctionComponent<
+  { emphasized?: boolean; fullwidth?: boolean; image: string } & Omit<ImageProps, 'imageSharp'>
 > = ({ emphasized, fullwidth, image, ...restProps }) => {
   const imageSharp = useImage()(image)
 
@@ -102,5 +102,3 @@ const ImageCaption: React.FunctionComponent<
   if (fullwidth) return <FullWidthImage {...restProps} imageSharp={imageSharp} />
   return <DefaultImage {...restProps} imageSharp={imageSharp} />
 }
-
-export default ImageCaption

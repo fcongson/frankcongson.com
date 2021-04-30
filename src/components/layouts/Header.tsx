@@ -133,7 +133,7 @@ const NavigationToggle = styled.button<{ open: boolean }>`
   }
 `
 
-const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay }) => {
+export const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay }) => {
   const [open, setOpen] = useState(false)
   return (
     <HeaderStyles overlay={overlay}>
@@ -170,5 +170,3 @@ const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay }) => {
     </HeaderStyles>
   )
 }
-
-export default Header
