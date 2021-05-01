@@ -1,9 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
-import { themeType } from './theme'
+import { ThemeType } from './theme'
 
 export const GlobalStyle = createGlobalStyle<{
   noFocusOutline: boolean
-  theme: themeType
+  theme: ThemeType
 }>`
   * {
     -webkit-font-smoothing: antialiased;

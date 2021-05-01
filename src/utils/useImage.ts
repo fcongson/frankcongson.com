@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { All_ImagesQuery, File, ImageSharp, Maybe } from '../../graphql-types'
+import { All_ImagesQuery, File, ImageSharp, Maybe } from 'graphql-types'
 
 const ALL_IMAGES_QUERY = graphql`
   query ALL_IMAGES {

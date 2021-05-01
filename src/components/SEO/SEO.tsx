@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
+import { Query } from 'graphql-types'
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { Query } from '../../../graphql-types'
 import { Facebook } from './Facebook'
 import { Twitter } from './Twitter'
 
