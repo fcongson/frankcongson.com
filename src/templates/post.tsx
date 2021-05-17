@@ -1,4 +1,4 @@
-import { MDXProvider } from '@mdx-js/react'
+import { MDXProvider, MDXProviderComponentsProp } from '@mdx-js/react'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import { Container, Quote, Section } from 'components/styles'
@@ -9,7 +9,7 @@ import { Query } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
 
-const shortcodes = {
+const shortcodes: MDXProviderComponentsProp = {
   Link,
   wrapper: ({ children }) => (
     <Section>

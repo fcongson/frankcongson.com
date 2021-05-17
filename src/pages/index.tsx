@@ -3,8 +3,10 @@ import { Hero } from 'components/Hero'
 import { Layout } from 'components/layouts'
 import { Container, Section } from 'components/styles'
 import home from 'content/data/home.json'
+import { motion, Variants } from 'framer-motion'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
+import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { useImage } from 'utils/useImage'
 
@@ -89,9 +91,17 @@ const HomeContent = styled.div`
 `
 
 const Home: React.FunctionComponent = () => {
+  const { ref: imageRef, inView: imageInView } = useInView({ threshold: 0.5, triggerOnce: true })
+  const { ref: textRef, inView: textInView } = useInView({ threshold: 0.5, triggerOnce: true })
+
   const getImage = useImage()
   const heroImage = getImage(home.hero_image.image)
   const mainContentImage = getImage(home.main_content.image)
+
+  const textMotion: Variants = {
+    visible: { translateY: 0, opacity: 1, transition: { ease: 'linear', duration: 0.7 } },
+    hidden: { translateY: -80, opacity: 0 },
+  }
 
   return (
     <Layout overlayHeader>
@@ -106,19 +116,34 @@ const Home: React.FunctionComponent = () => {
       <Section>
         <Container>
           <HomeContent>
-            <div className='text'>
-              <h1>{home.main_content.header}</h1>
-              <p>{home.main_content.text}</p>
-            </div>
+            <motion.div
+              className='text'
+              ref={textRef}
+              initial='hidden'
+              animate={textInView ? 'visible' : 'hidden'}
+              variants={{
+                visible: { transition: { staggerChildren: 0.5 } },
+              }}>
+              <motion.h1 variants={textMotion}>{home.main_content.header}</motion.h1>
+              <motion.p variants={textMotion}>{home.main_content.text}</motion.p>
+            </motion.div>
             {!!mainContentImage && (
-              <div className='image'>
+              <motion.div
+                className='image'
+                ref={imageRef}
+                initial='hidden'
+                animate={imageInView ? 'visible' : 'hidden'}
+                variants={{
+                  visible: { translateY: 0, opacity: 1, transition: { ease: 'linear', duration: 0.9 } },
+                  hidden: { translateY: 100, opacity: 0 },
+                }}>
                 <GatsbyImage
                   image={mainContentImage.childImageSharp?.gatsbyImageData}
                   alt={home.main_content.alt_text}
                   style={{ height: '100%' }}
                   objectPosition='center center'
                 />
-              </div>
+              </motion.div>
             )}
           </HomeContent>
         </Container>
