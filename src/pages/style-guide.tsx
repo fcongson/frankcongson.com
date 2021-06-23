@@ -1,10 +1,11 @@
+import { LinkButton } from '@fcongson/lagom-ui'
 import { BlogPosts } from 'components/BlogPosts'
 import { CallToAction } from 'components/CallToAction'
 import { FeaturedSection } from 'components/FeaturedSection'
 import { Hero } from 'components/Hero'
 import { ImageCaption } from 'components/ImageCaption'
 import { Layout } from 'components/layouts'
-import { Container, LinkButton, PageHeader, Quote, Section, theme } from 'components/styles'
+import { Container, PageHeader, Quote, Section, theme } from 'components/styles'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Query } from 'graphql-types'
@@ -414,7 +415,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       <Section>
         <Container id='link-button'>
-          <LinkButton to='style-guide/style-guide/#link-button'>Link button</LinkButton>
+          <LinkButton to='#link-button'>Link button</LinkButton>
         </Container>
       </Section>
     </Layout>

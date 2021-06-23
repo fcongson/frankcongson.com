@@ -1,9 +1,10 @@
+import { LinkButton } from '@fcongson/lagom-ui'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Mdx, MdxEdge } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
-import { Container, LinkButton, Section } from './styles'
+import { Container, Section } from './styles'
 
 const PostSummaryContainer = styled.div`
   ${Container} {
