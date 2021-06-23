@@ -44,7 +44,9 @@ const PostSummary: React.FunctionComponent<{ post: Mdx }> = ({ post }) => {
             <time>{date}</time>
           </p>
           <p>{post.excerpt}</p>
-          <LinkButton to={to}>Read more</LinkButton>
+          <LinkButton to={to} Component={Link}>
+            Read more
+          </LinkButton>
         </Container>
       </Section>
     </PostSummaryContainer>
