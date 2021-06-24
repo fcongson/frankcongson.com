@@ -1,7 +1,7 @@
+import { Container, Section } from '@fcongson/lagom-ui'
 import { ForestrySections } from 'components/forestry'
 import { Hero } from 'components/Hero'
 import { Layout } from 'components/layouts'
-import { Container, Section } from 'components/styles'
 import home from 'content/data/home.json'
 import { motion, Variants } from 'framer-motion'
 import { GatsbyImage } from 'gatsby-plugin-image'

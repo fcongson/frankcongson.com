@@ -1,7 +1,8 @@
+import { Container } from '@fcongson/lagom-ui'
 import { Hero } from 'components/Hero'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
-import { Container, PageHeader } from 'components/styles'
+import { PageHeader } from 'components/styles'
 import photography from 'content/data/photography.json'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
@@ -14,11 +15,6 @@ const PhotographyImage = styled.div<{ label: string }>`
 
   ${(props) => props.theme.mediaQueries.small} {
     padding: 0 0.5rem;
-  }
-
-  ${Container} {
-    display: flex;
-    flex-direction: row;
   }
 
   div.image {
@@ -58,7 +54,7 @@ const Photography: React.FunctionComponent = () => {
         const imageSharp = getImage(image)
         return (
           <PhotographyImage key={image} label={`${index + 1} / ${totalImages}`}>
-            <Container>
+            <Container display='flex' flexDirection='row'>
               <div className='image'>
                 <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={alt_text} />
               </div>

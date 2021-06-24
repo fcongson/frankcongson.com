@@ -1,8 +1,8 @@
+import { Container, Section } from '@fcongson/lagom-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import styled from 'styled-components'
 import { ImageNode, useImage } from 'utils/useImage'
-import { Container, Section } from './styles'
 
 const Image = styled.div`
   .block-img {

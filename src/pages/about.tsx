@@ -1,18 +1,12 @@
+import { Container } from '@fcongson/lagom-ui'
 import { ForestrySections } from 'components/forestry'
 import { Hero } from 'components/Hero'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
-import { Container, PageHeader } from 'components/styles'
+import { PageHeader, theme } from 'components/styles'
 import about from 'content/data/about.json'
 import React from 'react'
-import styled from 'styled-components'
 import { useImage } from 'utils/useImage'
-
-const AboutContainer = styled.div`
-  ${Container} {
-    max-width: ${(props) => props.theme.sizes.maxWidthContent};
-  }
-`
 
 const About: React.FunctionComponent = () => {
   const getImage = useImage()
@@ -37,9 +31,9 @@ const About: React.FunctionComponent = () => {
         }}>
         <PageHeader>{about.page_header}</PageHeader>
       </Hero>
-      <AboutContainer>
+      <Container maxWidth={theme.sizes.maxWidthContent}>
         <ForestrySections sections={about.sections} />
-      </AboutContainer>
+      </Container>
     </Layout>
   )
 }
