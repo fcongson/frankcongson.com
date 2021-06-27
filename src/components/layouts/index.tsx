@@ -1,3 +1,4 @@
+import { ThemeProvider as LagomThemeProvider } from '@fcongson/lagom-ui'
 import * as Sentry from '@sentry/browser'
 import { SEO as Seo } from 'components/SEO'
 import { GlobalStyle, theme } from 'components/styles'
@@ -67,21 +68,23 @@ export const Layout: React.FunctionComponent<{ overlayHeader?: boolean }> = ({ o
           type='text/css'></link>
       </Helmet>
       <Seo />
-      <ThemeProvider theme={theme}>
-        <GlobalStyle noFocusOutline={noFocusOutline} />
-        <Header overlay={overlayHeader} />
-        <Main>{children}</Main>
-        <Footer
-          social={{
-            twitterUrl,
-            facebookUrl,
-            instagramUrl,
-            youtubeUrl,
-            linkedinUrl,
-            githubUrl,
-          }}
-        />
-      </ThemeProvider>
+      <LagomThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle noFocusOutline={noFocusOutline} />
+          <Header overlay={overlayHeader} />
+          <Main>{children}</Main>
+          <Footer
+            social={{
+              twitterUrl,
+              facebookUrl,
+              instagramUrl,
+              youtubeUrl,
+              linkedinUrl,
+              githubUrl,
+            }}
+          />
+        </ThemeProvider>
+      </LagomThemeProvider>
     </>
   )
 }

@@ -43,7 +43,7 @@ const fonts: { [key: string]: string } = {
 }
 
 // @ts-ignore for styled-system usage
-const fontSizes: { [key: string]: string } = [12, 14, 16, 20, 24, 36, 54, 81, 121.5]
+const fontSizes: { [key: string]: number } = [12, 14, 16, 20, 24, 36, 54, 81, 121.5]
 fontSizes.body = fontSizes[2]
 
 // @ts-ignore for styled-system usage
@@ -53,7 +53,17 @@ fontWeights.header = fontWeights[2]
 fontWeights.link = fontWeights[1]
 
 // @ts-ignore for styled-system usage
-const lineHeights: { [key: string]: number } = ['15px', '17px', '20px', '24px', '29px', '44px', '66px', '99px', '148px']
+const lineHeights: { [key: string]: string | number } = [
+  '15px',
+  '17px',
+  '20px',
+  '24px',
+  '29px',
+  '44px',
+  '66px',
+  '99px',
+  '148px',
+]
 lineHeights.body = 1.7
 
 const space = [0, 4, 8, 16, 32, 64, 128]
@@ -63,11 +73,23 @@ export type ThemeType = {
   mediaQueries: { [key: string]: string }
   colors: { [key: string]: string | string[] }
   fonts: { [key: string]: string }
-  fontSizes: { [key: string]: string }
+  fontSizes: { [key: string]: number }
   fontWeights: { [key: string]: string }
-  lineHeights: { [key: string]: number }
+  lineHeights: { [key: string]: string | number }
   space: number[]
   sizes: { [key: string]: string }
+  buttons: { [key: string]: { [key: string]: string } }
+}
+
+const buttons = {
+  primary: {
+    backgroundColor: colors.black as string,
+    color: colors.white as string,
+  },
+  secondary: {
+    backgroundColor: colors.white as string,
+    color: colors.black as string,
+  },
 }
 
 /**
@@ -83,4 +105,5 @@ export const theme: ThemeType = {
   lineHeights,
   space,
   sizes,
+  buttons,
 }

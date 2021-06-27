@@ -6,7 +6,14 @@ import { SEO as Seo } from 'components/SEO'
 import { PageHeader, theme } from 'components/styles'
 import about from 'content/data/about.json'
 import React from 'react'
+import styled from 'styled-components'
 import { useImage } from 'utils/useImage'
+
+const AboutContainer = styled.div`
+  ${Container} {
+    max-width: ${(props) => props.theme.sizes.maxWidthContent};
+  }
+`
 
 const About: React.FunctionComponent = () => {
   const getImage = useImage()
@@ -31,9 +38,9 @@ const About: React.FunctionComponent = () => {
         }}>
         <PageHeader>{about.page_header}</PageHeader>
       </Hero>
-      <Container maxWidth={theme.sizes.maxWidthContent}>
+      <AboutContainer>
         <ForestrySections sections={about.sections} />
-      </Container>
+      </AboutContainer>
     </Layout>
   )
 }
