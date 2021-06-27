@@ -277,8 +277,10 @@ export type SiteSiteMetadata = {
 }
 
 export type SiteFunction = Node & {
-  apiRoute: Scalars['String']
-  originalFilePath: Scalars['String']
+  functionRoute: Scalars['String']
+  pluginName: Scalars['String']
+  originalAbsoluteFilePath: Scalars['String']
+  originalRelativeFilePath: Scalars['String']
   relativeCompiledFilePath: Scalars['String']
   absoluteCompiledFilePath: Scalars['String']
   matchPath?: Maybe<Scalars['String']>
@@ -673,51 +675,6 @@ export type Seo = {
   alt_text?: Maybe<Scalars['String']>
 }
 
-export type PagesJson = Node & {
-  id: Scalars['ID']
-  parent?: Maybe<Node>
-  children: Array<Node>
-  internal: Internal
-  hero_image?: Maybe<PagesJsonHero_Image>
-  page_header?: Maybe<Scalars['String']>
-  sections?: Maybe<Array<Maybe<PagesJsonSections>>>
-  seo?: Maybe<PagesJsonSeo>
-  slug?: Maybe<Scalars['String']>
-}
-
-export type PagesJsonHero_Image = {
-  image?: Maybe<Scalars['String']>
-  alt_text?: Maybe<Scalars['String']>
-}
-
-export type PagesJsonSections = {
-  template?: Maybe<Scalars['String']>
-  text?: Maybe<Scalars['String']>
-}
-
-export type PagesJsonSeo = {
-  title?: Maybe<Scalars['String']>
-  description?: Maybe<Scalars['String']>
-  keywords?: Maybe<Array<Maybe<Scalars['String']>>>
-  image?: Maybe<Scalars['String']>
-  alt_text?: Maybe<Scalars['String']>
-}
-
-export type SiteBuildMetadata = Node & {
-  id: Scalars['ID']
-  parent?: Maybe<Node>
-  children: Array<Node>
-  internal: Internal
-  buildTime?: Maybe<Scalars['Date']>
-}
-
-export type SiteBuildMetadataBuildTimeArgs = {
-  formatString?: Maybe<Scalars['String']>
-  fromNow?: Maybe<Scalars['Boolean']>
-  difference?: Maybe<Scalars['String']>
-  locale?: Maybe<Scalars['String']>
-}
-
 export type SitePlugin = Node & {
   id: Scalars['ID']
   parent?: Maybe<Node>
@@ -775,6 +732,7 @@ export type SitePluginPluginOptions = {
   withWebp?: Maybe<Scalars['Boolean']>
   tracedSVG?: Maybe<Scalars['Boolean']>
   loading?: Maybe<Scalars['String']>
+  decoding?: Maybe<Scalars['String']>
   disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>
   disableBgImage?: Maybe<Scalars['Boolean']>
   trackingIds?: Maybe<Array<Maybe<Scalars['String']>>>
@@ -815,6 +773,7 @@ export type SitePluginPluginOptionsPluginsPluginOptions = {
   withWebp?: Maybe<Scalars['Boolean']>
   tracedSVG?: Maybe<Scalars['Boolean']>
   loading?: Maybe<Scalars['String']>
+  decoding?: Maybe<Scalars['String']>
   disableBgImageOnAlpha?: Maybe<Scalars['Boolean']>
   disableBgImage?: Maybe<Scalars['Boolean']>
 }
@@ -857,6 +816,51 @@ export type SitePluginPackageJsonPeerDependencies = {
   version?: Maybe<Scalars['String']>
 }
 
+export type SiteBuildMetadata = Node & {
+  id: Scalars['ID']
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  buildTime?: Maybe<Scalars['Date']>
+}
+
+export type SiteBuildMetadataBuildTimeArgs = {
+  formatString?: Maybe<Scalars['String']>
+  fromNow?: Maybe<Scalars['Boolean']>
+  difference?: Maybe<Scalars['String']>
+  locale?: Maybe<Scalars['String']>
+}
+
+export type PagesJson = Node & {
+  id: Scalars['ID']
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  hero_image?: Maybe<PagesJsonHero_Image>
+  page_header?: Maybe<Scalars['String']>
+  sections?: Maybe<Array<Maybe<PagesJsonSections>>>
+  seo?: Maybe<PagesJsonSeo>
+  slug?: Maybe<Scalars['String']>
+}
+
+export type PagesJsonHero_Image = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type PagesJsonSections = {
+  template?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
+}
+
+export type PagesJsonSeo = {
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  keywords?: Maybe<Array<Maybe<Scalars['String']>>>
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
 export type Query = {
   file?: Maybe<File>
   allFile: FileConnection
@@ -876,12 +880,12 @@ export type Query = {
   allMdxFrontmatter: MdxFrontmatterConnection
   mdx?: Maybe<Mdx>
   allMdx: MdxConnection
-  pagesJson?: Maybe<PagesJson>
-  allPagesJson: PagesJsonConnection
-  siteBuildMetadata?: Maybe<SiteBuildMetadata>
-  allSiteBuildMetadata: SiteBuildMetadataConnection
   sitePlugin?: Maybe<SitePlugin>
   allSitePlugin: SitePluginConnection
+  siteBuildMetadata?: Maybe<SiteBuildMetadata>
+  allSiteBuildMetadata: SiteBuildMetadataConnection
+  pagesJson?: Maybe<PagesJson>
+  allPagesJson: PagesJsonConnection
 }
 
 export type QueryFileArgs = {
@@ -1006,8 +1010,10 @@ export type QueryAllSiteArgs = {
 }
 
 export type QuerySiteFunctionArgs = {
-  apiRoute?: Maybe<StringQueryOperatorInput>
-  originalFilePath?: Maybe<StringQueryOperatorInput>
+  functionRoute?: Maybe<StringQueryOperatorInput>
+  pluginName?: Maybe<StringQueryOperatorInput>
+  originalAbsoluteFilePath?: Maybe<StringQueryOperatorInput>
+  originalRelativeFilePath?: Maybe<StringQueryOperatorInput>
   relativeCompiledFilePath?: Maybe<StringQueryOperatorInput>
   absoluteCompiledFilePath?: Maybe<StringQueryOperatorInput>
   matchPath?: Maybe<StringQueryOperatorInput>
@@ -1138,40 +1144,6 @@ export type QueryAllMdxArgs = {
   limit?: Maybe<Scalars['Int']>
 }
 
-export type QueryPagesJsonArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  hero_image?: Maybe<PagesJsonHero_ImageFilterInput>
-  page_header?: Maybe<StringQueryOperatorInput>
-  sections?: Maybe<PagesJsonSectionsFilterListInput>
-  seo?: Maybe<PagesJsonSeoFilterInput>
-  slug?: Maybe<StringQueryOperatorInput>
-}
-
-export type QueryAllPagesJsonArgs = {
-  filter?: Maybe<PagesJsonFilterInput>
-  sort?: Maybe<PagesJsonSortInput>
-  skip?: Maybe<Scalars['Int']>
-  limit?: Maybe<Scalars['Int']>
-}
-
-export type QuerySiteBuildMetadataArgs = {
-  id?: Maybe<StringQueryOperatorInput>
-  parent?: Maybe<NodeFilterInput>
-  children?: Maybe<NodeFilterListInput>
-  internal?: Maybe<InternalFilterInput>
-  buildTime?: Maybe<DateQueryOperatorInput>
-}
-
-export type QueryAllSiteBuildMetadataArgs = {
-  filter?: Maybe<SiteBuildMetadataFilterInput>
-  sort?: Maybe<SiteBuildMetadataSortInput>
-  skip?: Maybe<Scalars['Int']>
-  limit?: Maybe<Scalars['Int']>
-}
-
 export type QuerySitePluginArgs = {
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
@@ -1191,6 +1163,40 @@ export type QuerySitePluginArgs = {
 export type QueryAllSitePluginArgs = {
   filter?: Maybe<SitePluginFilterInput>
   sort?: Maybe<SitePluginSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}
+
+export type QuerySiteBuildMetadataArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  buildTime?: Maybe<DateQueryOperatorInput>
+}
+
+export type QueryAllSiteBuildMetadataArgs = {
+  filter?: Maybe<SiteBuildMetadataFilterInput>
+  sort?: Maybe<SiteBuildMetadataSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}
+
+export type QueryPagesJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  hero_image?: Maybe<PagesJsonHero_ImageFilterInput>
+  page_header?: Maybe<StringQueryOperatorInput>
+  sections?: Maybe<PagesJsonSectionsFilterListInput>
+  seo?: Maybe<PagesJsonSeoFilterInput>
+  slug?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllPagesJsonArgs = {
+  filter?: Maybe<PagesJsonFilterInput>
+  sort?: Maybe<PagesJsonSortInput>
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
 }
@@ -2608,8 +2614,10 @@ export type SiteFunctionEdge = {
 }
 
 export type SiteFunctionFieldsEnum =
-  | 'apiRoute'
-  | 'originalFilePath'
+  | 'functionRoute'
+  | 'pluginName'
+  | 'originalAbsoluteFilePath'
+  | 'originalRelativeFilePath'
   | 'relativeCompiledFilePath'
   | 'absoluteCompiledFilePath'
   | 'matchPath'
@@ -2710,8 +2718,10 @@ export type SiteFunctionGroupConnection = {
 }
 
 export type SiteFunctionFilterInput = {
-  apiRoute?: Maybe<StringQueryOperatorInput>
-  originalFilePath?: Maybe<StringQueryOperatorInput>
+  functionRoute?: Maybe<StringQueryOperatorInput>
+  pluginName?: Maybe<StringQueryOperatorInput>
+  originalAbsoluteFilePath?: Maybe<StringQueryOperatorInput>
+  originalRelativeFilePath?: Maybe<StringQueryOperatorInput>
   relativeCompiledFilePath?: Maybe<StringQueryOperatorInput>
   absoluteCompiledFilePath?: Maybe<StringQueryOperatorInput>
   matchPath?: Maybe<StringQueryOperatorInput>
@@ -2791,6 +2801,7 @@ export type SitePluginPluginOptionsFilterInput = {
   withWebp?: Maybe<BooleanQueryOperatorInput>
   tracedSVG?: Maybe<BooleanQueryOperatorInput>
   loading?: Maybe<StringQueryOperatorInput>
+  decoding?: Maybe<StringQueryOperatorInput>
   disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>
   disableBgImage?: Maybe<BooleanQueryOperatorInput>
   trackingIds?: Maybe<StringQueryOperatorInput>
@@ -2835,6 +2846,7 @@ export type SitePluginPluginOptionsPluginsPluginOptionsFilterInput = {
   withWebp?: Maybe<BooleanQueryOperatorInput>
   tracedSVG?: Maybe<BooleanQueryOperatorInput>
   loading?: Maybe<StringQueryOperatorInput>
+  decoding?: Maybe<StringQueryOperatorInput>
   disableBgImageOnAlpha?: Maybe<BooleanQueryOperatorInput>
   disableBgImage?: Maybe<BooleanQueryOperatorInput>
 }
@@ -3115,6 +3127,7 @@ export type SitePageFieldsEnum =
   | 'pluginCreator___pluginOptions___withWebp'
   | 'pluginCreator___pluginOptions___tracedSVG'
   | 'pluginCreator___pluginOptions___loading'
+  | 'pluginCreator___pluginOptions___decoding'
   | 'pluginCreator___pluginOptions___disableBgImageOnAlpha'
   | 'pluginCreator___pluginOptions___disableBgImage'
   | 'pluginCreator___pluginOptions___trackingIds'
@@ -4422,47 +4435,47 @@ export type MdxSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
-export type PagesJsonConnection = {
+export type SitePluginConnection = {
   totalCount: Scalars['Int']
-  edges: Array<PagesJsonEdge>
-  nodes: Array<PagesJson>
+  edges: Array<SitePluginEdge>
+  nodes: Array<SitePlugin>
   pageInfo: PageInfo
   distinct: Array<Scalars['String']>
   max?: Maybe<Scalars['Float']>
   min?: Maybe<Scalars['Float']>
   sum?: Maybe<Scalars['Float']>
-  group: Array<PagesJsonGroupConnection>
+  group: Array<SitePluginGroupConnection>
 }
 
-export type PagesJsonConnectionDistinctArgs = {
-  field: PagesJsonFieldsEnum
+export type SitePluginConnectionDistinctArgs = {
+  field: SitePluginFieldsEnum
 }
 
-export type PagesJsonConnectionMaxArgs = {
-  field: PagesJsonFieldsEnum
+export type SitePluginConnectionMaxArgs = {
+  field: SitePluginFieldsEnum
 }
 
-export type PagesJsonConnectionMinArgs = {
-  field: PagesJsonFieldsEnum
+export type SitePluginConnectionMinArgs = {
+  field: SitePluginFieldsEnum
 }
 
-export type PagesJsonConnectionSumArgs = {
-  field: PagesJsonFieldsEnum
+export type SitePluginConnectionSumArgs = {
+  field: SitePluginFieldsEnum
 }
 
-export type PagesJsonConnectionGroupArgs = {
+export type SitePluginConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
-  field: PagesJsonFieldsEnum
+  field: SitePluginFieldsEnum
 }
 
-export type PagesJsonEdge = {
-  next?: Maybe<PagesJson>
-  node: PagesJson
-  previous?: Maybe<PagesJson>
+export type SitePluginEdge = {
+  next?: Maybe<SitePlugin>
+  node: SitePlugin
+  previous?: Maybe<SitePlugin>
 }
 
-export type PagesJsonFieldsEnum =
+export type SitePluginFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -4549,30 +4562,120 @@ export type PagesJsonFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'hero_image___image'
-  | 'hero_image___alt_text'
-  | 'page_header'
-  | 'sections'
-  | 'sections___template'
-  | 'sections___text'
-  | 'seo___title'
-  | 'seo___description'
-  | 'seo___keywords'
-  | 'seo___image'
-  | 'seo___alt_text'
-  | 'slug'
+  | 'resolve'
+  | 'name'
+  | 'version'
+  | 'pluginOptions___plugins'
+  | 'pluginOptions___plugins___resolve'
+  | 'pluginOptions___plugins___id'
+  | 'pluginOptions___plugins___name'
+  | 'pluginOptions___plugins___version'
+  | 'pluginOptions___plugins___pluginOptions___staticFolderName'
+  | 'pluginOptions___plugins___pluginOptions___maxWidth'
+  | 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal'
+  | 'pluginOptions___plugins___pluginOptions___showCaptions'
+  | 'pluginOptions___plugins___pluginOptions___markdownCaptions'
+  | 'pluginOptions___plugins___pluginOptions___sizeByPixelDensity'
+  | 'pluginOptions___plugins___pluginOptions___backgroundColor'
+  | 'pluginOptions___plugins___pluginOptions___quality'
+  | 'pluginOptions___plugins___pluginOptions___withWebp'
+  | 'pluginOptions___plugins___pluginOptions___tracedSVG'
+  | 'pluginOptions___plugins___pluginOptions___loading'
+  | 'pluginOptions___plugins___pluginOptions___decoding'
+  | 'pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha'
+  | 'pluginOptions___plugins___pluginOptions___disableBgImage'
+  | 'pluginOptions___plugins___nodeAPIs'
+  | 'pluginOptions___plugins___browserAPIs'
+  | 'pluginOptions___plugins___pluginFilepath'
+  | 'pluginOptions___displayName'
+  | 'pluginOptions___fileName'
+  | 'pluginOptions___minify'
+  | 'pluginOptions___namespace'
+  | 'pluginOptions___transpileTemplateLiterals'
+  | 'pluginOptions___pure'
+  | 'pluginOptions___name'
+  | 'pluginOptions___short_name'
+  | 'pluginOptions___start_url'
+  | 'pluginOptions___background_color'
+  | 'pluginOptions___theme_color'
+  | 'pluginOptions___display'
+  | 'pluginOptions___icon'
+  | 'pluginOptions___legacy'
+  | 'pluginOptions___theme_color_in_head'
+  | 'pluginOptions___cache_busting_mode'
+  | 'pluginOptions___crossOrigin'
+  | 'pluginOptions___include_favicon'
+  | 'pluginOptions___cacheDigest'
+  | 'pluginOptions___base64Width'
+  | 'pluginOptions___stripMetadata'
+  | 'pluginOptions___defaultQuality'
+  | 'pluginOptions___failOnError'
+  | 'pluginOptions___path'
+  | 'pluginOptions___extensions'
+  | 'pluginOptions___lessBabel'
+  | 'pluginOptions___mediaTypes'
+  | 'pluginOptions___root'
+  | 'pluginOptions___staticFolderName'
+  | 'pluginOptions___maxWidth'
+  | 'pluginOptions___linkImagesToOriginal'
+  | 'pluginOptions___showCaptions'
+  | 'pluginOptions___markdownCaptions'
+  | 'pluginOptions___sizeByPixelDensity'
+  | 'pluginOptions___backgroundColor'
+  | 'pluginOptions___quality'
+  | 'pluginOptions___withWebp'
+  | 'pluginOptions___tracedSVG'
+  | 'pluginOptions___loading'
+  | 'pluginOptions___decoding'
+  | 'pluginOptions___disableBgImageOnAlpha'
+  | 'pluginOptions___disableBgImage'
+  | 'pluginOptions___trackingIds'
+  | 'pluginOptions___gtagConfig___anonymize_ip'
+  | 'pluginOptions___gtagConfig___cookie_expires'
+  | 'pluginOptions___pluginConfig___head'
+  | 'pluginOptions___pluginConfig___respectDNT'
+  | 'pluginOptions___isTSX'
+  | 'pluginOptions___jsxPragma'
+  | 'pluginOptions___allExtensions'
+  | 'pluginOptions___content'
+  | 'pluginOptions___components'
+  | 'pluginOptions___pages'
+  | 'pluginOptions___stylesheets'
+  | 'pluginOptions___templates'
+  | 'pluginOptions___utils'
+  | 'pluginOptions___pathCheck'
+  | 'nodeAPIs'
+  | 'browserAPIs'
+  | 'ssrAPIs'
+  | 'pluginFilepath'
+  | 'packageJson___name'
+  | 'packageJson___description'
+  | 'packageJson___version'
+  | 'packageJson___main'
+  | 'packageJson___author'
+  | 'packageJson___license'
+  | 'packageJson___dependencies'
+  | 'packageJson___dependencies___name'
+  | 'packageJson___dependencies___version'
+  | 'packageJson___devDependencies'
+  | 'packageJson___devDependencies___name'
+  | 'packageJson___devDependencies___version'
+  | 'packageJson___peerDependencies'
+  | 'packageJson___peerDependencies___name'
+  | 'packageJson___peerDependencies___version'
+  | 'packageJson___keywords'
 
-export type PagesJsonGroupConnection = {
+export type SitePluginGroupConnection = {
   totalCount: Scalars['Int']
-  edges: Array<PagesJsonEdge>
-  nodes: Array<PagesJson>
+  edges: Array<SitePluginEdge>
+  nodes: Array<SitePlugin>
   pageInfo: PageInfo
   field: Scalars['String']
   fieldValue?: Maybe<Scalars['String']>
 }
 
-export type PagesJsonSortInput = {
-  fields?: Maybe<Array<Maybe<PagesJsonFieldsEnum>>>
+export type SitePluginSortInput = {
+  fields?: Maybe<Array<Maybe<SitePluginFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
@@ -4727,47 +4830,47 @@ export type SiteBuildMetadataSortInput = {
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
-export type SitePluginConnection = {
+export type PagesJsonConnection = {
   totalCount: Scalars['Int']
-  edges: Array<SitePluginEdge>
-  nodes: Array<SitePlugin>
+  edges: Array<PagesJsonEdge>
+  nodes: Array<PagesJson>
   pageInfo: PageInfo
   distinct: Array<Scalars['String']>
   max?: Maybe<Scalars['Float']>
   min?: Maybe<Scalars['Float']>
   sum?: Maybe<Scalars['Float']>
-  group: Array<SitePluginGroupConnection>
+  group: Array<PagesJsonGroupConnection>
 }
 
-export type SitePluginConnectionDistinctArgs = {
-  field: SitePluginFieldsEnum
+export type PagesJsonConnectionDistinctArgs = {
+  field: PagesJsonFieldsEnum
 }
 
-export type SitePluginConnectionMaxArgs = {
-  field: SitePluginFieldsEnum
+export type PagesJsonConnectionMaxArgs = {
+  field: PagesJsonFieldsEnum
 }
 
-export type SitePluginConnectionMinArgs = {
-  field: SitePluginFieldsEnum
+export type PagesJsonConnectionMinArgs = {
+  field: PagesJsonFieldsEnum
 }
 
-export type SitePluginConnectionSumArgs = {
-  field: SitePluginFieldsEnum
+export type PagesJsonConnectionSumArgs = {
+  field: PagesJsonFieldsEnum
 }
 
-export type SitePluginConnectionGroupArgs = {
+export type PagesJsonConnectionGroupArgs = {
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
-  field: SitePluginFieldsEnum
+  field: PagesJsonFieldsEnum
 }
 
-export type SitePluginEdge = {
-  next?: Maybe<SitePlugin>
-  node: SitePlugin
-  previous?: Maybe<SitePlugin>
+export type PagesJsonEdge = {
+  next?: Maybe<PagesJson>
+  node: PagesJson
+  previous?: Maybe<PagesJson>
 }
 
-export type SitePluginFieldsEnum =
+export type PagesJsonFieldsEnum =
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -4854,118 +4957,30 @@ export type SitePluginFieldsEnum =
   | 'internal___mediaType'
   | 'internal___owner'
   | 'internal___type'
-  | 'resolve'
-  | 'name'
-  | 'version'
-  | 'pluginOptions___plugins'
-  | 'pluginOptions___plugins___resolve'
-  | 'pluginOptions___plugins___id'
-  | 'pluginOptions___plugins___name'
-  | 'pluginOptions___plugins___version'
-  | 'pluginOptions___plugins___pluginOptions___staticFolderName'
-  | 'pluginOptions___plugins___pluginOptions___maxWidth'
-  | 'pluginOptions___plugins___pluginOptions___linkImagesToOriginal'
-  | 'pluginOptions___plugins___pluginOptions___showCaptions'
-  | 'pluginOptions___plugins___pluginOptions___markdownCaptions'
-  | 'pluginOptions___plugins___pluginOptions___sizeByPixelDensity'
-  | 'pluginOptions___plugins___pluginOptions___backgroundColor'
-  | 'pluginOptions___plugins___pluginOptions___quality'
-  | 'pluginOptions___plugins___pluginOptions___withWebp'
-  | 'pluginOptions___plugins___pluginOptions___tracedSVG'
-  | 'pluginOptions___plugins___pluginOptions___loading'
-  | 'pluginOptions___plugins___pluginOptions___disableBgImageOnAlpha'
-  | 'pluginOptions___plugins___pluginOptions___disableBgImage'
-  | 'pluginOptions___plugins___nodeAPIs'
-  | 'pluginOptions___plugins___browserAPIs'
-  | 'pluginOptions___plugins___pluginFilepath'
-  | 'pluginOptions___displayName'
-  | 'pluginOptions___fileName'
-  | 'pluginOptions___minify'
-  | 'pluginOptions___namespace'
-  | 'pluginOptions___transpileTemplateLiterals'
-  | 'pluginOptions___pure'
-  | 'pluginOptions___name'
-  | 'pluginOptions___short_name'
-  | 'pluginOptions___start_url'
-  | 'pluginOptions___background_color'
-  | 'pluginOptions___theme_color'
-  | 'pluginOptions___display'
-  | 'pluginOptions___icon'
-  | 'pluginOptions___legacy'
-  | 'pluginOptions___theme_color_in_head'
-  | 'pluginOptions___cache_busting_mode'
-  | 'pluginOptions___crossOrigin'
-  | 'pluginOptions___include_favicon'
-  | 'pluginOptions___cacheDigest'
-  | 'pluginOptions___base64Width'
-  | 'pluginOptions___stripMetadata'
-  | 'pluginOptions___defaultQuality'
-  | 'pluginOptions___failOnError'
-  | 'pluginOptions___path'
-  | 'pluginOptions___extensions'
-  | 'pluginOptions___lessBabel'
-  | 'pluginOptions___mediaTypes'
-  | 'pluginOptions___root'
-  | 'pluginOptions___staticFolderName'
-  | 'pluginOptions___maxWidth'
-  | 'pluginOptions___linkImagesToOriginal'
-  | 'pluginOptions___showCaptions'
-  | 'pluginOptions___markdownCaptions'
-  | 'pluginOptions___sizeByPixelDensity'
-  | 'pluginOptions___backgroundColor'
-  | 'pluginOptions___quality'
-  | 'pluginOptions___withWebp'
-  | 'pluginOptions___tracedSVG'
-  | 'pluginOptions___loading'
-  | 'pluginOptions___disableBgImageOnAlpha'
-  | 'pluginOptions___disableBgImage'
-  | 'pluginOptions___trackingIds'
-  | 'pluginOptions___gtagConfig___anonymize_ip'
-  | 'pluginOptions___gtagConfig___cookie_expires'
-  | 'pluginOptions___pluginConfig___head'
-  | 'pluginOptions___pluginConfig___respectDNT'
-  | 'pluginOptions___isTSX'
-  | 'pluginOptions___jsxPragma'
-  | 'pluginOptions___allExtensions'
-  | 'pluginOptions___content'
-  | 'pluginOptions___components'
-  | 'pluginOptions___pages'
-  | 'pluginOptions___stylesheets'
-  | 'pluginOptions___templates'
-  | 'pluginOptions___utils'
-  | 'pluginOptions___pathCheck'
-  | 'nodeAPIs'
-  | 'browserAPIs'
-  | 'ssrAPIs'
-  | 'pluginFilepath'
-  | 'packageJson___name'
-  | 'packageJson___description'
-  | 'packageJson___version'
-  | 'packageJson___main'
-  | 'packageJson___author'
-  | 'packageJson___license'
-  | 'packageJson___dependencies'
-  | 'packageJson___dependencies___name'
-  | 'packageJson___dependencies___version'
-  | 'packageJson___devDependencies'
-  | 'packageJson___devDependencies___name'
-  | 'packageJson___devDependencies___version'
-  | 'packageJson___peerDependencies'
-  | 'packageJson___peerDependencies___name'
-  | 'packageJson___peerDependencies___version'
-  | 'packageJson___keywords'
+  | 'hero_image___image'
+  | 'hero_image___alt_text'
+  | 'page_header'
+  | 'sections'
+  | 'sections___template'
+  | 'sections___text'
+  | 'seo___title'
+  | 'seo___description'
+  | 'seo___keywords'
+  | 'seo___image'
+  | 'seo___alt_text'
+  | 'slug'
 
-export type SitePluginGroupConnection = {
+export type PagesJsonGroupConnection = {
   totalCount: Scalars['Int']
-  edges: Array<SitePluginEdge>
-  nodes: Array<SitePlugin>
+  edges: Array<PagesJsonEdge>
+  nodes: Array<PagesJson>
   pageInfo: PageInfo
   field: Scalars['String']
   fieldValue?: Maybe<Scalars['String']>
 }
 
-export type SitePluginSortInput = {
-  fields?: Maybe<Array<Maybe<SitePluginFieldsEnum>>>
+export type PagesJsonSortInput = {
+  fields?: Maybe<Array<Maybe<PagesJsonFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
@@ -5083,56 +5098,3 @@ export type All_ImagesQuery = {
     }>
   }
 }
-
-export type GatsbyImageSharpFixedFragment = Pick<ImageSharpFixed, 'base64' | 'width' | 'height' | 'src' | 'srcSet'>
-
-export type GatsbyImageSharpFixed_TracedSvgFragment = Pick<
-  ImageSharpFixed,
-  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet'
->
-
-export type GatsbyImageSharpFixed_WithWebpFragment = Pick<
-  ImageSharpFixed,
-  'base64' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
->
-
-export type GatsbyImageSharpFixed_WithWebp_TracedSvgFragment = Pick<
-  ImageSharpFixed,
-  'tracedSVG' | 'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
->
-
-export type GatsbyImageSharpFixed_NoBase64Fragment = Pick<ImageSharpFixed, 'width' | 'height' | 'src' | 'srcSet'>
-
-export type GatsbyImageSharpFixed_WithWebp_NoBase64Fragment = Pick<
-  ImageSharpFixed,
-  'width' | 'height' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp'
->
-
-export type GatsbyImageSharpFluidFragment = Pick<ImageSharpFluid, 'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-
-export type GatsbyImageSharpFluidLimitPresentationSizeFragment = {
-  maxHeight: ImageSharpFluid['presentationHeight']
-  maxWidth: ImageSharpFluid['presentationWidth']
-}
-
-export type GatsbyImageSharpFluid_TracedSvgFragment = Pick<
-  ImageSharpFluid,
-  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'sizes'
->
-
-export type GatsbyImageSharpFluid_WithWebpFragment = Pick<
-  ImageSharpFluid,
-  'base64' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
->
-
-export type GatsbyImageSharpFluid_WithWebp_TracedSvgFragment = Pick<
-  ImageSharpFluid,
-  'tracedSVG' | 'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
->
-
-export type GatsbyImageSharpFluid_NoBase64Fragment = Pick<ImageSharpFluid, 'aspectRatio' | 'src' | 'srcSet' | 'sizes'>
-
-export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = Pick<
-  ImageSharpFluid,
-  'aspectRatio' | 'src' | 'srcSet' | 'srcWebp' | 'srcSetWebp' | 'sizes'
->
