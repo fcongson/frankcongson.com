@@ -1,6 +1,6 @@
+import { Container, Section } from '@fcongson/lagom-ui'
 import { faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Container, Section } from 'components/styles'
 import logo from 'content/images/logo-light.svg'
 import { Link } from 'gatsby'
 import React from 'react'

@@ -1,6 +1,6 @@
+import { LinkButton, SectionHeader } from '@fcongson/lagom-ui'
 import React from 'react'
 import styled from 'styled-components'
-import { LinkButton, SectionHeader } from './styles'
 
 const CallToActionContainer = styled.div`
   display: flex;
@@ -20,10 +20,6 @@ const CallToActionContainer = styled.div`
       padding: 0 1rem 0 1rem;
     }
   }
-
-  ${LinkButton} {
-    margin: 0 auto;
-  }
 `
 
 export const CallToAction: React.FunctionComponent<{
@@ -35,6 +31,10 @@ export const CallToAction: React.FunctionComponent<{
   <CallToActionContainer>
     {!!header && <SectionHeader>{header}</SectionHeader>}
     {!!text && <p>{text}</p>}
-    {!!callToAction && !!callToActionText && <LinkButton to={`/${callToAction}`}>{callToActionText}</LinkButton>}
+    {!!callToAction && !!callToActionText && (
+      <LinkButton to={`/${callToAction}`} margin='0 auto' backgroundColor='transparent'>
+        {callToActionText}
+      </LinkButton>
+    )}
   </CallToActionContainer>
 )

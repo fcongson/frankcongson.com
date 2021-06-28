@@ -1,8 +1,7 @@
-import { Container, Section } from '@fcongson/lagom-ui'
+import { Container, Quote, Section } from '@fcongson/lagom-ui'
 import { CallToAction } from 'components/CallToAction'
 import { FeaturedSection } from 'components/FeaturedSection'
 import { ImageCaption } from 'components/ImageCaption'
-import { Quote } from 'components/styles'
 import React from 'react'
 
 export type ForestrySection = {

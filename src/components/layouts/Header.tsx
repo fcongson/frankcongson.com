@@ -1,4 +1,4 @@
-import { Container, Section } from 'components/styles'
+import { Container, Section } from '@fcongson/lagom-ui'
 import logo from 'content/images/logo.svg'
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
