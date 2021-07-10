@@ -107,13 +107,13 @@ export const Footer: React.FunctionComponent<{ social: { [key: string]: string }
         </Link>
         <div className='footer-content'>
           <div className='content-links'>
-            <Link to='/photography'>Photography</Link>
-            <Link to='/about'>About</Link>
-            <Link className='navigation-link' to='/blog'>
+            <Link to='/photography/'>Photography</Link>
+            <Link to='/about/'>About</Link>
+            <Link className='navigation-link' to='/blog/'>
               Blog
             </Link>
-            <Link to='/uses'>Uses</Link>
-            <Link to='/style-guide'>Style Guide</Link>
+            <Link to='/uses/'>Uses</Link>
+            <Link to='/style-guide/'>Style Guide</Link>
           </div>
           <div className='social-links'>
             <a href={social.instagramUrl} aria-label='Instagram'>

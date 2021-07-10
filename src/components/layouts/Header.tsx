@@ -148,13 +148,13 @@ export const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay 
             <Link className='navigation-link' to='/'>
               Home
             </Link>
-            <Link className='navigation-link' to='/photography'>
+            <Link className='navigation-link' to='/photography/'>
               Photography
             </Link>
-            <Link className='navigation-link' to='/about'>
+            <Link className='navigation-link' to='/about/'>
               About
             </Link>
-            <Link className='navigation-link' to='/blog'>
+            <Link className='navigation-link' to='/blog/'>
               Blog
             </Link>
           </NavigationMenu>

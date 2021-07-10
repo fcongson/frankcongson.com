@@ -134,7 +134,7 @@ const Post: React.FunctionComponent<{ data: Query }> = ({ data }) => {
           <Section>
             <Container>
               <div className='back'>
-                <Link to='/blog'>back to list</Link>
+                <Link to='/blog/'>back to list</Link>
               </div>
               <h1>{title ? title : 'Untitled'}</h1>
               {!!featured_image && (
