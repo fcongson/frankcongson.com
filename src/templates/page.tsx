@@ -1,9 +1,9 @@
-import { Container, PageHeader, Section } from '@fcongson/lagom-ui'
+import { Container, Hero, PageHeader, Section } from '@fcongson/lagom-ui'
 import { ForestrySection, ForestrySections } from 'components/forestry'
-import { Hero } from 'components/Hero'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import { graphql } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { Query } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -57,11 +57,13 @@ const Page: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       />
       {!!hero_image && (
         <Hero
-          imageProps={{
-            image: heroImage?.childImageSharp?.gatsbyImageData,
-            alt: hero_image.alt_text ?? '',
-            style: { height: '100%', opacity: 0.4 },
-          }}>
+          image={
+            <GatsbyImage
+              image={heroImage?.childImageSharp?.gatsbyImageData}
+              alt={hero_image.alt_text ?? ''}
+              style={{ height: '100%', opacity: 0.4 }}
+            />
+          }>
           <PageHeader>{page_header}</PageHeader>
         </Hero>
       )}

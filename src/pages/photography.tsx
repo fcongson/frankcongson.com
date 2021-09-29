@@ -1,5 +1,4 @@
-import { Container, PageHeader } from '@fcongson/lagom-ui'
-import { Hero } from 'components/Hero'
+import { Container, Hero, PageHeader } from '@fcongson/lagom-ui'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import photography from 'content/data/photography.json'
@@ -44,11 +43,13 @@ const Photography: React.FunctionComponent = () => {
         pathname='/photography'
       />
       <Hero
-        imageProps={{
-          image: heroImage?.childImageSharp?.gatsbyImageData,
-          alt: photography.hero_image.alt_text,
-          style: { height: '100%', opacity: 0.7 },
-        }}>
+        image={
+          <GatsbyImage
+            image={heroImage?.childImageSharp?.gatsbyImageData}
+            alt={photography.hero_image.alt_text}
+            style={{ height: '100%', opacity: 0.7 }}
+          />
+        }>
         <PageHeader>{photography.page_header}</PageHeader>
       </Hero>
       {images.map(({ image, alt_text, caption }, index) => {

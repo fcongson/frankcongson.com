@@ -1,8 +1,7 @@
-import { Container, LinkButton, PageHeader, Quote, Section } from '@fcongson/lagom-ui'
+import { Container, Hero, LinkButton, PageHeader, Quote, Section } from '@fcongson/lagom-ui'
 import { BlogPosts } from 'components/BlogPosts'
 import { CallToAction } from 'components/CallToAction'
 import { FeaturedSection } from 'components/FeaturedSection'
-import { Hero } from 'components/Hero'
 import { ImageCaption } from 'components/ImageCaption'
 import { Layout } from 'components/layouts'
 import { theme } from 'components/styles'
@@ -370,11 +369,13 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
         <Container id='hero'></Container>
       </Section>
       <Hero
-        imageProps={{
-          image: imageSharp?.childImageSharp?.gatsbyImageData,
-          alt: 'Alt text',
-          style: { height: '100%', opacity: 0.7 },
-        }}>
+        image={
+          <GatsbyImage
+            image={imageSharp?.childImageSharp?.gatsbyImageData}
+            alt={'Alt text'}
+            style={{ height: '100%', opacity: 0.7 }}
+          />
+        }>
         <PageHeader>Lorem Ipsum</PageHeader>
       </Hero>
 

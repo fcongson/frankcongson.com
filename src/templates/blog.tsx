@@ -1,10 +1,10 @@
-import { Container, PageHeader, Section } from '@fcongson/lagom-ui'
+import { Container, Hero, PageHeader, Section } from '@fcongson/lagom-ui'
 import { BlogPosts } from 'components/BlogPosts'
-import { Hero } from 'components/Hero'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import blog from 'content/data/blog.json'
 import { graphql, Link } from 'gatsby'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { Query } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -102,11 +102,13 @@ const Blog: React.FunctionComponent<{ data: Query; pageContext: PaginationProps 
         pathname='/blog'
       />
       <Hero
-        imageProps={{
-          image: heroImage?.childImageSharp?.gatsbyImageData,
-          alt: blog.hero_image.alt_text,
-          style: { height: '100%', opacity: 0.7 },
-        }}>
+        image={
+          <GatsbyImage
+            image={heroImage?.childImageSharp?.gatsbyImageData}
+            alt={blog.hero_image.alt_text}
+            style={{ height: '100%', opacity: 0.7 }}
+          />
+        }>
         <PageHeader>{blog.page_header}</PageHeader>
       </Hero>
       <BlogPosts posts={allMdx.edges} />
