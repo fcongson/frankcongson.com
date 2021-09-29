@@ -21,7 +21,7 @@ const PhotographyImage = styled(motion.div)<{ label: string }>`
   div.image {
     width: 80vw;
 
-    &::after {
+    ::after {
       content: '${(props) => props.label}';
     }
   }

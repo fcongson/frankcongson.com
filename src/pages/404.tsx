@@ -3,7 +3,7 @@ import { Layout } from 'components/layouts'
 import React from 'react'
 import styled from 'styled-components'
 
-const NotFoundContent = styled.div`
+const Custom404Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,16 +22,16 @@ const NotFoundContent = styled.div`
   }
 `
 
-const NotFound: React.FunctionComponent = () => (
+const Custom404: React.FunctionComponent = () => (
   <Layout>
-    <NotFoundContent>
+    <Custom404Content>
       <PageHeader>404</PageHeader>
       <h2>Page not found</h2>
       <p>
         <a href='/'>Return to homepage</a>
       </p>
-    </NotFoundContent>
+    </Custom404Content>
   </Layout>
 )
 
-export default NotFound
+export default Custom404

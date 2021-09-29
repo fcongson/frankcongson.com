@@ -41,7 +41,7 @@ export const STYLE_GUIDE_QUERY = graphql`
   }
 `
 
-const StyleGuideContainer = styled(Container)`
+const Container_StyleGuide = styled(Container)`
   margin: 8rem auto;
 
   ${(props) => props.theme.mediaQueries.small} {
@@ -51,7 +51,7 @@ const StyleGuideContainer = styled(Container)`
 
 const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
   const imageSharp = data.file
-  const image = '/content/images/sample-image.jpg'
+  const image = 'sample-image.jpg'
   const altText = 'Sample image'
 
   return (
@@ -72,7 +72,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       {/* Typography */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Typography.'
@@ -81,7 +81,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='typography'>
@@ -121,7 +121,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       {/* Page Header */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Page Header.'
@@ -130,7 +130,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='page-header'>
@@ -139,7 +139,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       {/* Quote */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Quote.'
@@ -152,7 +152,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='quote'>
@@ -214,7 +214,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       {/* Layout */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Layout.'
@@ -229,7 +229,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='layout'>
@@ -252,7 +252,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       {/* Image Caption */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Image Caption.'
@@ -265,7 +265,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='image-caption'>
@@ -283,7 +283,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       <ImageCaption image={image} altText={altText} caption='Fullwidth. Lorem ipsum dolor sit amet' fullwidth />
       {/* Featured Section */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Featured Section.'
@@ -292,7 +292,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='featured-section'>
@@ -324,7 +324,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </FeaturedSection>
       {/* Call To Action */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Call To Action.'
@@ -337,7 +337,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='call-to-action'>
@@ -351,7 +351,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       {/* Hero */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Hero.'
@@ -364,7 +364,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='hero'></Container>
@@ -380,7 +380,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Blog Posts */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Blog Posts.'
@@ -393,7 +393,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='blog-posts'>
@@ -402,7 +402,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       {/* Link Button */}
       <Section>
-        <StyleGuideContainer>
+        <Container_StyleGuide>
           <FeaturedSection>
             <CallToAction
               header='Link Button.'
@@ -411,7 +411,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
               callToActionText='↓'
             />
           </FeaturedSection>
-        </StyleGuideContainer>
+        </Container_StyleGuide>
       </Section>
       <Section>
         <Container id='link-button'>

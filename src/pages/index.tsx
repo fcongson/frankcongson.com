@@ -10,7 +10,7 @@ import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 import { useImage } from 'utils/useImage'
 
-const HomeContent = styled.div`
+const Container_HomeContent = styled(Container)`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -114,39 +114,37 @@ const Home: React.FunctionComponent = () => {
         }}
       />
       <Section>
-        <Container>
-          <HomeContent>
+        <Container_HomeContent>
+          <motion.div
+            className='text'
+            ref={textRef}
+            initial='hidden'
+            animate={textInView ? 'visible' : 'hidden'}
+            variants={{
+              visible: { transition: { staggerChildren: 0.5 } },
+            }}>
+            <motion.h1 variants={textMotion}>{home.main_content.header}</motion.h1>
+            <motion.p variants={textMotion}>{home.main_content.text}</motion.p>
+          </motion.div>
+          {!!mainContentImage && (
             <motion.div
-              className='text'
-              ref={textRef}
+              className='image'
+              ref={imageRef}
               initial='hidden'
-              animate={textInView ? 'visible' : 'hidden'}
+              animate={imageInView ? 'visible' : 'hidden'}
               variants={{
-                visible: { transition: { staggerChildren: 0.5 } },
+                visible: { translateY: 0, opacity: 1, transition: { ease: 'linear', duration: 0.9 } },
+                hidden: { translateY: 100, opacity: 0 },
               }}>
-              <motion.h1 variants={textMotion}>{home.main_content.header}</motion.h1>
-              <motion.p variants={textMotion}>{home.main_content.text}</motion.p>
+              <GatsbyImage
+                image={mainContentImage.childImageSharp?.gatsbyImageData}
+                alt={home.main_content.alt_text}
+                style={{ height: '100%' }}
+                objectPosition='center center'
+              />
             </motion.div>
-            {!!mainContentImage && (
-              <motion.div
-                className='image'
-                ref={imageRef}
-                initial='hidden'
-                animate={imageInView ? 'visible' : 'hidden'}
-                variants={{
-                  visible: { translateY: 0, opacity: 1, transition: { ease: 'linear', duration: 0.9 } },
-                  hidden: { translateY: 100, opacity: 0 },
-                }}>
-                <GatsbyImage
-                  image={mainContentImage.childImageSharp?.gatsbyImageData}
-                  alt={home.main_content.alt_text}
-                  style={{ height: '100%' }}
-                  objectPosition='center center'
-                />
-              </motion.div>
-            )}
-          </HomeContent>
-        </Container>
+          )}
+        </Container_HomeContent>
       </Section>
       <ForestrySections sections={home.sections} />
     </Layout>
