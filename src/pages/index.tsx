@@ -1,6 +1,5 @@
-import { Container, Section } from '@fcongson/lagom-ui'
+import { Container, Hero, Section } from '@fcongson/lagom-ui'
 import { ForestrySections } from 'components/forestry'
-import { Hero } from 'components/Hero'
 import { Layout } from 'components/layouts'
 import home from 'content/data/home.json'
 import { motion, Variants } from 'framer-motion'
@@ -106,12 +105,14 @@ const Home: React.FunctionComponent = () => {
   return (
     <Layout overlayHeader>
       <Hero
-        imageProps={{
-          image: heroImage?.childImageSharp?.gatsbyImageData,
-          alt: home.hero_image.alt_text,
-          style: { height: '100%' },
-          objectPosition: 'center bottom',
-        }}
+        image={
+          <GatsbyImage
+            image={heroImage?.childImageSharp?.gatsbyImageData}
+            alt={home.hero_image.alt_text}
+            style={{ height: '100%' }}
+            objectPosition='center bottom'
+          />
+        }
       />
       <Section>
         <Container_HomeContent>
