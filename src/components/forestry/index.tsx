@@ -1,5 +1,4 @@
-import { Container, Quote, Section } from '@fcongson/lagom-ui'
-import { CallToAction } from 'components/CallToAction'
+import { CallToAction, Container, Quote, Section } from '@fcongson/lagom-ui'
 import { FeaturedSection } from 'components/FeaturedSection'
 import { ImageCaption } from 'components/ImageCaption'
 import React from 'react'
@@ -36,8 +35,8 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
           key={key}
           header={section.header}
           text={section.text}
-          callToAction={section.call_to_action.url}
-          callToActionText={section.call_to_action.text}
+          actionLink={section.call_to_action.url}
+          actionText={section.call_to_action.text}
         />
       )
 
