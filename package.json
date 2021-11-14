@@ -61,7 +61,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "clean": "gatsby clean",
-    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
+    "build": "gatsby build",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "gatsby develop --host=0.0.0.0",
     "serve": "gatsby serve --host=0.0.0.0",
