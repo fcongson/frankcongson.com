@@ -70,6 +70,14 @@ export type File = Node & {
   childrenPagesJson?: Maybe<Array<Maybe<PagesJson>>>
   /** Returns the first child node of type PagesJson or null if there are no children of given type on this node */
   childPagesJson?: Maybe<PagesJson>
+  /** Returns all children nodes filtered by type ImagesJson */
+  childrenImagesJson?: Maybe<Array<Maybe<ImagesJson>>>
+  /** Returns the first child node of type ImagesJson or null if there are no children of given type on this node */
+  childImagesJson?: Maybe<ImagesJson>
+  /** Returns all children nodes filtered by type DataJson */
+  childrenDataJson?: Maybe<Array<Maybe<DataJson>>>
+  /** Returns the first child node of type DataJson or null if there are no children of given type on this node */
+  childDataJson?: Maybe<DataJson>
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
@@ -236,8 +244,6 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>
   siteMetadata?: Maybe<SiteSiteMetadata>
-  port?: Maybe<Scalars['Int']>
-  host?: Maybe<Scalars['String']>
   polyfill?: Maybe<Scalars['Boolean']>
   pathPrefix?: Maybe<Scalars['String']>
   jsxRuntime?: Maybe<Scalars['String']>
@@ -731,6 +737,92 @@ export type PagesJsonSeo = {
   alt_text?: Maybe<Scalars['String']>
 }
 
+export type ImagesJson = Node & {
+  id: Scalars['ID']
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson = Node & {
+  id: Scalars['ID']
+  parent?: Maybe<Node>
+  children: Array<Node>
+  internal: Internal
+  hero_image?: Maybe<DataJsonHero_Image>
+  main_content?: Maybe<DataJsonMain_Content>
+  sections?: Maybe<Array<Maybe<DataJsonSections>>>
+  page_header?: Maybe<Scalars['String']>
+  seo?: Maybe<DataJsonSeo>
+  title?: Maybe<Scalars['String']>
+  titleTemplate?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  headline?: Maybe<Scalars['String']>
+  keywords?: Maybe<Scalars['String']>
+  author?: Maybe<Scalars['String']>
+  siteUrl?: Maybe<Scalars['String']>
+  siteLanguage?: Maybe<Scalars['String']>
+  siteLocale?: Maybe<Scalars['String']>
+  image?: Maybe<Scalars['String']>
+  twitter?: Maybe<Scalars['String']>
+  twitterUrl?: Maybe<Scalars['String']>
+  facebook?: Maybe<Scalars['String']>
+  facebookUrl?: Maybe<Scalars['String']>
+  instagramUrl?: Maybe<Scalars['String']>
+  youtubeUrl?: Maybe<Scalars['String']>
+  linkedinUrl?: Maybe<Scalars['String']>
+  githubUrl?: Maybe<Scalars['String']>
+}
+
+export type DataJsonHero_Image = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJsonMain_Content = {
+  header?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJsonSections = {
+  template?: Maybe<Scalars['String']>
+  background_color?: Maybe<Scalars['String']>
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+  image_as_background?: Maybe<Scalars['Boolean']>
+  sections?: Maybe<Array<Maybe<DataJsonSectionsSections>>>
+  text?: Maybe<Scalars['String']>
+  fullwidth?: Maybe<Scalars['Boolean']>
+  caption?: Maybe<Scalars['String']>
+  emphasized?: Maybe<Scalars['Boolean']>
+}
+
+export type DataJsonSectionsSections = {
+  template?: Maybe<Scalars['String']>
+  header?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
+  call_to_action?: Maybe<DataJsonSectionsSectionsCall_To_Action>
+}
+
+export type DataJsonSectionsSectionsCall_To_Action = {
+  url?: Maybe<Scalars['String']>
+  text?: Maybe<Scalars['String']>
+}
+
+export type DataJsonSeo = {
+  title?: Maybe<Scalars['String']>
+  description?: Maybe<Scalars['String']>
+  keywords?: Maybe<Array<Maybe<Scalars['String']>>>
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+  pathname?: Maybe<Scalars['String']>
+  article?: Maybe<Scalars['Boolean']>
+}
+
 export type Query = {
   file?: Maybe<File>
   allFile: FileConnection
@@ -756,6 +848,10 @@ export type Query = {
   allMarkdownRemark: MarkdownRemarkConnection
   pagesJson?: Maybe<PagesJson>
   allPagesJson: PagesJsonConnection
+  imagesJson?: Maybe<ImagesJson>
+  allImagesJson: ImagesJsonConnection
+  dataJson?: Maybe<DataJson>
+  allDataJson: DataJsonConnection
 }
 
 export type QueryFileArgs = {
@@ -799,6 +895,10 @@ export type QueryFileArgs = {
   childMdx?: Maybe<MdxFilterInput>
   childrenPagesJson?: Maybe<PagesJsonFilterListInput>
   childPagesJson?: Maybe<PagesJsonFilterInput>
+  childrenImagesJson?: Maybe<ImagesJsonFilterListInput>
+  childImagesJson?: Maybe<ImagesJsonFilterInput>
+  childrenDataJson?: Maybe<DataJsonFilterListInput>
+  childDataJson?: Maybe<DataJsonFilterInput>
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
@@ -860,8 +960,6 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: Maybe<DateQueryOperatorInput>
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
-  port?: Maybe<IntQueryOperatorInput>
-  host?: Maybe<StringQueryOperatorInput>
   polyfill?: Maybe<BooleanQueryOperatorInput>
   pathPrefix?: Maybe<StringQueryOperatorInput>
   jsxRuntime?: Maybe<StringQueryOperatorInput>
@@ -1064,6 +1162,59 @@ export type QueryPagesJsonArgs = {
 export type QueryAllPagesJsonArgs = {
   filter?: Maybe<PagesJsonFilterInput>
   sort?: Maybe<PagesJsonSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}
+
+export type QueryImagesJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  image?: Maybe<StringQueryOperatorInput>
+  alt_text?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllImagesJsonArgs = {
+  filter?: Maybe<ImagesJsonFilterInput>
+  sort?: Maybe<ImagesJsonSortInput>
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+}
+
+export type QueryDataJsonArgs = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  hero_image?: Maybe<DataJsonHero_ImageFilterInput>
+  main_content?: Maybe<DataJsonMain_ContentFilterInput>
+  sections?: Maybe<DataJsonSectionsFilterListInput>
+  page_header?: Maybe<StringQueryOperatorInput>
+  seo?: Maybe<DataJsonSeoFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  titleTemplate?: Maybe<StringQueryOperatorInput>
+  description?: Maybe<StringQueryOperatorInput>
+  headline?: Maybe<StringQueryOperatorInput>
+  keywords?: Maybe<StringQueryOperatorInput>
+  author?: Maybe<StringQueryOperatorInput>
+  siteUrl?: Maybe<StringQueryOperatorInput>
+  siteLanguage?: Maybe<StringQueryOperatorInput>
+  siteLocale?: Maybe<StringQueryOperatorInput>
+  image?: Maybe<StringQueryOperatorInput>
+  twitter?: Maybe<StringQueryOperatorInput>
+  twitterUrl?: Maybe<StringQueryOperatorInput>
+  facebook?: Maybe<StringQueryOperatorInput>
+  facebookUrl?: Maybe<StringQueryOperatorInput>
+  instagramUrl?: Maybe<StringQueryOperatorInput>
+  youtubeUrl?: Maybe<StringQueryOperatorInput>
+  linkedinUrl?: Maybe<StringQueryOperatorInput>
+  githubUrl?: Maybe<StringQueryOperatorInput>
+}
+
+export type QueryAllDataJsonArgs = {
+  filter?: Maybe<DataJsonFilterInput>
+  sort?: Maybe<DataJsonSortInput>
   skip?: Maybe<Scalars['Int']>
   limit?: Maybe<Scalars['Int']>
 }
@@ -1288,6 +1439,10 @@ export type FileFilterInput = {
   childMdx?: Maybe<MdxFilterInput>
   childrenPagesJson?: Maybe<PagesJsonFilterListInput>
   childPagesJson?: Maybe<PagesJsonFilterInput>
+  childrenImagesJson?: Maybe<ImagesJsonFilterListInput>
+  childImagesJson?: Maybe<ImagesJsonFilterInput>
+  childrenDataJson?: Maybe<DataJsonFilterListInput>
+  childDataJson?: Maybe<DataJsonFilterInput>
   id?: Maybe<StringQueryOperatorInput>
   parent?: Maybe<NodeFilterInput>
   children?: Maybe<NodeFilterListInput>
@@ -1330,6 +1485,108 @@ export type PagesJsonSeoFilterInput = {
   keywords?: Maybe<StringQueryOperatorInput>
   image?: Maybe<StringQueryOperatorInput>
   alt_text?: Maybe<StringQueryOperatorInput>
+}
+
+export type ImagesJsonFilterListInput = {
+  elemMatch?: Maybe<ImagesJsonFilterInput>
+}
+
+export type ImagesJsonFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  image?: Maybe<StringQueryOperatorInput>
+  alt_text?: Maybe<StringQueryOperatorInput>
+}
+
+export type DataJsonFilterListInput = {
+  elemMatch?: Maybe<DataJsonFilterInput>
+}
+
+export type DataJsonFilterInput = {
+  id?: Maybe<StringQueryOperatorInput>
+  parent?: Maybe<NodeFilterInput>
+  children?: Maybe<NodeFilterListInput>
+  internal?: Maybe<InternalFilterInput>
+  hero_image?: Maybe<DataJsonHero_ImageFilterInput>
+  main_content?: Maybe<DataJsonMain_ContentFilterInput>
+  sections?: Maybe<DataJsonSectionsFilterListInput>
+  page_header?: Maybe<StringQueryOperatorInput>
+  seo?: Maybe<DataJsonSeoFilterInput>
+  title?: Maybe<StringQueryOperatorInput>
+  titleTemplate?: Maybe<StringQueryOperatorInput>
+  description?: Maybe<StringQueryOperatorInput>
+  headline?: Maybe<StringQueryOperatorInput>
+  keywords?: Maybe<StringQueryOperatorInput>
+  author?: Maybe<StringQueryOperatorInput>
+  siteUrl?: Maybe<StringQueryOperatorInput>
+  siteLanguage?: Maybe<StringQueryOperatorInput>
+  siteLocale?: Maybe<StringQueryOperatorInput>
+  image?: Maybe<StringQueryOperatorInput>
+  twitter?: Maybe<StringQueryOperatorInput>
+  twitterUrl?: Maybe<StringQueryOperatorInput>
+  facebook?: Maybe<StringQueryOperatorInput>
+  facebookUrl?: Maybe<StringQueryOperatorInput>
+  instagramUrl?: Maybe<StringQueryOperatorInput>
+  youtubeUrl?: Maybe<StringQueryOperatorInput>
+  linkedinUrl?: Maybe<StringQueryOperatorInput>
+  githubUrl?: Maybe<StringQueryOperatorInput>
+}
+
+export type DataJsonHero_ImageFilterInput = {
+  image?: Maybe<StringQueryOperatorInput>
+  alt_text?: Maybe<StringQueryOperatorInput>
+}
+
+export type DataJsonMain_ContentFilterInput = {
+  header?: Maybe<StringQueryOperatorInput>
+  text?: Maybe<StringQueryOperatorInput>
+  image?: Maybe<StringQueryOperatorInput>
+  alt_text?: Maybe<StringQueryOperatorInput>
+}
+
+export type DataJsonSectionsFilterListInput = {
+  elemMatch?: Maybe<DataJsonSectionsFilterInput>
+}
+
+export type DataJsonSectionsFilterInput = {
+  template?: Maybe<StringQueryOperatorInput>
+  background_color?: Maybe<StringQueryOperatorInput>
+  image?: Maybe<StringQueryOperatorInput>
+  alt_text?: Maybe<StringQueryOperatorInput>
+  image_as_background?: Maybe<BooleanQueryOperatorInput>
+  sections?: Maybe<DataJsonSectionsSectionsFilterListInput>
+  text?: Maybe<StringQueryOperatorInput>
+  fullwidth?: Maybe<BooleanQueryOperatorInput>
+  caption?: Maybe<StringQueryOperatorInput>
+  emphasized?: Maybe<BooleanQueryOperatorInput>
+}
+
+export type DataJsonSectionsSectionsFilterListInput = {
+  elemMatch?: Maybe<DataJsonSectionsSectionsFilterInput>
+}
+
+export type DataJsonSectionsSectionsFilterInput = {
+  template?: Maybe<StringQueryOperatorInput>
+  header?: Maybe<StringQueryOperatorInput>
+  text?: Maybe<StringQueryOperatorInput>
+  call_to_action?: Maybe<DataJsonSectionsSectionsCall_To_ActionFilterInput>
+}
+
+export type DataJsonSectionsSectionsCall_To_ActionFilterInput = {
+  url?: Maybe<StringQueryOperatorInput>
+  text?: Maybe<StringQueryOperatorInput>
+}
+
+export type DataJsonSeoFilterInput = {
+  title?: Maybe<StringQueryOperatorInput>
+  description?: Maybe<StringQueryOperatorInput>
+  keywords?: Maybe<StringQueryOperatorInput>
+  image?: Maybe<StringQueryOperatorInput>
+  alt_text?: Maybe<StringQueryOperatorInput>
+  pathname?: Maybe<StringQueryOperatorInput>
+  article?: Maybe<BooleanQueryOperatorInput>
 }
 
 export type SeoFilterInput = {
@@ -1629,6 +1886,8 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___featured_image___childrenImageSharp'
   | 'childrenMdx___frontmatter___featured_image___childrenMdx'
   | 'childrenMdx___frontmatter___featured_image___childrenPagesJson'
+  | 'childrenMdx___frontmatter___featured_image___childrenImagesJson'
+  | 'childrenMdx___frontmatter___featured_image___childrenDataJson'
   | 'childrenMdx___frontmatter___featured_image___id'
   | 'childrenMdx___frontmatter___featured_image___children'
   | 'childrenMdx___frontmatter___alt_text'
@@ -1747,6 +2006,8 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___featured_image___childrenImageSharp'
   | 'childMdx___frontmatter___featured_image___childrenMdx'
   | 'childMdx___frontmatter___featured_image___childrenPagesJson'
+  | 'childMdx___frontmatter___featured_image___childrenImagesJson'
+  | 'childMdx___frontmatter___featured_image___childrenDataJson'
   | 'childMdx___frontmatter___featured_image___id'
   | 'childMdx___frontmatter___featured_image___children'
   | 'childMdx___frontmatter___alt_text'
@@ -1923,6 +2184,256 @@ export type FileFieldsEnum =
   | 'childPagesJson___seo___image'
   | 'childPagesJson___seo___alt_text'
   | 'childPagesJson___slug'
+  | 'childrenImagesJson'
+  | 'childrenImagesJson___id'
+  | 'childrenImagesJson___parent___id'
+  | 'childrenImagesJson___parent___parent___id'
+  | 'childrenImagesJson___parent___parent___children'
+  | 'childrenImagesJson___parent___children'
+  | 'childrenImagesJson___parent___children___id'
+  | 'childrenImagesJson___parent___children___children'
+  | 'childrenImagesJson___parent___internal___content'
+  | 'childrenImagesJson___parent___internal___contentDigest'
+  | 'childrenImagesJson___parent___internal___description'
+  | 'childrenImagesJson___parent___internal___fieldOwners'
+  | 'childrenImagesJson___parent___internal___ignoreType'
+  | 'childrenImagesJson___parent___internal___mediaType'
+  | 'childrenImagesJson___parent___internal___owner'
+  | 'childrenImagesJson___parent___internal___type'
+  | 'childrenImagesJson___children'
+  | 'childrenImagesJson___children___id'
+  | 'childrenImagesJson___children___parent___id'
+  | 'childrenImagesJson___children___parent___children'
+  | 'childrenImagesJson___children___children'
+  | 'childrenImagesJson___children___children___id'
+  | 'childrenImagesJson___children___children___children'
+  | 'childrenImagesJson___children___internal___content'
+  | 'childrenImagesJson___children___internal___contentDigest'
+  | 'childrenImagesJson___children___internal___description'
+  | 'childrenImagesJson___children___internal___fieldOwners'
+  | 'childrenImagesJson___children___internal___ignoreType'
+  | 'childrenImagesJson___children___internal___mediaType'
+  | 'childrenImagesJson___children___internal___owner'
+  | 'childrenImagesJson___children___internal___type'
+  | 'childrenImagesJson___internal___content'
+  | 'childrenImagesJson___internal___contentDigest'
+  | 'childrenImagesJson___internal___description'
+  | 'childrenImagesJson___internal___fieldOwners'
+  | 'childrenImagesJson___internal___ignoreType'
+  | 'childrenImagesJson___internal___mediaType'
+  | 'childrenImagesJson___internal___owner'
+  | 'childrenImagesJson___internal___type'
+  | 'childrenImagesJson___image'
+  | 'childrenImagesJson___alt_text'
+  | 'childImagesJson___id'
+  | 'childImagesJson___parent___id'
+  | 'childImagesJson___parent___parent___id'
+  | 'childImagesJson___parent___parent___children'
+  | 'childImagesJson___parent___children'
+  | 'childImagesJson___parent___children___id'
+  | 'childImagesJson___parent___children___children'
+  | 'childImagesJson___parent___internal___content'
+  | 'childImagesJson___parent___internal___contentDigest'
+  | 'childImagesJson___parent___internal___description'
+  | 'childImagesJson___parent___internal___fieldOwners'
+  | 'childImagesJson___parent___internal___ignoreType'
+  | 'childImagesJson___parent___internal___mediaType'
+  | 'childImagesJson___parent___internal___owner'
+  | 'childImagesJson___parent___internal___type'
+  | 'childImagesJson___children'
+  | 'childImagesJson___children___id'
+  | 'childImagesJson___children___parent___id'
+  | 'childImagesJson___children___parent___children'
+  | 'childImagesJson___children___children'
+  | 'childImagesJson___children___children___id'
+  | 'childImagesJson___children___children___children'
+  | 'childImagesJson___children___internal___content'
+  | 'childImagesJson___children___internal___contentDigest'
+  | 'childImagesJson___children___internal___description'
+  | 'childImagesJson___children___internal___fieldOwners'
+  | 'childImagesJson___children___internal___ignoreType'
+  | 'childImagesJson___children___internal___mediaType'
+  | 'childImagesJson___children___internal___owner'
+  | 'childImagesJson___children___internal___type'
+  | 'childImagesJson___internal___content'
+  | 'childImagesJson___internal___contentDigest'
+  | 'childImagesJson___internal___description'
+  | 'childImagesJson___internal___fieldOwners'
+  | 'childImagesJson___internal___ignoreType'
+  | 'childImagesJson___internal___mediaType'
+  | 'childImagesJson___internal___owner'
+  | 'childImagesJson___internal___type'
+  | 'childImagesJson___image'
+  | 'childImagesJson___alt_text'
+  | 'childrenDataJson'
+  | 'childrenDataJson___id'
+  | 'childrenDataJson___parent___id'
+  | 'childrenDataJson___parent___parent___id'
+  | 'childrenDataJson___parent___parent___children'
+  | 'childrenDataJson___parent___children'
+  | 'childrenDataJson___parent___children___id'
+  | 'childrenDataJson___parent___children___children'
+  | 'childrenDataJson___parent___internal___content'
+  | 'childrenDataJson___parent___internal___contentDigest'
+  | 'childrenDataJson___parent___internal___description'
+  | 'childrenDataJson___parent___internal___fieldOwners'
+  | 'childrenDataJson___parent___internal___ignoreType'
+  | 'childrenDataJson___parent___internal___mediaType'
+  | 'childrenDataJson___parent___internal___owner'
+  | 'childrenDataJson___parent___internal___type'
+  | 'childrenDataJson___children'
+  | 'childrenDataJson___children___id'
+  | 'childrenDataJson___children___parent___id'
+  | 'childrenDataJson___children___parent___children'
+  | 'childrenDataJson___children___children'
+  | 'childrenDataJson___children___children___id'
+  | 'childrenDataJson___children___children___children'
+  | 'childrenDataJson___children___internal___content'
+  | 'childrenDataJson___children___internal___contentDigest'
+  | 'childrenDataJson___children___internal___description'
+  | 'childrenDataJson___children___internal___fieldOwners'
+  | 'childrenDataJson___children___internal___ignoreType'
+  | 'childrenDataJson___children___internal___mediaType'
+  | 'childrenDataJson___children___internal___owner'
+  | 'childrenDataJson___children___internal___type'
+  | 'childrenDataJson___internal___content'
+  | 'childrenDataJson___internal___contentDigest'
+  | 'childrenDataJson___internal___description'
+  | 'childrenDataJson___internal___fieldOwners'
+  | 'childrenDataJson___internal___ignoreType'
+  | 'childrenDataJson___internal___mediaType'
+  | 'childrenDataJson___internal___owner'
+  | 'childrenDataJson___internal___type'
+  | 'childrenDataJson___hero_image___image'
+  | 'childrenDataJson___hero_image___alt_text'
+  | 'childrenDataJson___main_content___header'
+  | 'childrenDataJson___main_content___text'
+  | 'childrenDataJson___main_content___image'
+  | 'childrenDataJson___main_content___alt_text'
+  | 'childrenDataJson___sections'
+  | 'childrenDataJson___sections___template'
+  | 'childrenDataJson___sections___background_color'
+  | 'childrenDataJson___sections___image'
+  | 'childrenDataJson___sections___alt_text'
+  | 'childrenDataJson___sections___image_as_background'
+  | 'childrenDataJson___sections___sections'
+  | 'childrenDataJson___sections___sections___template'
+  | 'childrenDataJson___sections___sections___header'
+  | 'childrenDataJson___sections___sections___text'
+  | 'childrenDataJson___sections___text'
+  | 'childrenDataJson___sections___fullwidth'
+  | 'childrenDataJson___sections___caption'
+  | 'childrenDataJson___sections___emphasized'
+  | 'childrenDataJson___page_header'
+  | 'childrenDataJson___seo___title'
+  | 'childrenDataJson___seo___description'
+  | 'childrenDataJson___seo___keywords'
+  | 'childrenDataJson___seo___image'
+  | 'childrenDataJson___seo___alt_text'
+  | 'childrenDataJson___seo___pathname'
+  | 'childrenDataJson___seo___article'
+  | 'childrenDataJson___title'
+  | 'childrenDataJson___titleTemplate'
+  | 'childrenDataJson___description'
+  | 'childrenDataJson___headline'
+  | 'childrenDataJson___keywords'
+  | 'childrenDataJson___author'
+  | 'childrenDataJson___siteUrl'
+  | 'childrenDataJson___siteLanguage'
+  | 'childrenDataJson___siteLocale'
+  | 'childrenDataJson___image'
+  | 'childrenDataJson___twitter'
+  | 'childrenDataJson___twitterUrl'
+  | 'childrenDataJson___facebook'
+  | 'childrenDataJson___facebookUrl'
+  | 'childrenDataJson___instagramUrl'
+  | 'childrenDataJson___youtubeUrl'
+  | 'childrenDataJson___linkedinUrl'
+  | 'childrenDataJson___githubUrl'
+  | 'childDataJson___id'
+  | 'childDataJson___parent___id'
+  | 'childDataJson___parent___parent___id'
+  | 'childDataJson___parent___parent___children'
+  | 'childDataJson___parent___children'
+  | 'childDataJson___parent___children___id'
+  | 'childDataJson___parent___children___children'
+  | 'childDataJson___parent___internal___content'
+  | 'childDataJson___parent___internal___contentDigest'
+  | 'childDataJson___parent___internal___description'
+  | 'childDataJson___parent___internal___fieldOwners'
+  | 'childDataJson___parent___internal___ignoreType'
+  | 'childDataJson___parent___internal___mediaType'
+  | 'childDataJson___parent___internal___owner'
+  | 'childDataJson___parent___internal___type'
+  | 'childDataJson___children'
+  | 'childDataJson___children___id'
+  | 'childDataJson___children___parent___id'
+  | 'childDataJson___children___parent___children'
+  | 'childDataJson___children___children'
+  | 'childDataJson___children___children___id'
+  | 'childDataJson___children___children___children'
+  | 'childDataJson___children___internal___content'
+  | 'childDataJson___children___internal___contentDigest'
+  | 'childDataJson___children___internal___description'
+  | 'childDataJson___children___internal___fieldOwners'
+  | 'childDataJson___children___internal___ignoreType'
+  | 'childDataJson___children___internal___mediaType'
+  | 'childDataJson___children___internal___owner'
+  | 'childDataJson___children___internal___type'
+  | 'childDataJson___internal___content'
+  | 'childDataJson___internal___contentDigest'
+  | 'childDataJson___internal___description'
+  | 'childDataJson___internal___fieldOwners'
+  | 'childDataJson___internal___ignoreType'
+  | 'childDataJson___internal___mediaType'
+  | 'childDataJson___internal___owner'
+  | 'childDataJson___internal___type'
+  | 'childDataJson___hero_image___image'
+  | 'childDataJson___hero_image___alt_text'
+  | 'childDataJson___main_content___header'
+  | 'childDataJson___main_content___text'
+  | 'childDataJson___main_content___image'
+  | 'childDataJson___main_content___alt_text'
+  | 'childDataJson___sections'
+  | 'childDataJson___sections___template'
+  | 'childDataJson___sections___background_color'
+  | 'childDataJson___sections___image'
+  | 'childDataJson___sections___alt_text'
+  | 'childDataJson___sections___image_as_background'
+  | 'childDataJson___sections___sections'
+  | 'childDataJson___sections___sections___template'
+  | 'childDataJson___sections___sections___header'
+  | 'childDataJson___sections___sections___text'
+  | 'childDataJson___sections___text'
+  | 'childDataJson___sections___fullwidth'
+  | 'childDataJson___sections___caption'
+  | 'childDataJson___sections___emphasized'
+  | 'childDataJson___page_header'
+  | 'childDataJson___seo___title'
+  | 'childDataJson___seo___description'
+  | 'childDataJson___seo___keywords'
+  | 'childDataJson___seo___image'
+  | 'childDataJson___seo___alt_text'
+  | 'childDataJson___seo___pathname'
+  | 'childDataJson___seo___article'
+  | 'childDataJson___title'
+  | 'childDataJson___titleTemplate'
+  | 'childDataJson___description'
+  | 'childDataJson___headline'
+  | 'childDataJson___keywords'
+  | 'childDataJson___author'
+  | 'childDataJson___siteUrl'
+  | 'childDataJson___siteLanguage'
+  | 'childDataJson___siteLocale'
+  | 'childDataJson___image'
+  | 'childDataJson___twitter'
+  | 'childDataJson___twitterUrl'
+  | 'childDataJson___facebook'
+  | 'childDataJson___facebookUrl'
+  | 'childDataJson___instagramUrl'
+  | 'childDataJson___youtubeUrl'
+  | 'childDataJson___linkedinUrl'
+  | 'childDataJson___githubUrl'
   | 'id'
   | 'parent___id'
   | 'parent___parent___id'
@@ -2372,8 +2883,6 @@ export type SiteFieldsEnum =
   | 'siteMetadata___youtubeUrl'
   | 'siteMetadata___linkedinUrl'
   | 'siteMetadata___githubUrl'
-  | 'port'
-  | 'host'
   | 'polyfill'
   | 'pathPrefix'
   | 'jsxRuntime'
@@ -2503,8 +3012,6 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: Maybe<DateQueryOperatorInput>
   siteMetadata?: Maybe<SiteSiteMetadataFilterInput>
-  port?: Maybe<IntQueryOperatorInput>
-  host?: Maybe<StringQueryOperatorInput>
   polyfill?: Maybe<BooleanQueryOperatorInput>
   pathPrefix?: Maybe<StringQueryOperatorInput>
   jsxRuntime?: Maybe<StringQueryOperatorInput>
@@ -3822,6 +4329,154 @@ export type MdxFrontmatterFieldsEnum =
   | 'featured_image___childPagesJson___seo___image'
   | 'featured_image___childPagesJson___seo___alt_text'
   | 'featured_image___childPagesJson___slug'
+  | 'featured_image___childrenImagesJson'
+  | 'featured_image___childrenImagesJson___id'
+  | 'featured_image___childrenImagesJson___parent___id'
+  | 'featured_image___childrenImagesJson___parent___children'
+  | 'featured_image___childrenImagesJson___children'
+  | 'featured_image___childrenImagesJson___children___id'
+  | 'featured_image___childrenImagesJson___children___children'
+  | 'featured_image___childrenImagesJson___internal___content'
+  | 'featured_image___childrenImagesJson___internal___contentDigest'
+  | 'featured_image___childrenImagesJson___internal___description'
+  | 'featured_image___childrenImagesJson___internal___fieldOwners'
+  | 'featured_image___childrenImagesJson___internal___ignoreType'
+  | 'featured_image___childrenImagesJson___internal___mediaType'
+  | 'featured_image___childrenImagesJson___internal___owner'
+  | 'featured_image___childrenImagesJson___internal___type'
+  | 'featured_image___childrenImagesJson___image'
+  | 'featured_image___childrenImagesJson___alt_text'
+  | 'featured_image___childImagesJson___id'
+  | 'featured_image___childImagesJson___parent___id'
+  | 'featured_image___childImagesJson___parent___children'
+  | 'featured_image___childImagesJson___children'
+  | 'featured_image___childImagesJson___children___id'
+  | 'featured_image___childImagesJson___children___children'
+  | 'featured_image___childImagesJson___internal___content'
+  | 'featured_image___childImagesJson___internal___contentDigest'
+  | 'featured_image___childImagesJson___internal___description'
+  | 'featured_image___childImagesJson___internal___fieldOwners'
+  | 'featured_image___childImagesJson___internal___ignoreType'
+  | 'featured_image___childImagesJson___internal___mediaType'
+  | 'featured_image___childImagesJson___internal___owner'
+  | 'featured_image___childImagesJson___internal___type'
+  | 'featured_image___childImagesJson___image'
+  | 'featured_image___childImagesJson___alt_text'
+  | 'featured_image___childrenDataJson'
+  | 'featured_image___childrenDataJson___id'
+  | 'featured_image___childrenDataJson___parent___id'
+  | 'featured_image___childrenDataJson___parent___children'
+  | 'featured_image___childrenDataJson___children'
+  | 'featured_image___childrenDataJson___children___id'
+  | 'featured_image___childrenDataJson___children___children'
+  | 'featured_image___childrenDataJson___internal___content'
+  | 'featured_image___childrenDataJson___internal___contentDigest'
+  | 'featured_image___childrenDataJson___internal___description'
+  | 'featured_image___childrenDataJson___internal___fieldOwners'
+  | 'featured_image___childrenDataJson___internal___ignoreType'
+  | 'featured_image___childrenDataJson___internal___mediaType'
+  | 'featured_image___childrenDataJson___internal___owner'
+  | 'featured_image___childrenDataJson___internal___type'
+  | 'featured_image___childrenDataJson___hero_image___image'
+  | 'featured_image___childrenDataJson___hero_image___alt_text'
+  | 'featured_image___childrenDataJson___main_content___header'
+  | 'featured_image___childrenDataJson___main_content___text'
+  | 'featured_image___childrenDataJson___main_content___image'
+  | 'featured_image___childrenDataJson___main_content___alt_text'
+  | 'featured_image___childrenDataJson___sections'
+  | 'featured_image___childrenDataJson___sections___template'
+  | 'featured_image___childrenDataJson___sections___background_color'
+  | 'featured_image___childrenDataJson___sections___image'
+  | 'featured_image___childrenDataJson___sections___alt_text'
+  | 'featured_image___childrenDataJson___sections___image_as_background'
+  | 'featured_image___childrenDataJson___sections___sections'
+  | 'featured_image___childrenDataJson___sections___text'
+  | 'featured_image___childrenDataJson___sections___fullwidth'
+  | 'featured_image___childrenDataJson___sections___caption'
+  | 'featured_image___childrenDataJson___sections___emphasized'
+  | 'featured_image___childrenDataJson___page_header'
+  | 'featured_image___childrenDataJson___seo___title'
+  | 'featured_image___childrenDataJson___seo___description'
+  | 'featured_image___childrenDataJson___seo___keywords'
+  | 'featured_image___childrenDataJson___seo___image'
+  | 'featured_image___childrenDataJson___seo___alt_text'
+  | 'featured_image___childrenDataJson___seo___pathname'
+  | 'featured_image___childrenDataJson___seo___article'
+  | 'featured_image___childrenDataJson___title'
+  | 'featured_image___childrenDataJson___titleTemplate'
+  | 'featured_image___childrenDataJson___description'
+  | 'featured_image___childrenDataJson___headline'
+  | 'featured_image___childrenDataJson___keywords'
+  | 'featured_image___childrenDataJson___author'
+  | 'featured_image___childrenDataJson___siteUrl'
+  | 'featured_image___childrenDataJson___siteLanguage'
+  | 'featured_image___childrenDataJson___siteLocale'
+  | 'featured_image___childrenDataJson___image'
+  | 'featured_image___childrenDataJson___twitter'
+  | 'featured_image___childrenDataJson___twitterUrl'
+  | 'featured_image___childrenDataJson___facebook'
+  | 'featured_image___childrenDataJson___facebookUrl'
+  | 'featured_image___childrenDataJson___instagramUrl'
+  | 'featured_image___childrenDataJson___youtubeUrl'
+  | 'featured_image___childrenDataJson___linkedinUrl'
+  | 'featured_image___childrenDataJson___githubUrl'
+  | 'featured_image___childDataJson___id'
+  | 'featured_image___childDataJson___parent___id'
+  | 'featured_image___childDataJson___parent___children'
+  | 'featured_image___childDataJson___children'
+  | 'featured_image___childDataJson___children___id'
+  | 'featured_image___childDataJson___children___children'
+  | 'featured_image___childDataJson___internal___content'
+  | 'featured_image___childDataJson___internal___contentDigest'
+  | 'featured_image___childDataJson___internal___description'
+  | 'featured_image___childDataJson___internal___fieldOwners'
+  | 'featured_image___childDataJson___internal___ignoreType'
+  | 'featured_image___childDataJson___internal___mediaType'
+  | 'featured_image___childDataJson___internal___owner'
+  | 'featured_image___childDataJson___internal___type'
+  | 'featured_image___childDataJson___hero_image___image'
+  | 'featured_image___childDataJson___hero_image___alt_text'
+  | 'featured_image___childDataJson___main_content___header'
+  | 'featured_image___childDataJson___main_content___text'
+  | 'featured_image___childDataJson___main_content___image'
+  | 'featured_image___childDataJson___main_content___alt_text'
+  | 'featured_image___childDataJson___sections'
+  | 'featured_image___childDataJson___sections___template'
+  | 'featured_image___childDataJson___sections___background_color'
+  | 'featured_image___childDataJson___sections___image'
+  | 'featured_image___childDataJson___sections___alt_text'
+  | 'featured_image___childDataJson___sections___image_as_background'
+  | 'featured_image___childDataJson___sections___sections'
+  | 'featured_image___childDataJson___sections___text'
+  | 'featured_image___childDataJson___sections___fullwidth'
+  | 'featured_image___childDataJson___sections___caption'
+  | 'featured_image___childDataJson___sections___emphasized'
+  | 'featured_image___childDataJson___page_header'
+  | 'featured_image___childDataJson___seo___title'
+  | 'featured_image___childDataJson___seo___description'
+  | 'featured_image___childDataJson___seo___keywords'
+  | 'featured_image___childDataJson___seo___image'
+  | 'featured_image___childDataJson___seo___alt_text'
+  | 'featured_image___childDataJson___seo___pathname'
+  | 'featured_image___childDataJson___seo___article'
+  | 'featured_image___childDataJson___title'
+  | 'featured_image___childDataJson___titleTemplate'
+  | 'featured_image___childDataJson___description'
+  | 'featured_image___childDataJson___headline'
+  | 'featured_image___childDataJson___keywords'
+  | 'featured_image___childDataJson___author'
+  | 'featured_image___childDataJson___siteUrl'
+  | 'featured_image___childDataJson___siteLanguage'
+  | 'featured_image___childDataJson___siteLocale'
+  | 'featured_image___childDataJson___image'
+  | 'featured_image___childDataJson___twitter'
+  | 'featured_image___childDataJson___twitterUrl'
+  | 'featured_image___childDataJson___facebook'
+  | 'featured_image___childDataJson___facebookUrl'
+  | 'featured_image___childDataJson___instagramUrl'
+  | 'featured_image___childDataJson___youtubeUrl'
+  | 'featured_image___childDataJson___linkedinUrl'
+  | 'featured_image___childDataJson___githubUrl'
   | 'featured_image___id'
   | 'featured_image___parent___id'
   | 'featured_image___parent___parent___id'
@@ -3942,6 +4597,60 @@ export type MdxFrontmatterFieldsEnum =
   | 'seo___image___childPagesJson___page_header'
   | 'seo___image___childPagesJson___sections'
   | 'seo___image___childPagesJson___slug'
+  | 'seo___image___childrenImagesJson'
+  | 'seo___image___childrenImagesJson___id'
+  | 'seo___image___childrenImagesJson___children'
+  | 'seo___image___childrenImagesJson___image'
+  | 'seo___image___childrenImagesJson___alt_text'
+  | 'seo___image___childImagesJson___id'
+  | 'seo___image___childImagesJson___children'
+  | 'seo___image___childImagesJson___image'
+  | 'seo___image___childImagesJson___alt_text'
+  | 'seo___image___childrenDataJson'
+  | 'seo___image___childrenDataJson___id'
+  | 'seo___image___childrenDataJson___children'
+  | 'seo___image___childrenDataJson___sections'
+  | 'seo___image___childrenDataJson___page_header'
+  | 'seo___image___childrenDataJson___title'
+  | 'seo___image___childrenDataJson___titleTemplate'
+  | 'seo___image___childrenDataJson___description'
+  | 'seo___image___childrenDataJson___headline'
+  | 'seo___image___childrenDataJson___keywords'
+  | 'seo___image___childrenDataJson___author'
+  | 'seo___image___childrenDataJson___siteUrl'
+  | 'seo___image___childrenDataJson___siteLanguage'
+  | 'seo___image___childrenDataJson___siteLocale'
+  | 'seo___image___childrenDataJson___image'
+  | 'seo___image___childrenDataJson___twitter'
+  | 'seo___image___childrenDataJson___twitterUrl'
+  | 'seo___image___childrenDataJson___facebook'
+  | 'seo___image___childrenDataJson___facebookUrl'
+  | 'seo___image___childrenDataJson___instagramUrl'
+  | 'seo___image___childrenDataJson___youtubeUrl'
+  | 'seo___image___childrenDataJson___linkedinUrl'
+  | 'seo___image___childrenDataJson___githubUrl'
+  | 'seo___image___childDataJson___id'
+  | 'seo___image___childDataJson___children'
+  | 'seo___image___childDataJson___sections'
+  | 'seo___image___childDataJson___page_header'
+  | 'seo___image___childDataJson___title'
+  | 'seo___image___childDataJson___titleTemplate'
+  | 'seo___image___childDataJson___description'
+  | 'seo___image___childDataJson___headline'
+  | 'seo___image___childDataJson___keywords'
+  | 'seo___image___childDataJson___author'
+  | 'seo___image___childDataJson___siteUrl'
+  | 'seo___image___childDataJson___siteLanguage'
+  | 'seo___image___childDataJson___siteLocale'
+  | 'seo___image___childDataJson___image'
+  | 'seo___image___childDataJson___twitter'
+  | 'seo___image___childDataJson___twitterUrl'
+  | 'seo___image___childDataJson___facebook'
+  | 'seo___image___childDataJson___facebookUrl'
+  | 'seo___image___childDataJson___instagramUrl'
+  | 'seo___image___childDataJson___youtubeUrl'
+  | 'seo___image___childDataJson___linkedinUrl'
+  | 'seo___image___childDataJson___githubUrl'
   | 'seo___image___id'
   | 'seo___image___parent___id'
   | 'seo___image___parent___children'
@@ -4210,6 +4919,60 @@ export type MdxFieldsEnum =
   | 'frontmatter___featured_image___childPagesJson___page_header'
   | 'frontmatter___featured_image___childPagesJson___sections'
   | 'frontmatter___featured_image___childPagesJson___slug'
+  | 'frontmatter___featured_image___childrenImagesJson'
+  | 'frontmatter___featured_image___childrenImagesJson___id'
+  | 'frontmatter___featured_image___childrenImagesJson___children'
+  | 'frontmatter___featured_image___childrenImagesJson___image'
+  | 'frontmatter___featured_image___childrenImagesJson___alt_text'
+  | 'frontmatter___featured_image___childImagesJson___id'
+  | 'frontmatter___featured_image___childImagesJson___children'
+  | 'frontmatter___featured_image___childImagesJson___image'
+  | 'frontmatter___featured_image___childImagesJson___alt_text'
+  | 'frontmatter___featured_image___childrenDataJson'
+  | 'frontmatter___featured_image___childrenDataJson___id'
+  | 'frontmatter___featured_image___childrenDataJson___children'
+  | 'frontmatter___featured_image___childrenDataJson___sections'
+  | 'frontmatter___featured_image___childrenDataJson___page_header'
+  | 'frontmatter___featured_image___childrenDataJson___title'
+  | 'frontmatter___featured_image___childrenDataJson___titleTemplate'
+  | 'frontmatter___featured_image___childrenDataJson___description'
+  | 'frontmatter___featured_image___childrenDataJson___headline'
+  | 'frontmatter___featured_image___childrenDataJson___keywords'
+  | 'frontmatter___featured_image___childrenDataJson___author'
+  | 'frontmatter___featured_image___childrenDataJson___siteUrl'
+  | 'frontmatter___featured_image___childrenDataJson___siteLanguage'
+  | 'frontmatter___featured_image___childrenDataJson___siteLocale'
+  | 'frontmatter___featured_image___childrenDataJson___image'
+  | 'frontmatter___featured_image___childrenDataJson___twitter'
+  | 'frontmatter___featured_image___childrenDataJson___twitterUrl'
+  | 'frontmatter___featured_image___childrenDataJson___facebook'
+  | 'frontmatter___featured_image___childrenDataJson___facebookUrl'
+  | 'frontmatter___featured_image___childrenDataJson___instagramUrl'
+  | 'frontmatter___featured_image___childrenDataJson___youtubeUrl'
+  | 'frontmatter___featured_image___childrenDataJson___linkedinUrl'
+  | 'frontmatter___featured_image___childrenDataJson___githubUrl'
+  | 'frontmatter___featured_image___childDataJson___id'
+  | 'frontmatter___featured_image___childDataJson___children'
+  | 'frontmatter___featured_image___childDataJson___sections'
+  | 'frontmatter___featured_image___childDataJson___page_header'
+  | 'frontmatter___featured_image___childDataJson___title'
+  | 'frontmatter___featured_image___childDataJson___titleTemplate'
+  | 'frontmatter___featured_image___childDataJson___description'
+  | 'frontmatter___featured_image___childDataJson___headline'
+  | 'frontmatter___featured_image___childDataJson___keywords'
+  | 'frontmatter___featured_image___childDataJson___author'
+  | 'frontmatter___featured_image___childDataJson___siteUrl'
+  | 'frontmatter___featured_image___childDataJson___siteLanguage'
+  | 'frontmatter___featured_image___childDataJson___siteLocale'
+  | 'frontmatter___featured_image___childDataJson___image'
+  | 'frontmatter___featured_image___childDataJson___twitter'
+  | 'frontmatter___featured_image___childDataJson___twitterUrl'
+  | 'frontmatter___featured_image___childDataJson___facebook'
+  | 'frontmatter___featured_image___childDataJson___facebookUrl'
+  | 'frontmatter___featured_image___childDataJson___instagramUrl'
+  | 'frontmatter___featured_image___childDataJson___youtubeUrl'
+  | 'frontmatter___featured_image___childDataJson___linkedinUrl'
+  | 'frontmatter___featured_image___childDataJson___githubUrl'
   | 'frontmatter___featured_image___id'
   | 'frontmatter___featured_image___parent___id'
   | 'frontmatter___featured_image___parent___children'
@@ -4266,6 +5029,8 @@ export type MdxFieldsEnum =
   | 'frontmatter___seo___image___childrenImageSharp'
   | 'frontmatter___seo___image___childrenMdx'
   | 'frontmatter___seo___image___childrenPagesJson'
+  | 'frontmatter___seo___image___childrenImagesJson'
+  | 'frontmatter___seo___image___childrenDataJson'
   | 'frontmatter___seo___image___id'
   | 'frontmatter___seo___image___children'
   | 'frontmatter___seo___alt_text'
@@ -4841,6 +5606,394 @@ export type PagesJsonGroupConnectionGroupArgs = {
 
 export type PagesJsonSortInput = {
   fields?: Maybe<Array<Maybe<PagesJsonFieldsEnum>>>
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type ImagesJsonConnection = {
+  totalCount: Scalars['Int']
+  edges: Array<ImagesJsonEdge>
+  nodes: Array<ImagesJson>
+  pageInfo: PageInfo
+  distinct: Array<Scalars['String']>
+  max?: Maybe<Scalars['Float']>
+  min?: Maybe<Scalars['Float']>
+  sum?: Maybe<Scalars['Float']>
+  group: Array<ImagesJsonGroupConnection>
+}
+
+export type ImagesJsonConnectionDistinctArgs = {
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonConnectionMaxArgs = {
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonConnectionMinArgs = {
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonConnectionSumArgs = {
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonEdge = {
+  next?: Maybe<ImagesJson>
+  node: ImagesJson
+  previous?: Maybe<ImagesJson>
+}
+
+export type ImagesJsonFieldsEnum =
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'image'
+  | 'alt_text'
+
+export type ImagesJsonGroupConnection = {
+  totalCount: Scalars['Int']
+  edges: Array<ImagesJsonEdge>
+  nodes: Array<ImagesJson>
+  pageInfo: PageInfo
+  distinct: Array<Scalars['String']>
+  max?: Maybe<Scalars['Float']>
+  min?: Maybe<Scalars['Float']>
+  sum?: Maybe<Scalars['Float']>
+  group: Array<ImagesJsonGroupConnection>
+  field: Scalars['String']
+  fieldValue?: Maybe<Scalars['String']>
+}
+
+export type ImagesJsonGroupConnectionDistinctArgs = {
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonGroupConnectionMaxArgs = {
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonGroupConnectionMinArgs = {
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonGroupConnectionSumArgs = {
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  field: ImagesJsonFieldsEnum
+}
+
+export type ImagesJsonSortInput = {
+  fields?: Maybe<Array<Maybe<ImagesJsonFieldsEnum>>>
+  order?: Maybe<Array<Maybe<SortOrderEnum>>>
+}
+
+export type DataJsonConnection = {
+  totalCount: Scalars['Int']
+  edges: Array<DataJsonEdge>
+  nodes: Array<DataJson>
+  pageInfo: PageInfo
+  distinct: Array<Scalars['String']>
+  max?: Maybe<Scalars['Float']>
+  min?: Maybe<Scalars['Float']>
+  sum?: Maybe<Scalars['Float']>
+  group: Array<DataJsonGroupConnection>
+}
+
+export type DataJsonConnectionDistinctArgs = {
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonConnectionMaxArgs = {
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonConnectionMinArgs = {
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonConnectionSumArgs = {
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonEdge = {
+  next?: Maybe<DataJson>
+  node: DataJson
+  previous?: Maybe<DataJson>
+}
+
+export type DataJsonFieldsEnum =
+  | 'id'
+  | 'parent___id'
+  | 'parent___parent___id'
+  | 'parent___parent___parent___id'
+  | 'parent___parent___parent___children'
+  | 'parent___parent___children'
+  | 'parent___parent___children___id'
+  | 'parent___parent___children___children'
+  | 'parent___parent___internal___content'
+  | 'parent___parent___internal___contentDigest'
+  | 'parent___parent___internal___description'
+  | 'parent___parent___internal___fieldOwners'
+  | 'parent___parent___internal___ignoreType'
+  | 'parent___parent___internal___mediaType'
+  | 'parent___parent___internal___owner'
+  | 'parent___parent___internal___type'
+  | 'parent___children'
+  | 'parent___children___id'
+  | 'parent___children___parent___id'
+  | 'parent___children___parent___children'
+  | 'parent___children___children'
+  | 'parent___children___children___id'
+  | 'parent___children___children___children'
+  | 'parent___children___internal___content'
+  | 'parent___children___internal___contentDigest'
+  | 'parent___children___internal___description'
+  | 'parent___children___internal___fieldOwners'
+  | 'parent___children___internal___ignoreType'
+  | 'parent___children___internal___mediaType'
+  | 'parent___children___internal___owner'
+  | 'parent___children___internal___type'
+  | 'parent___internal___content'
+  | 'parent___internal___contentDigest'
+  | 'parent___internal___description'
+  | 'parent___internal___fieldOwners'
+  | 'parent___internal___ignoreType'
+  | 'parent___internal___mediaType'
+  | 'parent___internal___owner'
+  | 'parent___internal___type'
+  | 'children'
+  | 'children___id'
+  | 'children___parent___id'
+  | 'children___parent___parent___id'
+  | 'children___parent___parent___children'
+  | 'children___parent___children'
+  | 'children___parent___children___id'
+  | 'children___parent___children___children'
+  | 'children___parent___internal___content'
+  | 'children___parent___internal___contentDigest'
+  | 'children___parent___internal___description'
+  | 'children___parent___internal___fieldOwners'
+  | 'children___parent___internal___ignoreType'
+  | 'children___parent___internal___mediaType'
+  | 'children___parent___internal___owner'
+  | 'children___parent___internal___type'
+  | 'children___children'
+  | 'children___children___id'
+  | 'children___children___parent___id'
+  | 'children___children___parent___children'
+  | 'children___children___children'
+  | 'children___children___children___id'
+  | 'children___children___children___children'
+  | 'children___children___internal___content'
+  | 'children___children___internal___contentDigest'
+  | 'children___children___internal___description'
+  | 'children___children___internal___fieldOwners'
+  | 'children___children___internal___ignoreType'
+  | 'children___children___internal___mediaType'
+  | 'children___children___internal___owner'
+  | 'children___children___internal___type'
+  | 'children___internal___content'
+  | 'children___internal___contentDigest'
+  | 'children___internal___description'
+  | 'children___internal___fieldOwners'
+  | 'children___internal___ignoreType'
+  | 'children___internal___mediaType'
+  | 'children___internal___owner'
+  | 'children___internal___type'
+  | 'internal___content'
+  | 'internal___contentDigest'
+  | 'internal___description'
+  | 'internal___fieldOwners'
+  | 'internal___ignoreType'
+  | 'internal___mediaType'
+  | 'internal___owner'
+  | 'internal___type'
+  | 'hero_image___image'
+  | 'hero_image___alt_text'
+  | 'main_content___header'
+  | 'main_content___text'
+  | 'main_content___image'
+  | 'main_content___alt_text'
+  | 'sections'
+  | 'sections___template'
+  | 'sections___background_color'
+  | 'sections___image'
+  | 'sections___alt_text'
+  | 'sections___image_as_background'
+  | 'sections___sections'
+  | 'sections___sections___template'
+  | 'sections___sections___header'
+  | 'sections___sections___text'
+  | 'sections___sections___call_to_action___url'
+  | 'sections___sections___call_to_action___text'
+  | 'sections___text'
+  | 'sections___fullwidth'
+  | 'sections___caption'
+  | 'sections___emphasized'
+  | 'page_header'
+  | 'seo___title'
+  | 'seo___description'
+  | 'seo___keywords'
+  | 'seo___image'
+  | 'seo___alt_text'
+  | 'seo___pathname'
+  | 'seo___article'
+  | 'title'
+  | 'titleTemplate'
+  | 'description'
+  | 'headline'
+  | 'keywords'
+  | 'author'
+  | 'siteUrl'
+  | 'siteLanguage'
+  | 'siteLocale'
+  | 'image'
+  | 'twitter'
+  | 'twitterUrl'
+  | 'facebook'
+  | 'facebookUrl'
+  | 'instagramUrl'
+  | 'youtubeUrl'
+  | 'linkedinUrl'
+  | 'githubUrl'
+
+export type DataJsonGroupConnection = {
+  totalCount: Scalars['Int']
+  edges: Array<DataJsonEdge>
+  nodes: Array<DataJson>
+  pageInfo: PageInfo
+  distinct: Array<Scalars['String']>
+  max?: Maybe<Scalars['Float']>
+  min?: Maybe<Scalars['Float']>
+  sum?: Maybe<Scalars['Float']>
+  group: Array<DataJsonGroupConnection>
+  field: Scalars['String']
+  fieldValue?: Maybe<Scalars['String']>
+}
+
+export type DataJsonGroupConnectionDistinctArgs = {
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonGroupConnectionMaxArgs = {
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonGroupConnectionMinArgs = {
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonGroupConnectionSumArgs = {
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonGroupConnectionGroupArgs = {
+  skip?: Maybe<Scalars['Int']>
+  limit?: Maybe<Scalars['Int']>
+  field: DataJsonFieldsEnum
+}
+
+export type DataJsonSortInput = {
+  fields?: Maybe<Array<Maybe<DataJsonFieldsEnum>>>
   order?: Maybe<Array<Maybe<SortOrderEnum>>>
 }
 
