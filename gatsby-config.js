@@ -94,5 +94,6 @@ module.exports = {
         utils: path.join(__dirname, `src/utils`),
       },
     },
+    'gatsby-plugin-netlify',
   ],
 }
