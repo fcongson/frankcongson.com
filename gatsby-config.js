@@ -60,12 +60,6 @@ module.exports = {
       options: {
         plugins: [
           {
-            resolve: `gatsby-remark-relative-images`,
-            options: {
-              staticFolderName: `content`,
-            },
-          },
-          {
             resolve: `gatsby-remark-images`,
             options: {
               maxWidth: 1200,
