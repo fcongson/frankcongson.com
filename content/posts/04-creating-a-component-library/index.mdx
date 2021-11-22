@@ -1,0 +1,96 @@
+---
+seo:
+  keywords: []
+  title: ''
+  description: ''
+  image: '../../images/lagom-ui-storybook-screenshot.png'
+  alt_text: Lagom UI component library shown in Storybook
+keywords:
+  - lagom
+  - lagom ui
+  - design system
+  - design system series
+  - component library
+  - storybook
+  - react
+  - styled components
+  - styled system
+  - design
+  - development
+  - multi brand
+published: true
+title: Creating a Component Library
+description: 'Design System Series: Part 1, Creating a Component Library'
+date: 2021-11-22
+slug: creating-a-component-library
+featured_image: '../../images/lagom-ui-storybook-screenshot.png'
+alt_text: Lagom UI component library shown in Storybook
+---
+
+<section>
+
+_Design System Series: Part 1, Creating a Component Library_
+
+_This is the first post in an ongoing series of my journey into building a design system._
+
+</section>
+
+<section>
+
+## Component Libraries
+
+When I began to grow into that space where design and development meet there was this friction that I initially felt when updating what I've already developed to match the updates that have been introduced into the designs. Through that friction is where I learned that the more reusable code (and later on design) I create, the less of an impact future changes will have on the whole.
+
+This experience is what led me down the road towards component libraries. I now had a collection of building blocks of code (built with [React](https://reactjs.org/), styled with [Style Components](https://styled-components.com/), and documented with [Storybook](https://storybook.js.org/)) that I could piece together and build UIs at a fast pace. Take a look at the component library I've built, [Lagom UI](https://lagom-ui.netlify.app/).
+
+With Lagom UI, I was able to redesign both my website, [FrankCongson.com](https://frankcongson.com), and my wife's and my travel blog, [HeyThereEverywhere.com](https://heythereeverywhere.com).
+
+</section>
+
+<ImageCaption
+  image='images/website-comparisons-home.jpg'
+  altText='Home page comparisons of FrankCongson.com (left) and HeyThereEverywhere.com (right)'
+  caption='Home page comparisons of FrankCongson.com (left) and HeyThereEverywhere.com (right)'
+  emphasized
+/>
+
+<section>
+
+## Themable Components
+
+The problem I found with this approach was that both websites looked very similar. Which at first isn't a bad thing. They both belong under the same "brand". However, I did feel a bit restricted when I wanted to add something extra to one without having to affect the other.
+
+Adding a theming system seemed to be the answer to this. Themes could define aspects of the design such as colors used, fonts, sizing, and spacing. Rather than trying to create my theming system from scratch, I decided to add [Styled System](https://styled-system.com/) to my codebase and used their [Theme Specification](https://styled-system.com/theme-specification) as a guide to creating themes for [FrankCongson.com](https://frankcongson.com) and [HeyThereEverywhere.com](https://heythereeverywhere.com).
+
+After adding themeable components, I was able to add some unique features to an individual website. This loosened the restrictions and was definitely on the right track of having the two websites with similar coded elements while maintaining individual personalities.
+
+</section>
+
+<ImageCaption
+  image='images/website-comparisons-content.jpg'
+  altText='About page comparisons (left) and blog page comparisons (right) of FrankCongson.com and HeyThereEverywhere.com'
+  caption='About page comparisons (left) and blog page comparisons (right) of FrankCongson.com and HeyThereEverywhere.com'
+/>
+
+<section>
+
+## Usability and Discoverability
+
+Initially, I created what was to become Lagom UI in the FrankCongson.com codebase. The HeyThereEverywhere.com codebase was its standalone repository. To avoid duplication I decided to pull out the components from the FrankCongson.com codebase and into their own. This was the birth of [Lagom UI](https://github.com/fcongson/lagom-ui). I created an npm package that would be served on GitHub (found here: [`@fcongson/lagom-ui`](https://github.com/fcongson/lagom-ui/packages/862172)). Creating an npm package allowed me to be able to develop once and install it into both projects.
+
+The discoverability of components is important for component library adoption. For this reason, I added [Storybook](https://storybook.js.org/) to act as the documentation of [Lagom UI](https://lagom-ui.netlify.app/) and to provide a space for me to iterate on design and development.
+
+</section>
+
+<ImageCaption
+  image='images/lagom-ui-storybook-screenshot.png'
+  altText='Lagom UI component library shown in Storybook'
+/>
+
+<section>
+
+## Divergence
+
+I have a further goal of continuing this divergence in personalities while maintaining the ability to use the same underlying code components. This will be an ongoing journey while I learn more about [Design Tokens](https://css-tricks.com/what-are-design-tokens/) and the tooling involved to automate bringing those design changes from Figma into the codebase.
+
+</section>

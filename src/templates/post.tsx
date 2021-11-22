@@ -1,5 +1,6 @@
 import { Container, Quote, Section } from '@fcongson/lagom-ui'
 import { MDXProvider, MDXProviderComponentsProp } from '@mdx-js/react'
+import { ImageCaption } from 'components/ImageCaption'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import { graphql, Link } from 'gatsby'
@@ -9,14 +10,16 @@ import { Query } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
 
-const shortcodes: MDXProviderComponentsProp = {
-  Link,
-  wrapper: ({ children }) => (
+const shortcodes = {
+  section: ({ children }: { children: React.ReactNode }) => (
     <Section>
       <Container>{children}</Container>
     </Section>
   ),
+  img: ({ src, alt }: { src: string; alt: string }) => <ImageCaption image={src} altText={alt} />,
   blockquote: Quote,
+  ImageCaption,
+  Link,
 }
 
 export const BLOG_POST_QUERY = graphql`
