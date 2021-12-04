@@ -81,17 +81,6 @@ export type ThemeType = {
   buttons: { [key: string]: { [key: string]: string } }
 }
 
-const buttons = {
-  primary: {
-    backgroundColor: colors.black as string,
-    color: colors.white as string,
-  },
-  secondary: {
-    backgroundColor: colors.white as string,
-    color: colors.black as string,
-  },
-}
-
 /**
  * [Styled System Theme Specification](https://styled-system.com/theme-specification)
  */
@@ -105,5 +94,4 @@ export const theme: ThemeType = {
   lineHeights,
   space,
   sizes,
-  buttons,
 }
