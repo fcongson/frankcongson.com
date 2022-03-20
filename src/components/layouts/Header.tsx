@@ -79,6 +79,8 @@ const NavigationMenu = styled.nav<{ open: boolean }>`
     }
 
     ${(props) => props.theme.mediaQueries.large} {
+      /* TODO: display none breaks the transition when closing */
+      display: ${(props) => (props.open ? 'block' : 'none')};
       font-size: 36px;
       line-height: 44px;
       margin: 0 0 8px 0;
@@ -144,6 +146,13 @@ export const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay 
               <img src={logo} alt='Frank Congson logo' />
             </Link>
           </div>
+          <NavigationToggle
+            aria-label={`${open ? 'Close' : 'Open'} navigation menu`}
+            onClick={() => setOpen(!open)}
+            open={open}>
+            <div className='toggle-line top' />
+            <div className='toggle-line bottom' />
+          </NavigationToggle>
           <NavigationMenu open={open}>
             <Link className='navigation-link' to='/'>
               Home
@@ -158,13 +167,6 @@ export const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay 
               Blog
             </Link>
           </NavigationMenu>
-          <NavigationToggle
-            aria-label={`${open ? 'Close' : 'Open'} navigation menu`}
-            onClick={() => setOpen(!open)}
-            open={open}>
-            <div className='toggle-line top' />
-            <div className='toggle-line bottom' />
-          </NavigationToggle>
         </Container>
       </Section>
     </HeaderStyles>
