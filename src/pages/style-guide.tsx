@@ -1,6 +1,14 @@
-import { CallToAction, Container, Hero, LinkButton, PageHeader, Quote, Section } from '@fcongson/lagom-ui'
+import {
+  CallToAction,
+  Container,
+  FeaturedSection,
+  Hero,
+  LinkButton,
+  PageHeader,
+  Quote,
+  Section,
+} from '@fcongson/lagom-ui'
 import { BlogPosts } from 'components/BlogPosts'
-import { FeaturedSection } from 'components/FeaturedSection'
 import { ImageCaption } from 'components/ImageCaption'
 import { Layout } from 'components/layouts'
 import { theme } from 'components/styles'
@@ -297,13 +305,22 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
         <Container id='featured-section'>
           <h2>Variations</h2>
           <p>
-            There are three variations of the <code>{'<FeaturedSection />'}</code> component. The default will put
-            content in front of a color background. The <code>imageAsBackground</code> variation will put content in
-            front of a provided image with the image at 50% opacity.
+            There are two variations of the <code>{'<FeaturedSection />'}</code> component. The default will put content
+            in front of a color background. The <code>imageAsBackground</code> variation will put content in front of a
+            provided image with the image at 50% opacity.
           </p>
         </Container>
       </Section>
-      <FeaturedSection imageAlt={altText} image={image} imageAsBackground>
+      <FeaturedSection
+        image={
+          <GatsbyImage
+            image={imageSharp?.childImageSharp?.gatsbyImageData}
+            alt={altText}
+            style={{ height: '100%' }}
+            objectPosition='center center'
+          />
+        }
+        imageAsBackground>
         <p>Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
       <FeaturedSection>

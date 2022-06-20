@@ -1,7 +1,8 @@
-import { CallToAction, Container, Quote, Section } from '@fcongson/lagom-ui'
-import { FeaturedSection } from 'components/FeaturedSection'
+import { CallToAction, Container, FeaturedSection, Quote, Section } from '@fcongson/lagom-ui'
 import { ImageCaption } from 'components/ImageCaption'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
+import { useImage } from 'utils/useImage'
 
 export type ForestrySection = {
   template: string
@@ -18,13 +19,20 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
   const key = `${section.template}.${index}`
   switch (section.template) {
     case 'featured-section':
+      const imageSharp = useImage()(section.image)
       return (
         <FeaturedSection
           key={key}
           imageAsBackground={section.image_as_background}
           backgroundColor={section.background_color}
-          imageAlt={section.alt_text}
-          image={section.image}>
+          image={
+            <GatsbyImage
+              image={imageSharp?.childImageSharp?.gatsbyImageData}
+              alt={section.alt_text}
+              style={{ height: '100%' }}
+              objectPosition='center center'
+            />
+          }>
           <ForestrySections sections={section.sections} unwrapped />
         </FeaturedSection>
       )
