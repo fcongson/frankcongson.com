@@ -33,7 +33,10 @@ const SITE_QUERY = graphql`
   }
 `
 
-export const Layout: React.FunctionComponent<{ overlayHeader?: boolean }> = ({ overlayHeader = false, children }) => {
+export const Layout: React.FunctionComponent<{ overlayHeader?: boolean; children?: React.ReactNode }> = ({
+  overlayHeader = false,
+  children,
+}) => {
   const { site } = useStaticQuery(SITE_QUERY)
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 

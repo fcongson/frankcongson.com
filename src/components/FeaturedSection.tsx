@@ -75,7 +75,11 @@ const FeaturedSectionContainer = styled.div<{
   }
 `
 
-type ImageBackgroundProps = { imageAlt?: string; imageSharp: ImageNode }
+type ImageBackgroundProps = {
+  imageAlt?: string
+  imageSharp: ImageNode
+  children?: React.ReactNode
+}
 
 const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({ imageAlt = '', imageSharp, children }) => {
   return (
@@ -101,6 +105,7 @@ const ImageBackground: React.FunctionComponent<ImageBackgroundProps> = ({ imageA
 
 type ColorBackgroundProps = {
   backgroundColor?: string
+  children?: React.ReactNode
 }
 
 const ColorBackground: React.FunctionComponent<ColorBackgroundProps> = ({ backgroundColor, children }) => {

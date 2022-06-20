@@ -1,5 +1,5 @@
 import { Container, Quote, Section } from '@fcongson/lagom-ui'
-import { MDXProvider, MDXProviderComponentsProp } from '@mdx-js/react'
+import { MDXProvider } from '@mdx-js/react'
 import { ImageCaption } from 'components/ImageCaption'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'

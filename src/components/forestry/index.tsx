@@ -8,7 +8,7 @@ export type ForestrySection = {
   [key: string]: any
 }
 
-const Wrapper: React.FunctionComponent = ({ children }) => (
+const Wrapper: React.FunctionComponent<{ children?: React.ReactNode }> = ({ children }) => (
   <Section>
     <Container>{children}</Container>
   </Section>
