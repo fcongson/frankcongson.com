@@ -1,5 +1,4 @@
-import { CallToAction, Container, FeaturedSection, Quote, Section } from '@fcongson/lagom-ui'
-import { ImageCaption } from 'components/ImageCaption'
+import { CallToAction, Container, FeaturedSection, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import React from 'react'
 import { useImage } from 'utils/useImage'
@@ -16,10 +15,10 @@ const Wrapper: React.FunctionComponent<{ children?: React.ReactNode }> = ({ chil
 )
 
 const getSection = (section: ForestrySection, unwrapped: boolean, index: number): React.ReactElement | undefined => {
+  const getImage = useImage()
   const key = `${section.template}.${index}`
   switch (section.template) {
     case 'featured-section':
-      const imageSharp = useImage()(section.image)
       return (
         <FeaturedSection
           key={key}
@@ -27,7 +26,7 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
           backgroundColor={section.background_color}
           image={
             <GatsbyImage
-              image={imageSharp?.childImageSharp?.gatsbyImageData}
+              image={getImage(section.image)?.childImageSharp?.gatsbyImageData}
               alt={section.alt_text}
               style={{ height: '100%' }}
               objectPosition='center center'
@@ -54,8 +53,9 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
           key={key}
           emphasized={section.emphasized}
           fullwidth={section.fullwidth}
-          image={section.image}
-          altText={section.alt_text}
+          image={
+            <GatsbyImage image={getImage(section.image)?.childImageSharp?.gatsbyImageData} alt={section.alt_text} />
+          }
           caption={section.caption}
         />
       )

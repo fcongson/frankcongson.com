@@ -3,13 +3,13 @@ import {
   Container,
   FeaturedSection,
   Hero,
+  ImageCaption,
   LinkButton,
   PageHeader,
   Quote,
   Section,
 } from '@fcongson/lagom-ui'
 import { BlogPosts } from 'components/BlogPosts'
-import { ImageCaption } from 'components/ImageCaption'
 import { Layout } from 'components/layouts'
 import { theme } from 'components/styles'
 import { graphql } from 'gatsby'
@@ -284,9 +284,41 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
           </p>
         </Container>
       </Section>
-      <ImageCaption image={image} altText={altText} caption='Default. Lorem ipsum dolor sit amet' />
-      <ImageCaption image={image} altText={altText} caption='Emphasized. Lorem ipsum dolor sit amet' emphasized />
-      <ImageCaption image={image} altText={altText} caption='Fullwidth. Lorem ipsum dolor sit amet' fullwidth />
+      <ImageCaption
+        image={
+          <GatsbyImage
+            image={imageSharp?.childImageSharp?.gatsbyImageData}
+            alt={altText}
+            style={{ height: '100%' }}
+            objectPosition='center center'
+          />
+        }
+        caption='Default. Lorem ipsum dolor sit amet'
+      />
+      <ImageCaption
+        image={
+          <GatsbyImage
+            image={imageSharp?.childImageSharp?.gatsbyImageData}
+            alt={altText}
+            style={{ height: '100%' }}
+            objectPosition='center center'
+          />
+        }
+        caption='Emphasized. Lorem ipsum dolor sit amet'
+        emphasized
+      />
+      <ImageCaption
+        image={
+          <GatsbyImage
+            image={imageSharp?.childImageSharp?.gatsbyImageData}
+            alt={altText}
+            style={{ height: '100%' }}
+            objectPosition='center center'
+          />
+        }
+        caption='Fullwidth. Lorem ipsum dolor sit amet'
+        fullwidth
+      />
 
       {/* Featured Section */}
       <Section>

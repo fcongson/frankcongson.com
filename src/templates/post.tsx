@@ -1,6 +1,5 @@
-import { Container, Quote, Section } from '@fcongson/lagom-ui'
+import { Container, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
 import { MDXProvider } from '@mdx-js/react'
-import { ImageCaption } from 'components/ImageCaption'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import { graphql, Link } from 'gatsby'
@@ -9,6 +8,7 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Query } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
+import { useImage } from 'utils/useImage'
 
 const shortcodes = {
   section: ({ children }: { children: React.ReactNode }) => (
@@ -16,9 +16,29 @@ const shortcodes = {
       <Container>{children}</Container>
     </Section>
   ),
-  img: ({ src, alt }: { src: string; alt: string }) => <ImageCaption image={src} altText={alt} />,
+  img: ({ src, alt }: { src: string; alt: string }) => {
+    const imageSharp = useImage()(src)
+    const gatsby = <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={alt} />
+    return <ImageCaption image={gatsby} />
+  },
   blockquote: Quote,
-  ImageCaption,
+  ImageCaption: ({
+    image,
+    altText,
+    caption,
+    emphasized,
+    fullwidth,
+  }: {
+    image: string
+    altText: string
+    caption: string
+    emphasized: boolean
+    fullwidth: boolean
+  }) => {
+    const imageSharp = useImage()(image)
+    const gatsby = <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={altText} />
+    return <ImageCaption image={gatsby} caption={caption} emphasized={emphasized} fullwidth={fullwidth} />
+  },
   Link,
 }
 

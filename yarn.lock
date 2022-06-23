@@ -1161,10 +1161,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fcongson/lagom-ui@^0.16.0":
-  version "0.16.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.16.0/37335988d2e833eddbb53c1f4b9a9817bccc2b011ddcf42b52001e9ef2495a4b#13b8eef4d9b9230758ba61b60998ee52ae2b0cdc"
-  integrity sha512-Xzdw1CWNGc3cX2l9Hh6Kli1bEJyqbkrkc15u++s9jf3bxf/mQ4vbJW/a+7JNTX3VcrKJ05H7zr9wEPMkZYA+Vg==
+"@fcongson/lagom-ui@^0.17.0":
+  version "0.17.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.17.0/42b2e976a0d444984c2e9c45c674545f2f169a79ddb483316b4c4e8bb1a72508#fa3048d34f24e70bcda8d2191e890927e76fd19e"
+  integrity sha512-flUggyTNSJyp2sTk1NIfNyTeydihbSOOMNmXhtdl+XzBO3V9kyZKDQHERKbLDuz5wwFFA7pfyW2KQ0mngZDf3A==
   dependencies:
     react "^18.2.0"
     react-dom "^18.2.0"
