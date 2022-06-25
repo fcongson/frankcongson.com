@@ -5,7 +5,7 @@ import { SEO as Seo } from 'components/SEO'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
-import { Query } from 'graphql-types'
+import { Blog_PostQuery } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
 import { useImage } from 'utils/useImage'
@@ -49,6 +49,9 @@ export const BLOG_POST_QUERY = graphql`
       body
       frontmatter {
         seo {
+          title
+          description
+          keywords
           image {
             publicURL
           }
@@ -138,7 +141,7 @@ const PostFooter = styled.footer`
   }
 `
 
-const Post: React.FunctionComponent<{ data: Query }> = ({ data }) => {
+const Post: React.FunctionComponent<{ data: Blog_PostQuery }> = ({ data }) => {
   const body = data.mdx?.body
   const { title, description, keywords, slug, featured_image, seo } = data.mdx?.frontmatter ?? {}
 

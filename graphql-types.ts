@@ -6130,7 +6130,13 @@ export type Blog_PostQuery = {
       date: any
       keywords?: Array<string | null> | null
       slug: string
-      seo?: { alt_text?: string | null; image?: { publicURL?: string | null } | null } | null
+      seo?: {
+        title?: string | null
+        description?: string | null
+        keywords?: Array<string | null> | null
+        alt_text?: string | null
+        image?: { publicURL?: string | null } | null
+      } | null
       featured_image?: { childImageSharp?: { gatsbyImageData: any } | null } | null
     } | null
   } | null

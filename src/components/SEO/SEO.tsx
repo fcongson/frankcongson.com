@@ -1,5 +1,5 @@
 import { graphql, useStaticQuery } from 'gatsby'
-import { Query } from 'graphql-types'
+import { SeoQuery } from 'graphql-types'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { Facebook } from './Facebook'
@@ -36,7 +36,7 @@ export const SEO: React.FunctionComponent<{
   pathname?: string
   article?: boolean
 }> = ({ title, desc, keywords, image, pathname, article = false }) => {
-  const { site } = useStaticQuery<Query>(SEO_QUERY)
+  const { site } = useStaticQuery<SeoQuery>(SEO_QUERY)
 
   const buildTime = site?.buildTime
   const {

@@ -4,7 +4,7 @@ import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { Query } from 'graphql-types'
+import { PageQuery } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
 import { useImage } from 'utils/useImage'
@@ -40,7 +40,7 @@ const PageContent = styled.div`
   }
 `
 
-const Page: React.FunctionComponent<{ data: Query }> = ({ data }) => {
+const Page: React.FunctionComponent<{ data: PageQuery }> = ({ data }) => {
   const { slug, seo, hero_image, page_header, sections } = data.pagesJson ?? {}
   const getImage = useImage()
   const heroImage = getImage(hero_image?.image ?? undefined)

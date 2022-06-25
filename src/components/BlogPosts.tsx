@@ -1,7 +1,7 @@
 import { Container, LinkButton, Section } from '@fcongson/lagom-ui'
 import { Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { Mdx, MdxEdge } from 'graphql-types'
+import { Blog_ListQuery } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -24,7 +24,7 @@ const PostSummaryContainer = styled.div`
   }
 `
 
-const PostSummary: React.FunctionComponent<{ post: Mdx }> = ({ post }) => {
+const PostSummary: React.FunctionComponent<{ post: Blog_ListQuery['allMdx']['edges'][0]['node'] }> = ({ post }) => {
   const { slug, title, date, featured_image } = post.frontmatter ?? {}
   const to = `/blog/${slug}`
   return (
@@ -52,7 +52,7 @@ const PostSummary: React.FunctionComponent<{ post: Mdx }> = ({ post }) => {
   )
 }
 
-export const BlogPosts: React.FunctionComponent<{ posts: MdxEdge[] }> = ({ posts }) => {
+export const BlogPosts: React.FunctionComponent<{ posts: Blog_ListQuery['allMdx']['edges'] }> = ({ posts }) => {
   if (!posts) return null
 
   return (

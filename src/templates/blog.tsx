@@ -5,7 +5,7 @@ import { SEO as Seo } from 'components/SEO'
 import blog from 'content/data/blog.json'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { Query } from 'graphql-types'
+import { Blog_ListQuery } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
 import { useImage } from 'utils/useImage'
@@ -83,7 +83,7 @@ const Pagination: React.FunctionComponent<PaginationProps> = ({ numPages, curren
   )
 }
 
-const Blog: React.FunctionComponent<{ data: Query; pageContext: PaginationProps }> = ({
+const Blog: React.FunctionComponent<{ data: Blog_ListQuery; pageContext: PaginationProps }> = ({
   data: { allMdx },
   pageContext: { numPages, currentPage },
 }) => {
