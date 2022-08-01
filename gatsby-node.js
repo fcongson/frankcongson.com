@@ -10,6 +10,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       slug: String!
       featured_image: File @fileByRelativePath
       alt_text: String
+      image_caption: String
       keywords: [String]
       seo: SEO
       published: Boolean

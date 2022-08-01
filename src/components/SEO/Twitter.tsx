@@ -7,13 +7,14 @@ export const Twitter: React.FunctionComponent<{
   title: string
   desc: string
   image: string
-}> = ({ type = 'summary_large_image', username, title, desc, image }) => (
+  imageAlt: string
+}> = ({ type = 'summary_large_image', username, title, desc, image, imageAlt }) => (
   <Helmet>
     {username && <meta name='twitter:creator' content={username} />}
     <meta name='twitter:card' content={type} />
     <meta name='twitter:title' content={title} />
     <meta name='twitter:description' content={desc} />
     <meta name='twitter:image' content={image} />
-    <meta name='twitter:image:alt' content={desc} />
+    <meta name='twitter:image:alt' content={imageAlt} />
   </Helmet>
 )

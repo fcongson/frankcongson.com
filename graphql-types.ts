@@ -586,6 +586,7 @@ export type MdxFrontmatter = Node & {
   slug: Scalars['String']
   featured_image?: Maybe<File>
   alt_text?: Maybe<Scalars['String']>
+  image_caption?: Maybe<Scalars['String']>
   keywords?: Maybe<Array<Maybe<Scalars['String']>>>
   seo?: Maybe<Seo>
   published?: Maybe<Scalars['Boolean']>
@@ -1092,6 +1093,7 @@ export type QueryMdxFrontmatterArgs = {
   slug?: InputMaybe<StringQueryOperatorInput>
   featured_image?: InputMaybe<FileFilterInput>
   alt_text?: InputMaybe<StringQueryOperatorInput>
+  image_caption?: InputMaybe<StringQueryOperatorInput>
   keywords?: InputMaybe<StringQueryOperatorInput>
   seo?: InputMaybe<SeoFilterInput>
   published?: InputMaybe<BooleanQueryOperatorInput>
@@ -1397,6 +1399,7 @@ export type MdxFrontmatterFilterInput = {
   slug?: InputMaybe<StringQueryOperatorInput>
   featured_image?: InputMaybe<FileFilterInput>
   alt_text?: InputMaybe<StringQueryOperatorInput>
+  image_caption?: InputMaybe<StringQueryOperatorInput>
   keywords?: InputMaybe<StringQueryOperatorInput>
   seo?: InputMaybe<SeoFilterInput>
   published?: InputMaybe<BooleanQueryOperatorInput>
@@ -1908,6 +1911,7 @@ export type FileFieldsEnum =
   | 'childrenMdx___frontmatter___featured_image___id'
   | 'childrenMdx___frontmatter___featured_image___children'
   | 'childrenMdx___frontmatter___alt_text'
+  | 'childrenMdx___frontmatter___image_caption'
   | 'childrenMdx___frontmatter___keywords'
   | 'childrenMdx___frontmatter___seo___title'
   | 'childrenMdx___frontmatter___seo___description'
@@ -2028,6 +2032,7 @@ export type FileFieldsEnum =
   | 'childMdx___frontmatter___featured_image___id'
   | 'childMdx___frontmatter___featured_image___children'
   | 'childMdx___frontmatter___alt_text'
+  | 'childMdx___frontmatter___image_caption'
   | 'childMdx___frontmatter___keywords'
   | 'childMdx___frontmatter___seo___title'
   | 'childMdx___frontmatter___seo___description'
@@ -4230,6 +4235,7 @@ export type MdxFrontmatterFieldsEnum =
   | 'featured_image___childrenMdx___frontmatter___date'
   | 'featured_image___childrenMdx___frontmatter___slug'
   | 'featured_image___childrenMdx___frontmatter___alt_text'
+  | 'featured_image___childrenMdx___frontmatter___image_caption'
   | 'featured_image___childrenMdx___frontmatter___keywords'
   | 'featured_image___childrenMdx___frontmatter___published'
   | 'featured_image___childrenMdx___frontmatter___id'
@@ -4269,6 +4275,7 @@ export type MdxFrontmatterFieldsEnum =
   | 'featured_image___childMdx___frontmatter___date'
   | 'featured_image___childMdx___frontmatter___slug'
   | 'featured_image___childMdx___frontmatter___alt_text'
+  | 'featured_image___childMdx___frontmatter___image_caption'
   | 'featured_image___childMdx___frontmatter___keywords'
   | 'featured_image___childMdx___frontmatter___published'
   | 'featured_image___childMdx___frontmatter___id'
@@ -4541,6 +4548,7 @@ export type MdxFrontmatterFieldsEnum =
   | 'featured_image___internal___owner'
   | 'featured_image___internal___type'
   | 'alt_text'
+  | 'image_caption'
   | 'keywords'
   | 'seo___title'
   | 'seo___description'
@@ -5013,6 +5021,7 @@ export type MdxFieldsEnum =
   | 'frontmatter___featured_image___internal___owner'
   | 'frontmatter___featured_image___internal___type'
   | 'frontmatter___alt_text'
+  | 'frontmatter___image_caption'
   | 'frontmatter___keywords'
   | 'frontmatter___seo___title'
   | 'frontmatter___seo___description'
@@ -6073,6 +6082,7 @@ export type Style_GuideQuery = {
           date: any
           slug: string
           keywords?: Array<string | null> | null
+          alt_text?: string | null
           featured_image?: { childImageSharp?: { gatsbyImageData: any } | null } | null
         } | null
       }
@@ -6096,6 +6106,7 @@ export type Blog_ListQuery = {
           date: any
           slug: string
           keywords?: Array<string | null> | null
+          alt_text?: string | null
           featured_image?: { childImageSharp?: { gatsbyImageData: any } | null } | null
         } | null
       }
@@ -6138,6 +6149,8 @@ export type Blog_PostQuery = {
       date: any
       keywords?: Array<string | null> | null
       slug: string
+      alt_text?: string | null
+      image_caption?: string | null
       seo?: {
         title?: string | null
         description?: string | null

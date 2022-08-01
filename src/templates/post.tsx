@@ -67,6 +67,8 @@ export const BLOG_POST_QUERY = graphql`
             gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
         }
+        alt_text
+        image_caption
       }
     }
   }
@@ -143,7 +145,8 @@ const PostFooter = styled.footer`
 
 const Post: React.FunctionComponent<{ data: Blog_PostQuery }> = ({ data }) => {
   const body = data.mdx?.body
-  const { title, description, keywords, slug, featured_image, seo } = data.mdx?.frontmatter ?? {}
+  const { title, description, keywords, slug, featured_image, alt_text, image_caption, seo } =
+    data.mdx?.frontmatter ?? {}
 
   return (
     <Layout>
@@ -152,6 +155,7 @@ const Post: React.FunctionComponent<{ data: Blog_PostQuery }> = ({ data }) => {
         desc={seo?.description ?? description ?? undefined}
         keywords={[...(seo?.keywords ?? []), ...(keywords ?? [])].join(', ')}
         image={seo?.image?.publicURL ?? undefined}
+        imageAlt={seo?.alt_text}
         pathname={`/${slug}`}
         article
       />
@@ -163,11 +167,16 @@ const Post: React.FunctionComponent<{ data: Blog_PostQuery }> = ({ data }) => {
                 <Link to='/blog/'>back to list</Link>
               </div>
               <h1>{title ? title : 'Untitled'}</h1>
-              {!!featured_image && (
-                <GatsbyImage image={featured_image.childImageSharp?.gatsbyImageData} alt={title ?? ''} />
-              )}
             </Container>
           </Section>
+          {!!featured_image && (
+            <ImageCaption
+              image={
+                <GatsbyImage image={featured_image.childImageSharp?.gatsbyImageData} alt={alt_text ?? title ?? ''} />
+              }
+              caption={image_caption ?? ''}
+            />
+          )}
         </PostHeader>
         {body ? (
           <MDXProvider components={shortcodes}>

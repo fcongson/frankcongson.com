@@ -25,7 +25,7 @@ const PostSummaryContainer = styled.div`
 `
 
 const PostSummary: React.FunctionComponent<{ post: Blog_ListQuery['allMdx']['edges'][0]['node'] }> = ({ post }) => {
-  const { slug, title, date, featured_image } = post.frontmatter ?? {}
+  const { slug, title, date, featured_image, alt_text } = post.frontmatter ?? {}
   const to = `/blog/${slug}`
   return (
     <PostSummaryContainer key={post.id}>
@@ -33,7 +33,7 @@ const PostSummary: React.FunctionComponent<{ post: Blog_ListQuery['allMdx']['edg
         <Container>
           {!!featured_image && (
             <Link to={to}>
-              <GatsbyImage image={featured_image.childImageSharp?.gatsbyImageData} alt={title ?? ''} />
+              <GatsbyImage image={featured_image.childImageSharp?.gatsbyImageData} alt={alt_text ?? title ?? ''} />
             </Link>
           )}
           <h2>

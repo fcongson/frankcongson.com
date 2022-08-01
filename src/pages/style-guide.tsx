@@ -40,6 +40,7 @@ export const STYLE_GUIDE_QUERY = graphql`
                 gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
+            alt_text
           }
         }
       }

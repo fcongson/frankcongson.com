@@ -33,9 +33,10 @@ export const SEO: React.FunctionComponent<{
   desc?: string
   keywords?: string
   image?: string
+  imageAlt?: string
   pathname?: string
   article?: boolean
-}> = ({ title, desc, keywords, image, pathname, article = false }) => {
+}> = ({ title, desc, keywords, image, imageAlt, pathname, article = false }) => {
   const { site } = useStaticQuery<SeoQuery>(SEO_QUERY)
 
   const buildTime = site?.buildTime
@@ -59,6 +60,7 @@ export const SEO: React.FunctionComponent<{
     keywords: keywords || defaultKeywords,
     author: author,
     image: `${siteUrl}${image || defaultImage}`,
+    imageAlt: imageAlt || '',
     url: `${siteUrl}${pathname || ''}`,
   }
 
@@ -113,13 +115,20 @@ export const SEO: React.FunctionComponent<{
       <Facebook
         desc={seo.description ?? ''}
         image={seo.image}
+        imageAlt={seo.imageAlt}
         title={seo.title}
         type={article ? 'article' : 'website'}
         url={seo.url}
         locale={siteLocale ?? ''}
         name={facebook ?? ''}
       />
-      <Twitter title={seo.title} image={seo.image} desc={seo.description ?? ''} username={twitter ?? ''} />
+      <Twitter
+        title={seo.title}
+        image={seo.image}
+        imageAlt={seo.imageAlt}
+        desc={seo.description ?? ''}
+        username={twitter ?? ''}
+      />
     </>
   )
 }

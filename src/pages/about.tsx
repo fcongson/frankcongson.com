@@ -27,6 +27,7 @@ const About: React.FunctionComponent = () => {
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}
         image={seoImage?.publicURL ?? ''}
+        imageAlt={seo?.alt_text}
         pathname='/about'
       />
       <Hero

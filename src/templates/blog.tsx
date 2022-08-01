@@ -32,6 +32,7 @@ export const BLOG_LIST_QUERY = graphql`
                 gatsbyImageData(quality: 100, layout: FULL_WIDTH)
               }
             }
+            alt_text
           }
         }
       }
@@ -99,6 +100,7 @@ const Blog: React.FunctionComponent<{ data: Blog_ListQuery; pageContext: Paginat
         desc={seo?.description}
         keywords={seo?.keywords.join(', ')}
         image={seoImage?.publicURL ?? undefined}
+        imageAlt={seo?.alt_text}
         pathname='/blog'
       />
       <Hero

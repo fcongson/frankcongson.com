@@ -53,6 +53,7 @@ const Page: React.FunctionComponent<{ data: PageQuery }> = ({ data }) => {
         desc={seo?.description ?? undefined}
         keywords={seo?.keywords?.join(', ')}
         image={seoImage?.publicURL ?? undefined}
+        imageAlt={seo?.alt_text ?? undefined}
         pathname={`/${slug}`}
       />
       {!!hero_image && (
