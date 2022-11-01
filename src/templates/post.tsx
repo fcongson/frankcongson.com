@@ -8,7 +8,15 @@ import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Blog_PostQuery } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
-import { useImage } from 'utils/useImage'
+import { ImageNode, useImage } from 'utils/useImage'
+
+const createImage = (image: ImageNode, alt: string) => {
+  // [Support gifs in gatsby-image](https://github.com/gatsbyjs/gatsby/discussions/29410)
+  if (image?.extension === 'gif') {
+    return <img src={image?.publicURL ?? ''} alt={alt} />
+  }
+  return <GatsbyImage image={image?.childImageSharp?.gatsbyImageData} alt={alt} />
+}
 
 const shortcodes = {
   section: ({ children }: { children: React.ReactNode }) => (
@@ -17,9 +25,10 @@ const shortcodes = {
     </Section>
   ),
   img: ({ src, alt }: { src: string; alt: string }) => {
-    const imageSharp = useImage()(src)
-    const gatsby = <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={alt} />
-    return <ImageCaption image={gatsby} />
+    const image = useImage()(src)
+    if (!!image) {
+      return <ImageCaption image={createImage(image, alt)} />
+    }
   },
   blockquote: Quote,
   ImageCaption: ({
@@ -35,9 +44,17 @@ const shortcodes = {
     emphasized: boolean
     fullwidth: boolean
   }) => {
-    const imageSharp = useImage()(image)
-    const gatsby = <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={altText} />
-    return <ImageCaption image={gatsby} caption={caption} emphasized={emphasized} fullwidth={fullwidth} />
+    const imageNode = useImage()(image)
+    if (!!imageNode) {
+      return (
+        <ImageCaption
+          image={createImage(imageNode, altText)}
+          caption={caption}
+          emphasized={emphasized}
+          fullwidth={fullwidth}
+        />
+      )
+    }
   },
   Link,
 }

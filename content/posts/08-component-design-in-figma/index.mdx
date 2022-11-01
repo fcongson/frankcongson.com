@@ -1,0 +1,120 @@
+---
+seo:
+  image: '../../images/figma-component-design.png'
+  alt_text: Building components in Figma
+keywords:
+  - design system
+  - design
+  - figma
+  - components
+  - component variants
+  - component props
+  - component slots
+  - component composition
+published: true
+title: Component Design In Figma
+description: 'Design System Series: Part 3, Building components in Figma'
+date: 2022-11-01
+slug: component-design-in-figma
+featured_image: '../../images/figma-component-design.png'
+alt_text: Building components in Figma
+---
+
+<section>
+
+_Design System Series: Part 3, Creating design system components in [Figma](https://www.figma.com/)_
+
+_Have a read of [Part 2, Design Systems Thinking](https://frankcongson.com/blog/design-systems-thinking)._
+
+</section>
+
+<section>
+
+## Getting reacquainted with Figma
+
+When I focused on building the component library of my design system, [Lagom UI](https://frankcongson.com/blog/creating-a-component-library), my brain went into delivery mode and prioritized what I knew. As a developer, I've built [the component library](https://github.com/fcongson/lagom-ui) entirely in code, including [the documentation](https://lagom-ui.netlify.app/) and [the style guide](https://frankcongson.com/style-guide/). I have since achieved that milestone, and now, I'm working towards the next, iterating and scaling designs within Figma. The problem here is that everything I've done in Figma up to this point was creating mockups of how the actual pages of my website would look. There was nothing reusable to iterate or build on. Now was the time to work out the design side of my design systems mindset and build my react components into reusable Figma components.
+
+</section>
+
+<section>
+
+## Where to start?
+
+Initially, I thought of building a button component in Figma. But, a button component is deceptively complex. It wouldn't be an appropriate avenue for learning in Figma. So, I decided to keep it simple. I started with [a Page Header component](https://frankcongson.com/style-guide/#page-header) that only needed three variations — different font sizes for three breakpoints.
+
+</section>
+
+<section>
+
+## Component variants
+
+I wanted to create my Page Header component with the ability to change font sizes depending on the breakpoint. Unfortunately, [Figma doesn't currently support breakpoints](https://www.smashingmagazine.com/2022/08/everything-developers-must-know-about-figma/#4-we-have-no-breakpoints-in-figma). To get around this, I implemented a `breakpoint` property in my Page Header component to choose the appropriate component variant for the viewport size. I was off to a good start. I learned how to create [component variants](https://help.figma.com/hc/en-us/articles/360056440594-Create-and-use-variants) for my breakpoint use case 🙌.
+
+</section>
+
+![Figma Page Header component adjusting to breakpoints via component variants](images/figma-component-variants.gif)
+
+<section>
+
+## Component props
+
+The next thing I wanted to learn in Figma was [component props](https://help.figma.com/hc/en-us/articles/5579474826519-Explore-component-properties) which would connect my developer thinking 🧠 of using component props within React. The component I chose to implement component props was [a Hero component](https://frankcongson.com/style-guide/#hero). This choice was a bit strategic as it allowed me to learn component props and component composition (which I'll get to in a bit). I created a container that filled the entire viewport width and height with an image. It was that `image` that was the prop of the Hero component.
+
+</section>
+
+![Figma Hero component selecting background image via component props](images/figma-component-props.gif)
+
+<section>
+
+## Component slots
+
+What my Hero component needed that I wanted to recreate in Figma was the concept of `children` in a React component, where the child component could be anything. I tried dragging a Figma component into another, but it turns out that Figma doesn't currently support this type of composition. This hurdle offered me just the right amount of friction to learn more about how to use Figma. I turned to Google and searched for "component composition in Figma" and stumbled upon [an article about component slots](https://blog.prototypr.io/slot-components-how-to-create-them-in-figma-6f592c0441b7) 🕵️.
+
+</section>
+
+<ImageCaption
+  image='images/figma-component-composition-1.png'
+  altText='A Page Header component placed on top of a Hero component in Figma'
+  caption='The component composition that I was trying to achieve'
+/>
+
+<ImageCaption
+  image='images/figma-component-composition-2.gif'
+  altText='A screen recording of a Page Header component being dragged into a Hero component in Figma'
+  caption='I was hoping I could drag components into each other'
+  emphasized
+/>
+
+<section>
+
+I thought about the use case of dragging one component into another, and it began to make sense why that wouldn't work. The parent component would need to define where the `children` would go. Enter component slots. Essentially, component slots define a "placeholder" within the parent component. That "placeholder" mimicked the concept of `children` in React, which got me what I needed for my use case. I also created an Empty Slot component to support when `children` is `null`.
+
+</section>
+
+<ImageCaption
+  image='images/figma-component-slots-2.gif'
+  altText='A screen recording of a Page Header component being set as a child a Hero component in Figma via component slots'
+  caption='Deterministic component composition 🙌'
+/>
+
+<ImageCaption
+  image='images/figma-component-slots-3.gif'
+  altText='A screen recording of an Empty Slot component being set as a child a Hero component in Figma via component slots'
+  caption='Including support for empty `children`'
+/>
+
+<section>
+
+## Where to next?
+
+I plan to create the rest of the react components in my design system, [Lagom UI](https://lagom-ui.netlify.app/), as Figma components. Luckily, there isn't an extensive list of components. I've embraced the meaning of "[lagom](https://en.wikipedia.org/wiki/Lagom)" and have "just the right amount" of components in my design system. Once I finish creating the remaining Figma components, I can play with experimental layouts and designs using the components directly in Figma.
+
+Having my components in Figma will enable me to incorporate the [Figma Tokens plugin](https://www.figmatokens.com/) into my workflow to create unique themes via design tokens for my websites. Using Figma Tokens was my main driver for getting all of my components into Figma. I'll talk to this more in a future post 👋.
+
+</section>
+
+<ImageCaption
+  image='images/figma-component-design.png'
+  altText='Various states of a Hero component including component composition with Page Header in Figma'
+  emphasized
+/>

@@ -3,7 +3,7 @@ import { All_ImagesQuery, File, ImageSharp, Maybe } from 'graphql-types'
 
 const ALL_IMAGES_QUERY = graphql`
   query ALL_IMAGES {
-    allFile(filter: { extension: { regex: "/(jpg)|(png)|(jpeg)/" } }) {
+    allFile(filter: { extension: { regex: "/(jpg)|(png)|(jpeg)|(gif)/" } }) {
       edges {
         node {
           absolutePath
@@ -11,13 +11,14 @@ const ALL_IMAGES_QUERY = graphql`
           childImageSharp {
             gatsbyImageData(quality: 100, layout: FULL_WIDTH)
           }
+          extension
         }
       }
     }
   }
 `
 
-export type ImageNode = Pick<File, 'absolutePath' | 'publicURL'> & {
+export type ImageNode = Pick<File, 'absolutePath' | 'publicURL' | 'extension'> & {
   childImageSharp?: Maybe<Pick<ImageSharp, 'gatsbyImageData'>>
 }
 
