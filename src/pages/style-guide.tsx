@@ -70,10 +70,31 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       <Section>
         <Container>
-          <h2>This is my style guide.</h2>
+          <h2>
+            The brand style guide for <a href='https://frankcongson.com/'>FrankCongson.com</a>.
+          </h2>
           <p>
-            This style guide will be a living document to showcase the designs I have incorporated into my website. It
-            will help me keep track of things as I grow this space.
+            This, is a living document showcasing the designs I have incorporated into my brand. As I grow my design
+            system, <a href='https://lagom-ui.netlify.app/'>Lagom-UI</a>, I will use this document to ensure the
+            components remain cohesive as they move into the browser.
+          </p>
+          <h3>Have a look at my Design Systems journey</h3>
+          <p>
+            <ul>
+              <li>
+                Part 1,{' '}
+                <a href='https://frankcongson.com/blog/creating-a-component-library'>Creating a Component Library</a>
+              </li>
+              <li>
+                Part 2, <a href='https://frankcongson.com/blog/design-systems-thinking'>Design Systems Thinking</a>
+              </li>
+              <li>
+                Part 3, <a href='https://frankcongson.com/blog/component-design-in-figma'>Component Design In Figma</a>
+              </li>
+              <li>
+                <em>Continuing to grow</em> 🌱
+              </li>
+            </ul>
           </p>
         </Container>
       </Section>
