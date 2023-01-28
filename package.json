@@ -66,7 +66,8 @@
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "gatsby develop --host=0.0.0.0",
     "serve": "gatsby serve --host=0.0.0.0",
-    "forestry:preview": "gatsby develop -p 8080 -H 0.0.0.0"
+    "forestry:preview": "gatsby develop -p 8080 -H 0.0.0.0",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
