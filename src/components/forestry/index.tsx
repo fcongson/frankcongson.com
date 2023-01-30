@@ -28,7 +28,7 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
             <GatsbyImage
               image={getImage(section.image)?.childImageSharp?.gatsbyImageData}
               alt={section.alt_text}
-              style={{ height: '100%' }}
+              style={{ height: 'max(calc(100vh - 20vh), 700px)', opacity: 0.45 }}
               objectPosition='center center'
             />
           }>
