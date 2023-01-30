@@ -45,6 +45,42 @@
           }
         }
       ]
+    },
+    {
+      "template": "featured-section",
+      "background_color": "",
+      "image": "/content/images/desk-setup.jpg",
+      "alt_text": "Frank's desk setup and essential items",
+      "image_as_background": true,
+      "sections": [
+        {
+          "template": "call-to-action",
+          "header": "Minimalism.",
+          "text": "Minimalism has been a part of my life for years. Live deliberately. Curate the things around you.",
+          "call_to_action": {
+            "url": "uses",
+            "text": "See my essentials"
+          }
+        }
+      ]
+    },
+    {
+      "template": "featured-section",
+      "background_color": "#cacfc9",
+      "image": "",
+      "alt_text": "",
+      "image_as_background": false,
+      "sections": [
+        {
+          "template": "call-to-action",
+          "header": "UX.",
+          "text": "Creating this digital space from design to implementation provided the perfect base to hone my craft as a UX practitioner.",
+          "call_to_action": {
+            "url": "style-guide",
+            "text": "Learn about the user experience"
+          }
+        }
+      ]
     }
   ],
   "page_header": "",
