@@ -74,9 +74,9 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
             The brand style guide for <a href='https://frankcongson.com/'>FrankCongson.com</a>.
           </h2>
           <p>
-            This, is a living document showcasing the designs I have incorporated into my brand. As I grow my design
-            system, <a href='https://lagom-ui.netlify.app/'>Lagom-UI</a>, I will use this document to ensure the
-            components remain cohesive as they move into the browser.
+            This style guide is a living document showcasing the designs I have incorporated into my brand. As I grow my
+            design system, <a href='https://lagom-ui.netlify.app/'>Lagom-UI</a>, I will use this document to ensure the
+            components remain cohesive as they move from Figma to the browser.
           </p>
           <h3>Have a look at my Design Systems journey</h3>
           <p>
