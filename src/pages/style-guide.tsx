@@ -92,6 +92,10 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
                 Part 3, <a href='https://frankcongson.com/blog/component-design-in-figma'>Component Design In Figma</a>
               </li>
               <li>
+                Part 4,{' '}
+                <a href='https://frankcongson.com/blog/design-tokens-to-dark-mode'>Design Tokens To Dark Mode</a>
+              </li>
+              <li>
                 <em>Continuing to grow</em> 🌱
               </li>
             </ul>
