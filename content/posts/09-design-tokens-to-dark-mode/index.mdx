@@ -87,30 +87,30 @@ Let's take a closer look at applying dark mode to buttons. The `core` colors I u
 For the `light` semantic layer, I define the following tokens.
 
 ```
---button-primary-bg: var(--colors-grey-darker40)
---button-primary-fg: var(--colors-white)
---button-secondary-bg: var(--colors-transparent)
---button-secondary-fg: var(--colors-grey-darker40)
+--button-primary-bg: var(--colors-grey-darker40);
+--button-primary-fg: var(--colors-white);
+--button-secondary-bg: var(--colors-transparent);
+--button-secondary-fg: var(--colors-grey-darker40);
 ```
 
 I define equivalent tokens for the `dark` semantic layer with different core set values.
 
 ```
---button-primary-bg: var(--colors-olive-lighter20)
---button-primary-fg: var(--colors-white)
---button-secondary-bg: var(--colors-transparent)
---button-secondary-fg: var(--colors-olive-lighter20)
+--button-primary-bg: var(--colors-olive-lighter20);
+--button-primary-fg: var(--colors-white);
+--button-secondary-bg: var(--colors-transparent);
+--button-secondary-fg: var(--colors-olive-lighter20);
 ```
 
 Finally, the applied `theme` defines the following tokens mapped to the semantic tokens.
 
 ```
---button-primary-text: var(--button-primary-fg)
---button-primary-border: var(--button-primary-bg)
---button-primary-background: var(--button-primary-bg)
---button-secondary-text: var(--button-secondary-bg)
---button-secondary-border: var(--button-secondary-fg)
---button-secondary-background: var(--button-secondary-fg)
+--button-primary-text: var(--button-primary-fg);
+--button-primary-border: var(--button-primary-bg);
+--button-primary-background: var(--button-primary-bg);
+--button-secondary-text: var(--button-secondary-bg);
+--button-secondary-border: var(--button-secondary-fg);
+--button-secondary-background: var(--button-secondary-fg);
 ```
 
 Defining the `light` and `dark` token sets abstracts the `core` color values from the `theme` itself. The `theme` knows to apply `--button-primary-text` to the primary button text color. The exact color is determined based on the chosen light or dark mode.
