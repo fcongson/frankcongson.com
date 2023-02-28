@@ -109,7 +109,7 @@ export const GlobalStyle = createGlobalStyle<{
   code,
   pre {
     font-family: ${(props) => props.theme.fonts.monospace};
-    font-weight: ${(props) => props.theme.fontWeights[1]};
+    font-weight: ${(props) => props.theme.fontWeights[0]};
     /* background: ${(props) => props.theme.colors.olives[2]}; */
     background: hsla(111, 7%, 80%, 0.5);
   }
