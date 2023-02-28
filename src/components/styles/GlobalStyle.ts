@@ -109,6 +109,18 @@ export const GlobalStyle = createGlobalStyle<{
   code,
   pre {
     font-family: ${(props) => props.theme.fonts.monospace};
+    font-weight: ${(props) => props.theme.fontWeights[1]};
+    /* background: ${(props) => props.theme.colors.olives[2]}; */
+    background: hsla(111, 7%, 80%, 0.5);
+  }
+
+  pre code {
+    background: none;
+  }
+
+  code {
+    padding: ${(props) => props.theme.space[1]}px;
+    border-radius: 4px;
   }
 
   pre {
@@ -117,6 +129,8 @@ export const GlobalStyle = createGlobalStyle<{
     white-space: -pre-wrap; /* Opera 4-6 */
     white-space: -o-pre-wrap; /* Opera 7 */
     word-wrap: break-word; /* Internet Explorer 5.5+ */
+    padding: ${(props) => props.theme.space[3]}px;
+    border-radius: 4px;
   }
 
   strong {
