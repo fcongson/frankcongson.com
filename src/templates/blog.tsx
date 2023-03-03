@@ -14,7 +14,7 @@ export const BLOG_LIST_QUERY = graphql`
   query BLOG_LIST($skip: Int!, $limit: Int!) {
     allMdx(
       filter: { frontmatter: { published: { eq: true } } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
       limit: $limit
       skip: $skip
     ) {

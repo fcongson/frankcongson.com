@@ -4,7 +4,6 @@ import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { MDXRenderer } from 'gatsby-plugin-mdx'
 import { Blog_PostQuery } from 'graphql-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -195,11 +194,7 @@ const Post: React.FunctionComponent<{ data: Blog_PostQuery }> = ({ data }) => {
             />
           )}
         </PostHeader>
-        {body ? (
-          <MDXProvider components={shortcodes}>
-            <MDXRenderer>{body}</MDXRenderer>
-          </MDXProvider>
-        ) : null}
+        {body ? <MDXProvider components={shortcodes}>{body}</MDXProvider> : null}
         <PostFooter>
           <Section>
             <Container>
