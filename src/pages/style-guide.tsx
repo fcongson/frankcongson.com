@@ -25,7 +25,7 @@ export const STYLE_GUIDE_QUERY = graphql`
         gatsbyImageData(quality: 100, layout: FULL_WIDTH)
       }
     }
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }, limit: 3, skip: 0) {
+    allMdx(sort: { frontmatter: { date: DESC } }, limit: 3, skip: 0) {
       edges {
         node {
           id
