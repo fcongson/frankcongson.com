@@ -38,37 +38,36 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const result = await graphql(`
     {
       allMdx(filter: { frontmatter: { published: { eq: true } } }, sort: { frontmatter: { date: DESC } }, limit: 1000) {
-        edges {
-          node {
-            id
-            frontmatter {
-              slug
-            }
+        nodes {
+          id
+          frontmatter {
+            slug
+          }
+          internal {
+            contentFilePath
           }
         }
       }
       allPagesJson {
         totalCount
-        edges {
-          node {
-            id
-            slug
-          }
+        nodes {
+          id
+          slug
         }
       }
     }
   `)
 
   if (result.errors) {
-    reporter.panicOnBuild('🚨  ERROR: Loading "createPages" query')
+    reporter.panicOnBuild('🚨 Error loading MDX result', result.errors)
   }
 
   // Create post pages from mdx files
-  const posts = result.data.allMdx.edges
-  posts.forEach(({ node }) => {
+  const posts = result.data.allMdx.nodes
+  posts.forEach((node) => {
     createPage({
       path: `/blog/${node.frontmatter.slug}`,
-      component: path.resolve(`./src/templates/post.tsx`),
+      component: path.resolve(`./src/templates/post.tsx?__contentFilePath=${node.internal.contentFilePath}`),
       context: { id: node.id },
     })
   })
@@ -90,8 +89,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   })
 
   // Create pages from json files
-  const pages = result.data.allPagesJson.edges
-  pages.forEach(({ node }) => {
+  const pages = result.data.allPagesJson.nodes
+  pages.forEach((node) => {
     createPage({
       path: `/${node.slug}`,
       component: path.resolve(`./src/templates/page.tsx`),

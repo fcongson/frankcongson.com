@@ -21,15 +21,15 @@ featured_image: '../../images/landing-dark-cover.png'
 alt_text: FrankCongson.com shown in light mode (left) transitioning to dark mode (right)
 ---
 
-<section>
+<Section>
 
 _Design System Series: Part 4, Designing dark mode with design tokens_
 
 _Have a read of [Part 3, Component Design In Figma](https://frankcongson.com/blog/component-design-in-figma)._
 
-</section>
+</Section>
 
-<section>
+<Section>
 
 ## Design Tokens
 
@@ -41,9 +41,9 @@ In addition to creating self-documented design decisions, design tokens establis
 
 Rather than communicating through hex code values, `#626e60`, or even by having to remember the correct color, `--colors-olive-base`, everyone can understand that when talking about the brand color, that color is `--brand-primary`. This is especially useful when implementing multi-brand design system implementations and rollouts of rebrands as well, although a topic for another time.
 
-</section>
+</Section>
 
-<section>
+<Section>
 
 ## Dark Mode
 
@@ -51,11 +51,11 @@ Dark mode has become quite widespread. It's now a feature everyone expects from 
 
 The convergence of design tokens and dark mode presented an opportunity create the dark mode experience for my personal website, [FrankCongson.com](https://frankcongson.com/). I'm able to explore the practical implementation of design tokens to arrive at dark mode 🌘.
 
-</section>
+</Section>
 
 ![Tokens Studio for Figma plugin being used to apply dark mode to FrankCongson.com](images/lagom-tokens-dark-mode.gif)
 
-<section>
+<Section>
 
 ## Tokens Studio for Figma
 
@@ -63,7 +63,7 @@ Continuing with my [component creation in Figma](https://frankcongson.com/blog/c
 
 First, I added existing [Lagom UI](https://lagom-ui.netlify.app/) styles (colors, typography) to the `core` token set. Second, I created semantic layers `light` and `dark`, which include tokens for foreground colors, background colors, accents, etc., to define specific usages of those core values. This semantic layer simplifies switching between light and dark modes as the chosen semantic layer is applied to the third token set, `theme`.
 
-</section>
+</Section>
 
 <ImageCaption
   image='images/tokens-studio-for-figma.png'
@@ -72,7 +72,7 @@ First, I added existing [Lagom UI](https://lagom-ui.netlify.app/) styles (colors
   emphasized
 />
 
-<section>
+<Section>
 
 ## A closer look at the details
 
@@ -116,17 +116,17 @@ Finally, the applied `theme` defines the following tokens mapped to the semantic
 
 Defining the `light` and `dark` token sets abstracts the `core` color values from the `theme` itself. The `theme` knows to apply `--button-primary-text` to the primary button text color. The exact color is determined based on the chosen light or dark mode.
 
-</section>
+</Section>
 
 ![Tokens Studio for Figma plugin being used to apply dark mode to buttons](images/lagom-tokens-dark-button.gif)
 
-<section>
+<Section>
 
 ## Where I landed
 
 My journey of adding design tokens to Figma got me to a dark mode design implementation of my landing page. The road to get there was not completely straightforward. I had to expand my color system to include more dark color shades. I'll have to revisit the color system since it is still in its early iterations. The scale from dark to light doesn't feel quite right and the accessibility could be improved. But for now, I'm happy with where I landed. I have a Figma implementation of design tokens with dark mode applied to my design system components ✨.
 
-</section>
+</Section>
 
 <ImageCaption
   image='images/landing-light-dark-comparison.png'
@@ -135,7 +135,7 @@ My journey of adding design tokens to Figma got me to a dark mode design impleme
   emphasized
 />
 
-<section>
+<Section>
 
 ## From Figma to code
 
@@ -143,4 +143,4 @@ At this stage of my design tokens journey it's time to get my Figma designs impl
 
 See you all in the next one. 👋
 
-</section>
+</Section>

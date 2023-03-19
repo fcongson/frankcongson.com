@@ -26,22 +26,20 @@ export const STYLE_GUIDE_QUERY = graphql`
       }
     }
     allMdx(sort: { frontmatter: { date: DESC } }, limit: 3, skip: 0) {
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            title
-            date(formatString: "MMM DD, YYYY")
-            slug
-            keywords
-            featured_image {
-              childImageSharp {
-                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-              }
+      nodes {
+        id
+        excerpt
+        frontmatter {
+          title
+          date(formatString: "MMM DD, YYYY")
+          slug
+          keywords
+          featured_image {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
             }
-            alt_text
           }
+          alt_text
         }
       }
     }
@@ -475,7 +473,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       </Section>
       <Section>
         <Container id='blog-posts'>
-          <BlogPosts posts={data.allMdx.edges} />
+          <BlogPosts posts={data.allMdx.nodes} />
         </Container>
       </Section>
 
