@@ -24,7 +24,7 @@ const PostSummaryContainer = styled.div`
   }
 `
 
-const PostSummary: React.FunctionComponent<{ post: Blog_ListQuery['allMdx']['edges'][0]['node'] }> = ({ post }) => {
+const PostSummary: React.FunctionComponent<{ post: Blog_ListQuery['allMdx']['nodes'][0] }> = ({ post }) => {
   const { slug, title, date, featured_image, alt_text } = post.frontmatter ?? {}
   const to = `/blog/${slug}`
   return (
@@ -52,13 +52,13 @@ const PostSummary: React.FunctionComponent<{ post: Blog_ListQuery['allMdx']['edg
   )
 }
 
-export const BlogPosts: React.FunctionComponent<{ posts: Blog_ListQuery['allMdx']['edges'] }> = ({ posts }) => {
+export const BlogPosts: React.FunctionComponent<{ posts: Blog_ListQuery['allMdx']['nodes'] }> = ({ posts }) => {
   if (!posts) return null
 
   return (
     <>
       {posts.map((post) => (
-        <PostSummary post={post.node} key={post.node.id} />
+        <PostSummary post={post} key={post.id} />
       ))}
     </>
   )

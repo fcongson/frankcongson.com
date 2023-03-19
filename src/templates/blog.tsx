@@ -18,22 +18,20 @@ export const BLOG_LIST_QUERY = graphql`
       limit: $limit
       skip: $skip
     ) {
-      edges {
-        node {
-          id
-          excerpt
-          frontmatter {
-            title
-            date(formatString: "MMM DD, YYYY")
-            slug
-            keywords
-            featured_image {
-              childImageSharp {
-                gatsbyImageData(quality: 100, layout: FULL_WIDTH)
-              }
+      nodes {
+        id
+        excerpt
+        frontmatter {
+          title
+          date(formatString: "MMM DD, YYYY")
+          slug
+          keywords
+          featured_image {
+            childImageSharp {
+              gatsbyImageData(quality: 100, layout: FULL_WIDTH)
             }
-            alt_text
           }
+          alt_text
         }
       }
     }
@@ -113,7 +111,7 @@ const Blog: React.FunctionComponent<{ data: Blog_ListQuery; pageContext: Paginat
         }>
         <PageHeader>{blog.page_header}</PageHeader>
       </Hero>
-      <BlogPosts posts={allMdx.edges} />
+      <BlogPosts posts={allMdx.nodes} />
       {numPages > 1 && <Pagination numPages={numPages} currentPage={currentPage} />}
     </Layout>
   )

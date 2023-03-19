@@ -54,7 +54,22 @@ module.exports = {
         path: `${__dirname}/content`,
       },
     },
-    `gatsby-plugin-mdx`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        mdxOptions: {
+          remarkPlugins: [
+            {
+              resolve: `gatsby-remark-images`,
+              options: {
+                maxWidth: 1200,
+              },
+            },
+          ],
+          rehypePlugins: [],
+        },
+      },
+    },
     {
       resolve: `gatsby-transformer-remark`,
       options: {

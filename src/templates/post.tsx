@@ -1,5 +1,6 @@
 import { Container, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
 import { MDXProvider } from '@mdx-js/react'
+import { Props } from '@mdx-js/react/lib'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import { graphql, Link } from 'gatsby'
@@ -9,25 +10,24 @@ import React from 'react'
 import styled from 'styled-components'
 import { ImageNode, useImage } from 'utils/useImage'
 
-const createImage = (image: ImageNode, alt: string) => {
+const createImage = (image: ImageNode, alt?: string) => {
   // [Support gifs in gatsby-image](https://github.com/gatsbyjs/gatsby/discussions/29410)
   if (image?.extension === 'gif') {
     return <img src={image?.publicURL ?? ''} alt={alt} />
   }
-  return <GatsbyImage image={image?.childImageSharp?.gatsbyImageData} alt={alt} />
+  return <GatsbyImage image={image?.childImageSharp?.gatsbyImageData} alt={alt ?? ''} />
 }
 
-const shortcodes = {
-  section: ({ children }: { children: React.ReactNode }) => (
+const shortcodes: Props['components'] = {
+  Section: ({ children }: { children?: React.ReactNode }) => (
     <Section>
       <Container>{children}</Container>
     </Section>
   ),
-  img: ({ src, alt }: { src: string; alt: string }) => {
+  img: ({ src, alt }: { src?: string; alt?: string }) => {
     const image = useImage()(src)
-    if (!!image) {
-      return <ImageCaption image={createImage(image, alt)} />
-    }
+    if (!image) return null
+    return <ImageCaption image={createImage(image, alt)} />
   },
   blockquote: Quote,
   ImageCaption: ({
@@ -44,16 +44,15 @@ const shortcodes = {
     fullwidth: boolean
   }) => {
     const imageNode = useImage()(image)
-    if (!!imageNode) {
-      return (
-        <ImageCaption
-          image={createImage(imageNode, altText)}
-          caption={caption}
-          emphasized={emphasized}
-          fullwidth={fullwidth}
-        />
-      )
-    }
+    if (!imageNode) return null
+    return (
+      <ImageCaption
+        image={createImage(imageNode, altText)}
+        caption={caption}
+        emphasized={emphasized}
+        fullwidth={fullwidth}
+      />
+    )
   },
   Link,
 }
@@ -159,8 +158,7 @@ const PostFooter = styled.footer`
   }
 `
 
-const Post: React.FunctionComponent<{ data: Blog_PostQuery }> = ({ data }) => {
-  const body = data.mdx?.body
+const Post: React.FunctionComponent<{ data: Blog_PostQuery; children: any }> = ({ data, children }) => {
   const { title, description, keywords, slug, featured_image, alt_text, image_caption, seo } =
     data.mdx?.frontmatter ?? {}
 
@@ -171,7 +169,7 @@ const Post: React.FunctionComponent<{ data: Blog_PostQuery }> = ({ data }) => {
         desc={seo?.description ?? description ?? undefined}
         keywords={[...(seo?.keywords ?? []), ...(keywords ?? [])].join(', ')}
         image={seo?.image?.publicURL ?? undefined}
-        imageAlt={seo?.alt_text}
+        imageAlt={seo?.alt_text ?? alt_text ?? undefined}
         pathname={`/${slug}`}
         article
       />
@@ -194,7 +192,7 @@ const Post: React.FunctionComponent<{ data: Blog_PostQuery }> = ({ data }) => {
             />
           )}
         </PostHeader>
-        {body ? <MDXProvider components={shortcodes}>{body}</MDXProvider> : null}
+        {children ? <MDXProvider components={shortcodes}>{children}</MDXProvider> : null}
         <PostFooter>
           <Section>
             <Container>
