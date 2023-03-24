@@ -55,6 +55,14 @@ const shortcodes: Props['components'] = {
     )
   },
   Link,
+  a: ({ href, children }: { href?: string; children?: React.ReactNode }) => {
+    const internalDomain = 'https://frankcongson.com'
+    return href?.startsWith(internalDomain) ? (
+      <Link to={href.replace(internalDomain, '')}>{children}</Link>
+    ) : (
+      <a href={href}>{children}</a>
+    )
+  },
 }
 
 export const BLOG_POST_QUERY = graphql`
