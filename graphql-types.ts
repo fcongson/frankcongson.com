@@ -664,6 +664,7 @@ export type MdxFrontmatter = Node & {
   keywords?: Maybe<Array<Maybe<Scalars['String']>>>
   seo?: Maybe<Seo>
   published?: Maybe<Scalars['Boolean']>
+  excerpt?: Maybe<Scalars['String']>
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
@@ -1113,6 +1114,7 @@ export type QueryMdxFrontmatterArgs = {
   keywords?: InputMaybe<StringQueryOperatorInput>
   seo?: InputMaybe<SeoFilterInput>
   published?: InputMaybe<BooleanQueryOperatorInput>
+  excerpt?: InputMaybe<StringQueryOperatorInput>
   id?: InputMaybe<StringQueryOperatorInput>
   parent?: InputMaybe<NodeFilterInput>
   children?: InputMaybe<NodeFilterListInput>
@@ -1376,6 +1378,7 @@ export type MdxFrontmatterFilterInput = {
   keywords?: InputMaybe<StringQueryOperatorInput>
   seo?: InputMaybe<SeoFilterInput>
   published?: InputMaybe<BooleanQueryOperatorInput>
+  excerpt?: InputMaybe<StringQueryOperatorInput>
   id?: InputMaybe<StringQueryOperatorInput>
   parent?: InputMaybe<NodeFilterInput>
   children?: InputMaybe<NodeFilterListInput>
@@ -1785,6 +1788,7 @@ export type MdxFrontmatterFieldSelector = {
   keywords?: InputMaybe<FieldSelectorEnum>
   seo?: InputMaybe<SeoFieldSelector>
   published?: InputMaybe<FieldSelectorEnum>
+  excerpt?: InputMaybe<FieldSelectorEnum>
   id?: InputMaybe<FieldSelectorEnum>
   parent?: InputMaybe<NodeFieldSelector>
   children?: InputMaybe<NodeFieldSelector>
@@ -2105,6 +2109,7 @@ export type MdxFrontmatterSortInput = {
   keywords?: InputMaybe<SortOrderEnum>
   seo?: InputMaybe<SeoSortInput>
   published?: InputMaybe<SortOrderEnum>
+  excerpt?: InputMaybe<SortOrderEnum>
   id?: InputMaybe<SortOrderEnum>
   parent?: InputMaybe<NodeSortInput>
   children?: InputMaybe<NodeSortInput>
@@ -3733,13 +3738,13 @@ export type Style_GuideQuery = {
   allMdx: {
     nodes: Array<{
       id: string
-      excerpt?: string | null
       frontmatter?: {
         title: string
         date: any
         slug: string
         keywords?: Array<string | null> | null
         alt_text?: string | null
+        excerpt?: string | null
         featured_image?: { childImageSharp?: { gatsbyImageData: any } | null } | null
       } | null
     }>
@@ -3755,13 +3760,13 @@ export type Blog_ListQuery = {
   allMdx: {
     nodes: Array<{
       id: string
-      excerpt?: string | null
       frontmatter?: {
         title: string
         date: any
         slug: string
         keywords?: Array<string | null> | null
         alt_text?: string | null
+        excerpt?: string | null
         featured_image?: { childImageSharp?: { gatsbyImageData: any } | null } | null
       } | null
     }>
