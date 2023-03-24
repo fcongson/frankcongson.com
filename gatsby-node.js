@@ -14,6 +14,7 @@ exports.createSchemaCustomization = ({ actions }) => {
       keywords: [String]
       seo: SEO
       published: Boolean
+      excerpt: String
     }
     type Mdx implements Node {
       fields: Fields

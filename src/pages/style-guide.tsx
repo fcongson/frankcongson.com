@@ -28,7 +28,6 @@ export const STYLE_GUIDE_QUERY = graphql`
     allMdx(sort: { frontmatter: { date: DESC } }, limit: 3, skip: 0) {
       nodes {
         id
-        excerpt
         frontmatter {
           title
           date(formatString: "MMM DD, YYYY")
@@ -40,6 +39,7 @@ export const STYLE_GUIDE_QUERY = graphql`
             }
           }
           alt_text
+          excerpt
         }
       }
     }

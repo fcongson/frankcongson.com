@@ -20,7 +20,6 @@ export const BLOG_LIST_QUERY = graphql`
     ) {
       nodes {
         id
-        excerpt
         frontmatter {
           title
           date(formatString: "MMM DD, YYYY")
@@ -32,6 +31,7 @@ export const BLOG_LIST_QUERY = graphql`
             }
           }
           alt_text
+          excerpt
         }
       }
     }
