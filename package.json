@@ -64,6 +64,7 @@
   "scripts": {
     "clean": "gatsby clean",
     "build": "gatsby build",
+    "build:tinacms": "tinacms build && gatsby build",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "gatsby develop --host=0.0.0.0",
     "start:tinacms": "tinacms dev -c \"gatsby develop --host=0.0.0.0\"",
