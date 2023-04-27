@@ -72,10 +72,6 @@ export type File = Node & {
   childrenPagesJson?: Maybe<Array<Maybe<PagesJson>>>
   /** Returns the first child node of type PagesJson or null if there are no children of given type on this node */
   childPagesJson?: Maybe<PagesJson>
-  /** Returns all children nodes filtered by type ImagesJson */
-  childrenImagesJson?: Maybe<Array<Maybe<ImagesJson>>>
-  /** Returns the first child node of type ImagesJson or null if there are no children of given type on this node */
-  childImagesJson?: Maybe<ImagesJson>
   /** Returns all children nodes filtered by type DataJson */
   childrenDataJson?: Maybe<Array<Maybe<DataJson>>>
   /** Returns the first child node of type DataJson or null if there are no children of given type on this node */
@@ -665,6 +661,7 @@ export type MdxFrontmatter = Node & {
   seo?: Maybe<Seo>
   published?: Maybe<Scalars['Boolean']>
   excerpt?: Maybe<Scalars['String']>
+  _template?: Maybe<Scalars['String']>
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
@@ -700,6 +697,7 @@ export type PagesJson = Node & {
   sections?: Maybe<Array<Maybe<PagesJsonSections>>>
   seo?: Maybe<PagesJsonSeo>
   slug?: Maybe<Scalars['String']>
+  _template?: Maybe<Scalars['String']>
 }
 
 export type PagesJsonHero_Image = {
@@ -720,25 +718,41 @@ export type PagesJsonSeo = {
   alt_text?: Maybe<Scalars['String']>
 }
 
-export type ImagesJson = Node & {
-  id: Scalars['ID']
-  parent?: Maybe<Node>
-  children: Array<Node>
-  internal: Internal
-  image?: Maybe<Scalars['String']>
-  alt_text?: Maybe<Scalars['String']>
-}
-
 export type DataJson = Node & {
   id: Scalars['ID']
   parent?: Maybe<Node>
   children: Array<Node>
   internal: Internal
+  _0?: Maybe<DataJson_0>
+  _1?: Maybe<DataJson_1>
+  _2?: Maybe<DataJson_2>
+  _3?: Maybe<DataJson_3>
+  _4?: Maybe<DataJson_4>
+  _5?: Maybe<DataJson_5>
+  _6?: Maybe<DataJson_6>
+  _7?: Maybe<DataJson_7>
+  _8?: Maybe<DataJson_8>
+  _9?: Maybe<DataJson_9>
+  _10?: Maybe<DataJson_10>
+  _11?: Maybe<DataJson_11>
+  _12?: Maybe<DataJson_12>
+  _13?: Maybe<DataJson_13>
+  _14?: Maybe<DataJson_14>
+  _15?: Maybe<DataJson_15>
+  _16?: Maybe<DataJson_16>
+  _17?: Maybe<DataJson_17>
+  _18?: Maybe<DataJson_18>
+  _19?: Maybe<DataJson_19>
+  _20?: Maybe<DataJson_20>
+  _21?: Maybe<DataJson_21>
+  _22?: Maybe<DataJson_22>
+  _23?: Maybe<DataJson_23>
   hero_image?: Maybe<DataJsonHero_Image>
   main_content?: Maybe<DataJsonMain_Content>
   sections?: Maybe<Array<Maybe<DataJsonSections>>>
   page_header?: Maybe<Scalars['String']>
   seo?: Maybe<DataJsonSeo>
+  _template?: Maybe<Scalars['String']>
   title?: Maybe<Scalars['String']>
   titleTemplate?: Maybe<Scalars['String']>
   description?: Maybe<Scalars['String']>
@@ -757,6 +771,126 @@ export type DataJson = Node & {
   youtubeUrl?: Maybe<Scalars['String']>
   linkedinUrl?: Maybe<Scalars['String']>
   githubUrl?: Maybe<Scalars['String']>
+}
+
+export type DataJson_0 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_1 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_2 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_3 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_4 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_5 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_6 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_7 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_8 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_9 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_10 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_11 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_12 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_13 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_14 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_15 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_16 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_17 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_18 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_19 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_20 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_21 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_22 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
+}
+
+export type DataJson_23 = {
+  image?: Maybe<Scalars['String']>
+  alt_text?: Maybe<Scalars['String']>
 }
 
 export type DataJsonHero_Image = {
@@ -831,8 +965,6 @@ export type Query = {
   allMdxFrontmatter: MdxFrontmatterConnection
   pagesJson?: Maybe<PagesJson>
   allPagesJson: PagesJsonConnection
-  imagesJson?: Maybe<ImagesJson>
-  allImagesJson: ImagesJsonConnection
   dataJson?: Maybe<DataJson>
   allDataJson: DataJsonConnection
 }
@@ -878,8 +1010,6 @@ export type QueryFileArgs = {
   childMdx?: InputMaybe<MdxFilterInput>
   childrenPagesJson?: InputMaybe<PagesJsonFilterListInput>
   childPagesJson?: InputMaybe<PagesJsonFilterInput>
-  childrenImagesJson?: InputMaybe<ImagesJsonFilterListInput>
-  childImagesJson?: InputMaybe<ImagesJsonFilterInput>
   childrenDataJson?: InputMaybe<DataJsonFilterListInput>
   childDataJson?: InputMaybe<DataJsonFilterInput>
   id?: InputMaybe<StringQueryOperatorInput>
@@ -1115,6 +1245,7 @@ export type QueryMdxFrontmatterArgs = {
   seo?: InputMaybe<SeoFilterInput>
   published?: InputMaybe<BooleanQueryOperatorInput>
   excerpt?: InputMaybe<StringQueryOperatorInput>
+  _template?: InputMaybe<StringQueryOperatorInput>
   id?: InputMaybe<StringQueryOperatorInput>
   parent?: InputMaybe<NodeFilterInput>
   children?: InputMaybe<NodeFilterListInput>
@@ -1138,6 +1269,7 @@ export type QueryPagesJsonArgs = {
   sections?: InputMaybe<PagesJsonSectionsFilterListInput>
   seo?: InputMaybe<PagesJsonSeoFilterInput>
   slug?: InputMaybe<StringQueryOperatorInput>
+  _template?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QueryAllPagesJsonArgs = {
@@ -1147,32 +1279,41 @@ export type QueryAllPagesJsonArgs = {
   limit?: InputMaybe<Scalars['Int']>
 }
 
-export type QueryImagesJsonArgs = {
-  id?: InputMaybe<StringQueryOperatorInput>
-  parent?: InputMaybe<NodeFilterInput>
-  children?: InputMaybe<NodeFilterListInput>
-  internal?: InputMaybe<InternalFilterInput>
-  image?: InputMaybe<StringQueryOperatorInput>
-  alt_text?: InputMaybe<StringQueryOperatorInput>
-}
-
-export type QueryAllImagesJsonArgs = {
-  filter?: InputMaybe<ImagesJsonFilterInput>
-  sort?: InputMaybe<Array<InputMaybe<ImagesJsonSortInput>>>
-  skip?: InputMaybe<Scalars['Int']>
-  limit?: InputMaybe<Scalars['Int']>
-}
-
 export type QueryDataJsonArgs = {
   id?: InputMaybe<StringQueryOperatorInput>
   parent?: InputMaybe<NodeFilterInput>
   children?: InputMaybe<NodeFilterListInput>
   internal?: InputMaybe<InternalFilterInput>
+  _0?: InputMaybe<DataJson_0FilterInput>
+  _1?: InputMaybe<DataJson_1FilterInput>
+  _2?: InputMaybe<DataJson_2FilterInput>
+  _3?: InputMaybe<DataJson_3FilterInput>
+  _4?: InputMaybe<DataJson_4FilterInput>
+  _5?: InputMaybe<DataJson_5FilterInput>
+  _6?: InputMaybe<DataJson_6FilterInput>
+  _7?: InputMaybe<DataJson_7FilterInput>
+  _8?: InputMaybe<DataJson_8FilterInput>
+  _9?: InputMaybe<DataJson_9FilterInput>
+  _10?: InputMaybe<DataJson_10FilterInput>
+  _11?: InputMaybe<DataJson_11FilterInput>
+  _12?: InputMaybe<DataJson_12FilterInput>
+  _13?: InputMaybe<DataJson_13FilterInput>
+  _14?: InputMaybe<DataJson_14FilterInput>
+  _15?: InputMaybe<DataJson_15FilterInput>
+  _16?: InputMaybe<DataJson_16FilterInput>
+  _17?: InputMaybe<DataJson_17FilterInput>
+  _18?: InputMaybe<DataJson_18FilterInput>
+  _19?: InputMaybe<DataJson_19FilterInput>
+  _20?: InputMaybe<DataJson_20FilterInput>
+  _21?: InputMaybe<DataJson_21FilterInput>
+  _22?: InputMaybe<DataJson_22FilterInput>
+  _23?: InputMaybe<DataJson_23FilterInput>
   hero_image?: InputMaybe<DataJsonHero_ImageFilterInput>
   main_content?: InputMaybe<DataJsonMain_ContentFilterInput>
   sections?: InputMaybe<DataJsonSectionsFilterListInput>
   page_header?: InputMaybe<StringQueryOperatorInput>
   seo?: InputMaybe<DataJsonSeoFilterInput>
+  _template?: InputMaybe<StringQueryOperatorInput>
   title?: InputMaybe<StringQueryOperatorInput>
   titleTemplate?: InputMaybe<StringQueryOperatorInput>
   description?: InputMaybe<StringQueryOperatorInput>
@@ -1379,6 +1520,7 @@ export type MdxFrontmatterFilterInput = {
   seo?: InputMaybe<SeoFilterInput>
   published?: InputMaybe<BooleanQueryOperatorInput>
   excerpt?: InputMaybe<StringQueryOperatorInput>
+  _template?: InputMaybe<StringQueryOperatorInput>
   id?: InputMaybe<StringQueryOperatorInput>
   parent?: InputMaybe<NodeFilterInput>
   children?: InputMaybe<NodeFilterListInput>
@@ -1426,8 +1568,6 @@ export type FileFilterInput = {
   childMdx?: InputMaybe<MdxFilterInput>
   childrenPagesJson?: InputMaybe<PagesJsonFilterListInput>
   childPagesJson?: InputMaybe<PagesJsonFilterInput>
-  childrenImagesJson?: InputMaybe<ImagesJsonFilterListInput>
-  childImagesJson?: InputMaybe<ImagesJsonFilterInput>
   childrenDataJson?: InputMaybe<DataJsonFilterListInput>
   childDataJson?: InputMaybe<DataJsonFilterInput>
   id?: InputMaybe<StringQueryOperatorInput>
@@ -1450,6 +1590,7 @@ export type PagesJsonFilterInput = {
   sections?: InputMaybe<PagesJsonSectionsFilterListInput>
   seo?: InputMaybe<PagesJsonSeoFilterInput>
   slug?: InputMaybe<StringQueryOperatorInput>
+  _template?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type PagesJsonHero_ImageFilterInput = {
@@ -1474,19 +1615,6 @@ export type PagesJsonSeoFilterInput = {
   alt_text?: InputMaybe<StringQueryOperatorInput>
 }
 
-export type ImagesJsonFilterListInput = {
-  elemMatch?: InputMaybe<ImagesJsonFilterInput>
-}
-
-export type ImagesJsonFilterInput = {
-  id?: InputMaybe<StringQueryOperatorInput>
-  parent?: InputMaybe<NodeFilterInput>
-  children?: InputMaybe<NodeFilterListInput>
-  internal?: InputMaybe<InternalFilterInput>
-  image?: InputMaybe<StringQueryOperatorInput>
-  alt_text?: InputMaybe<StringQueryOperatorInput>
-}
-
 export type DataJsonFilterListInput = {
   elemMatch?: InputMaybe<DataJsonFilterInput>
 }
@@ -1496,11 +1624,36 @@ export type DataJsonFilterInput = {
   parent?: InputMaybe<NodeFilterInput>
   children?: InputMaybe<NodeFilterListInput>
   internal?: InputMaybe<InternalFilterInput>
+  _0?: InputMaybe<DataJson_0FilterInput>
+  _1?: InputMaybe<DataJson_1FilterInput>
+  _2?: InputMaybe<DataJson_2FilterInput>
+  _3?: InputMaybe<DataJson_3FilterInput>
+  _4?: InputMaybe<DataJson_4FilterInput>
+  _5?: InputMaybe<DataJson_5FilterInput>
+  _6?: InputMaybe<DataJson_6FilterInput>
+  _7?: InputMaybe<DataJson_7FilterInput>
+  _8?: InputMaybe<DataJson_8FilterInput>
+  _9?: InputMaybe<DataJson_9FilterInput>
+  _10?: InputMaybe<DataJson_10FilterInput>
+  _11?: InputMaybe<DataJson_11FilterInput>
+  _12?: InputMaybe<DataJson_12FilterInput>
+  _13?: InputMaybe<DataJson_13FilterInput>
+  _14?: InputMaybe<DataJson_14FilterInput>
+  _15?: InputMaybe<DataJson_15FilterInput>
+  _16?: InputMaybe<DataJson_16FilterInput>
+  _17?: InputMaybe<DataJson_17FilterInput>
+  _18?: InputMaybe<DataJson_18FilterInput>
+  _19?: InputMaybe<DataJson_19FilterInput>
+  _20?: InputMaybe<DataJson_20FilterInput>
+  _21?: InputMaybe<DataJson_21FilterInput>
+  _22?: InputMaybe<DataJson_22FilterInput>
+  _23?: InputMaybe<DataJson_23FilterInput>
   hero_image?: InputMaybe<DataJsonHero_ImageFilterInput>
   main_content?: InputMaybe<DataJsonMain_ContentFilterInput>
   sections?: InputMaybe<DataJsonSectionsFilterListInput>
   page_header?: InputMaybe<StringQueryOperatorInput>
   seo?: InputMaybe<DataJsonSeoFilterInput>
+  _template?: InputMaybe<StringQueryOperatorInput>
   title?: InputMaybe<StringQueryOperatorInput>
   titleTemplate?: InputMaybe<StringQueryOperatorInput>
   description?: InputMaybe<StringQueryOperatorInput>
@@ -1519,6 +1672,126 @@ export type DataJsonFilterInput = {
   youtubeUrl?: InputMaybe<StringQueryOperatorInput>
   linkedinUrl?: InputMaybe<StringQueryOperatorInput>
   githubUrl?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_0FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_1FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_2FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_3FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_4FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_5FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_6FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_7FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_8FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_9FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_10FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_11FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_12FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_13FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_14FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_15FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_16FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_17FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_18FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_19FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_20FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_21FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_22FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
+}
+
+export type DataJson_23FilterInput = {
+  image?: InputMaybe<StringQueryOperatorInput>
+  alt_text?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type DataJsonHero_ImageFilterInput = {
@@ -1675,8 +1948,6 @@ export type FileFieldSelector = {
   childMdx?: InputMaybe<MdxFieldSelector>
   childrenPagesJson?: InputMaybe<PagesJsonFieldSelector>
   childPagesJson?: InputMaybe<PagesJsonFieldSelector>
-  childrenImagesJson?: InputMaybe<ImagesJsonFieldSelector>
-  childImagesJson?: InputMaybe<ImagesJsonFieldSelector>
   childrenDataJson?: InputMaybe<DataJsonFieldSelector>
   childDataJson?: InputMaybe<DataJsonFieldSelector>
   id?: InputMaybe<FieldSelectorEnum>
@@ -1789,6 +2060,7 @@ export type MdxFrontmatterFieldSelector = {
   seo?: InputMaybe<SeoFieldSelector>
   published?: InputMaybe<FieldSelectorEnum>
   excerpt?: InputMaybe<FieldSelectorEnum>
+  _template?: InputMaybe<FieldSelectorEnum>
   id?: InputMaybe<FieldSelectorEnum>
   parent?: InputMaybe<NodeFieldSelector>
   children?: InputMaybe<NodeFieldSelector>
@@ -1813,6 +2085,7 @@ export type PagesJsonFieldSelector = {
   sections?: InputMaybe<PagesJsonSectionsFieldSelector>
   seo?: InputMaybe<PagesJsonSeoFieldSelector>
   slug?: InputMaybe<FieldSelectorEnum>
+  _template?: InputMaybe<FieldSelectorEnum>
 }
 
 export type PagesJsonHero_ImageFieldSelector = {
@@ -1833,25 +2106,41 @@ export type PagesJsonSeoFieldSelector = {
   alt_text?: InputMaybe<FieldSelectorEnum>
 }
 
-export type ImagesJsonFieldSelector = {
-  id?: InputMaybe<FieldSelectorEnum>
-  parent?: InputMaybe<NodeFieldSelector>
-  children?: InputMaybe<NodeFieldSelector>
-  internal?: InputMaybe<InternalFieldSelector>
-  image?: InputMaybe<FieldSelectorEnum>
-  alt_text?: InputMaybe<FieldSelectorEnum>
-}
-
 export type DataJsonFieldSelector = {
   id?: InputMaybe<FieldSelectorEnum>
   parent?: InputMaybe<NodeFieldSelector>
   children?: InputMaybe<NodeFieldSelector>
   internal?: InputMaybe<InternalFieldSelector>
+  _0?: InputMaybe<DataJson_0FieldSelector>
+  _1?: InputMaybe<DataJson_1FieldSelector>
+  _2?: InputMaybe<DataJson_2FieldSelector>
+  _3?: InputMaybe<DataJson_3FieldSelector>
+  _4?: InputMaybe<DataJson_4FieldSelector>
+  _5?: InputMaybe<DataJson_5FieldSelector>
+  _6?: InputMaybe<DataJson_6FieldSelector>
+  _7?: InputMaybe<DataJson_7FieldSelector>
+  _8?: InputMaybe<DataJson_8FieldSelector>
+  _9?: InputMaybe<DataJson_9FieldSelector>
+  _10?: InputMaybe<DataJson_10FieldSelector>
+  _11?: InputMaybe<DataJson_11FieldSelector>
+  _12?: InputMaybe<DataJson_12FieldSelector>
+  _13?: InputMaybe<DataJson_13FieldSelector>
+  _14?: InputMaybe<DataJson_14FieldSelector>
+  _15?: InputMaybe<DataJson_15FieldSelector>
+  _16?: InputMaybe<DataJson_16FieldSelector>
+  _17?: InputMaybe<DataJson_17FieldSelector>
+  _18?: InputMaybe<DataJson_18FieldSelector>
+  _19?: InputMaybe<DataJson_19FieldSelector>
+  _20?: InputMaybe<DataJson_20FieldSelector>
+  _21?: InputMaybe<DataJson_21FieldSelector>
+  _22?: InputMaybe<DataJson_22FieldSelector>
+  _23?: InputMaybe<DataJson_23FieldSelector>
   hero_image?: InputMaybe<DataJsonHero_ImageFieldSelector>
   main_content?: InputMaybe<DataJsonMain_ContentFieldSelector>
   sections?: InputMaybe<DataJsonSectionsFieldSelector>
   page_header?: InputMaybe<FieldSelectorEnum>
   seo?: InputMaybe<DataJsonSeoFieldSelector>
+  _template?: InputMaybe<FieldSelectorEnum>
   title?: InputMaybe<FieldSelectorEnum>
   titleTemplate?: InputMaybe<FieldSelectorEnum>
   description?: InputMaybe<FieldSelectorEnum>
@@ -1870,6 +2159,126 @@ export type DataJsonFieldSelector = {
   youtubeUrl?: InputMaybe<FieldSelectorEnum>
   linkedinUrl?: InputMaybe<FieldSelectorEnum>
   githubUrl?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_0FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_1FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_2FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_3FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_4FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_5FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_6FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_7FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_8FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_9FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_10FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_11FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_12FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_13FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_14FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_15FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_16FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_17FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_18FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_19FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_20FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_21FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_22FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
+}
+
+export type DataJson_23FieldSelector = {
+  image?: InputMaybe<FieldSelectorEnum>
+  alt_text?: InputMaybe<FieldSelectorEnum>
 }
 
 export type DataJsonHero_ImageFieldSelector = {
@@ -1996,8 +2405,6 @@ export type FileSortInput = {
   childMdx?: InputMaybe<MdxSortInput>
   childrenPagesJson?: InputMaybe<PagesJsonSortInput>
   childPagesJson?: InputMaybe<PagesJsonSortInput>
-  childrenImagesJson?: InputMaybe<ImagesJsonSortInput>
-  childImagesJson?: InputMaybe<ImagesJsonSortInput>
   childrenDataJson?: InputMaybe<DataJsonSortInput>
   childDataJson?: InputMaybe<DataJsonSortInput>
   id?: InputMaybe<SortOrderEnum>
@@ -2110,6 +2517,7 @@ export type MdxFrontmatterSortInput = {
   seo?: InputMaybe<SeoSortInput>
   published?: InputMaybe<SortOrderEnum>
   excerpt?: InputMaybe<SortOrderEnum>
+  _template?: InputMaybe<SortOrderEnum>
   id?: InputMaybe<SortOrderEnum>
   parent?: InputMaybe<NodeSortInput>
   children?: InputMaybe<NodeSortInput>
@@ -2134,6 +2542,7 @@ export type PagesJsonSortInput = {
   sections?: InputMaybe<PagesJsonSectionsSortInput>
   seo?: InputMaybe<PagesJsonSeoSortInput>
   slug?: InputMaybe<SortOrderEnum>
+  _template?: InputMaybe<SortOrderEnum>
 }
 
 export type PagesJsonHero_ImageSortInput = {
@@ -2154,25 +2563,41 @@ export type PagesJsonSeoSortInput = {
   alt_text?: InputMaybe<SortOrderEnum>
 }
 
-export type ImagesJsonSortInput = {
-  id?: InputMaybe<SortOrderEnum>
-  parent?: InputMaybe<NodeSortInput>
-  children?: InputMaybe<NodeSortInput>
-  internal?: InputMaybe<InternalSortInput>
-  image?: InputMaybe<SortOrderEnum>
-  alt_text?: InputMaybe<SortOrderEnum>
-}
-
 export type DataJsonSortInput = {
   id?: InputMaybe<SortOrderEnum>
   parent?: InputMaybe<NodeSortInput>
   children?: InputMaybe<NodeSortInput>
   internal?: InputMaybe<InternalSortInput>
+  _0?: InputMaybe<DataJson_0SortInput>
+  _1?: InputMaybe<DataJson_1SortInput>
+  _2?: InputMaybe<DataJson_2SortInput>
+  _3?: InputMaybe<DataJson_3SortInput>
+  _4?: InputMaybe<DataJson_4SortInput>
+  _5?: InputMaybe<DataJson_5SortInput>
+  _6?: InputMaybe<DataJson_6SortInput>
+  _7?: InputMaybe<DataJson_7SortInput>
+  _8?: InputMaybe<DataJson_8SortInput>
+  _9?: InputMaybe<DataJson_9SortInput>
+  _10?: InputMaybe<DataJson_10SortInput>
+  _11?: InputMaybe<DataJson_11SortInput>
+  _12?: InputMaybe<DataJson_12SortInput>
+  _13?: InputMaybe<DataJson_13SortInput>
+  _14?: InputMaybe<DataJson_14SortInput>
+  _15?: InputMaybe<DataJson_15SortInput>
+  _16?: InputMaybe<DataJson_16SortInput>
+  _17?: InputMaybe<DataJson_17SortInput>
+  _18?: InputMaybe<DataJson_18SortInput>
+  _19?: InputMaybe<DataJson_19SortInput>
+  _20?: InputMaybe<DataJson_20SortInput>
+  _21?: InputMaybe<DataJson_21SortInput>
+  _22?: InputMaybe<DataJson_22SortInput>
+  _23?: InputMaybe<DataJson_23SortInput>
   hero_image?: InputMaybe<DataJsonHero_ImageSortInput>
   main_content?: InputMaybe<DataJsonMain_ContentSortInput>
   sections?: InputMaybe<DataJsonSectionsSortInput>
   page_header?: InputMaybe<SortOrderEnum>
   seo?: InputMaybe<DataJsonSeoSortInput>
+  _template?: InputMaybe<SortOrderEnum>
   title?: InputMaybe<SortOrderEnum>
   titleTemplate?: InputMaybe<SortOrderEnum>
   description?: InputMaybe<SortOrderEnum>
@@ -2191,6 +2616,126 @@ export type DataJsonSortInput = {
   youtubeUrl?: InputMaybe<SortOrderEnum>
   linkedinUrl?: InputMaybe<SortOrderEnum>
   githubUrl?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_0SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_1SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_2SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_3SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_4SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_5SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_6SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_7SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_8SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_9SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_10SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_11SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_12SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_13SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_14SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_15SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_16SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_17SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_18SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_19SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_20SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_21SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_22SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
+}
+
+export type DataJson_23SortInput = {
+  image?: InputMaybe<SortOrderEnum>
+  alt_text?: InputMaybe<SortOrderEnum>
 }
 
 export type DataJsonHero_ImageSortInput = {
@@ -3540,82 +4085,6 @@ export type PagesJsonGroupConnectionGroupArgs = {
   skip?: InputMaybe<Scalars['Int']>
   limit?: InputMaybe<Scalars['Int']>
   field: PagesJsonFieldSelector
-}
-
-export type ImagesJsonConnection = {
-  totalCount: Scalars['Int']
-  edges: Array<ImagesJsonEdge>
-  nodes: Array<ImagesJson>
-  pageInfo: PageInfo
-  distinct: Array<Scalars['String']>
-  max?: Maybe<Scalars['Float']>
-  min?: Maybe<Scalars['Float']>
-  sum?: Maybe<Scalars['Float']>
-  group: Array<ImagesJsonGroupConnection>
-}
-
-export type ImagesJsonConnectionDistinctArgs = {
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonConnectionMaxArgs = {
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonConnectionMinArgs = {
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonConnectionSumArgs = {
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonConnectionGroupArgs = {
-  skip?: InputMaybe<Scalars['Int']>
-  limit?: InputMaybe<Scalars['Int']>
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonEdge = {
-  next?: Maybe<ImagesJson>
-  node: ImagesJson
-  previous?: Maybe<ImagesJson>
-}
-
-export type ImagesJsonGroupConnection = {
-  totalCount: Scalars['Int']
-  edges: Array<ImagesJsonEdge>
-  nodes: Array<ImagesJson>
-  pageInfo: PageInfo
-  distinct: Array<Scalars['String']>
-  max?: Maybe<Scalars['Float']>
-  min?: Maybe<Scalars['Float']>
-  sum?: Maybe<Scalars['Float']>
-  group: Array<ImagesJsonGroupConnection>
-  field: Scalars['String']
-  fieldValue?: Maybe<Scalars['String']>
-}
-
-export type ImagesJsonGroupConnectionDistinctArgs = {
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonGroupConnectionMaxArgs = {
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonGroupConnectionMinArgs = {
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonGroupConnectionSumArgs = {
-  field: ImagesJsonFieldSelector
-}
-
-export type ImagesJsonGroupConnectionGroupArgs = {
-  skip?: InputMaybe<Scalars['Int']>
-  limit?: InputMaybe<Scalars['Int']>
-  field: ImagesJsonFieldSelector
 }
 
 export type DataJsonConnection = {
