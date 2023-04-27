@@ -1,4 +1,9 @@
 const path = require('path')
+const express = require('express')
+
+exports.onCreateDevServer = ({ app }) => {
+  app.use('/admin', express.static('public/admin'))
+}
 
 exports.createSchemaCustomization = ({ actions }) => {
   const { createTypes } = actions

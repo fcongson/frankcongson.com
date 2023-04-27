@@ -1,98 +1,99 @@
-[
-  {
+{
+  "0": {
     "image": "/content/images/frank-huacachina-peru.jpeg",
     "alt_text": "Frank in Huacachina, Peru"
   },
-  {
+  "1": {
     "image": "/content/images/desk-setup.jpg",
     "alt_text": "Frank's desk setup and essential items"
   },
-  {
+  "2": {
     "image": "/content/images/banff-gondola-1.jpg",
     "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
   },
-  {
+  "3": {
     "image": "/content/images/banff-gondola-2.jpg",
     "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
   },
-  {
+  "4": {
     "image": "/content/images/banff-vermillion-lakes.jpg",
     "alt_text": "Jami sitting at the end of a dock at Vermillion Lakes located within Banff National Park in Alberta, Canada"
   },
-  {
+  "5": {
     "image": "/content/images/iceland-church-1.jpg",
     "alt_text": "An Icelandic Church in the Snæfellsnes peninsula of western Iceland"
   },
-  {
+  "6": {
     "image": "/content/images/iceland-church-2.jpg",
     "alt_text": "An Icelandic Church in the Snæfellsnes peninsula of western Iceland"
   },
-  {
+  "7": {
     "image": "/content/images/iceland-village.jpg",
     "alt_text": "A village in the Snæfellsnes peninsula of western Iceland"
   },
-  {
+  "8": {
     "image": "/content/images/iceland-west-coast.jpg",
     "alt_text": "A close up of a field in the Snæfellsnes peninsula of western Iceland"
   },
-  {
+  "9": {
     "image": "/content/images/indonesia-borobudur-1.jpg",
     "alt_text": "Jami at Borobudur Buddhist temple in Central Java, Indonesia"
   },
-  {
+  "10": {
     "image": "/content/images/indonesia-borobudur-2.jpg",
     "alt_text": "Jami at Borobudur Buddhist temple in Central Java, Indonesia"
   },
-  {
+  "11": {
     "image": "/content/images/jami-san-francisco-kirby-cove.jpg",
     "alt_text": "A portrait of Jami at Kirby Cove in San Francisco, California"
   },
-  {
+  "12": {
     "image": "/content/images/jami-sydney-australia.jpg",
     "alt_text": "Jami on a rocky beach in Sydney, Australia"
   },
-  {
+  "13": {
     "image": "/content/images/norway-bergen.jpg",
     "alt_text": "Jami walking through Bergen, a city on Norway’s southwestern coast"
   },
-  {
+  "14": {
     "image": "/content/images/norway-flam.jpg",
     "alt_text": "Jami standing on a dock at Flåm, a village in southwestern Norway"
   },
-  {
+  "15": {
     "image": "/content/images/sydney-australia.jpg",
     "alt_text": "Overlooking blue water in Sydney, Australia"
   },
-  {
+  "16": {
     "image": "/content/images/sydney-opera-house-1.jpg",
     "alt_text": "The Sydney Opera House in New South Wales, Australia"
   },
-  {
+  "17": {
     "image": "/content/images/sydney-opera-house-2.jpg",
     "alt_text": "The Sydney Opera House in New South Wales, Australia"
   },
-  {
+  "18": {
     "image": "/content/images/whitsundays-queensland-australia-1.jpg",
     "alt_text": "Hill Inlet Lookout in Whitsunday Islands National Park in Queensland, Australia"
   },
-  {
+  "19": {
     "image": "/content/images/whitsundays-queensland-australia-2.jpg",
     "alt_text": "Jami walking on a beach towards our boat in Whitsunday Islands National Park in Queensland, Australia"
   },
-  {
+  "20": {
     "image": "/content/images/new-website-screenshot-fullscreen.jpg",
     "alt_text": "Redesigned FrankCongson.com in a browser window"
   },
-  {
+  "21": {
     "image": "/content/images/new-website-screenshot-fullscreen.png",
     "alt_text": "Redesigned FrankCongson.com in a browser window"
   },
-  {
+  "22": {
     "image": "/content/images/new-website-screenshot.jpg",
     "alt_text": "Redesigned FrankCongson.com in a browser window"
   },
-  {
+  "23": {
     "image": "/content/images/new-website-screenshot.png",
     "alt_text": "Redesigned FrankCongson.com in a browser window"
-  }
-]
+  },
+  "_template": "images"
+}

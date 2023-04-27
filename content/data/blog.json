@@ -7,10 +7,9 @@
   "seo": {
     "title": "Blog",
     "description": "",
-    "keywords": [
-
-    ],
+    "keywords": [],
     "image": "",
     "alt_text": ""
-  }
+  },
+  "_template": "blog"
 }

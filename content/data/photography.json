@@ -153,17 +153,11 @@
   "seo": {
     "title": "Photography",
     "description": "Photography & Visual Stories",
-    "keywords": [
-      "storytelling",
-      "stories",
-      "visual storytelling",
-      "visual stories",
-      "travel",
-      "photography"
-    ],
+    "keywords": ["storytelling", "stories", "visual storytelling", "visual stories", "travel", "photography"],
     "image": "",
     "alt_text": "",
     "pathname": "",
     "article": false
-  }
+  },
+  "_template": "photography"
 }

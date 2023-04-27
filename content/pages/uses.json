@@ -65,5 +65,6 @@
     "image": "",
     "alt_text": ""
   },
-  "slug": "uses"
+  "slug": "uses",
+  "_template": "pages"
 }

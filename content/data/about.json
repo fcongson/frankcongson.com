@@ -61,5 +61,6 @@
     "keywords": ["dad", "husband", "traveler", "minimalist", "full stack developer", "ux engineer", "rock climber"],
     "image": "",
     "alt_text": ""
-  }
+  },
+  "_template": "about"
 }
