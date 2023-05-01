@@ -483,7 +483,13 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
           <FeaturedSection>
             <CallToAction
               header='Link Button.'
-              text={['Link button using the ', <code>{'<LinkButton />'}</code>, ' component.']}
+              text={[
+                'Link button using the ',
+                <code>{'<LinkButton />'}</code>,
+                " component. This component wraps a link with a the style of a button. It also accepts framework specific link components such as Gatsby's ",
+                <code>{'<Link />'}</code>,
+                ' component.',
+              ]}
               actionLink='#link-button'
               actionText='↓'
             />
