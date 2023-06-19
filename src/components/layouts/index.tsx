@@ -28,6 +28,7 @@ const SITE_QUERY = graphql`
         youtubeUrl
         linkedinUrl
         githubUrl
+        devUrl
       }
     }
   }
@@ -40,7 +41,7 @@ export const Layout: React.FunctionComponent<{ overlayHeader?: boolean; children
   const { site } = useStaticQuery(SITE_QUERY)
   const [noFocusOutline, setNoFocusOutline] = useState(true)
 
-  const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl } = site.siteMetadata
+  const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl, devUrl } = site.siteMetadata
 
   const a11yHandler = ({ keyCode }: { keyCode: number }) => {
     // Add focus outline when tab key is pressed
@@ -84,6 +85,7 @@ export const Layout: React.FunctionComponent<{ overlayHeader?: boolean; children
               youtubeUrl,
               linkedinUrl,
               githubUrl,
+              devUrl,
             }}
           />
         </ThemeProvider>

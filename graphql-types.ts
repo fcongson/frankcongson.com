@@ -286,6 +286,7 @@ export type SiteSiteMetadata = {
   youtubeUrl?: Maybe<Scalars['String']>
   linkedinUrl?: Maybe<Scalars['String']>
   githubUrl?: Maybe<Scalars['String']>
+  devUrl?: Maybe<Scalars['String']>
 }
 
 export type SiteFunction = Node & {
@@ -757,6 +758,7 @@ export type DataJson = Node & {
   youtubeUrl?: Maybe<Scalars['String']>
   linkedinUrl?: Maybe<Scalars['String']>
   githubUrl?: Maybe<Scalars['String']>
+  devUrl?: Maybe<Scalars['String']>
 }
 
 export type DataJsonHero_Image = {
@@ -1191,6 +1193,7 @@ export type QueryDataJsonArgs = {
   youtubeUrl?: InputMaybe<StringQueryOperatorInput>
   linkedinUrl?: InputMaybe<StringQueryOperatorInput>
   githubUrl?: InputMaybe<StringQueryOperatorInput>
+  devUrl?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QueryAllDataJsonArgs = {
@@ -1519,6 +1522,7 @@ export type DataJsonFilterInput = {
   youtubeUrl?: InputMaybe<StringQueryOperatorInput>
   linkedinUrl?: InputMaybe<StringQueryOperatorInput>
   githubUrl?: InputMaybe<StringQueryOperatorInput>
+  devUrl?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type DataJsonHero_ImageFilterInput = {
@@ -1870,6 +1874,7 @@ export type DataJsonFieldSelector = {
   youtubeUrl?: InputMaybe<FieldSelectorEnum>
   linkedinUrl?: InputMaybe<FieldSelectorEnum>
   githubUrl?: InputMaybe<FieldSelectorEnum>
+  devUrl?: InputMaybe<FieldSelectorEnum>
 }
 
 export type DataJsonHero_ImageFieldSelector = {
@@ -2191,6 +2196,7 @@ export type DataJsonSortInput = {
   youtubeUrl?: InputMaybe<SortOrderEnum>
   linkedinUrl?: InputMaybe<SortOrderEnum>
   githubUrl?: InputMaybe<SortOrderEnum>
+  devUrl?: InputMaybe<SortOrderEnum>
 }
 
 export type DataJsonHero_ImageSortInput = {
@@ -2449,6 +2455,7 @@ export type SiteSiteMetadataFilterInput = {
   youtubeUrl?: InputMaybe<StringQueryOperatorInput>
   linkedinUrl?: InputMaybe<StringQueryOperatorInput>
   githubUrl?: InputMaybe<StringQueryOperatorInput>
+  devUrl?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type SiteConnection = {
@@ -2526,6 +2533,7 @@ export type SiteSiteMetadataFieldSelector = {
   youtubeUrl?: InputMaybe<FieldSelectorEnum>
   linkedinUrl?: InputMaybe<FieldSelectorEnum>
   githubUrl?: InputMaybe<FieldSelectorEnum>
+  devUrl?: InputMaybe<FieldSelectorEnum>
 }
 
 export type SiteGroupConnection = {
@@ -2615,6 +2623,7 @@ export type SiteSiteMetadataSortInput = {
   youtubeUrl?: InputMaybe<SortOrderEnum>
   linkedinUrl?: InputMaybe<SortOrderEnum>
   githubUrl?: InputMaybe<SortOrderEnum>
+  devUrl?: InputMaybe<SortOrderEnum>
 }
 
 export type SiteFunctionConnection = {
@@ -3727,6 +3736,7 @@ export type SiteQuery = {
       youtubeUrl?: string | null
       linkedinUrl?: string | null
       githubUrl?: string | null
+      devUrl?: string | null
     } | null
   } | null
 }

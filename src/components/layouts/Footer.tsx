@@ -73,6 +73,7 @@ const FooterStyles = styled.footer<ColorProps & TypographyProps & FlexboxProps>`
 
       & a {
         padding: 1rem;
+        color: ${(props) => props.theme.colors.greys[4]};
       }
 
       & svg {
@@ -128,6 +129,7 @@ export const Footer: React.FunctionComponent<{ social: { [key: string]: string }
             <a href={social.githubUrl} aria-label='GitHub'>
               <FontAwesomeIcon icon={faGithub} />
             </a>
+            <a href={social.devUrl}>.dev</a>
           </div>
           <small className='copyright'>Copyright © {new Date().getFullYear()} Frank Congson</small>
         </div>
