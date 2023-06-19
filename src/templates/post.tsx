@@ -141,6 +141,8 @@ const PostHeader = styled.header`
   ${Container} {
     margin-bottom: 2rem;
   }
+
+  margin-bottom: 4rem;
 `
 
 const PostFooter = styled.footer`
