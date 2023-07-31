@@ -54,7 +54,7 @@ const FooterStyles = styled.footer<ColorProps & TypographyProps & FlexboxProps>`
         line-height: 20px;
         width: fit-content;
         margin: 0 0 0 2rem;
-        color: ${(props) => props.theme.colors.greys[4]};
+        color: var(--lagom-core-colors-grey-lighter40);
       }
 
       ${(props) => props.theme.mediaQueries.large} {
@@ -73,13 +73,13 @@ const FooterStyles = styled.footer<ColorProps & TypographyProps & FlexboxProps>`
 
       & a {
         padding: 1rem;
-        color: ${(props) => props.theme.colors.greys[4]};
+        color: var(--lagom-core-colors-grey-lighter40);
       }
 
       & svg {
         width: 1.5rem;
         height: 1.5rem;
-        color: ${(props) => props.theme.colors.greys[4]};
+        color: var(--lagom-core-colors-grey-lighter40);
       }
     }
 

@@ -48,7 +48,7 @@ const Photography: React.FunctionComponent = () => {
           <GatsbyImage
             image={heroImage?.childImageSharp?.gatsbyImageData}
             alt={photography.hero_image.alt_text}
-            style={{ height: '100%', opacity: 0.7 }}
+            style={{ height: '100%' }}
           />
         }>
         <PageHeader>{photography.page_header}</PageHeader>

@@ -68,14 +68,14 @@ const NavigationMenu = styled.nav<{ open: boolean }>`
     padding: 30px 0 0 0;
     border-bottom: 2px solid transparent;
     transition: border-bottom 200ms ease-in-out;
-    color: ${(props) => props.theme.colors.greys[0]};
+    color: var(--lagom-semantic-color-fg-default);
 
     &:hover {
-      border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
+      border-bottom: 2px solid var(--lagom-semantic-color-border-default);
     }
 
     &[aria-current='page'] {
-      border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
+      border-bottom: 2px solid var(--lagom-semantic-color-border-default);
     }
 
     ${(props) => props.theme.mediaQueries.large} {
@@ -97,7 +97,7 @@ const NavigationToggle = styled.button<{ open: boolean }>`
     position: relative;
     width: 32px;
     height: 2px;
-    background-color: ${(props) => props.theme.colors.greys[0]};
+    background-color: var(--lagom-semantic-color-fg-default);
     transition: transform 100ms ease-in-out 0ms, top 100ms ease-in-out 100ms;
 
     &.top {

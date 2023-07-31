@@ -62,7 +62,7 @@ const Page: React.FunctionComponent<{ data: PageQuery }> = ({ data }) => {
             <GatsbyImage
               image={heroImage?.childImageSharp?.gatsbyImageData}
               alt={hero_image.alt_text ?? ''}
-              style={{ height: '100%', opacity: 0.4 }}
+              style={{ height: '100%' }}
             />
           }>
           <PageHeader>{page_header}</PageHeader>

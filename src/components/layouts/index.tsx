@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/browser'
 import { SEO as Seo } from 'components/SEO'
 import { GlobalStyle, theme } from 'components/styles'
 import { graphql, useStaticQuery } from 'gatsby'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Helmet } from 'react-helmet'
 import styled, { ThemeProvider } from 'styled-components'
 import 'stylesheets/resetr.css'
@@ -39,25 +39,8 @@ export const Layout: React.FunctionComponent<{ overlayHeader?: boolean; children
   children,
 }) => {
   const { site } = useStaticQuery(SITE_QUERY)
-  const [noFocusOutline, setNoFocusOutline] = useState(true)
 
   const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl, devUrl } = site.siteMetadata
-
-  const a11yHandler = ({ keyCode }: { keyCode: number }) => {
-    // Add focus outline when tab key is pressed
-    if (keyCode === 9) {
-      setNoFocusOutline(false)
-    }
-  }
-
-  useEffect(() => {
-    window.addEventListener('keydown', a11yHandler)
-    window.addEventListener('keyup', a11yHandler)
-    return () => {
-      window.removeEventListener('keydown', a11yHandler)
-      window.removeEventListener('keyup', a11yHandler)
-    }
-  }, [])
 
   return (
     <>
@@ -65,7 +48,7 @@ export const Layout: React.FunctionComponent<{ overlayHeader?: boolean; children
         <meta charSet='utf-8' />
         <title>{title}</title>
         <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
-        <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='true'></link>
+        <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='anonymous'></link>
         <link
           href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Domine:400,700&display=swap'
           rel='stylesheet'
@@ -74,7 +57,7 @@ export const Layout: React.FunctionComponent<{ overlayHeader?: boolean; children
       <Seo />
       <LagomThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
-          <GlobalStyle noFocusOutline={noFocusOutline} />
+          <GlobalStyle />
           <Header overlay={overlayHeader} />
           <Main>{children}</Main>
           <Footer

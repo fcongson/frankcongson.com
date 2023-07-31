@@ -12,7 +12,7 @@ const PostSummaryContainer = styled.div`
 
   h2 {
     margin: 1rem 0;
-    color: ${(props) => props.theme.colors.greys[0]};
+    color: var(--lagom-semantic-color-fg-default);
     text-align: left;
     a {
       padding: 0;
