@@ -111,11 +111,11 @@ const PostHeader = styled.header`
   }
 
   .back {
-    color: ${(props) => props.theme.colors.greys[1]};
+    color: var(--lagom-semantic-color-fg-subtle);
     display: block;
     max-width: ${(props) => props.theme.sizes.maxWidthContainer};
     margin: 0 auto 2em auto;
-    font-family: ${(props) => props.theme.fonts.sanSerif};
+    font-family: var(--lagom-core-font-families-sans-serif);
     font-size: 16px;
 
     &:before {
@@ -126,14 +126,14 @@ const PostHeader = styled.header`
     }
 
     a {
-      color: ${(props) => props.theme.colors.greys[1]};
+      color: var(--lagom-semantic-color-fg-subtle);
       font-weight: normal;
       padding-bottom: 0.25rem;
       border-bottom: 1px solid transparent;
       transition: border-bottom 200ms ease-in-out;
 
       &:hover {
-        border-bottom: 1px solid ${(props) => props.theme.colors.greys[1]};
+        border-bottom: 1px solid var(--lagom-semantic-color-fg-subtle);
       }
     }
   }
@@ -146,7 +146,7 @@ const PostHeader = styled.header`
 `
 
 const PostFooter = styled.footer`
-  background-color: ${(props) => props.theme.colors.greys[4]};
+  background-color: var(--lagom-semantic-color-bg-muted);
 
   ${Container} {
     padding-top: 8rem;
@@ -156,14 +156,14 @@ const PostFooter = styled.footer`
   }
 
   a {
-    color: ${(props) => props.theme.colors.greys[0]};
+    color: var(--lagom-semantic-color-fg-muted);
     text-decoration: none;
     padding-bottom: 4px;
-    border-bottom: 2px solid ${(props) => props.theme.colors.olives[2]};
+    border-bottom: 2px solid var(--lagom-semantic-color-border-muted);
     transition: border-bottom 200ms ease-in-out;
 
     &:hover {
-      border-bottom: 2px solid ${(props) => props.theme.colors.greys[0]};
+      border-bottom: 2px solid var(--lagom-semantic-color-border-default);
     }
   }
 `

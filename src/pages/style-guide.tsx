@@ -382,7 +382,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
       <FeaturedSection>
         <p>Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
-      <FeaturedSection backgroundColor={theme.colors.olives[2]}>
+      <FeaturedSection backgroundColor='var(--lagom-semantic-color-accent-bg)'>
         <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={altText} />
         <p>Color Background with Image. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
@@ -448,7 +448,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
           <GatsbyImage
             image={imageSharp?.childImageSharp?.gatsbyImageData}
             alt={'Alt text'}
-            style={{ height: '100%', opacity: 0.7 }}
+            style={{ height: '100%' }}
           />
         }>
         <PageHeader>Lorem Ipsum</PageHeader>

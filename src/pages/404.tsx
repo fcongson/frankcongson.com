@@ -10,14 +10,14 @@ const Custom404Content = styled.div`
   align-items: center;
 
   a {
-    color: ${(props) => props.theme.colors.greys[1]};
+    color: var(--lagom-semantic-color-fg-subtle);
     font-weight: normal;
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
     transition: border-bottom 200ms ease-in-out;
 
     &:hover {
-      border-bottom: 1px solid ${(props) => props.theme.colors.greys[1]};
+      border-bottom: 1px solid var(--lagom-semantic-color-fg-subtle);
     }
   }
 `

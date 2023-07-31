@@ -106,7 +106,7 @@ const Blog: React.FunctionComponent<{ data: Blog_ListQuery; pageContext: Paginat
           <GatsbyImage
             image={heroImage?.childImageSharp?.gatsbyImageData}
             alt={blog.hero_image.alt_text}
-            style={{ height: '100%', opacity: 0.7 }}
+            style={{ height: '100%' }}
           />
         }>
         <PageHeader>{blog.page_header}</PageHeader>
