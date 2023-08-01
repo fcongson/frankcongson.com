@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const HeaderStyles = styled.header<{ overlay: boolean }>`
+const HeaderStyles = styled.header<{ overlay: boolean; backgroundColor?: string }>`
   display: block;
   position: ${(props) => (props.overlay ? 'absolute' : 'relative')};
   width: 100%;
@@ -18,6 +18,11 @@ const HeaderStyles = styled.header<{ overlay: boolean }>`
     }
   }
 
+  ${Section} {
+    background-color: ${(props) => props.backgroundColor};
+    backdrop-filter: blur(8px);
+  }
+
   ${Container} {
     display: flex;
     flex-direction: row;
@@ -25,7 +30,7 @@ const HeaderStyles = styled.header<{ overlay: boolean }>`
     margin: 0 auto 4rem auto;
 
     ${(props) => props.theme.mediaQueries.large} {
-      margin: 0 auto;
+      margin: 0 auto 2rem auto;
       flex-wrap: wrap;
     }
   }
@@ -35,7 +40,7 @@ const HeaderStyles = styled.header<{ overlay: boolean }>`
   }
 `
 
-const NavigationMenu = styled.nav<{ open: boolean }>`
+const NavigationMenu = styled.nav<{ overlay: boolean; open: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -43,7 +48,6 @@ const NavigationMenu = styled.nav<{ open: boolean }>`
 
   ${(props) => props.theme.mediaQueries.large} {
     flex-direction: column;
-    margin-top: 2rem;
     order: 2;
     width: 100%;
     height: 0;
@@ -53,8 +57,9 @@ const NavigationMenu = styled.nav<{ open: boolean }>`
     ${(props) =>
       props.open &&
       `
-      height: 312px;
-      padding-bottom: 4rem;
+      margin-top: 2rem;
+      height: ${props.overlay ? `calc(100vh - 2rem - 64px);` : `calc(54px * 4 + 32px);`}
+      padding-bottom: 0rem;
       `}
   }
 
@@ -135,10 +140,13 @@ const NavigationToggle = styled.button<{ open: boolean }>`
   }
 `
 
-export const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay }) => {
+export const Header: React.FunctionComponent<{ overlay: boolean; backgroundColor?: string }> = ({
+  overlay,
+  backgroundColor,
+}) => {
   const [open, setOpen] = useState(false)
   return (
-    <HeaderStyles overlay={overlay}>
+    <HeaderStyles overlay={overlay} backgroundColor={backgroundColor}>
       <Section>
         <Container>
           <div className='logo-container'>
@@ -153,7 +161,7 @@ export const Header: React.FunctionComponent<{ overlay: boolean }> = ({ overlay 
             <div className='toggle-line top' />
             <div className='toggle-line bottom' />
           </NavigationToggle>
-          <NavigationMenu open={open}>
+          <NavigationMenu overlay={overlay} open={open}>
             <Link className='navigation-link' to='/'>
               Home
             </Link>

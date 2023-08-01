@@ -34,10 +34,11 @@ const SITE_QUERY = graphql`
   }
 `
 
-export const Layout: React.FunctionComponent<{ overlayHeader?: boolean; children?: React.ReactNode }> = ({
-  overlayHeader = false,
-  children,
-}) => {
+export const Layout: React.FunctionComponent<{
+  overlayHeader?: boolean
+  headerBackgroundColor?: string
+  children?: React.ReactNode
+}> = ({ overlayHeader = false, headerBackgroundColor, children }) => {
   const { site } = useStaticQuery(SITE_QUERY)
 
   const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl, devUrl } = site.siteMetadata
@@ -58,7 +59,7 @@ export const Layout: React.FunctionComponent<{ overlayHeader?: boolean; children
       <LagomThemeProvider theme={theme}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Header overlay={overlayHeader} />
+          <Header overlay={overlayHeader} backgroundColor={headerBackgroundColor} />
           <Main>{children}</Main>
           <Footer
             social={{
