@@ -1125,11 +1125,12 @@
   resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/0.15.0/dd2206ceaf870402dc3474eaf15a48d04b3262fd#dd2206ceaf870402dc3474eaf15a48d04b3262fd"
   integrity sha512-JJSbJvl9+KP3l2rTSTWow4MfNSo+sIUaeGYvMILNprwh1j+KKsDMOl/13CmCGZ+tdrMvmy5d9yWZhYXSw/GFSg==
 
-"@fcongson/lagom-ui@^0.20.0":
-  version "0.20.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.20.0/c7de999263a5160fc3c0e73b2e921badad3e4a54#c7de999263a5160fc3c0e73b2e921badad3e4a54"
-  integrity sha512-V8wOY2Hz2iYf9hlolhG0qwjSj+/G8/j90h2ApJW23DtBg7oagiE8JHvOffj3vngqtXggc1Uwx9jbYhSohiT2mg==
+"@fcongson/lagom-ui@^0.21.0":
+  version "0.21.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.21.0/bf0d9ef7dc139c5376415a2656cbb74968365587#bf0d9ef7dc139c5376415a2656cbb74968365587"
+  integrity sha512-9fClvzUFfjTGDLzthAPdrViyKQ+RNopCKnit1V9rFAD1ZvWZoUcfefFnidNBMTQaVCMg9nVlCoJV6ANNGGrJ/Q==
   dependencies:
+    "@fcongson/lagom-tokens" "^0.15.0"
     react "^18.2.0"
     react-dom "^18.2.0"
     styled-components "^5.3.9"
