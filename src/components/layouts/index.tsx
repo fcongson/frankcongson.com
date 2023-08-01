@@ -46,6 +46,7 @@ export const Layout: React.FunctionComponent<{
   return (
     <>
       <Helmet>
+        <html data-lagom-theme='light' />
         <meta charSet='utf-8' />
         <title>{title}</title>
         <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
