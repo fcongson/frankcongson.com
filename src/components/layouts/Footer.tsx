@@ -70,6 +70,7 @@ const FooterStyles = styled.footer<ColorProps & TypographyProps & FlexboxProps>`
       font-size: 1.5rem;
       margin-right: -1rem;
       padding: 1rem 0 1rem 0;
+      text-align: right;
 
       & a {
         padding: 1rem;
@@ -129,7 +130,9 @@ export const Footer: React.FunctionComponent<{ social: { [key: string]: string }
             <a href={social.githubUrl} aria-label='GitHub'>
               <FontAwesomeIcon icon={faGithub} />
             </a>
-            <a href={social.devUrl}>.dev</a>
+            <a href={social.devUrl} area-label='FrankCongson.dev'>
+              .dev
+            </a>
           </div>
           <small className='copyright'>Copyright © {new Date().getFullYear()} Frank Congson</small>
         </div>
