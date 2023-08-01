@@ -3,7 +3,7 @@ import * as Sentry from '@sentry/browser'
 import { SEO as Seo } from 'components/SEO'
 import { GlobalStyle, theme } from 'components/styles'
 import { graphql, useStaticQuery } from 'gatsby'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import styled, { ThemeProvider } from 'styled-components'
 import 'stylesheets/resetr.css'
@@ -40,13 +40,21 @@ export const Layout: React.FunctionComponent<{
   children?: React.ReactNode
 }> = ({ overlayHeader = false, headerBackgroundColor, children }) => {
   const { site } = useStaticQuery(SITE_QUERY)
-
   const { title, twitterUrl, facebookUrl, instagramUrl, youtubeUrl, linkedinUrl, githubUrl, devUrl } = site.siteMetadata
+
+  const [prefersDark, setPrefersDark] = useState(false)
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-color-scheme:dark)')
+    setPrefersDark(media.matches)
+    media.onchange = (ev) => {
+      ev.matches ? setPrefersDark(true) : setPrefersDark(false)
+    }
+  }, [])
 
   return (
     <>
       <Helmet>
-        <html data-lagom-theme='light' />
+        <html data-lagom-theme={prefersDark ? 'dark' : 'light'} />
         <meta charSet='utf-8' />
         <title>{title}</title>
         <meta name='viewport' content='width=device-width,minimum-scale=1.0,initial-scale=1.0,viewport-fit=cover' />
