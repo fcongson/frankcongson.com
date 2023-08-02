@@ -247,6 +247,8 @@ export type DirectoryCtimeArgs = {
 export type Site = Node & {
   buildTime?: Maybe<Scalars['Date']>
   siteMetadata?: Maybe<SiteSiteMetadata>
+  port?: Maybe<Scalars['Int']>
+  host?: Maybe<Scalars['String']>
   polyfill?: Maybe<Scalars['Boolean']>
   pathPrefix?: Maybe<Scalars['String']>
   jsxRuntime?: Maybe<Scalars['String']>
@@ -943,6 +945,8 @@ export type QueryAllDirectoryArgs = {
 export type QuerySiteArgs = {
   buildTime?: InputMaybe<DateQueryOperatorInput>
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>
+  port?: InputMaybe<IntQueryOperatorInput>
+  host?: InputMaybe<StringQueryOperatorInput>
   polyfill?: InputMaybe<BooleanQueryOperatorInput>
   pathPrefix?: InputMaybe<StringQueryOperatorInput>
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>
@@ -2497,6 +2501,8 @@ export type SiteEdge = {
 export type SiteFieldSelector = {
   buildTime?: InputMaybe<FieldSelectorEnum>
   siteMetadata?: InputMaybe<SiteSiteMetadataFieldSelector>
+  port?: InputMaybe<FieldSelectorEnum>
+  host?: InputMaybe<FieldSelectorEnum>
   polyfill?: InputMaybe<FieldSelectorEnum>
   pathPrefix?: InputMaybe<FieldSelectorEnum>
   jsxRuntime?: InputMaybe<FieldSelectorEnum>
@@ -2569,6 +2575,8 @@ export type SiteGroupConnectionGroupArgs = {
 export type SiteFilterInput = {
   buildTime?: InputMaybe<DateQueryOperatorInput>
   siteMetadata?: InputMaybe<SiteSiteMetadataFilterInput>
+  port?: InputMaybe<IntQueryOperatorInput>
+  host?: InputMaybe<StringQueryOperatorInput>
   polyfill?: InputMaybe<BooleanQueryOperatorInput>
   pathPrefix?: InputMaybe<StringQueryOperatorInput>
   jsxRuntime?: InputMaybe<StringQueryOperatorInput>
@@ -2583,6 +2591,8 @@ export type SiteFilterInput = {
 export type SiteSortInput = {
   buildTime?: InputMaybe<SortOrderEnum>
   siteMetadata?: InputMaybe<SiteSiteMetadataSortInput>
+  port?: InputMaybe<SortOrderEnum>
+  host?: InputMaybe<SortOrderEnum>
   polyfill?: InputMaybe<SortOrderEnum>
   pathPrefix?: InputMaybe<SortOrderEnum>
   jsxRuntime?: InputMaybe<SortOrderEnum>
