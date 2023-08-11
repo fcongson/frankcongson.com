@@ -7,7 +7,8 @@ const StyledScrollProgress = styled.div<{ progress?: number }>`
   top: 0;
   height: var(--lagom-core-spacing-md);
   width: ${(props) => `${props.progress ?? 0}%`};
-  background-color: var(--lagom-semantic-color-accent-bg);
+  /* background-color: var(--lagom-semantic-color-accent-bg); */
+  background-color: var(--lagom-core-colors-olive-base);
   z-index: 2000;
 `
 
