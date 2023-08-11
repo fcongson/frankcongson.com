@@ -20,5 +20,5 @@ export const ScrollProgress = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  return <StyledScrollProgress progress={scrollProgress} />
+  return <StyledScrollProgress progress={scrollProgress * 100} />
 }
