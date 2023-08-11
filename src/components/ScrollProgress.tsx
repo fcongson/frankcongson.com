@@ -9,7 +9,6 @@ const StyledScrollProgress = styled.div<{ progress?: number }>`
   width: ${(props) => `${props.progress ?? 0}%`};
   background-color: var(--lagom-semantic-color-accent-bg);
   z-index: 2000;
-  transition: width 100ms ease;
 `
 
 export const ScrollProgress = () => {
