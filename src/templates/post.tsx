@@ -6,9 +6,10 @@ import { SEO as Seo } from 'components/SEO'
 import { graphql, Link } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Blog_PostQuery } from 'graphql-types'
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { ImageNode, useImage } from 'utils/useImage'
+import { useScrollPosition } from 'utils/useScrollPosition'
 
 const createImage = (image: ImageNode, alt?: string) => {
   // [Support gifs in gatsby-image](https://github.com/gatsbyjs/gatsby/discussions/29410)
@@ -97,6 +98,16 @@ export const BLOG_POST_QUERY = graphql`
   }
 `
 
+const ReadingProgress = styled.div<{ progress?: number }>`
+  position: fixed;
+  top: 0;
+  height: var(--lagom-core-spacing-md);
+  width: ${(props) => `${props.progress ?? 0}%`};
+  background-color: var(--lagom-semantic-color-accent-bg);
+  z-index: 2000;
+  transition: width 100ms ease;
+`
+
 const PostContent = styled.article`
   margin: 0 auto 0 auto;
 
@@ -171,6 +182,12 @@ const PostFooter = styled.footer`
 const Post: React.FunctionComponent<{ data: Blog_PostQuery; children: any }> = ({ data, children }) => {
   const { title, description, keywords, slug, featured_image, alt_text, image_caption, seo } =
     data.mdx?.frontmatter ?? {}
+  const { handleScroll, scrollProgress } = useScrollPosition()
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <Layout>
@@ -183,6 +200,7 @@ const Post: React.FunctionComponent<{ data: Blog_PostQuery; children: any }> = (
         pathname={`/${slug}`}
         article
       />
+      <ReadingProgress progress={scrollProgress * 100} />
       <PostContent>
         <PostHeader>
           <Section>
