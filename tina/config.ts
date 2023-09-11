@@ -16,13 +16,11 @@ import { textFields } from './templates'
 
 // Your hosting provider likely exposes this as an environment variable
 const branch = process.env.HEAD || process.env.VERCEL_GIT_COMMIT_REF || 'main'
-const clientId = process.env.TINACMS_CLIENT_ID ?? '' // Get this from tina.io
-const token = process.env.TINACMS_TOKEN ?? '' // Get this from tina.io
 
 export default defineConfig({
   branch,
-  clientId,
-  token,
+  clientId: null, // Get this from tina.io
+  token: null, // Get this from tina.io
   client: { skip: true },
   build: {
     outputFolder: 'admin',

@@ -1,7 +1,10 @@
 import { CallToAction, Container, FeaturedSection, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
+import { compile, run } from '@mdx-js/mdx'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import React from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { useImage } from 'utils/useImage'
+import * as runtime from 'react/jsx-runtime' // Production.
+// import * as runtime from 'react/jsx-dev-runtime' // Development.
 
 export type ForestrySection = {
   template: string
@@ -16,6 +19,27 @@ const Wrapper: React.FunctionComponent<{ children?: React.ReactNode }> = ({ chil
 
 const getSection = (section: ForestrySection, unwrapped: boolean, index: number): React.ReactElement | undefined => {
   const getImage = useImage()
+  const [mdxModule, setMdxModule] = useState<any>()
+  const Content = mdxModule ? mdxModule.default : Fragment
+
+  useEffect(() => {
+    if (section.template === 'text') {
+      ;(async () => {
+        const code = String(
+          await compile(section.text, {
+            outputFormat: 'function-body',
+            development: false,
+            // ^-- Generate code for production.
+            // `false` if you use `/jsx-runtime` on client, `true` if you use
+            // `/jsx-dev-runtime`.
+            /* …otherOptions */
+          })
+        )
+        setMdxModule(await run(code, runtime))
+      })()
+    }
+  }, [])
+
   const key = `${section.template}.${index}`
   switch (section.template) {
     case 'featured-section':
@@ -71,10 +95,10 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
 
     case 'text':
       return unwrapped ? (
-        <div key={key} dangerouslySetInnerHTML={{ __html: section.text }} />
+        <Content />
       ) : (
         <Wrapper key={key}>
-          <div dangerouslySetInnerHTML={{ __html: section.text }} />
+          <Content />
         </Wrapper>
       )
 

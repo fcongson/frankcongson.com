@@ -1,6 +1,6 @@
 {
   "schema": {
-    "version": { "fullVersion": "1.4.8", "major": "1", "minor": "4", "patch": "8" },
+    "version": { "fullVersion": "1.4.25", "major": "1", "minor": "4", "patch": "25" },
     "meta": { "flags": ["experimentalData"] },
     "collections": [
       {
@@ -16,12 +16,19 @@
             "name": "seo",
             "label": "SEO",
             "fields": [
-              { "type": "string", "name": "title", "label": "Title", "namespace": ["home", "seo", "title"] },
+              {
+                "type": "string",
+                "name": "title",
+                "label": "Title",
+                "namespace": ["home", "seo", "title"],
+                "searchable": true
+              },
               {
                 "type": "string",
                 "name": "description",
                 "label": "Description",
-                "namespace": ["home", "seo", "description"]
+                "namespace": ["home", "seo", "description"],
+                "searchable": true
               },
               {
                 "type": "string",
@@ -29,29 +36,57 @@
                 "label": "Keywords",
                 "list": true,
                 "ui": { "component": "tags" },
-                "namespace": ["home", "seo", "keywords"]
+                "namespace": ["home", "seo", "keywords"],
+                "searchable": true
               },
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["home", "seo", "image"] },
-              { "type": "string", "name": "alt_text", "label": "Alt Text", "namespace": ["home", "seo", "alt_text"] }
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["home", "seo", "image"],
+                "searchable": false
+              },
+              {
+                "type": "string",
+                "name": "alt_text",
+                "label": "Alt Text",
+                "namespace": ["home", "seo", "alt_text"],
+                "searchable": true
+              }
             ],
-            "namespace": ["home", "seo"]
+            "namespace": ["home", "seo"],
+            "searchable": true
           },
           {
             "type": "object",
             "name": "hero_image",
             "label": "Hero Image",
             "fields": [
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["home", "hero_image", "image"] },
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["home", "hero_image", "image"],
+                "searchable": false
+              },
               {
                 "type": "string",
                 "name": "alt_text",
                 "label": "Alt Text",
-                "namespace": ["home", "hero_image", "alt_text"]
+                "namespace": ["home", "hero_image", "alt_text"],
+                "searchable": true
               }
             ],
-            "namespace": ["home", "hero_image"]
+            "namespace": ["home", "hero_image"],
+            "searchable": true
           },
-          { "type": "string", "name": "page_header", "label": "Page Header", "namespace": ["home", "page_header"] },
+          {
+            "type": "string",
+            "name": "page_header",
+            "label": "Page Header",
+            "namespace": ["home", "page_header"],
+            "searchable": true
+          },
           {
             "type": "object",
             "name": "main_content",
@@ -61,18 +96,33 @@
                 "type": "string",
                 "name": "header",
                 "label": "Header",
-                "namespace": ["home", "main_content", "header"]
+                "namespace": ["home", "main_content", "header"],
+                "searchable": true
               },
-              { "type": "string", "name": "text", "label": "Text", "namespace": ["home", "main_content", "text"] },
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["home", "main_content", "image"] },
+              {
+                "type": "string",
+                "name": "text",
+                "label": "Text",
+                "namespace": ["home", "main_content", "text"],
+                "searchable": true
+              },
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["home", "main_content", "image"],
+                "searchable": false
+              },
               {
                 "type": "string",
                 "name": "alt_text",
                 "label": "Alt Text",
-                "namespace": ["home", "main_content", "alt_text"]
+                "namespace": ["home", "main_content", "alt_text"],
+                "searchable": true
               }
             ],
-            "namespace": ["home", "main_content"]
+            "namespace": ["home", "main_content"],
+            "searchable": true
           },
           {
             "type": "object",
@@ -84,11 +134,13 @@
               {
                 "fields": [
                   {
-                    "type": "string",
+                    "type": "rich-text",
                     "name": "text",
                     "label": "Text",
-                    "ui": { "component": "textarea" },
-                    "namespace": ["home", "sections", "text", "text"]
+                    "ui": { "component": "rich-text" },
+                    "namespace": ["home", "sections", "text", "text"],
+                    "searchable": true,
+                    "parser": { "type": "markdown" }
                   }
                 ],
                 "label": "Text",
@@ -101,7 +153,8 @@
                     "type": "string",
                     "name": "quote",
                     "label": "Quote",
-                    "namespace": ["home", "sections", "quote", "quote"]
+                    "namespace": ["home", "sections", "quote", "quote"],
+                    "searchable": true
                   }
                 ],
                 "label": "Quote",
@@ -114,31 +167,36 @@
                     "type": "image",
                     "name": "image",
                     "label": "Image",
-                    "namespace": ["home", "sections", "image_caption", "image"]
+                    "namespace": ["home", "sections", "image_caption", "image"],
+                    "searchable": false
                   },
                   {
                     "type": "string",
                     "name": "alt_text",
                     "label": "Alt Text",
-                    "namespace": ["home", "sections", "image_caption", "alt_text"]
+                    "namespace": ["home", "sections", "image_caption", "alt_text"],
+                    "searchable": true
                   },
                   {
                     "type": "string",
                     "name": "caption",
                     "label": "Caption",
-                    "namespace": ["home", "sections", "image_caption", "caption"]
+                    "namespace": ["home", "sections", "image_caption", "caption"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "emphasized",
                     "label": "Emphasized",
-                    "namespace": ["home", "sections", "image_caption", "emphasized"]
+                    "namespace": ["home", "sections", "image_caption", "emphasized"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "fullwidth",
                     "label": "Fullwidth",
-                    "namespace": ["home", "sections", "image_caption", "fullwidth"]
+                    "namespace": ["home", "sections", "image_caption", "fullwidth"],
+                    "searchable": true
                   }
                 ],
                 "label": "Image Caption",
@@ -153,25 +211,29 @@
                     "name": "background_color",
                     "label": "Background Color",
                     "ui": { "component": "color" },
-                    "namespace": ["home", "sections", "featured_section", "background_color"]
+                    "namespace": ["home", "sections", "featured_section", "background_color"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "image_as_background",
                     "label": "Image As Background",
-                    "namespace": ["home", "sections", "featured_section", "image_as_background"]
+                    "namespace": ["home", "sections", "featured_section", "image_as_background"],
+                    "searchable": true
                   },
                   {
                     "type": "image",
                     "name": "image",
                     "label": "Image",
-                    "namespace": ["home", "sections", "featured_section", "image"]
+                    "namespace": ["home", "sections", "featured_section", "image"],
+                    "searchable": false
                   },
                   {
                     "type": "string",
                     "name": "alt_text",
                     "label": "Alt Text",
-                    "namespace": ["home", "sections", "featured_section", "alt_text"]
+                    "namespace": ["home", "sections", "featured_section", "alt_text"],
+                    "searchable": true
                   },
                   {
                     "type": "object",
@@ -332,10 +394,10 @@
                       {
                         "fields": [
                           {
-                            "type": "string",
+                            "type": "rich-text",
                             "name": "text",
                             "label": "Text",
-                            "ui": { "component": "textarea" },
+                            "ui": { "component": "rich-text" },
                             "namespace": ["home", "sections", "featured_section", "sections", "text", "text"]
                           }
                         ],
@@ -344,7 +406,8 @@
                         "namespace": ["home", "sections", "featured_section", "sections", "text"]
                       }
                     ],
-                    "namespace": ["home", "sections", "featured_section", "sections"]
+                    "namespace": ["home", "sections", "featured_section", "sections"],
+                    "searchable": true
                   }
                 ],
                 "label": "Featured Section",
@@ -353,7 +416,8 @@
                 "namespace": ["home", "sections", "featured_section"]
               }
             ],
-            "namespace": ["home", "sections"]
+            "namespace": ["home", "sections"],
+            "searchable": true
           }
         ],
         "namespace": ["home"]
@@ -371,12 +435,19 @@
             "name": "seo",
             "label": "SEO",
             "fields": [
-              { "type": "string", "name": "title", "label": "Title", "namespace": ["photography", "seo", "title"] },
+              {
+                "type": "string",
+                "name": "title",
+                "label": "Title",
+                "namespace": ["photography", "seo", "title"],
+                "searchable": true
+              },
               {
                 "type": "string",
                 "name": "description",
                 "label": "Description",
-                "namespace": ["photography", "seo", "description"]
+                "namespace": ["photography", "seo", "description"],
+                "searchable": true
               },
               {
                 "type": "string",
@@ -384,17 +455,26 @@
                 "label": "Keywords",
                 "list": true,
                 "ui": { "component": "tags" },
-                "namespace": ["photography", "seo", "keywords"]
+                "namespace": ["photography", "seo", "keywords"],
+                "searchable": true
               },
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["photography", "seo", "image"] },
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["photography", "seo", "image"],
+                "searchable": false
+              },
               {
                 "type": "string",
                 "name": "alt_text",
                 "label": "Alt Text",
-                "namespace": ["photography", "seo", "alt_text"]
+                "namespace": ["photography", "seo", "alt_text"],
+                "searchable": true
               }
             ],
-            "namespace": ["photography", "seo"]
+            "namespace": ["photography", "seo"],
+            "searchable": true
           },
           {
             "type": "object",
@@ -405,22 +485,26 @@
                 "type": "image",
                 "name": "image",
                 "label": "Image",
-                "namespace": ["photography", "hero_image", "image"]
+                "namespace": ["photography", "hero_image", "image"],
+                "searchable": false
               },
               {
                 "type": "string",
                 "name": "alt_text",
                 "label": "Alt Text",
-                "namespace": ["photography", "hero_image", "alt_text"]
+                "namespace": ["photography", "hero_image", "alt_text"],
+                "searchable": true
               }
             ],
-            "namespace": ["photography", "hero_image"]
+            "namespace": ["photography", "hero_image"],
+            "searchable": true
           },
           {
             "type": "string",
             "name": "page_header",
             "label": "Page Header",
-            "namespace": ["photography", "page_header"]
+            "namespace": ["photography", "page_header"],
+            "searchable": true
           },
           {
             "type": "object",
@@ -432,11 +516,13 @@
               {
                 "fields": [
                   {
-                    "type": "string",
+                    "type": "rich-text",
                     "name": "text",
                     "label": "Text",
-                    "ui": { "component": "textarea" },
-                    "namespace": ["photography", "sections", "text", "text"]
+                    "ui": { "component": "rich-text" },
+                    "namespace": ["photography", "sections", "text", "text"],
+                    "searchable": true,
+                    "parser": { "type": "markdown" }
                   }
                 ],
                 "label": "Text",
@@ -449,7 +535,8 @@
                     "type": "string",
                     "name": "quote",
                     "label": "Quote",
-                    "namespace": ["photography", "sections", "quote", "quote"]
+                    "namespace": ["photography", "sections", "quote", "quote"],
+                    "searchable": true
                   }
                 ],
                 "label": "Quote",
@@ -462,31 +549,36 @@
                     "type": "image",
                     "name": "image",
                     "label": "Image",
-                    "namespace": ["photography", "sections", "image_caption", "image"]
+                    "namespace": ["photography", "sections", "image_caption", "image"],
+                    "searchable": false
                   },
                   {
                     "type": "string",
                     "name": "alt_text",
                     "label": "Alt Text",
-                    "namespace": ["photography", "sections", "image_caption", "alt_text"]
+                    "namespace": ["photography", "sections", "image_caption", "alt_text"],
+                    "searchable": true
                   },
                   {
                     "type": "string",
                     "name": "caption",
                     "label": "Caption",
-                    "namespace": ["photography", "sections", "image_caption", "caption"]
+                    "namespace": ["photography", "sections", "image_caption", "caption"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "emphasized",
                     "label": "Emphasized",
-                    "namespace": ["photography", "sections", "image_caption", "emphasized"]
+                    "namespace": ["photography", "sections", "image_caption", "emphasized"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "fullwidth",
                     "label": "Fullwidth",
-                    "namespace": ["photography", "sections", "image_caption", "fullwidth"]
+                    "namespace": ["photography", "sections", "image_caption", "fullwidth"],
+                    "searchable": true
                   }
                 ],
                 "label": "Image Caption",
@@ -501,25 +593,29 @@
                     "name": "background_color",
                     "label": "Background Color",
                     "ui": { "component": "color" },
-                    "namespace": ["photography", "sections", "featured_section", "background_color"]
+                    "namespace": ["photography", "sections", "featured_section", "background_color"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "image_as_background",
                     "label": "Image As Background",
-                    "namespace": ["photography", "sections", "featured_section", "image_as_background"]
+                    "namespace": ["photography", "sections", "featured_section", "image_as_background"],
+                    "searchable": true
                   },
                   {
                     "type": "image",
                     "name": "image",
                     "label": "Image",
-                    "namespace": ["photography", "sections", "featured_section", "image"]
+                    "namespace": ["photography", "sections", "featured_section", "image"],
+                    "searchable": false
                   },
                   {
                     "type": "string",
                     "name": "alt_text",
                     "label": "Alt Text",
-                    "namespace": ["photography", "sections", "featured_section", "alt_text"]
+                    "namespace": ["photography", "sections", "featured_section", "alt_text"],
+                    "searchable": true
                   },
                   {
                     "type": "object",
@@ -694,10 +790,10 @@
                       {
                         "fields": [
                           {
-                            "type": "string",
+                            "type": "rich-text",
                             "name": "text",
                             "label": "Text",
-                            "ui": { "component": "textarea" },
+                            "ui": { "component": "rich-text" },
                             "namespace": ["photography", "sections", "featured_section", "sections", "text", "text"]
                           }
                         ],
@@ -706,7 +802,8 @@
                         "namespace": ["photography", "sections", "featured_section", "sections", "text"]
                       }
                     ],
-                    "namespace": ["photography", "sections", "featured_section", "sections"]
+                    "namespace": ["photography", "sections", "featured_section", "sections"],
+                    "searchable": true
                   }
                 ],
                 "label": "Featured Section",
@@ -715,7 +812,8 @@
                 "namespace": ["photography", "sections", "featured_section"]
               }
             ],
-            "namespace": ["photography", "sections"]
+            "namespace": ["photography", "sections"],
+            "searchable": true
           }
         ],
         "namespace": ["photography"]
@@ -733,12 +831,19 @@
             "name": "seo",
             "label": "SEO",
             "fields": [
-              { "type": "string", "name": "title", "label": "Title", "namespace": ["about", "seo", "title"] },
+              {
+                "type": "string",
+                "name": "title",
+                "label": "Title",
+                "namespace": ["about", "seo", "title"],
+                "searchable": true
+              },
               {
                 "type": "string",
                 "name": "description",
                 "label": "Description",
-                "namespace": ["about", "seo", "description"]
+                "namespace": ["about", "seo", "description"],
+                "searchable": true
               },
               {
                 "type": "string",
@@ -746,29 +851,57 @@
                 "label": "Keywords",
                 "list": true,
                 "ui": { "component": "tags" },
-                "namespace": ["about", "seo", "keywords"]
+                "namespace": ["about", "seo", "keywords"],
+                "searchable": true
               },
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["about", "seo", "image"] },
-              { "type": "string", "name": "alt_text", "label": "Alt Text", "namespace": ["about", "seo", "alt_text"] }
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["about", "seo", "image"],
+                "searchable": false
+              },
+              {
+                "type": "string",
+                "name": "alt_text",
+                "label": "Alt Text",
+                "namespace": ["about", "seo", "alt_text"],
+                "searchable": true
+              }
             ],
-            "namespace": ["about", "seo"]
+            "namespace": ["about", "seo"],
+            "searchable": true
           },
           {
             "type": "object",
             "name": "hero_image",
             "label": "Hero Image",
             "fields": [
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["about", "hero_image", "image"] },
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["about", "hero_image", "image"],
+                "searchable": false
+              },
               {
                 "type": "string",
                 "name": "alt_text",
                 "label": "Alt Text",
-                "namespace": ["about", "hero_image", "alt_text"]
+                "namespace": ["about", "hero_image", "alt_text"],
+                "searchable": true
               }
             ],
-            "namespace": ["about", "hero_image"]
+            "namespace": ["about", "hero_image"],
+            "searchable": true
           },
-          { "type": "string", "name": "page_header", "label": "Page Header", "namespace": ["about", "page_header"] },
+          {
+            "type": "string",
+            "name": "page_header",
+            "label": "Page Header",
+            "namespace": ["about", "page_header"],
+            "searchable": true
+          },
           {
             "type": "object",
             "list": true,
@@ -779,11 +912,13 @@
               {
                 "fields": [
                   {
-                    "type": "string",
+                    "type": "rich-text",
                     "name": "text",
                     "label": "Text",
-                    "ui": { "component": "textarea" },
-                    "namespace": ["about", "sections", "text", "text"]
+                    "ui": { "component": "rich-text" },
+                    "namespace": ["about", "sections", "text", "text"],
+                    "searchable": true,
+                    "parser": { "type": "markdown" }
                   }
                 ],
                 "label": "Text",
@@ -796,7 +931,8 @@
                     "type": "string",
                     "name": "quote",
                     "label": "Quote",
-                    "namespace": ["about", "sections", "quote", "quote"]
+                    "namespace": ["about", "sections", "quote", "quote"],
+                    "searchable": true
                   }
                 ],
                 "label": "Quote",
@@ -809,31 +945,36 @@
                     "type": "image",
                     "name": "image",
                     "label": "Image",
-                    "namespace": ["about", "sections", "image_caption", "image"]
+                    "namespace": ["about", "sections", "image_caption", "image"],
+                    "searchable": false
                   },
                   {
                     "type": "string",
                     "name": "alt_text",
                     "label": "Alt Text",
-                    "namespace": ["about", "sections", "image_caption", "alt_text"]
+                    "namespace": ["about", "sections", "image_caption", "alt_text"],
+                    "searchable": true
                   },
                   {
                     "type": "string",
                     "name": "caption",
                     "label": "Caption",
-                    "namespace": ["about", "sections", "image_caption", "caption"]
+                    "namespace": ["about", "sections", "image_caption", "caption"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "emphasized",
                     "label": "Emphasized",
-                    "namespace": ["about", "sections", "image_caption", "emphasized"]
+                    "namespace": ["about", "sections", "image_caption", "emphasized"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "fullwidth",
                     "label": "Fullwidth",
-                    "namespace": ["about", "sections", "image_caption", "fullwidth"]
+                    "namespace": ["about", "sections", "image_caption", "fullwidth"],
+                    "searchable": true
                   }
                 ],
                 "label": "Image Caption",
@@ -848,25 +989,29 @@
                     "name": "background_color",
                     "label": "Background Color",
                     "ui": { "component": "color" },
-                    "namespace": ["about", "sections", "featured_section", "background_color"]
+                    "namespace": ["about", "sections", "featured_section", "background_color"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "image_as_background",
                     "label": "Image As Background",
-                    "namespace": ["about", "sections", "featured_section", "image_as_background"]
+                    "namespace": ["about", "sections", "featured_section", "image_as_background"],
+                    "searchable": true
                   },
                   {
                     "type": "image",
                     "name": "image",
                     "label": "Image",
-                    "namespace": ["about", "sections", "featured_section", "image"]
+                    "namespace": ["about", "sections", "featured_section", "image"],
+                    "searchable": false
                   },
                   {
                     "type": "string",
                     "name": "alt_text",
                     "label": "Alt Text",
-                    "namespace": ["about", "sections", "featured_section", "alt_text"]
+                    "namespace": ["about", "sections", "featured_section", "alt_text"],
+                    "searchable": true
                   },
                   {
                     "type": "object",
@@ -1027,10 +1172,10 @@
                       {
                         "fields": [
                           {
-                            "type": "string",
+                            "type": "rich-text",
                             "name": "text",
                             "label": "Text",
-                            "ui": { "component": "textarea" },
+                            "ui": { "component": "rich-text" },
                             "namespace": ["about", "sections", "featured_section", "sections", "text", "text"]
                           }
                         ],
@@ -1039,7 +1184,8 @@
                         "namespace": ["about", "sections", "featured_section", "sections", "text"]
                       }
                     ],
-                    "namespace": ["about", "sections", "featured_section", "sections"]
+                    "namespace": ["about", "sections", "featured_section", "sections"],
+                    "searchable": true
                   }
                 ],
                 "label": "Featured Section",
@@ -1048,7 +1194,8 @@
                 "namespace": ["about", "sections", "featured_section"]
               }
             ],
-            "namespace": ["about", "sections"]
+            "namespace": ["about", "sections"],
+            "searchable": true
           }
         ],
         "namespace": ["about"]
@@ -1066,12 +1213,19 @@
             "name": "seo",
             "label": "SEO",
             "fields": [
-              { "type": "string", "name": "title", "label": "Title", "namespace": ["blog", "seo", "title"] },
+              {
+                "type": "string",
+                "name": "title",
+                "label": "Title",
+                "namespace": ["blog", "seo", "title"],
+                "searchable": true
+              },
               {
                 "type": "string",
                 "name": "description",
                 "label": "Description",
-                "namespace": ["blog", "seo", "description"]
+                "namespace": ["blog", "seo", "description"],
+                "searchable": true
               },
               {
                 "type": "string",
@@ -1079,29 +1233,57 @@
                 "label": "Keywords",
                 "list": true,
                 "ui": { "component": "tags" },
-                "namespace": ["blog", "seo", "keywords"]
+                "namespace": ["blog", "seo", "keywords"],
+                "searchable": true
               },
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["blog", "seo", "image"] },
-              { "type": "string", "name": "alt_text", "label": "Alt Text", "namespace": ["blog", "seo", "alt_text"] }
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["blog", "seo", "image"],
+                "searchable": false
+              },
+              {
+                "type": "string",
+                "name": "alt_text",
+                "label": "Alt Text",
+                "namespace": ["blog", "seo", "alt_text"],
+                "searchable": true
+              }
             ],
-            "namespace": ["blog", "seo"]
+            "namespace": ["blog", "seo"],
+            "searchable": true
           },
           {
             "type": "object",
             "name": "hero_image",
             "label": "Hero Image",
             "fields": [
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["blog", "hero_image", "image"] },
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["blog", "hero_image", "image"],
+                "searchable": false
+              },
               {
                 "type": "string",
                 "name": "alt_text",
                 "label": "Alt Text",
-                "namespace": ["blog", "hero_image", "alt_text"]
+                "namespace": ["blog", "hero_image", "alt_text"],
+                "searchable": true
               }
             ],
-            "namespace": ["blog", "hero_image"]
+            "namespace": ["blog", "hero_image"],
+            "searchable": true
           },
-          { "type": "string", "name": "page_header", "label": "Page Header", "namespace": ["blog", "page_header"] }
+          {
+            "type": "string",
+            "name": "page_header",
+            "label": "Page Header",
+            "namespace": ["blog", "page_header"],
+            "searchable": true
+          }
         ],
         "namespace": ["blog"]
       },
@@ -1119,15 +1301,23 @@
             "label": "Images",
             "list": true,
             "fields": [
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["images", "Images", "image"] },
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["images", "Images", "image"],
+                "searchable": false
+              },
               {
                 "type": "string",
                 "name": "alt_text",
                 "label": "Alt Text",
-                "namespace": ["images", "Images", "alt_text"]
+                "namespace": ["images", "Images", "alt_text"],
+                "searchable": true
               }
             ],
-            "namespace": ["images", "Images"]
+            "namespace": ["images", "Images"],
+            "searchable": true
           }
         ],
         "namespace": ["images"]
@@ -1139,18 +1329,25 @@
         "path": "content/pages",
         "match": { "include": "**/*" },
         "fields": [
-          { "type": "string", "name": "slug", "label": "Slug", "namespace": ["pages", "slug"] },
+          { "type": "string", "name": "slug", "label": "Slug", "namespace": ["pages", "slug"], "searchable": true },
           {
             "type": "object",
             "name": "seo",
             "label": "SEO",
             "fields": [
-              { "type": "string", "name": "title", "label": "Title", "namespace": ["pages", "seo", "title"] },
+              {
+                "type": "string",
+                "name": "title",
+                "label": "Title",
+                "namespace": ["pages", "seo", "title"],
+                "searchable": true
+              },
               {
                 "type": "string",
                 "name": "description",
                 "label": "Description",
-                "namespace": ["pages", "seo", "description"]
+                "namespace": ["pages", "seo", "description"],
+                "searchable": true
               },
               {
                 "type": "string",
@@ -1158,29 +1355,57 @@
                 "label": "Keywords",
                 "list": true,
                 "ui": { "component": "tags" },
-                "namespace": ["pages", "seo", "keywords"]
+                "namespace": ["pages", "seo", "keywords"],
+                "searchable": true
               },
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["pages", "seo", "image"] },
-              { "type": "string", "name": "alt_text", "label": "Alt Text", "namespace": ["pages", "seo", "alt_text"] }
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["pages", "seo", "image"],
+                "searchable": false
+              },
+              {
+                "type": "string",
+                "name": "alt_text",
+                "label": "Alt Text",
+                "namespace": ["pages", "seo", "alt_text"],
+                "searchable": true
+              }
             ],
-            "namespace": ["pages", "seo"]
+            "namespace": ["pages", "seo"],
+            "searchable": true
           },
           {
             "type": "object",
             "name": "hero_image",
             "label": "Hero Image",
             "fields": [
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["pages", "hero_image", "image"] },
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["pages", "hero_image", "image"],
+                "searchable": false
+              },
               {
                 "type": "string",
                 "name": "alt_text",
                 "label": "Alt Text",
-                "namespace": ["pages", "hero_image", "alt_text"]
+                "namespace": ["pages", "hero_image", "alt_text"],
+                "searchable": true
               }
             ],
-            "namespace": ["pages", "hero_image"]
+            "namespace": ["pages", "hero_image"],
+            "searchable": true
           },
-          { "type": "string", "name": "page_header", "label": "Page Header", "namespace": ["pages", "page_header"] },
+          {
+            "type": "string",
+            "name": "page_header",
+            "label": "Page Header",
+            "namespace": ["pages", "page_header"],
+            "searchable": true
+          },
           {
             "type": "object",
             "list": true,
@@ -1191,11 +1416,13 @@
               {
                 "fields": [
                   {
-                    "type": "string",
+                    "type": "rich-text",
                     "name": "text",
                     "label": "Text",
-                    "ui": { "component": "textarea" },
-                    "namespace": ["pages", "sections", "text", "text"]
+                    "ui": { "component": "rich-text" },
+                    "namespace": ["pages", "sections", "text", "text"],
+                    "searchable": true,
+                    "parser": { "type": "markdown" }
                   }
                 ],
                 "label": "Text",
@@ -1208,7 +1435,8 @@
                     "type": "string",
                     "name": "quote",
                     "label": "Quote",
-                    "namespace": ["pages", "sections", "quote", "quote"]
+                    "namespace": ["pages", "sections", "quote", "quote"],
+                    "searchable": true
                   }
                 ],
                 "label": "Quote",
@@ -1221,31 +1449,36 @@
                     "type": "image",
                     "name": "image",
                     "label": "Image",
-                    "namespace": ["pages", "sections", "image_caption", "image"]
+                    "namespace": ["pages", "sections", "image_caption", "image"],
+                    "searchable": false
                   },
                   {
                     "type": "string",
                     "name": "alt_text",
                     "label": "Alt Text",
-                    "namespace": ["pages", "sections", "image_caption", "alt_text"]
+                    "namespace": ["pages", "sections", "image_caption", "alt_text"],
+                    "searchable": true
                   },
                   {
                     "type": "string",
                     "name": "caption",
                     "label": "Caption",
-                    "namespace": ["pages", "sections", "image_caption", "caption"]
+                    "namespace": ["pages", "sections", "image_caption", "caption"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "emphasized",
                     "label": "Emphasized",
-                    "namespace": ["pages", "sections", "image_caption", "emphasized"]
+                    "namespace": ["pages", "sections", "image_caption", "emphasized"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "fullwidth",
                     "label": "Fullwidth",
-                    "namespace": ["pages", "sections", "image_caption", "fullwidth"]
+                    "namespace": ["pages", "sections", "image_caption", "fullwidth"],
+                    "searchable": true
                   }
                 ],
                 "label": "Image Caption",
@@ -1260,25 +1493,29 @@
                     "name": "background_color",
                     "label": "Background Color",
                     "ui": { "component": "color" },
-                    "namespace": ["pages", "sections", "featured_section", "background_color"]
+                    "namespace": ["pages", "sections", "featured_section", "background_color"],
+                    "searchable": true
                   },
                   {
                     "type": "boolean",
                     "name": "image_as_background",
                     "label": "Image As Background",
-                    "namespace": ["pages", "sections", "featured_section", "image_as_background"]
+                    "namespace": ["pages", "sections", "featured_section", "image_as_background"],
+                    "searchable": true
                   },
                   {
                     "type": "image",
                     "name": "image",
                     "label": "Image",
-                    "namespace": ["pages", "sections", "featured_section", "image"]
+                    "namespace": ["pages", "sections", "featured_section", "image"],
+                    "searchable": false
                   },
                   {
                     "type": "string",
                     "name": "alt_text",
                     "label": "Alt Text",
-                    "namespace": ["pages", "sections", "featured_section", "alt_text"]
+                    "namespace": ["pages", "sections", "featured_section", "alt_text"],
+                    "searchable": true
                   },
                   {
                     "type": "object",
@@ -1439,10 +1676,10 @@
                       {
                         "fields": [
                           {
-                            "type": "string",
+                            "type": "rich-text",
                             "name": "text",
                             "label": "Text",
-                            "ui": { "component": "textarea" },
+                            "ui": { "component": "rich-text" },
                             "namespace": ["pages", "sections", "featured_section", "sections", "text", "text"]
                           }
                         ],
@@ -1451,7 +1688,8 @@
                         "namespace": ["pages", "sections", "featured_section", "sections", "text"]
                       }
                     ],
-                    "namespace": ["pages", "sections", "featured_section", "sections"]
+                    "namespace": ["pages", "sections", "featured_section", "sections"],
+                    "searchable": true
                   }
                 ],
                 "label": "Featured Section",
@@ -1460,7 +1698,8 @@
                 "namespace": ["pages", "sections", "featured_section"]
               }
             ],
-            "namespace": ["pages", "sections"]
+            "namespace": ["pages", "sections"],
+            "searchable": true
           }
         ],
         "namespace": ["pages"]
@@ -1479,20 +1718,34 @@
             "description": "This is the markdown body",
             "isBody": true,
             "namespace": ["posts", "body"],
+            "searchable": true,
             "parser": { "type": "mdx" }
           },
-          { "type": "boolean", "name": "published", "label": "Published", "namespace": ["posts", "published"] },
+          {
+            "type": "boolean",
+            "name": "published",
+            "label": "Published",
+            "namespace": ["posts", "published"],
+            "searchable": true
+          },
           {
             "type": "object",
             "name": "seo",
             "label": "SEO",
             "fields": [
-              { "type": "string", "name": "title", "label": "Title", "namespace": ["posts", "seo", "title"] },
+              {
+                "type": "string",
+                "name": "title",
+                "label": "Title",
+                "namespace": ["posts", "seo", "title"],
+                "searchable": true
+              },
               {
                 "type": "string",
                 "name": "description",
                 "label": "Description",
-                "namespace": ["posts", "seo", "description"]
+                "namespace": ["posts", "seo", "description"],
+                "searchable": true
               },
               {
                 "type": "string",
@@ -1500,31 +1753,59 @@
                 "label": "Keywords",
                 "list": true,
                 "ui": { "component": "tags" },
-                "namespace": ["posts", "seo", "keywords"]
+                "namespace": ["posts", "seo", "keywords"],
+                "searchable": true
               },
-              { "type": "image", "name": "image", "label": "Image", "namespace": ["posts", "seo", "image"] },
-              { "type": "string", "name": "alt_text", "label": "Alt Text", "namespace": ["posts", "seo", "alt_text"] }
+              {
+                "type": "image",
+                "name": "image",
+                "label": "Image",
+                "namespace": ["posts", "seo", "image"],
+                "searchable": false
+              },
+              {
+                "type": "string",
+                "name": "alt_text",
+                "label": "Alt Text",
+                "namespace": ["posts", "seo", "alt_text"],
+                "searchable": true
+              }
             ],
-            "namespace": ["posts", "seo"]
+            "namespace": ["posts", "seo"],
+            "searchable": true
           },
-          { "type": "string", "name": "title", "label": "Title", "namespace": ["posts", "title"] },
-          { "type": "string", "name": "description", "label": "Description", "namespace": ["posts", "description"] },
-          { "type": "datetime", "name": "date", "label": "Date", "namespace": ["posts", "date"] },
-          { "type": "string", "name": "slug", "label": "Slug", "namespace": ["posts", "slug"] },
+          { "type": "string", "name": "title", "label": "Title", "namespace": ["posts", "title"], "searchable": true },
+          {
+            "type": "string",
+            "name": "description",
+            "label": "Description",
+            "namespace": ["posts", "description"],
+            "searchable": true
+          },
+          { "type": "datetime", "name": "date", "label": "Date", "namespace": ["posts", "date"], "searchable": true },
+          { "type": "string", "name": "slug", "label": "Slug", "namespace": ["posts", "slug"], "searchable": true },
           {
             "type": "image",
             "name": "featured_image",
             "label": "Featured Image",
-            "namespace": ["posts", "featured_image"]
+            "namespace": ["posts", "featured_image"],
+            "searchable": false
           },
-          { "type": "string", "name": "alt_text", "label": "Alt Text", "namespace": ["posts", "alt_text"] },
+          {
+            "type": "string",
+            "name": "alt_text",
+            "label": "Alt Text",
+            "namespace": ["posts", "alt_text"],
+            "searchable": true
+          },
           {
             "type": "string",
             "name": "keywords",
             "label": "Keywords",
             "list": true,
             "ui": { "component": "tags" },
-            "namespace": ["posts", "keywords"]
+            "namespace": ["posts", "keywords"],
+            "searchable": true
           }
         ],
         "namespace": ["posts"]
@@ -1542,7 +1823,8 @@
             "label": "Dummy field",
             "type": "string",
             "description": "This is a dummy field, please replace it with the fields you want to edit. See https://tina.io/docs/schema/ for more info",
-            "namespace": ["site_metadata", "dummy"]
+            "namespace": ["site_metadata", "dummy"],
+            "searchable": true
           }
         ],
         "namespace": ["site_metadata"]
@@ -1560,7 +1842,8 @@
             "label": "Dummy field",
             "type": "string",
             "description": "This is a dummy field, please replace it with the fields you want to edit. See https://tina.io/docs/schema/ for more info",
-            "namespace": ["section_types", "dummy"]
+            "namespace": ["section_types", "dummy"],
+            "searchable": true
           }
         ],
         "namespace": ["section_types"]
@@ -2939,7 +3222,7 @@
             "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "text" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -3106,7 +3389,7 @@
             "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "text" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -3386,12 +3669,33 @@
       },
       {
         "kind": "InputObjectTypeDefinition",
+        "name": { "kind": "Name", "value": "RichTextFilter" },
+        "fields": [
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "startsWith" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "eq" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+          },
+          {
+            "kind": "InputValueDefinition",
+            "name": { "kind": "Name", "value": "exists" },
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
+          }
+        ]
+      },
+      {
+        "kind": "InputObjectTypeDefinition",
         "name": { "kind": "Name", "value": "HomeSectionsTextFilter" },
         "fields": [
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
           }
         ]
       },
@@ -3545,7 +3849,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
           }
         ]
       },
@@ -3807,7 +4111,7 @@
             "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "text" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -3977,7 +4281,7 @@
             "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "text" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -4178,7 +4482,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
           }
         ]
       },
@@ -4319,7 +4623,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
           }
         ]
       },
@@ -4582,7 +4886,7 @@
             "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "text" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -4749,7 +5053,7 @@
             "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "text" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -4944,7 +5248,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
           }
         ]
       },
@@ -5082,7 +5386,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
           }
         ]
       },
@@ -5734,7 +6038,7 @@
             "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "text" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -5901,7 +6205,7 @@
             "kind": "FieldDefinition",
             "name": { "kind": "Name", "value": "text" },
             "arguments": [],
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -6102,7 +6406,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
           }
         ]
       },
@@ -6240,7 +6544,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "StringFilter" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "RichTextFilter" } }
           }
         ]
       },
@@ -6570,27 +6874,6 @@
               "kind": "NonNullType",
               "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
             }
-          }
-        ]
-      },
-      {
-        "kind": "InputObjectTypeDefinition",
-        "name": { "kind": "Name", "value": "RichTextFilter" },
-        "fields": [
-          {
-            "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "startsWith" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
-          },
-          {
-            "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "eq" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
-          },
-          {
-            "kind": "InputValueDefinition",
-            "name": { "kind": "Name", "value": "exists" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "Boolean" } }
           }
         ]
       },
@@ -7781,7 +8064,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -7919,7 +8202,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -8115,7 +8398,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -8256,7 +8539,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -8453,7 +8736,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -8594,7 +8877,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -8889,7 +9172,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },
@@ -9030,7 +9313,7 @@
           {
             "kind": "InputValueDefinition",
             "name": { "kind": "Name", "value": "text" },
-            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "String" } }
+            "type": { "kind": "NamedType", "name": { "kind": "Name", "value": "JSON" } }
           }
         ]
       },

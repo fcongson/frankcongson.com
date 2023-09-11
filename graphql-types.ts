@@ -698,7 +698,6 @@ export type PagesJson = Node & {
   sections?: Maybe<Array<Maybe<PagesJsonSections>>>
   seo?: Maybe<PagesJsonSeo>
   slug?: Maybe<Scalars['String']>
-  _template?: Maybe<Scalars['String']>
 }
 
 export type PagesJsonHero_Image = {
@@ -707,8 +706,8 @@ export type PagesJsonHero_Image = {
 }
 
 export type PagesJsonSections = {
-  template?: Maybe<Scalars['String']>
   text?: Maybe<Scalars['String']>
+  template?: Maybe<Scalars['String']>
 }
 
 export type PagesJsonSeo = {
@@ -1271,7 +1270,6 @@ export type QueryPagesJsonArgs = {
   sections?: InputMaybe<PagesJsonSectionsFilterListInput>
   seo?: InputMaybe<PagesJsonSeoFilterInput>
   slug?: InputMaybe<StringQueryOperatorInput>
-  _template?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type QueryAllPagesJsonArgs = {
@@ -1593,7 +1591,6 @@ export type PagesJsonFilterInput = {
   sections?: InputMaybe<PagesJsonSectionsFilterListInput>
   seo?: InputMaybe<PagesJsonSeoFilterInput>
   slug?: InputMaybe<StringQueryOperatorInput>
-  _template?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type PagesJsonHero_ImageFilterInput = {
@@ -1606,8 +1603,8 @@ export type PagesJsonSectionsFilterListInput = {
 }
 
 export type PagesJsonSectionsFilterInput = {
-  template?: InputMaybe<StringQueryOperatorInput>
   text?: InputMaybe<StringQueryOperatorInput>
+  template?: InputMaybe<StringQueryOperatorInput>
 }
 
 export type PagesJsonSeoFilterInput = {
@@ -2089,7 +2086,6 @@ export type PagesJsonFieldSelector = {
   sections?: InputMaybe<PagesJsonSectionsFieldSelector>
   seo?: InputMaybe<PagesJsonSeoFieldSelector>
   slug?: InputMaybe<FieldSelectorEnum>
-  _template?: InputMaybe<FieldSelectorEnum>
 }
 
 export type PagesJsonHero_ImageFieldSelector = {
@@ -2098,8 +2094,8 @@ export type PagesJsonHero_ImageFieldSelector = {
 }
 
 export type PagesJsonSectionsFieldSelector = {
-  template?: InputMaybe<FieldSelectorEnum>
   text?: InputMaybe<FieldSelectorEnum>
+  template?: InputMaybe<FieldSelectorEnum>
 }
 
 export type PagesJsonSeoFieldSelector = {
@@ -2547,7 +2543,6 @@ export type PagesJsonSortInput = {
   sections?: InputMaybe<PagesJsonSectionsSortInput>
   seo?: InputMaybe<PagesJsonSeoSortInput>
   slug?: InputMaybe<SortOrderEnum>
-  _template?: InputMaybe<SortOrderEnum>
 }
 
 export type PagesJsonHero_ImageSortInput = {
@@ -2556,8 +2551,8 @@ export type PagesJsonHero_ImageSortInput = {
 }
 
 export type PagesJsonSectionsSortInput = {
-  template?: InputMaybe<SortOrderEnum>
   text?: InputMaybe<SortOrderEnum>
+  template?: InputMaybe<SortOrderEnum>
 }
 
 export type PagesJsonSeoSortInput = {

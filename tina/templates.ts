@@ -472,11 +472,11 @@ export function seoFields() {
 export function textFields() {
   return [
     {
-      type: 'string',
+      type: 'rich-text',
       name: 'text',
       label: 'Text',
       ui: {
-        component: 'textarea',
+        component: 'rich-text',
       },
     },
   ] as TinaField[]
