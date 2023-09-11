@@ -9,4 +9,8 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'silkamono';
     src: url('/fonts/silkamono-regular-webfont.woff2') format('woff2');
   }
+
+  html {
+    background-color: var(--lagom-semantic-color-bg-default);
+  }
 `
