@@ -1,0 +1,93 @@
+---
+seo:
+  image: '../../images/charlesdeluvio-wn7dOzUh3Rs-unsplash.jpg'
+  alt_text: 'A photo of a presenter speaking to a slide about imposter syndrome - Photo by @charlesdeluvio on Unsplash (unsplash.com/@charlesdeluvio)'
+keywords:
+  - design tokens
+  - design system
+  - conference talk
+  - presentation abstract
+published: true
+title: 'Design Tokens: A Presentation Abstract'
+description: 'Design Tokens Demystified: Scaling how we work and the value we output'
+date: 2023-09-11
+slug: design-tokens-a-presentation-abstract
+featured_image: '../../images/charlesdeluvio-wn7dOzUh3Rs-unsplash.jpg'
+alt_text: 'A photo of a presenter speaking to a slide about imposter syndrome - Photo by @charlesdeluvio on Unsplash (unsplash.com/@charlesdeluvio)'
+image_caption: 'Photo by @charlesdeluvio on Unsplash (unsplash.com/@charlesdeluvio)'
+excerpt: '"What are Design Tokens?" It''s a common question I get asked. What it is at its core is quite simple. Design tokens provide codified design decisions. They are variables that represent a design choice. Why it''s valuable has layers...'
+---
+
+<Section>
+
+_Last year, I spent a bit of time [forming a conference talk](https://frankcongson.com/blog/forming-a-conference-talk/). My submission didn't get accepted at that time. This year, I'll be giving it another attempt. This is the abstract that I'll be submitting._
+
+</Section>
+
+<Section>
+
+## Design Tokens Demystified: Scaling how we work and the value we output
+
+**_"What are Design Tokens?"_** It's a common question I get asked. What it is at its core is quite simple.
+
+> Design tokens provide codified design decisions. They are variables that represent a design choice.
+
+Why it's valuable has layers. Through these layers, the following questions emerge:
+
+1. Why design tokens? Why choose them over other variables?
+2. Will they provide us with much benefit?
+3. How do we practically implement design tokens?
+
+These are the questions I'll be journeying through this presentation. To highlight the various layers mentioned above, here's a quick summary.
+
+</Section>
+
+<Section>
+
+### Why design tokens? Why choose them over other variables?
+
+Design tokens provide appropriate abstractions between the usage and the value.
+
+Let's say we want a green button. We could set the button's colour to the variable `green`. But there's more nuance to that design decision. We want a button that uses our brand's primary colour.
+
+At the core, we want a green button. But arriving at that choice stems from the following:
+
+```
+--brand-color: green;
+--primary-color: var(--brand-color);
+--button-color: var(--primary-color);
+```
+
+This translates to the following design decisions:
+
+1. Green is our brand color
+2. Our brand color is our primary color
+3. Our primary color is our button color
+
+This abstraction leads to more efficient scaling and a shortened time horizon for getting value in front of users.
+
+</Section>
+
+<Section>
+
+### Will they provide us with much benefit?
+
+Only if you think a shortened time horizon for getting value in front of users is much benefit.
+
+Several things in play get value shipped in a shorter amount of time.
+
+1. Aligning how we abstract our variables, i.e., using design tokens, allows us to communicate in a common language.
+2. A common language will allow us to improve cross-functional collaboration across the seams.
+3. The strong collaboration then leads to a more cohesive product.
+
+Not only will we deliver value faster, but we will also deliver better value through a more cohesive product.
+
+</Section>
+
+<Section>
+
+### How do we practically implement design tokens?
+
+The previous layers were the appetiser. How we do this is the main course. We'll explore this layer more in the presentation.
+
+</Section>
