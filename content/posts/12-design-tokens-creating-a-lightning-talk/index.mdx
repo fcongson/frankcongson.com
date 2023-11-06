@@ -1,0 +1,110 @@
+---
+seo:
+  image: '../../images/davide-ragusa-gcDwzUGuUoI-unsplash.jpg'
+  alt_text: 'A photo of an audience - Photo by @davideragusa on Unsplash (unsplash.com/@davideragusa)'
+keywords:
+  - design tokens
+  - design system
+  - conference talk
+  - lightning talk
+  - engineer
+  - architect
+published: true
+title: 'Design Tokens: Creating A Lightning Talk'
+description: 'Understanding the value of design tokens'
+date: 2023-11-06
+slug: design-tokens-creating-a-lightning-talk
+featured_image: '../../images/davide-ragusa-gcDwzUGuUoI-unsplash.jpg'
+alt_text: 'A photo of an audience - Photo by @davideragusa on Unsplash (unsplash.com/@davideragusa)'
+image_caption: 'Photo by @davideragusa on Unsplash (unsplash.com/@davideragusa)'
+excerpt: 'My presentation abstract was selected! Now, I have to write a 10-minute lightning talk demystifying design tokens. Seeing as I only have 10 minutes, I need to make sure I get the right content across. My goal for this talk is to help the audience understand the value design tokens can provide.'
+---
+
+<Section>
+My [presentation abstract](https://frankcongson.com/blog/design-tokens-a-presentation-abstract/) was selected! Now, I have to write a 10-minute lightning talk demystifying design tokens. Seeing as I only have 10 minutes, I need to make sure I get the right content across. My goal for this talk is to help the audience understand the value design tokens can provide. After all, the tagline of my presentation is "Scaling how we work and the value we output". The best way to do this is to **relate the content to the mental models of the audience**.
+
+> "XCITE is an internal conference for Architects and Engineers to promote the work they are doing at Xero. The target audience for XCITE is Architects and Engineers."
+
+Knowing the target demographic, I will speak to an audience that leans full stack and backend rather than frontend. There's an outcome of using design tokens that create a cohesive experience within a product. But that may be the wrong approach to show value to the audience. Beneath the surface, the implementation of design tokens is similar to a domain-driven, distributed system, services with clear, bounded context. This aligns more with the language of the backend architect.
+
+Let me explain 👇.
+
+## Cohesion in design
+
+Most will understand the value of cohesion in design. The experience delivered to the end user flows smoothly from one area of the product to the next. However, the impact of the developer is a step removed from creating design cohesion. The developer acts more as a vehicle to transport the design decisions to the end user. Delivery is critical in the process. Without it, the designs will never get to the end user. Let's explore how we can scale delivery efficiency.
+
+## Defining responsibilities in cohesion
+
+Design tokens represent design decisions. Every decision belongs to a subset responsible for a specific area of design. Some of these responsibilities include colour, spacing, and typography. Each responsibility has a bounded context that defines a token set's specialised domain. Colour tokens are responsible for colour decisions and are very good at those decisions. Same with spacing and typography. Each has its specialisation.
+
+**Defined responsibilities are similar to domain-driven design and distributed systems. Each service within a distributed system has a specialised responsibility within the domain.** In e-commerce, the invoice service is responsible for data that is different from the responsibility of the inventory service. Each service on its own doesn't create a meaningful product. The combined use of several services within the domain is how value we create value.
+
+In the distributed system analogy, the colour token set is a "service" with the specialised responsibility of providing colour data. The design decisions that, when combined with other design token "services", will create valuable cohesion in design. Where services in a distributed system provide the "flow" through features, design token sets provide the "feel" through those features.
+
+</Section>
+
+<ImageCaption
+  image='images/design-tokens-lightning-talk.jpg'
+  altText='inventory + invoice = checkout flow (top), colour + typography = checkout feel (bottom)'
+  caption='inventory + invoice = checkout flow (top), colour + typography = checkout feel (bottom)'
+  emphasized
+/>
+
+<Section>
+
+## Distributing responsibilities
+
+Distribution happens through **JSON. That's all it is.** Design tokens communicate across the different platforms through JSON. The Design Token Community is even [drafting a spec](https://tr.designtokens.org/format/)!
+
+```
+// Example
+
+{
+  "brand": {
+    "$description": "Design tokens from our brand guidelines",
+    "color": {
+      "$description": "Our brand's primary colour palette",
+      "acid green": {
+        "$value": "#00ff66"
+      },
+      "hot pink": {
+        "$value": "#dd22cc"
+      }
+    }
+  }
+}
+```
+
+Communicating through JSON already aligns with how domain services communicate with other domain services. Similar to REST or GraphQL 🙌.
+
+## Consuming value
+
+We have already created value by defining specialised responsibilities within each bounded context. How do we consume that value? Not every platform can make use of the design tokens in JSON format. Translation occurs to support specific needs. Enter [Style Dictionary Transforms](https://amzn.github.io/style-dictionary/#/transforms?id=transforms).
+
+> "Transforms are functions that modify a [token](https://amzn.github.io/style-dictionary/#/tokens) so that it can be understood by a specific platform. It can modify the name, value, or attributes of a token - enabling each platform to use the design token in different ways."
+
+Rather than figuring out what to do with design tokens presented as JSON, [Style Dictionary](https://amzn.github.io/style-dictionary/#/) will output a data set that is platform-specific. Web will have a format different from iOS, which will be different from Android. And when the next hot thing 🔥 comes out, it can have its own as well!
+
+</Section>
+
+<ImageCaption
+  image='images/design-tokens-style-dictionary.jpeg'
+  altText='A flow chart showing design-tokens.json being input into Style Dictionary and creating several outputs including Web, iOS, Android, and the next hot thing'
+  caption='Image source: medium.com/specifyapp/specify-vs-style-dictionary-e987c2d46907'
+/>
+
+<Section>
+
+## Scaling value
+
+How do we use all this to scale the value delivered to the end user? I started by saying that cohesion in design is the value. We can get more of this value in front of the end user through systems. Design tokens as a distributed system. Responsible for being centralised sources of design decisions. Communicable through domains.
+
+Teams no longer need to redefine design decisions. Strong defaults exist within the design token system. It will also provide cohesive alternatives when the experience needs to push beyond the default.
+
+Having access to design decisions allows teams the space to focus on their users and build the features that elevate their experience of the product. They can **focus on the "flow" and leave the "feel" to the design token system**.
+
+## Does this land?
+
+I may have gone too far in the direction of the backend architect's mental model. I may need to scale back to reach more of the audience. There's a few weeks before my scheduled talk. I'll revisit my thinking and adjust when I write my presentation 🤔.
+
+</Section>
