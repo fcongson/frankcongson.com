@@ -6,7 +6,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const PostSummaryContainer = styled.div`
-  ${Container} {
+  .lagom-container {
     max-width: 736px;
   }
 

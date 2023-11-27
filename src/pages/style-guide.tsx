@@ -8,10 +8,11 @@ import {
   PageHeader,
   Quote,
   Section,
+  SectionHeader,
+  useTheme,
 } from '@fcongson/lagom-ui'
 import { BlogPosts } from 'components/BlogPosts'
 import { Layout } from 'components/layouts'
-import { theme } from 'components/styles'
 import { graphql } from 'gatsby'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Query } from 'graphql-types'
@@ -47,14 +48,18 @@ export const STYLE_GUIDE_QUERY = graphql`
 `
 
 const Container_StyleGuide = styled(Container)`
-  margin: 8rem auto;
+  /* target component classname to increase specificity */
+  &.lagom-container {
+    margin: 8rem auto;
 
-  ${(props) => props.theme.mediaQueries.small} {
-    margin: 4rem auto;
+    ${(props) => props.theme.mediaQueries.small} {
+      margin: 4rem auto;
+    }
   }
 `
 
 const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
+  const theme = useTheme()
   const imageSharp = data.file
   const image = 'sample-image.jpg'
   const altText = 'Sample image'
@@ -103,7 +108,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Typography */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction header='Typography.' text='Typography styles' actionLink='#typography' actionText='↓' />
           </FeaturedSection>
@@ -148,7 +153,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Page Header */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Page Header.'
@@ -165,9 +170,28 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
         </Container>
       </Section>
 
+      {/* Section Header */}
+      <Section>
+        <Container_StyleGuide theme={theme}>
+          <FeaturedSection>
+            <CallToAction
+              header='Section Header.'
+              text={['Section header using the ', <code>{'<SectionHeader />'}</code>, ' component.']}
+              actionLink='#section-header'
+              actionText='↓'
+            />
+          </FeaturedSection>
+        </Container_StyleGuide>
+      </Section>
+      <Section>
+        <Container id='section-header'>
+          <SectionHeader>Lorem Ipsum</SectionHeader>
+        </Container>
+      </Section>
+
       {/* Quote */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Quote.'
@@ -243,7 +267,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Layout */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Layout.'
@@ -267,14 +291,14 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
           </h2>
           <p>
             The <code>{'<Section />'}</code> component creates a full width wrapper around body content with a max width
-            of <code>{`${theme.sizes.maxWidthSection}`}</code>.
+            of <code>{`${theme.sizes?.maxWidthSection}`}</code>.
           </p>
           <h2>
             <code>{'<Container />'}</code>
           </h2>
           <p>
             The <code>{'<Container />'}</code> component creates a responsive wrapper around body content with a max
-            width of <code>{`${theme.sizes.maxWidthContainer}`}</code>. This component is used within the{' '}
+            width of <code>{`${theme.sizes?.maxWidthContainer}`}</code>. This component is used within the{' '}
             <code>{'<Section />'}</code> component.
           </p>
         </Container>
@@ -282,7 +306,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Image Caption */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Image Caption.'
@@ -346,7 +370,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Featured Section */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Featured Section.'
@@ -376,11 +400,29 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
             objectPosition='center center'
           />
         }
-        imageAsBackground>
+        imageAsBackground
+      >
         <p>Image Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </FeaturedSection>
+      <FeaturedSection
+        image={
+          <GatsbyImage
+            image={imageSharp?.childImageSharp?.gatsbyImageData}
+            alt={altText}
+            style={{ height: '100%' }}
+            objectPosition='center center'
+          />
+        }
+        imageAsBackground
+        framed
+      >
+        <p>Image Background Framed. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
       <FeaturedSection>
         <p>Color Background. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </FeaturedSection>
+      <FeaturedSection framed>
+        <p>Color Background Framed. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
       </FeaturedSection>
       <FeaturedSection backgroundColor='var(--lagom-semantic-color-accent-bg)'>
         <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={altText} />
@@ -397,7 +439,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Call To Action */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Call To Action.'
@@ -425,7 +467,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Hero */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Hero.'
@@ -450,13 +492,14 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
             alt={'Alt text'}
             style={{ height: '100%' }}
           />
-        }>
+        }
+      >
         <PageHeader>Lorem Ipsum</PageHeader>
       </Hero>
 
       {/* Blog Posts */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Blog Posts.'
@@ -479,7 +522,7 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
 
       {/* Link Button */}
       <Section>
-        <Container_StyleGuide>
+        <Container_StyleGuide theme={theme}>
           <FeaturedSection>
             <CallToAction
               header='Link Button.'

@@ -1,4 +1,4 @@
-import { Container, Hero, Section } from '@fcongson/lagom-ui'
+import { Container, Hero, Section, useTheme } from '@fcongson/lagom-ui'
 import { ForestrySections } from 'components/forestry'
 import { Layout } from 'components/layouts'
 import home from 'content/data/home.json'
@@ -90,6 +90,8 @@ const Container_HomeContent = styled(Container)`
 `
 
 const Home: React.FunctionComponent = () => {
+  const theme = useTheme()
+
   const { ref: imageRef, inView: imageInView } = useInView({ threshold: 0.5, triggerOnce: true })
   const { ref: textRef, inView: textInView } = useInView({ threshold: 0.5, triggerOnce: true })
 
@@ -115,7 +117,7 @@ const Home: React.FunctionComponent = () => {
         }
       />
       <Section>
-        <Container_HomeContent>
+        <Container_HomeContent theme={theme}>
           <motion.div
             className='text'
             ref={textRef}
@@ -123,7 +125,8 @@ const Home: React.FunctionComponent = () => {
             animate={textInView ? 'visible' : 'hidden'}
             variants={{
               visible: { transition: { staggerChildren: 0.5 } },
-            }}>
+            }}
+          >
             <motion.h1 variants={textMotion}>{home.main_content.header}</motion.h1>
             <motion.p variants={textMotion}>{home.main_content.text}</motion.p>
           </motion.div>
@@ -136,7 +139,8 @@ const Home: React.FunctionComponent = () => {
               variants={{
                 visible: { translateY: 0, opacity: 1, transition: { ease: 'linear', duration: 0.9 } },
                 hidden: { translateY: 100, opacity: 0 },
-              }}>
+              }}
+            >
               <GatsbyImage
                 image={mainContentImage.childImageSharp?.gatsbyImageData}
                 alt={home.main_content.alt_text}

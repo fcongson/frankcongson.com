@@ -1,12 +1,12 @@
-import { ThemeProvider as LagomThemeProvider } from '@fcongson/lagom-ui'
+import { ThemeProvider } from '@fcongson/lagom-ui'
 import * as Sentry from '@sentry/browser'
 import { SEO as Seo } from 'components/SEO'
-import { GlobalStyle, theme } from 'components/styles'
+import { GlobalStyle } from 'components/styles'
 import 'components/styles/font.css'
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
-import styled, { ThemeProvider } from 'styled-components'
+import styled from 'styled-components'
 import 'stylesheets/resetr.css'
 import { Footer } from './Footer'
 import { Header } from './Header'
@@ -63,27 +63,26 @@ export const Layout: React.FunctionComponent<{
         <link
           href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Domine:400,700&display=swap'
           rel='stylesheet'
-          type='text/css'></link>
+          type='text/css'
+        ></link>
       </Helmet>
       <Seo />
-      <LagomThemeProvider theme={theme}>
-        <ThemeProvider theme={theme}>
-          <GlobalStyle />
-          <Header overlay={overlayHeader} backgroundColor={headerBackgroundColor} />
-          <Main>{children}</Main>
-          <Footer
-            social={{
-              twitterUrl,
-              facebookUrl,
-              instagramUrl,
-              youtubeUrl,
-              linkedinUrl,
-              githubUrl,
-              devUrl,
-            }}
-          />
-        </ThemeProvider>
-      </LagomThemeProvider>
+      <ThemeProvider>
+        <GlobalStyle />
+        <Header overlay={overlayHeader} backgroundColor={headerBackgroundColor} />
+        <Main>{children}</Main>
+        <Footer
+          social={{
+            twitterUrl,
+            facebookUrl,
+            instagramUrl,
+            youtubeUrl,
+            linkedinUrl,
+            githubUrl,
+            devUrl,
+          }}
+        />
+      </ThemeProvider>
     </>
   )
 }

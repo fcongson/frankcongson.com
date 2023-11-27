@@ -1,4 +1,4 @@
-import { Container, Hero, PageHeader } from '@fcongson/lagom-ui'
+import { Hero, PageHeader, useTheme } from '@fcongson/lagom-ui'
 import { ForestrySections } from 'components/forestry'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
@@ -9,12 +9,13 @@ import styled from 'styled-components'
 import { useImage } from 'utils/useImage'
 
 const AboutContainer = styled.div`
-  ${Container} {
+  .lagom-container {
     max-width: ${(props) => props.theme.sizes.maxWidthContent};
   }
 `
 
 const About: React.FunctionComponent = () => {
+  const theme = useTheme()
   const getImage = useImage()
   const heroImage = getImage(about.hero_image.image)
   const seoImage = getImage(about.seo.image)
@@ -37,10 +38,11 @@ const About: React.FunctionComponent = () => {
             alt={about.hero_image.alt_text}
             style={{ height: '100%' }}
           />
-        }>
+        }
+      >
         <PageHeader>{about.page_header}</PageHeader>
       </Hero>
-      <AboutContainer>
+      <AboutContainer theme={theme}>
         <ForestrySections sections={about.sections} />
       </AboutContainer>
     </Layout>

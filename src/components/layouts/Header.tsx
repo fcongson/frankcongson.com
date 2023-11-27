@@ -1,4 +1,4 @@
-import { Container, Section } from '@fcongson/lagom-ui'
+import { Container, Section, useTheme } from '@fcongson/lagom-ui'
 import logo from 'content/images/logo.svg'
 import { Link } from 'gatsby'
 import React, { useState } from 'react'
@@ -18,12 +18,12 @@ const HeaderStyles = styled.header<{ overlay: boolean; backgroundColor?: string 
     }
   }
 
-  ${Section} {
+  .lagom-section {
     background-color: ${(props) => props.backgroundColor};
     backdrop-filter: blur(8px);
   }
 
-  ${Container} {
+  .lagom-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -52,7 +52,9 @@ const NavigationMenu = styled.nav<{ overlay: boolean; open: boolean }>`
     width: 100%;
     height: 0;
     overflow: hidden;
-    transition: height 200ms ease-in-out, padding-bottom 200ms ease-in-out;
+    transition:
+      height 200ms ease-in-out,
+      padding-bottom 200ms ease-in-out;
 
     ${(props) =>
       props.open &&
@@ -103,7 +105,9 @@ const NavigationToggle = styled.button<{ open: boolean }>`
     width: 32px;
     height: 2px;
     background-color: var(--lagom-semantic-color-fg-default);
-    transition: transform 100ms ease-in-out 0ms, top 100ms ease-in-out 100ms;
+    transition:
+      transform 100ms ease-in-out 0ms,
+      top 100ms ease-in-out 100ms;
 
     &.top {
       top: 1px;
@@ -144,9 +148,10 @@ export const Header: React.FunctionComponent<{ overlay: boolean; backgroundColor
   overlay,
   backgroundColor,
 }) => {
+  const theme = useTheme()
   const [open, setOpen] = useState(false)
   return (
-    <HeaderStyles overlay={overlay} backgroundColor={backgroundColor}>
+    <HeaderStyles theme={theme} className='header' overlay={overlay} backgroundColor={backgroundColor}>
       <Section>
         <Container>
           <div className='logo-container'>
@@ -155,13 +160,15 @@ export const Header: React.FunctionComponent<{ overlay: boolean; backgroundColor
             </Link>
           </div>
           <NavigationToggle
+            theme={theme}
             aria-label={`${open ? 'Close' : 'Open'} navigation menu`}
             onClick={() => setOpen(!open)}
-            open={open}>
+            open={open}
+          >
             <div className='toggle-line top' />
             <div className='toggle-line bottom' />
           </NavigationToggle>
-          <NavigationMenu overlay={overlay} open={open}>
+          <NavigationMenu theme={theme} overlay={overlay} open={open}>
             <Link className='navigation-link' to='/'>
               Home
             </Link>

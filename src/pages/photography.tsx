@@ -1,4 +1,4 @@
-import { Container, Hero, PageHeader } from '@fcongson/lagom-ui'
+import { Container, Hero, PageHeader, useTheme } from '@fcongson/lagom-ui'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
 import photography from 'content/data/photography.json'
@@ -20,13 +20,14 @@ const PhotographyImage = styled(motion.div)<{ label: string }>`
   div.image {
     width: 80vw;
 
-    ::after {
+    &::after {
       content: '${(props) => props.label}';
     }
   }
 `
 
 const Photography: React.FunctionComponent = () => {
+  const theme = useTheme()
   const getImage = useImage()
   const heroImage = getImage(photography.hero_image.image)
   const seoImage = getImage(photography.seo.image)
@@ -50,7 +51,8 @@ const Photography: React.FunctionComponent = () => {
             alt={photography.hero_image.alt_text}
             style={{ height: '100%' }}
           />
-        }>
+        }
+      >
         <PageHeader>{photography.page_header}</PageHeader>
       </Hero>
       {images.map(({ image, alt_text, caption }, index) => {
@@ -59,6 +61,7 @@ const Photography: React.FunctionComponent = () => {
         return (
           <PhotographyImage
             key={image}
+            theme={theme}
             label={`${index + 1} / ${totalImages}`}
             ref={imageRef}
             initial='hidden'
@@ -66,8 +69,9 @@ const Photography: React.FunctionComponent = () => {
             variants={{
               visible: { translateY: 0, opacity: 1, transition: { ease: 'linear', duration: 0.5 } },
               hidden: { translateY: 100, opacity: 0 },
-            }}>
-            <Container display='flex' flexDirection='row'>
+            }}
+          >
+            <Container style={{ display: 'flex', flexDirection: 'row' }}>
               <div className='image'>
                 <GatsbyImage image={imageSharp?.childImageSharp?.gatsbyImageData} alt={alt_text} />
               </div>

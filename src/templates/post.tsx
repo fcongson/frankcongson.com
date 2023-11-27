@@ -1,4 +1,4 @@
-import { Container, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
+import { Container, ImageCaption, Quote, Section, useTheme } from '@fcongson/lagom-ui'
 import { MDXProvider } from '@mdx-js/react'
 import { Props } from '@mdx-js/react/lib'
 import { Layout } from 'components/layouts'
@@ -101,7 +101,7 @@ export const BLOG_POST_QUERY = graphql`
 const PostContent = styled.article`
   margin: 0 auto 0 auto;
 
-  ${Container} {
+  .lagom-container {
     max-width: ${(props) => props.theme.sizes.maxWidthContent};
   }
 `
@@ -139,7 +139,7 @@ const PostHeader = styled.header`
     }
   }
 
-  ${Container} {
+  .lagom-container {
     margin-bottom: 2rem;
   }
 
@@ -149,7 +149,7 @@ const PostHeader = styled.header`
 const PostFooter = styled.footer`
   background-color: var(--lagom-semantic-color-bg-muted);
 
-  ${Container} {
+  .lagom-container {
     padding-top: 8rem;
     padding-bottom: 8rem;
     max-width: ${(props) => props.theme.sizes.maxWidthContent};
@@ -170,6 +170,7 @@ const PostFooter = styled.footer`
 `
 
 const Post: React.FunctionComponent<{ data: Blog_PostQuery; children: any }> = ({ data, children }) => {
+  const theme = useTheme()
   const { title, description, keywords, slug, featured_image, alt_text, image_caption, seo } =
     data.mdx?.frontmatter ?? {}
 
@@ -185,8 +186,8 @@ const Post: React.FunctionComponent<{ data: Blog_PostQuery; children: any }> = (
         article
       />
       <ScrollProgress />
-      <PostContent>
-        <PostHeader>
+      <PostContent theme={theme}>
+        <PostHeader theme={theme}>
           <Section>
             <Container>
               <div className='back'>
@@ -205,7 +206,7 @@ const Post: React.FunctionComponent<{ data: Blog_PostQuery; children: any }> = (
           )}
         </PostHeader>
         {children ? <MDXProvider components={shortcodes}>{children}</MDXProvider> : null}
-        <PostFooter>
+        <PostFooter theme={theme}>
           <Section>
             <Container>
               <h3>

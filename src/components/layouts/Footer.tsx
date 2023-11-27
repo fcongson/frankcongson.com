@@ -1,16 +1,16 @@
-import { Container, Section } from '@fcongson/lagom-ui'
+import { Container, Section, useTheme } from '@fcongson/lagom-ui'
 import { faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import logo from 'content/images/logo-light.svg'
 import { Link } from 'gatsby'
 import React from 'react'
 import styled from 'styled-components'
-import { color, ColorProps, flexbox, FlexboxProps, typography, TypographyProps } from 'styled-system'
 
-const FooterStyles = styled.footer<ColorProps & TypographyProps & FlexboxProps>`
-  ${color}
-  ${typography}
-  ${flexbox}
+const FooterStyles = styled.footer`
+  background-color: var(--lagom-core-colors-black);
+  color: var(--lagom-core-colors-grey-lighter40);
+  text-align: center;
+  flex-shrink: 0;
 
   a {
     padding: 0;
@@ -20,7 +20,7 @@ const FooterStyles = styled.footer<ColorProps & TypographyProps & FlexboxProps>`
     }
   }
 
-  ${Container} {
+  .lagom-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -93,50 +93,46 @@ const FooterStyles = styled.footer<ColorProps & TypographyProps & FlexboxProps>`
   }
 `
 
-FooterStyles.defaultProps = {
-  bg: 'black',
-  color: 'greys.4',
-  textAlign: 'center',
-  flexShrink: 0,
+export const Footer: React.FunctionComponent<{ social: { [key: string]: string } }> = ({ social, ...restProps }) => {
+  const theme = useTheme()
+  return (
+    <FooterStyles theme={theme} className='footer' {...restProps}>
+      <Section>
+        <Container>
+          <Link to='/'>
+            <img className='footer-logo' src={logo} alt='Frank Congson logo' />
+          </Link>
+          <div className='footer-content'>
+            <div className='content-links'>
+              <Link to='/photography/'>Photography</Link>
+              <Link to='/about/'>About</Link>
+              <Link className='navigation-link' to='/blog/'>
+                Blog
+              </Link>
+              <Link to='/uses/'>Uses</Link>
+              <Link to='/style-guide/'>Style Guide</Link>
+            </div>
+            <div className='social-links'>
+              <a href={social.instagramUrl} aria-label='Instagram'>
+                <FontAwesomeIcon icon={faInstagram} />
+              </a>
+              <a href={social.twitterUrl} aria-label='Twitter'>
+                <FontAwesomeIcon icon={faTwitter} />
+              </a>
+              <a href={social.linkedinUrl} aria-label='LinkedIn'>
+                <FontAwesomeIcon icon={faLinkedinIn} />
+              </a>
+              <a href={social.githubUrl} aria-label='GitHub'>
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
+              <a href={social.devUrl} area-label='FrankCongson.dev'>
+                .dev
+              </a>
+            </div>
+            <small className='copyright'>Copyright © {new Date().getFullYear()} Frank Congson</small>
+          </div>
+        </Container>
+      </Section>
+    </FooterStyles>
+  )
 }
-
-export const Footer: React.FunctionComponent<{ social: { [key: string]: string } }> = ({ social, ...restProps }) => (
-  <FooterStyles {...restProps}>
-    <Section>
-      <Container>
-        <Link to='/'>
-          <img className='footer-logo' src={logo} alt='Frank Congson logo' />
-        </Link>
-        <div className='footer-content'>
-          <div className='content-links'>
-            <Link to='/photography/'>Photography</Link>
-            <Link to='/about/'>About</Link>
-            <Link className='navigation-link' to='/blog/'>
-              Blog
-            </Link>
-            <Link to='/uses/'>Uses</Link>
-            <Link to='/style-guide/'>Style Guide</Link>
-          </div>
-          <div className='social-links'>
-            <a href={social.instagramUrl} aria-label='Instagram'>
-              <FontAwesomeIcon icon={faInstagram} />
-            </a>
-            <a href={social.twitterUrl} aria-label='Twitter'>
-              <FontAwesomeIcon icon={faTwitter} />
-            </a>
-            <a href={social.linkedinUrl} aria-label='LinkedIn'>
-              <FontAwesomeIcon icon={faLinkedinIn} />
-            </a>
-            <a href={social.githubUrl} aria-label='GitHub'>
-              <FontAwesomeIcon icon={faGithub} />
-            </a>
-            <a href={social.devUrl} area-label='FrankCongson.dev'>
-              .dev
-            </a>
-          </div>
-          <small className='copyright'>Copyright © {new Date().getFullYear()} Frank Congson</small>
-        </div>
-      </Container>
-    </Section>
-  </FooterStyles>
-)

@@ -1,4 +1,4 @@
-import { Container, Hero, PageHeader, Section } from '@fcongson/lagom-ui'
+import { Container, Hero, PageHeader, Section, useTheme } from '@fcongson/lagom-ui'
 import { ForestrySection, ForestrySections } from 'components/forestry'
 import { Layout } from 'components/layouts'
 import { SEO as Seo } from 'components/SEO'
@@ -35,13 +35,14 @@ export const PAGE_QUERY = graphql`
 `
 
 const PageContent = styled.div`
-  ${Container} {
+  .lagom-container {
     max-width: ${(props) => props.theme.sizes.maxWidthContent};
   }
 `
 
 const Page: React.FunctionComponent<{ data: PageQuery }> = ({ data }) => {
   const { slug, seo, hero_image, page_header, sections } = data.pagesJson ?? {}
+  const theme = useTheme()
   const getImage = useImage()
   const heroImage = getImage(hero_image?.image ?? undefined)
   const seoImage = getImage(seo?.image ?? undefined)
@@ -64,11 +65,12 @@ const Page: React.FunctionComponent<{ data: PageQuery }> = ({ data }) => {
               alt={hero_image.alt_text ?? ''}
               style={{ height: '100%' }}
             />
-          }>
+          }
+        >
           <PageHeader>{page_header}</PageHeader>
         </Hero>
       )}
-      <PageContent>
+      <PageContent theme={theme}>
         {!hero_image && (
           <Section>
             <Container>
