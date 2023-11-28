@@ -1208,10 +1208,10 @@
   resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/0.16.0/20e45607b84a817381d36e5aac6b8d36eaee1a1e#20e45607b84a817381d36e5aac6b8d36eaee1a1e"
   integrity sha512-2/8OFKU58k5+5TO3o4X14QG8l/botzNuHagFVYed3jxslNkuzxICJs5TobnXDH9dTTz0G3kOZYwh1523SLwksQ==
 
-"@fcongson/lagom-ui@^0.23.0":
-  version "0.23.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.23.0/75d70f44bcb0d72ec84e44c7ebf65024d09e7a3e#75d70f44bcb0d72ec84e44c7ebf65024d09e7a3e"
-  integrity sha512-SDB55iAqYL8X+4DRkkD5zM1bnj1I3bVVbYB84CeeM7NKNmStTyLsxUWpM/VkOq2EhlcAq3o6w7ezTopwPDTCQA==
+"@fcongson/lagom-ui@^0.24.0":
+  version "0.24.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.24.0/1f94584d77e9767abc839d1c300c80a61140dcf0#1f94584d77e9767abc839d1c300c80a61140dcf0"
+  integrity sha512-EeJ2KtANab/sJTgveRiDhofaIf4jOP37L8XgUEAhHsC4GmQu62c5+FKdJm7BLkFXp02BrL6DLTNY9Xh9ChpUCw==
   dependencies:
     "@fcongson/lagom-tokens" "^0.16.0"
     clsx "^2.0.0"
