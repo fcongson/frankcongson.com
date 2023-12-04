@@ -1203,17 +1203,17 @@
   resolved "https://registry.yarnpkg.com/@fastify/accept-negotiator/-/accept-negotiator-1.1.0.tgz#c1c66b3b771c09742a54dd5bc87c582f6b0630ff"
   integrity sha512-OIHZrb2ImZ7XG85HXOONLcJWGosv7sIvM2ifAPQVhg9Lv7qdmMBNVaai4QTdyuaqbKM5eO6sLSQOYI7wEQeCJQ==
 
-"@fcongson/lagom-tokens@^0.16.0":
-  version "0.16.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/0.16.0/20e45607b84a817381d36e5aac6b8d36eaee1a1e#20e45607b84a817381d36e5aac6b8d36eaee1a1e"
-  integrity sha512-2/8OFKU58k5+5TO3o4X14QG8l/botzNuHagFVYed3jxslNkuzxICJs5TobnXDH9dTTz0G3kOZYwh1523SLwksQ==
+"@fcongson/lagom-tokens@^0.18.0":
+  version "0.18.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/0.18.0/99021ce0cd7980a9dc9e96a7426da18963669c51#99021ce0cd7980a9dc9e96a7426da18963669c51"
+  integrity sha512-T5lk7x8V4iBa8w/DPoz+BLWbTkuK05bLlpMOQ3hTcHUTzEVqqNmIu2HsGFJyED1WW7DgUvqxWaAm/jTdFwF8WQ==
 
-"@fcongson/lagom-ui@^0.24.0":
-  version "0.24.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.24.0/1f94584d77e9767abc839d1c300c80a61140dcf0#1f94584d77e9767abc839d1c300c80a61140dcf0"
-  integrity sha512-EeJ2KtANab/sJTgveRiDhofaIf4jOP37L8XgUEAhHsC4GmQu62c5+FKdJm7BLkFXp02BrL6DLTNY9Xh9ChpUCw==
+"@fcongson/lagom-ui@^0.26.0":
+  version "0.26.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.26.0/486b9c2280943b140c3556da031b6d7bd1dc776e#486b9c2280943b140c3556da031b6d7bd1dc776e"
+  integrity sha512-5JDKPXlQlsie74kL3ae6JqPZKQicT2oeDvxWgz2XjFkh2UeFUKSVreYLoMKeB4UkVaxpujclT2+XRM6M6YyMqw==
   dependencies:
-    "@fcongson/lagom-tokens" "^0.16.0"
+    "@fcongson/lagom-tokens" "^0.18.0"
     clsx "^2.0.0"
     react "^18.2.0"
     react-dom "^18.2.0"

@@ -5,8 +5,8 @@
   "version": "0.1.0",
   "author": "Frank Congson",
   "dependencies": {
-    "@fcongson/lagom-tokens": "^0.16.0",
-    "@fcongson/lagom-ui": "^0.24.0",
+    "@fcongson/lagom-tokens": "^0.18.0",
+    "@fcongson/lagom-ui": "^0.26.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@fortawesome/free-brands-svg-icons": "^6.4.2",
     "@fortawesome/react-fontawesome": "^0.2.0",
