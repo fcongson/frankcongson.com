@@ -291,14 +291,14 @@ const StyleGuide: React.FunctionComponent<{ data: Query }> = ({ data }) => {
           </h2>
           <p>
             The <code>{'<Section />'}</code> component creates a full width wrapper around body content with a max width
-            of <code>{`${theme.sizes?.maxWidthSection}`}</code>.
+            of <code>{`${theme?.sizes?.maxWidthSection}`}</code>.
           </p>
           <h2>
             <code>{'<Container />'}</code>
           </h2>
           <p>
             The <code>{'<Container />'}</code> component creates a responsive wrapper around body content with a max
-            width of <code>{`${theme.sizes?.maxWidthContainer}`}</code>. This component is used within the{' '}
+            width of <code>{`${theme?.sizes?.maxWidthContainer}`}</code>. This component is used within the{' '}
             <code>{'<Section />'}</code> component.
           </p>
         </Container>

@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@fcongson/lagom-ui'
 import * as Sentry from '@sentry/browser'
 import { SEO as Seo } from 'components/SEO'
 import { GlobalStyle } from 'components/styles'
@@ -66,20 +67,22 @@ export const Layout: React.FunctionComponent<{
         ></link>
       </Helmet>
       <Seo />
-      <GlobalStyle />
-      <Header overlay={overlayHeader} backgroundColor={headerBackgroundColor} />
-      <Main>{children}</Main>
-      <Footer
-        social={{
-          twitterUrl,
-          facebookUrl,
-          instagramUrl,
-          youtubeUrl,
-          linkedinUrl,
-          githubUrl,
-          devUrl,
-        }}
-      />
+      <ThemeProvider>
+        <GlobalStyle />
+        <Header overlay={overlayHeader} backgroundColor={headerBackgroundColor} />
+        <Main>{children}</Main>
+        <Footer
+          social={{
+            twitterUrl,
+            facebookUrl,
+            instagramUrl,
+            youtubeUrl,
+            linkedinUrl,
+            githubUrl,
+            devUrl,
+          }}
+        />
+      </ThemeProvider>
     </>
   )
 }
