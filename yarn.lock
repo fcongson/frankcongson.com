@@ -1184,21 +1184,19 @@
   resolved "https://registry.yarnpkg.com/@fastify/accept-negotiator/-/accept-negotiator-1.1.0.tgz#c1c66b3b771c09742a54dd5bc87c582f6b0630ff"
   integrity sha512-OIHZrb2ImZ7XG85HXOONLcJWGosv7sIvM2ifAPQVhg9Lv7qdmMBNVaai4QTdyuaqbKM5eO6sLSQOYI7wEQeCJQ==
 
-"@fcongson/lagom-tokens@^0.19.0":
-  version "0.19.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/0.19.0/42c6bf058ac809e1771bf2709cf3241e45d96a37#42c6bf058ac809e1771bf2709cf3241e45d96a37"
-  integrity sha512-wZVheeMUuE0pkjrHRejPlJkpqxkhS++vPc1hK2DREGin9fVJGU2mxcsHUcwYPatn0/y+NkRbtzff2sRKYoyQTw==
+"@fcongson/lagom-tokens@^1.0.0":
+  version "1.0.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/1.0.0/7f22fe87dfd6bd7b6481a840c8c610de78e6a549#7f22fe87dfd6bd7b6481a840c8c610de78e6a549"
+  integrity sha512-jrf8oxenOmclmIHW/khOj9CAkSwXcQs1SRtgNL5TrOtlp/xOfqhye/Y068O/qlFLi44jo6gicdfnUsZTgUnU9w==
 
-"@fcongson/lagom-ui@^0.29.0":
-  version "0.29.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/0.29.0/f42a1ee67ab6f3e9712510e1516df66206b7d183#f42a1ee67ab6f3e9712510e1516df66206b7d183"
-  integrity sha512-Qpfj+5npYBgDiJT0cAn9DEe7vwxi1YwyW9JCu/wAzHGC5GgQ+st0Hw4CMOiZF/k3Hj9rU4VtTKDocqtOF4vloQ==
+"@fcongson/lagom-ui@^1.0.0":
+  version "1.0.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/1.0.0/5db2f3210a651884a073e73700d1a6a6e35d7774#5db2f3210a651884a073e73700d1a6a6e35d7774"
+  integrity sha512-5M5bc/O8IFZEYBCssD8temC0bkY/C1qCT2uKZz699dMFx98K2vPbM5mmmY5Cuu6UtWr2abhcbO7lufIhT3TlAg==
   dependencies:
-    "@fcongson/lagom-tokens" "^0.19.0"
-    clsx "^2.0.0"
-    react "^18.2.0"
-    react-dom "^18.2.0"
-    styled-components "^6.1.1"
+    "@fcongson/lagom-tokens" "^1.0.0"
+    "@growthbook/growthbook-react" "^1.3.1"
+    clsx "^2.1.1"
 
 "@fortawesome/fontawesome-common-types@6.6.0":
   version "6.6.0"
@@ -1543,6 +1541,20 @@
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@graphql-typed-document-node/core/-/core-3.2.0.tgz#5f3d96ec6b2354ad6d8a28bf216a1d97b5426861"
   integrity sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==
+
+"@growthbook/growthbook-react@^1.3.1":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@growthbook/growthbook-react/-/growthbook-react-1.6.5.tgz#e849cff64a54e56d5c566512bdc839148ae613ed"
+  integrity sha512-afi/RUbwazVNKv2acn6wDQz4BJNRAEpwIuHfggQup2/aE5PLAxy3+95gjjRMgCcPR0Pf3sFmhYGvOmxLD0ZRbQ==
+  dependencies:
+    "@growthbook/growthbook" "^1.6.5"
+
+"@growthbook/growthbook@^1.6.5":
+  version "1.6.5"
+  resolved "https://registry.yarnpkg.com/@growthbook/growthbook/-/growthbook-1.6.5.tgz#c9e2119187ee3288525a77a7c64353276f5ba91b"
+  integrity sha512-mUaMsgeUTpRIUOTn33EUXHRK6j7pxBjwqH4WpQyq+pukjd1AIzWlEa6w7i6bInJUcweGgP2beXZmaP6b6UPn7A==
+  dependencies:
+    dom-mutator "^0.6.0"
 
 "@hapi/address@2.x.x":
   version "2.1.4"
@@ -4312,7 +4324,7 @@ clone@^2.1.1:
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==
 
-clsx@^2.0.0:
+clsx@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-2.1.1.tgz#eed397c9fd8bd882bfb18deab7102049a2f32999"
   integrity sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==
@@ -5125,6 +5137,11 @@ dom-converter@^0.2.0:
   integrity sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==
   dependencies:
     utila "~0.4"
+
+dom-mutator@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/dom-mutator/-/dom-mutator-0.6.0.tgz#079d7a4b3e8981a562cd777548b99baab51d65c5"
+  integrity sha512-iCt9o0aYfXMUkz/43ZOAUFQYotjGB+GNbYJiJdz4TgXkyToXbbRy5S6FbTp72lRBtfpUMwEc1KmpFEU4CZeoNg==
 
 dom-serializer@^1.0.1:
   version "1.4.1"
@@ -11061,7 +11078,7 @@ react-dev-utils@^12.0.1:
     strip-ansi "^6.0.1"
     text-table "^0.2.0"
 
-react-dom@^18.2.0, react-dom@^18.3.1:
+react-dom@^18.3.1:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-18.3.1.tgz#c2265d79511b57d479b3dd3fdfa51536494c5cb4"
   integrity sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==
@@ -11118,7 +11135,7 @@ react-side-effect@^2.1.0:
   resolved "https://registry.yarnpkg.com/react-side-effect/-/react-side-effect-2.1.2.tgz#dc6345b9e8f9906dc2eeb68700b615e0b4fe752a"
   integrity sha512-PVjOcvVOyIILrYoyGEpDN3vmYNLdy1CajSFNt4TDsVQC5KpTijDvWVoR+/7Rz2xT978D8/ZtFceXxzsPwZEDvw==
 
-react@^18.2.0, react@^18.3.1:
+react@^18.3.1:
   version "18.3.1"
   resolved "https://registry.yarnpkg.com/react/-/react-18.3.1.tgz#49ab892009c53933625bd16b2533fc754cab2891"
   integrity sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==
@@ -12330,7 +12347,7 @@ style-to-object@^0.4.1:
   dependencies:
     inline-style-parser "0.1.1"
 
-styled-components@^6.1.1, styled-components@^6.1.13:
+styled-components@^6.1.13:
   version "6.1.13"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-6.1.13.tgz#2d777750b773b31469bd79df754a32479e9f475e"
   integrity sha512-M0+N2xSnAtwcVAQeFEsGWFFxXDftHUD7XrKla06QbpUMmbmtFBMMTcKWvFXtWxuD5qQkB8iU5gk6QASlx2ZRMw==
