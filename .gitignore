@@ -55,9 +55,9 @@ typings/
 .env
 .env.*
 
-# gatsby files
-.cache/
-public
+# next.js build output
+.next/
+out/
 
 # Mac files
 .DS_Store

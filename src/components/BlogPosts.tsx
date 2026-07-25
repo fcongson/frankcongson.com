@@ -1,7 +1,11 @@
+'use client'
+
 import { Container, LinkButton, Section } from '@fcongson/lagom-ui'
-import { Link } from 'gatsby'
-import { GatsbyImage } from 'gatsby-plugin-image'
-import { Blog_ListQuery } from 'graphql-types'
+import { NextLinkAdapter } from 'components/NextLinkAdapter'
+import type { Post } from 'lib/content-types'
+import { resolveImagePath } from 'lib/image-utils'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -24,26 +28,35 @@ const PostSummaryContainer = styled.div`
   }
 `
 
-const PostSummary: React.FunctionComponent<{ post: Blog_ListQuery['allMdx']['nodes'][0] }> = ({ post }) => {
-  const { slug, title, date, featured_image, alt_text, excerpt } = post.frontmatter ?? {}
-  const to = `/blog/${slug}`
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+`
+
+const PostSummary: React.FunctionComponent<{ post: Post }> = ({ post }) => {
+  const { slug, title, date, featured_image, alt_text, excerpt } = post.frontmatter
+  const to = `/blog/${slug}/`
+  const imagePath = resolveImagePath(featured_image)
   return (
-    <PostSummaryContainer key={post.id}>
+    <PostSummaryContainer>
       <Section>
         <Container>
-          {!!featured_image && (
-            <Link to={to}>
-              <GatsbyImage image={featured_image.childImageSharp?.gatsbyImageData} alt={alt_text ?? title ?? ''} />
+          {!!imagePath && (
+            <Link href={to}>
+              <ImageWrapper>
+                <Image src={imagePath} alt={alt_text ?? title ?? ''} fill style={{ objectFit: 'cover' }} />
+              </ImageWrapper>
             </Link>
           )}
           <h2>
-            <Link to={to}>{title}</Link>
+            <Link href={to}>{title}</Link>
           </h2>
           <p>
-            <time>{date}</time>
+            <time>{post.dateFormatted ?? date}</time>
           </p>
           <p>{excerpt}</p>
-          <LinkButton to={to} Component={Link}>
+          <LinkButton to={to} Component={NextLinkAdapter}>
             Read more
           </LinkButton>
         </Container>
@@ -52,13 +65,13 @@ const PostSummary: React.FunctionComponent<{ post: Blog_ListQuery['allMdx']['nod
   )
 }
 
-export const BlogPosts: React.FunctionComponent<{ posts: Blog_ListQuery['allMdx']['nodes'] }> = ({ posts }) => {
+export const BlogPosts: React.FunctionComponent<{ posts: Post[] }> = ({ posts }) => {
   if (!posts) return null
 
   return (
     <>
       {posts.map((post) => (
-        <PostSummary post={post} key={post.id} />
+        <PostSummary post={post} key={post.frontmatter.slug} />
       ))}
     </>
   )
