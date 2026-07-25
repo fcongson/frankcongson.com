@@ -1,5 +1,3 @@
 [build]
-  publish = "public/"
-
-[[plugins]]
-  package = "@netlify/plugin-gatsby"
+  command = "yarn build"
+  publish = "out"

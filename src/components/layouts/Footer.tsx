@@ -1,8 +1,9 @@
+'use client'
+
 import { Container, Section, useTheme } from '@fcongson/lagom-ui'
 import { faGithub, faInstagram, faLinkedinIn, faTwitter } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import logo from 'content/images/logo-light.svg'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -28,7 +29,7 @@ const FooterStyles = styled.footer`
     min-height: 256px;
     margin: 0 auto;
 
-    ${(props) => props.theme.mediaQueries.large} {
+    ${(props) => props.theme.mediaQueries!.large} {
       min-height: 128px;
     }
   }
@@ -57,7 +58,7 @@ const FooterStyles = styled.footer`
         color: var(--lagom-core-colors-grey-lighter40);
       }
 
-      ${(props) => props.theme.mediaQueries.large} {
+      ${(props) => props.theme.mediaQueries!.large} {
         flex-direction: column;
         align-items: flex-end;
         & a {
@@ -99,18 +100,19 @@ export const Footer: React.FunctionComponent<{ social: { [key: string]: string }
     <FooterStyles theme={theme} className='footer' {...restProps}>
       <Section>
         <Container>
-          <Link to='/'>
-            <img className='footer-logo' src={logo} alt='Frank Congson logo' />
+          <Link href='/'>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img className='footer-logo' src='/content/images/logo-light.svg' alt='Frank Congson logo' />
           </Link>
           <div className='footer-content'>
             <div className='content-links'>
-              <Link to='/photography/'>Photography</Link>
-              <Link to='/about/'>About</Link>
-              <Link className='navigation-link' to='/blog/'>
+              <Link href='/photography/'>Photography</Link>
+              <Link href='/about/'>About</Link>
+              <Link className='navigation-link' href='/blog/'>
                 Blog
               </Link>
-              <Link to='/uses/'>Uses</Link>
-              <Link to='/style-guide/'>Style Guide</Link>
+              <Link href='/uses/'>Uses</Link>
+              <Link href='/style-guide/'>Style Guide</Link>
             </div>
             <div className='social-links'>
               <a href={social.instagramUrl} aria-label='Instagram'>
@@ -125,7 +127,7 @@ export const Footer: React.FunctionComponent<{ social: { [key: string]: string }
               <a href={social.githubUrl} aria-label='GitHub'>
                 <FontAwesomeIcon icon={faGithub} />
               </a>
-              <a href={social.devUrl} area-label='FrankCongson.dev'>
+              <a href={social.devUrl} aria-label='FrankCongson.dev'>
                 .dev
               </a>
             </div>

@@ -1,12 +1,13 @@
+'use client'
+
 import { Container, Section, useTheme } from '@fcongson/lagom-ui'
-import logo from 'content/images/logo.svg'
-import { Link } from 'gatsby'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const HeaderStyles = styled.header<{ overlay: boolean; backgroundColor?: string }>`
+const HeaderStyles = styled.header<{ $overlay: boolean; $backgroundColor?: string }>`
   display: block;
-  position: ${(props) => (props.overlay ? 'absolute' : 'relative')};
+  position: ${(props) => (props.$overlay ? 'absolute' : 'relative')};
   width: 100%;
   z-index: 1000;
 
@@ -19,7 +20,7 @@ const HeaderStyles = styled.header<{ overlay: boolean; backgroundColor?: string 
   }
 
   .lagom-section {
-    background-color: ${(props) => props.backgroundColor};
+    background-color: ${(props) => props.$backgroundColor};
     backdrop-filter: blur(8px);
   }
 
@@ -29,7 +30,7 @@ const HeaderStyles = styled.header<{ overlay: boolean; backgroundColor?: string 
     justify-content: space-between;
     margin: 0 auto 4rem auto;
 
-    ${(props) => props.theme.mediaQueries.large} {
+    ${(props) => props.theme.mediaQueries!.large} {
       margin: 0 auto 2rem auto;
       flex-wrap: wrap;
     }
@@ -40,13 +41,13 @@ const HeaderStyles = styled.header<{ overlay: boolean; backgroundColor?: string 
   }
 `
 
-const NavigationMenu = styled.nav<{ overlay: boolean; open: boolean }>`
+const NavigationMenu = styled.nav<{ $overlay: boolean; $open: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: stretch;
 
-  ${(props) => props.theme.mediaQueries.large} {
+  ${(props) => props.theme.mediaQueries!.large} {
     flex-direction: column;
     order: 2;
     width: 100%;
@@ -57,10 +58,10 @@ const NavigationMenu = styled.nav<{ overlay: boolean; open: boolean }>`
       padding-bottom 200ms ease-in-out;
 
     ${(props) =>
-      props.open &&
+      props.$open &&
       `
       margin-top: 2rem;
-      height: ${props.overlay ? `calc(100vh - 2rem - 64px);` : `calc(54px * 4 + 32px);`}
+      height: ${props.$overlay ? `calc(100vh - 2rem - 64px);` : `calc(54px * 4 + 32px);`}
       padding-bottom: 0rem;
       `}
   }
@@ -85,9 +86,9 @@ const NavigationMenu = styled.nav<{ overlay: boolean; open: boolean }>`
       border-bottom: 2px solid var(--lagom-semantic-color-border-default);
     }
 
-    ${(props) => props.theme.mediaQueries.large} {
+    ${(props) => props.theme.mediaQueries!.large} {
       /* TODO: display none breaks the transition when closing */
-      display: ${(props) => (props.open ? 'block' : 'none')};
+      display: ${(props) => (props.$open ? 'block' : 'none')};
       font-size: 36px;
       line-height: 44px;
       margin: 0 0 8px 0;
@@ -96,7 +97,7 @@ const NavigationMenu = styled.nav<{ overlay: boolean; open: boolean }>`
   }
 `
 
-const NavigationToggle = styled.button<{ open: boolean }>`
+const NavigationToggle = styled.button<{ $open: boolean }>`
   display: none;
   height: 64px;
 
@@ -118,10 +119,10 @@ const NavigationToggle = styled.button<{ open: boolean }>`
     }
 
     ${(props) =>
-      props.open &&
+      props.$open &&
       `
         transition: top 100ms ease-in-out 0ms, transform 100ms ease-in-out 100ms;
-        
+
         &.top {
           top: 8px;
           transform: rotate(45deg);
@@ -138,7 +139,7 @@ const NavigationToggle = styled.button<{ open: boolean }>`
     cursor: pointer;
   }
 
-  ${(props) => props.theme.mediaQueries.large} {
+  ${(props) => props.theme.mediaQueries!.large} {
     display: block;
     order: 1;
   }
@@ -151,34 +152,35 @@ export const Header: React.FunctionComponent<{ overlay: boolean; backgroundColor
   const theme = useTheme()
   const [open, setOpen] = useState(false)
   return (
-    <HeaderStyles theme={theme} className='header' overlay={overlay} backgroundColor={backgroundColor}>
+    <HeaderStyles theme={theme} className='header' $overlay={overlay} $backgroundColor={backgroundColor}>
       <Section>
         <Container>
           <div className='logo-container'>
-            <Link to='/'>
-              <img src={logo} alt='Frank Congson logo' />
+            <Link href='/'>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src='/content/images/logo.svg' alt='Frank Congson logo' />
             </Link>
           </div>
           <NavigationToggle
             theme={theme}
             aria-label={`${open ? 'Close' : 'Open'} navigation menu`}
             onClick={() => setOpen(!open)}
-            open={open}
+            $open={open}
           >
             <div className='toggle-line top' />
             <div className='toggle-line bottom' />
           </NavigationToggle>
-          <NavigationMenu theme={theme} overlay={overlay} open={open}>
-            <Link className='navigation-link' to='/'>
+          <NavigationMenu theme={theme} $overlay={overlay} $open={open}>
+            <Link className='navigation-link' href='/'>
               Home
             </Link>
-            <Link className='navigation-link' to='/photography/'>
+            <Link className='navigation-link' href='/photography/'>
               Photography
             </Link>
-            <Link className='navigation-link' to='/about/'>
+            <Link className='navigation-link' href='/about/'>
               About
             </Link>
-            <Link className='navigation-link' to='/blog/'>
+            <Link className='navigation-link' href='/blog/'>
               Blog
             </Link>
           </NavigationMenu>

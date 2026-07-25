@@ -1,7 +1,10 @@
+'use client'
+
 import { CallToAction, Container, FeaturedSection, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { FillImageBox } from 'components/FillImageBox'
+import { resolveImagePath } from 'lib/image-utils'
+import Image from 'next/image'
 import React from 'react'
-import { useImage } from 'utils/useImage'
 
 export type ForestrySection = {
   template: string
@@ -15,7 +18,6 @@ const Wrapper: React.FunctionComponent<{ children?: React.ReactNode }> = ({ chil
 )
 
 const getSection = (section: ForestrySection, unwrapped: boolean, index: number): React.ReactElement | undefined => {
-  const getImage = useImage()
   const key = `${section.template}.${index}`
   switch (section.template) {
     case 'featured-section':
@@ -25,13 +27,18 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
           imageAsBackground={section.image_as_background}
           backgroundColor={section.background_color}
           image={
-            <GatsbyImage
-              image={getImage(section.image)?.childImageSharp?.gatsbyImageData}
-              alt={section.alt_text}
-              style={{ height: 'max(calc(100vh - 20vh), 700px)' }}
-              objectPosition='center center'
-            />
-          }>
+            section.image ? (
+              <FillImageBox style={{ height: 'max(calc(100vh - 20vh), 700px)' }}>
+                <Image
+                  src={resolveImagePath(section.image) ?? ''}
+                  alt={section.alt_text ?? ''}
+                  fill
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                />
+              </FillImageBox>
+            ) : undefined
+          }
+        >
           <ForestrySections sections={section.sections} unwrapped />
         </FeaturedSection>
       )
@@ -54,7 +61,14 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
           emphasized={section.emphasized}
           fullwidth={section.fullwidth}
           image={
-            <GatsbyImage image={getImage(section.image)?.childImageSharp?.gatsbyImageData} alt={section.alt_text} />
+            <FillImageBox $aspectRatio='16 / 9'>
+              <Image
+                src={resolveImagePath(section.image) ?? ''}
+                alt={section.alt_text ?? ''}
+                fill
+                style={{ objectFit: 'cover' }}
+              />
+            </FillImageBox>
           }
           caption={section.caption}
         />
@@ -79,7 +93,7 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
       )
 
     default:
-      return
+      return undefined
   }
 }
 
