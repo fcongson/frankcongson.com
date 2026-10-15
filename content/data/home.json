@@ -45,10 +45,28 @@
         {
           "template": "call-to-action",
           "header": "Me.",
-          "text": "I’m a dad, husband, traveler, minimalist, ux engineer, and rock climber.",
+          "text": "I’m a dad, husband, traveler, minimalist, technical lead, and rock climber.",
           "call_to_action": {
             "url": "about",
             "text": "Learn about me"
+          }
+        }
+      ]
+    },
+    {
+      "template": "featured-section",
+      "background_color": "var(--lagom-semantic-color-bg-default)",
+      "image": "",
+      "alt_text": "",
+      "image_as_background": false,
+      "sections": [
+        {
+          "template": "call-to-action",
+          "header": "Work.",
+          "text": "I’m a technical lead who builds design systems and leads engineers. Follow my career journey, from full stack roles to design systems and leading teams.",
+          "call_to_action": {
+            "url": "https://frankcongson.dev",
+            "text": "See my career journey"
           }
         }
       ]
