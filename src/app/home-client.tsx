@@ -5,6 +5,7 @@ import { ContourLines } from 'components/ContourLines'
 import { FillImageBox } from 'components/FillImageBox'
 import { ForestrySections } from 'components/forestry'
 import { Layout } from 'components/layouts'
+import { CornerMarks, Coordinates } from 'components/ViewfinderFrame'
 import { Variants, motion } from 'framer-motion'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
@@ -106,8 +107,8 @@ const Container_HomeContent = styled(Container)`
 `
 
 type HomeData = {
-  hero_image: { image: string; alt_text: string }
-  main_content: { header: string; text: string; image: string; alt_text: string }
+  hero_image: { image: string; alt_text: string; coordinates?: string }
+  main_content: { header: string; text: string; image: string; alt_text: string; coordinates?: string }
   sections: any[]
 }
 
@@ -137,6 +138,11 @@ export const HomeClient: React.FunctionComponent<{ home: HomeData }> = ({ home }
               priority
               style={{ objectFit: 'cover', objectPosition: 'center bottom' }}
             />
+            {home.hero_image.coordinates && (
+              <Coordinates placement='bottom-center' tone='light'>
+                {home.hero_image.coordinates}
+              </Coordinates>
+            )}
           </FillImageBox>
         }
       />
@@ -172,6 +178,8 @@ export const HomeClient: React.FunctionComponent<{ home: HomeData }> = ({ home }
                 fill
                 style={{ objectFit: 'cover', objectPosition: 'center center' }}
               />
+              <CornerMarks inset='-10px' />
+              {home.main_content.coordinates && <Coordinates>{home.main_content.coordinates}</Coordinates>}
             </motion.div>
           )}
         </Container_HomeContent>
