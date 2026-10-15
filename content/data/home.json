@@ -34,6 +34,7 @@
       "image": "",
       "alt_text": "",
       "image_as_background": false,
+      "decoration": "contours",
       "sections": [
         {
           "template": "call-to-action",
