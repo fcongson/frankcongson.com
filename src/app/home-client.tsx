@@ -1,6 +1,7 @@
 'use client'
 
 import { Container, Hero, Section, useTheme } from '@fcongson/lagom-ui'
+import { ContourLines } from 'components/ContourLines'
 import { FillImageBox } from 'components/FillImageBox'
 import { ForestrySections } from 'components/forestry'
 import { Layout } from 'components/layouts'
@@ -10,6 +11,18 @@ import Image from 'next/image'
 import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
+
+// The Hero's bottom margin (8rem) sits outside this section, so pull the section up
+// over it and pad it back to keep the layout identical while the contour lines reach the hero.
+// flow-root contains the container's bottom margin so the lines also reach the next section.
+const Section_Intro = styled(Section)`
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  display: flow-root;
+  margin-top: -8rem;
+  padding-top: 8rem;
+`
 
 const Container_HomeContent = styled(Container)`
   display: flex;
@@ -127,7 +140,8 @@ export const HomeClient: React.FunctionComponent<{ home: HomeData }> = ({ home }
           </FillImageBox>
         }
       />
-      <Section>
+      <Section_Intro>
+        <ContourLines variant='intro' />
         <Container_HomeContent theme={theme}>
           <motion.div
             className='text'
@@ -161,7 +175,7 @@ export const HomeClient: React.FunctionComponent<{ home: HomeData }> = ({ home }
             </motion.div>
           )}
         </Container_HomeContent>
-      </Section>
+      </Section_Intro>
       <ForestrySections sections={home.sections} />
     </Layout>
   )
