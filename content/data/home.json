@@ -20,6 +20,8 @@
       "image_as_background": true,
       "decoration": "viewfinder",
       "coordinates": "51.15°N 115.57°W",
+      "image_position": "center 100%",
+      "overlay_opacity": { "dark": 0.5 },
       "sections": [
         {
           "template": "call-to-action",
@@ -58,6 +60,8 @@
       "alt_text": "Frank's desk setup and essential items",
       "image_as_background": true,
       "decoration": "viewfinder",
+      "image_position": "0% 0%",
+      "overlay_opacity": { "light": 0.4, "dark": 0.5 },
       "sections": [
         {
           "template": "call-to-action",
