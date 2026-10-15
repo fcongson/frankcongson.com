@@ -2,6 +2,7 @@
 
 import { Container, Section, useTheme } from '@fcongson/lagom-ui'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
@@ -187,11 +188,28 @@ const NavigationToggle = styled.button<{ $open: boolean }>`
   }
 `
 
+const NAVIGATION_LINKS = [
+  { href: '/', label: 'Home' },
+  { href: '/photography/', label: 'Photography' },
+  { href: '/about/', label: 'About' },
+  { href: '/blog/', label: 'Blog' },
+]
+
+// Home only matches exactly; other links also match their sub-pages (e.g. /blog/some-post for Blog).
+// next/link doesn't set aria-current itself, which the `.navigation-link` underline style relies on.
+const isCurrentPage = (pathname: string | null, href: string) => {
+  if (!pathname) return false
+  const path = pathname.replace(/\/+$/, '') || '/'
+  const target = href.replace(/\/+$/, '') || '/'
+  return target === '/' ? path === '/' : path === target || path.startsWith(`${target}/`)
+}
+
 export const Header: React.FunctionComponent<{ overlay: boolean; backgroundColor?: string }> = ({
   overlay,
   backgroundColor,
 }) => {
   const theme = useTheme()
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   return (
     <HeaderStyles
@@ -220,18 +238,16 @@ export const Header: React.FunctionComponent<{ overlay: boolean; backgroundColor
             <div className='toggle-line bottom' />
           </NavigationToggle>
           <NavigationMenu theme={theme} $overlay={overlay} $open={open}>
-            <Link className='navigation-link' href='/'>
-              Home
-            </Link>
-            <Link className='navigation-link' href='/photography/'>
-              Photography
-            </Link>
-            <Link className='navigation-link' href='/about/'>
-              About
-            </Link>
-            <Link className='navigation-link' href='/blog/'>
-              Blog
-            </Link>
+            {NAVIGATION_LINKS.map(({ href, label }) => (
+              <Link
+                key={href}
+                className='navigation-link'
+                href={href}
+                aria-current={isCurrentPage(pathname, href) ? 'page' : undefined}
+              >
+                {label}
+              </Link>
+            ))}
           </NavigationMenu>
         </Container>
       </Section>
