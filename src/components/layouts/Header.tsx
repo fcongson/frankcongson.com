@@ -13,6 +13,12 @@ const LINK_DURATION = 250
 const LINK_DELAY = 80
 const LINK_STAGGER = 40
 
+// Strength (%) of the dark-mode tint behind the nav bar (wide viewports) and the open menu (small viewports).
+const NAV_TINT = 55
+const MENU_TINT = 72
+const darkTint = (percent: number) =>
+  `color-mix(in srgb, var(--lagom-semantic-color-bg-default) ${percent}%, transparent)`
+
 const HeaderStyles = styled.header<{ $overlay: boolean; $backgroundColor?: string; $menuOpen: boolean }>`
   display: block;
   position: ${(props) => (props.$overlay ? 'absolute' : 'relative')};
@@ -32,14 +38,17 @@ const HeaderStyles = styled.header<{ $overlay: boolean; $backgroundColor?: strin
     backdrop-filter: blur(8px);
     transition: background-color ${MENU_DURATION}ms ease-in-out;
 
-    /* In dark mode, while the small-viewport menu is open, tint the blurred page toward the theme
-       background so the light links keep their contrast over bright content. */
+    /* In dark mode, tint the blurred page toward the theme background behind the nav so the light links
+       keep their contrast over bright hero photos: always on wide viewports, and only while the menu is
+       open on small ones. */
+    [data-lagom-theme~='dark'] & {
+      ${(props) => !props.$backgroundColor && `background-color: ${darkTint(NAV_TINT)};`}
+    }
+
     ${(props) => props.theme.mediaQueries!.large} {
       [data-lagom-theme~='dark'] & {
         ${(props) =>
-          props.$menuOpen &&
-          !props.$backgroundColor &&
-          'background-color: color-mix(in srgb, var(--lagom-semantic-color-bg-default) 72%, transparent);'}
+          !props.$backgroundColor && `background-color: ${props.$menuOpen ? darkTint(MENU_TINT) : 'transparent'};`}
       }
     }
   }
