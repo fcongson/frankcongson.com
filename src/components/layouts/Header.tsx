@@ -41,6 +41,13 @@ const HeaderStyles = styled.header<{ $overlay: boolean; $backgroundColor?: strin
   }
 `
 
+// Small-viewport menu timing (ms). The menu collapses over MENU_DURATION while the links fade out
+// over the shorter LINK_DURATION, so they are still partly visible as the menu closes.
+const MENU_DURATION = 300
+const LINK_DURATION = 250
+const LINK_DELAY = 80
+const LINK_STAGGER = 40
+
 const NavigationMenu = styled.nav<{ $overlay: boolean; $open: boolean }>`
   display: flex;
   flex-direction: row;
@@ -53,16 +60,23 @@ const NavigationMenu = styled.nav<{ $overlay: boolean; $open: boolean }>`
     width: 100%;
     height: 0;
     overflow: hidden;
+    /* Hidden (and out of the tab order) only once the close transition has finished. */
+    visibility: hidden;
     transition:
-      height 200ms ease-in-out,
-      padding-bottom 200ms ease-in-out;
+      height ${MENU_DURATION}ms ease-in-out,
+      margin-top ${MENU_DURATION}ms ease-in-out,
+      visibility 0s linear ${MENU_DURATION}ms;
 
     ${(props) =>
       props.$open &&
       `
       margin-top: 2rem;
       height: ${props.$overlay ? `calc(100vh - 2rem - 64px);` : `calc(54px * 4 + 32px);`}
-      padding-bottom: 0rem;
+      visibility: visible;
+      transition:
+        height ${MENU_DURATION}ms ease-in-out,
+        margin-top ${MENU_DURATION}ms ease-in-out,
+        visibility 0s;
       `}
   }
 
@@ -87,12 +101,28 @@ const NavigationMenu = styled.nav<{ $overlay: boolean; $open: boolean }>`
     }
 
     ${(props) => props.theme.mediaQueries!.large} {
-      /* TODO: display none breaks the transition when closing */
-      display: ${(props) => (props.$open ? 'block' : 'none')};
       font-size: 36px;
       line-height: 44px;
       margin: 0 0 8px 0;
       padding: 0 0 8px 0;
+
+      /* Links stay rendered so they can fade with the menu instead of vanishing when it closes.
+         On open they follow the menu with a short stagger; on close they fade out together, fast. */
+      opacity: ${(props) => (props.$open ? 1 : 0)};
+      transform: translateY(${(props) => (props.$open ? '0' : '-8px')});
+      transition:
+        opacity ${LINK_DURATION}ms ease-in-out ${(props) => (props.$open ? LINK_DELAY : 0)}ms,
+        transform ${LINK_DURATION}ms ease-in-out ${(props) => (props.$open ? LINK_DELAY : 0)}ms,
+        border-bottom 200ms ease-in-out;
+
+      ${(props) =>
+        props.$open &&
+        [1, 2, 3, 4]
+          .map(
+            (n) =>
+              `&:nth-child(${n}) { transition-delay: ${LINK_DELAY + (n - 1) * LINK_STAGGER}ms, ${LINK_DELAY + (n - 1) * LINK_STAGGER}ms, 0ms; }`,
+          )
+          .join('\n')}
     }
   }
 `
@@ -164,6 +194,7 @@ export const Header: React.FunctionComponent<{ overlay: boolean; backgroundColor
           <NavigationToggle
             theme={theme}
             aria-label={`${open ? 'Close' : 'Open'} navigation menu`}
+            aria-expanded={open}
             onClick={() => setOpen(!open)}
             $open={open}
           >
