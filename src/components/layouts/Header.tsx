@@ -5,7 +5,14 @@ import Link from 'next/link'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const HeaderStyles = styled.header<{ $overlay: boolean; $backgroundColor?: string }>`
+// Small-viewport menu timing (ms). The menu collapses over MENU_DURATION while the links fade out
+// over the shorter LINK_DURATION, so they are still partly visible as the menu closes.
+const MENU_DURATION = 300
+const LINK_DURATION = 250
+const LINK_DELAY = 80
+const LINK_STAGGER = 40
+
+const HeaderStyles = styled.header<{ $overlay: boolean; $backgroundColor?: string; $menuOpen: boolean }>`
   display: block;
   position: ${(props) => (props.$overlay ? 'absolute' : 'relative')};
   width: 100%;
@@ -22,6 +29,18 @@ const HeaderStyles = styled.header<{ $overlay: boolean; $backgroundColor?: strin
   .lagom-section {
     background-color: ${(props) => props.$backgroundColor};
     backdrop-filter: blur(8px);
+    transition: background-color ${MENU_DURATION}ms ease-in-out;
+
+    /* In dark mode, while the small-viewport menu is open, tint the blurred page toward the theme
+       background so the light links keep their contrast over bright content. */
+    ${(props) => props.theme.mediaQueries!.large} {
+      [data-lagom-theme~='dark'] & {
+        ${(props) =>
+          props.$menuOpen &&
+          !props.$backgroundColor &&
+          'background-color: color-mix(in srgb, var(--lagom-semantic-color-bg-default) 72%, transparent);'}
+      }
+    }
   }
 
   .lagom-container {
@@ -40,13 +59,6 @@ const HeaderStyles = styled.header<{ $overlay: boolean; $backgroundColor?: strin
     height: 64px;
   }
 `
-
-// Small-viewport menu timing (ms). The menu collapses over MENU_DURATION while the links fade out
-// over the shorter LINK_DURATION, so they are still partly visible as the menu closes.
-const MENU_DURATION = 300
-const LINK_DURATION = 250
-const LINK_DELAY = 80
-const LINK_STAGGER = 40
 
 const NavigationMenu = styled.nav<{ $overlay: boolean; $open: boolean }>`
   display: flex;
@@ -182,7 +194,13 @@ export const Header: React.FunctionComponent<{ overlay: boolean; backgroundColor
   const theme = useTheme()
   const [open, setOpen] = useState(false)
   return (
-    <HeaderStyles theme={theme} className='header' $overlay={overlay} $backgroundColor={backgroundColor}>
+    <HeaderStyles
+      theme={theme}
+      className='header'
+      $overlay={overlay}
+      $backgroundColor={backgroundColor}
+      $menuOpen={open}
+    >
       <Section>
         <Container>
           <div className='logo-container'>
