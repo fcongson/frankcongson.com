@@ -10,10 +10,30 @@ import React from 'react'
 import styled from 'styled-components'
 
 // Anchors decorations (e.g. ContourLines) that sit behind a section's content.
-const DecoratedFeaturedSection = styled(FeaturedSection)`
+//
+// `$overlayOpacity` tunes how strongly the section's photo is washed toward the theme background
+// (white in light mode, dark grey in dark mode), per photo, to keep text legible over busier images.
+// A single number applies to both themes; `{ light, dark }` tunes each. Omitted values keep the theme default.
+type OverlayOpacity = number | { light?: number; dark?: number }
+
+const overlayVar = (opacity?: number) => (opacity != null ? `--lagom-semantic-opacity-overlay: ${opacity};` : '')
+
+const DecoratedFeaturedSection = styled(FeaturedSection)<{ $overlayOpacity?: OverlayOpacity }>`
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  ${(props) =>
+    overlayVar(typeof props.$overlayOpacity === 'object' ? props.$overlayOpacity.light : props.$overlayOpacity)}
+
+  [data-lagom-theme~='dark'] & {
+    ${(props) =>
+      overlayVar(typeof props.$overlayOpacity === 'object' ? props.$overlayOpacity.dark : props.$overlayOpacity)}
+  }
+
+  /* Blur the photo behind buttons, matching the header's backdrop blur. */
+  &.lagom-featured-section--image-background .lagom-button {
+    backdrop-filter: blur(8px);
+  }
 `
 
 export type ForestrySection = {
@@ -36,6 +56,7 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
           key={key}
           imageAsBackground={section.image_as_background}
           backgroundColor={section.background_color}
+          $overlayOpacity={section.overlay_opacity}
           image={
             section.image ? (
               <FillImageBox style={{ height: 'max(calc(100vh - 20vh), 700px)' }}>
@@ -43,7 +64,7 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
                   src={resolveImagePath(section.image) ?? ''}
                   alt={section.alt_text ?? ''}
                   fill
-                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                  style={{ objectFit: 'cover', objectPosition: section.image_position ?? 'center center' }}
                 />
                 {section.decoration === 'viewfinder' && <CornerMarks inset='28px' tone='light' />}
                 {section.coordinates && (
