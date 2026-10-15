@@ -1,13 +1,15 @@
 {
   "hero_image": {
     "image": "/content/images/iceland-village.jpg",
-    "alt_text": "A village in the Snæfellsnes peninsula of western Iceland"
+    "alt_text": "A village in the Snæfellsnes peninsula of western Iceland",
+    "coordinates": "64.8°N 23.7°W"
   },
   "main_content": {
     "header": "Hello.",
     "text": "I’m Frank. Welcome to my ever-growing space on the web. A digital garden for continuous growth. Join me as I share my photography, travels, and other stories along the way.",
     "image": "frank-huacachina-peru.jpeg",
-    "alt_text": "Frank in Huacachina, Peru"
+    "alt_text": "Frank in Huacachina, Peru",
+    "coordinates": "14.09°S 75.76°W"
   },
   "sections": [
     {
@@ -16,6 +18,8 @@
       "image": "/content/images/banff-gondola-1.jpg",
       "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada",
       "image_as_background": true,
+      "decoration": "viewfinder",
+      "coordinates": "51.15°N 115.57°W",
       "sections": [
         {
           "template": "call-to-action",
@@ -53,6 +57,7 @@
       "image": "/content/images/desk-setup.jpg",
       "alt_text": "Frank's desk setup and essential items",
       "image_as_background": true,
+      "decoration": "viewfinder",
       "sections": [
         {
           "template": "call-to-action",

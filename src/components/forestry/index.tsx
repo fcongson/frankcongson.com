@@ -3,6 +3,7 @@
 import { CallToAction, Container, FeaturedSection, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
 import { ContourLines } from 'components/ContourLines'
 import { FillImageBox } from 'components/FillImageBox'
+import { CornerMarks, Coordinates } from 'components/ViewfinderFrame'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
 import React from 'react'
@@ -44,6 +45,12 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
                   fill
                   style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
+                {section.decoration === 'viewfinder' && <CornerMarks inset='28px' tone='light' />}
+                {section.coordinates && (
+                  <Coordinates placement='bottom-center' tone='light'>
+                    {section.coordinates}
+                  </Coordinates>
+                )}
               </FillImageBox>
             ) : undefined
           }
