@@ -22,6 +22,21 @@ import Image from 'next/image'
 import React from 'react'
 import styled from 'styled-components'
 
+// The style guide shows an H1, but the page already has its own <h1> (the page header), and a page should
+// have only one. This reproduces the global `h1` styles on a <div> so the specimen looks identical.
+// Likewise, the PageHeader specimens below are rendered as `<div className='lagom-page-header'>`.
+const H1Specimen = styled.div`
+  font-family: var(--lagom-core-font-families-heading);
+  font-weight: var(--lagom-core-font-weights-heading-bold);
+  margin-bottom: 1rem;
+  font-size: var(--lagom-core-font-sizes-h1);
+  line-height: var(--lagom-core-line-heights-heading);
+
+  @media screen and (width <= 768px) {
+    font-size: var(--lagom-core-font-sizes-h2);
+  }
+`
+
 const Container_StyleGuide = styled(Container)`
   /* target component classname to increase specificity */
   &.lagom-container {
@@ -100,7 +115,7 @@ export const StyleGuideClient: React.FunctionComponent<{ posts: Post[] }> = ({ p
       </Section>
       <Section>
         <Container id='typography'>
-          <h1>H1 Lorem Ipsum</h1>
+          <H1Specimen>H1 Lorem Ipsum</H1Specimen>
           <h2>H2 Lorem Ipsum</h2>
           <h3>H3 Lorem Ipsum</h3>
           <h4>H4 Lorem Ipsum</h4>
@@ -148,7 +163,7 @@ export const StyleGuideClient: React.FunctionComponent<{ posts: Post[] }> = ({ p
       </Section>
       <Section>
         <Container id='page-header'>
-          <PageHeader>Lorem Ipsum</PageHeader>
+          <div className='lagom-page-header'>Lorem Ipsum</div>
         </Container>
       </Section>
 
@@ -423,7 +438,7 @@ export const StyleGuideClient: React.FunctionComponent<{ posts: Post[] }> = ({ p
         <Container id='hero'></Container>
       </Section>
       <Hero image={<SampleImage />}>
-        <PageHeader>Lorem Ipsum</PageHeader>
+        <div className='lagom-page-header'>Lorem Ipsum</div>
       </Hero>
 
       {/* Blog Posts */}
