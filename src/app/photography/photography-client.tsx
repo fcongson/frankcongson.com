@@ -1,6 +1,7 @@
 'use client'
 
 import { Container, Hero, PageHeader, useTheme } from '@fcongson/lagom-ui'
+import { ExifCaption } from 'components/ExifCaption'
 import { FillImageBox } from 'components/FillImageBox'
 import { Layout } from 'components/layouts'
 import { motion } from 'framer-motion'
@@ -10,7 +11,7 @@ import React from 'react'
 import { useInView } from 'react-intersection-observer'
 import styled from 'styled-components'
 
-const PhotographyImage = styled(motion.div)<{ label: string }>`
+const PhotographyImage = styled(motion.div)`
   display: grid;
   align-items: center;
 
@@ -22,25 +23,35 @@ const PhotographyImage = styled(motion.div)<{ label: string }>`
     position: relative;
     width: 80vw;
     aspect-ratio: 3 / 2;
+  }
 
-    &::after {
-      content: '${(props) => props.label}';
-    }
+  /* Match the photo's width, which can exceed the container's max-width on wide screens. */
+  .exif-caption {
+    width: 80vw;
   }
 `
+
+type PhotographySection = {
+  image: string
+  alt_text: string
+  caption: string
+  location?: string
+  coordinates?: string
+  exposure?: string
+}
 
 type PhotographyData = {
   hero_image: { image: string; alt_text: string }
   page_header: string
-  sections: { image: string; alt_text: string; caption: string }[]
+  sections: PhotographySection[]
 }
 
-const PhotographyItem: React.FunctionComponent<{
-  image: string
-  alt_text: string
-  index: number
-  totalImages: number
-}> = ({ image, alt_text, index, totalImages }) => {
+const PhotographyItem: React.FunctionComponent<
+  Pick<PhotographySection, 'image' | 'alt_text' | 'location' | 'coordinates' | 'exposure'> & {
+    index: number
+    totalImages: number
+  }
+> = ({ image, alt_text, location, coordinates, exposure, index, totalImages }) => {
   const theme = useTheme()
   const { ref: imageRef, inView: imageInView } = useInView({ threshold: 0.2, triggerOnce: true })
   const imagePath = resolveImagePath(image)
@@ -48,7 +59,6 @@ const PhotographyItem: React.FunctionComponent<{
   return (
     <PhotographyImage
       theme={theme}
-      label={`${index + 1} / ${totalImages}`}
       ref={imageRef}
       initial='hidden'
       animate={imageInView ? 'visible' : 'hidden'}
@@ -57,8 +67,16 @@ const PhotographyItem: React.FunctionComponent<{
         hidden: { translateY: 100, opacity: 0 },
       }}
     >
-      <Container style={{ display: 'flex', flexDirection: 'row' }}>
+      <Container style={{ display: 'flex', flexDirection: 'column' }}>
         <div className='image'>{imagePath && <Image src={imagePath} alt={alt_text} fill />}</div>
+        <ExifCaption
+          className='exif-caption'
+          index={index}
+          total={totalImages}
+          location={location}
+          coordinates={coordinates}
+          exposure={exposure}
+        />
       </Container>
     </PhotographyImage>
   )
@@ -85,8 +103,17 @@ export const PhotographyClient: React.FunctionComponent<{ photography: Photograp
       >
         <PageHeader>{photography.page_header}</PageHeader>
       </Hero>
-      {images.map(({ image, alt_text }, index) => (
-        <PhotographyItem key={image} image={image} alt_text={alt_text} index={index} totalImages={totalImages} />
+      {images.map(({ image, alt_text, location, coordinates, exposure }, index) => (
+        <PhotographyItem
+          key={image}
+          image={image}
+          alt_text={alt_text}
+          location={location}
+          coordinates={coordinates}
+          exposure={exposure}
+          index={index}
+          totalImages={totalImages}
+        />
       ))}
     </Layout>
   )
