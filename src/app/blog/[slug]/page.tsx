@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     keywords: [...(frontmatter.seo?.keywords ?? []), ...(frontmatter.keywords ?? [])],
     image: frontmatter.seo?.image ?? frontmatter.featured_image,
     imageAlt: frontmatter.seo?.alt_text ?? frontmatter.alt_text,
-    pathname: `/${frontmatter.slug}`,
+    pathname: `/blog/${frontmatter.slug}`,
     article: true,
   })
 }
