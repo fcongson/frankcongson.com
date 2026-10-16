@@ -1,4 +1,6 @@
+import { JsonLd } from 'components/JsonLd'
 import { buildMetadata } from 'lib/seo'
+import { blogPostingSchema } from 'lib/structured-data'
 import { getAllPosts, getPostBySlug } from 'lib/content'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
@@ -41,13 +43,16 @@ export default async function BlogPost({ params }: { params: Promise<{ slug: str
   const { frontmatter, content } = post
 
   return (
-    <PostShell
-      title={frontmatter.title}
-      featuredImage={frontmatter.featured_image}
-      altText={frontmatter.alt_text}
-      imageCaption={frontmatter.image_caption}
-    >
-      <MDXRemote source={content} components={mdxComponents} />
-    </PostShell>
+    <>
+      <JsonLd data={blogPostingSchema(frontmatter)} />
+      <PostShell
+        title={frontmatter.title}
+        featuredImage={frontmatter.featured_image}
+        altText={frontmatter.alt_text}
+        imageCaption={frontmatter.image_caption}
+      >
+        <MDXRemote source={content} components={mdxComponents} />
+      </PostShell>
+    </>
   )
 }
