@@ -2,7 +2,7 @@
 
 import { Hero, PageHeader, useTheme } from '@fcongson/lagom-ui'
 import { FillImageBox } from 'components/FillImageBox'
-import { ForestrySections } from 'components/forestry'
+import { PageSections } from 'components/sections'
 import { Layout } from 'components/layouts'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
@@ -37,7 +37,7 @@ export const AboutClient: React.FunctionComponent<{ about: AboutData }> = ({ abo
         <PageHeader>{about.page_header}</PageHeader>
       </Hero>
       <AboutContainer theme={theme}>
-        <ForestrySections sections={about.sections} />
+        <PageSections sections={about.sections} />
       </AboutContainer>
     </Layout>
   )

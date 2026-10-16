@@ -60,7 +60,7 @@ const SampleImage: React.FunctionComponent<{ aspectRatio?: string; style?: React
 // FeaturedSection's `imageAsBackground` variant has no intrinsic height of its
 // own — it relies on the image filling the grid cell (same reason Hero.css
 // hardcodes a height, but FeaturedSection.css doesn't). Mirrors the fix in
-// components/forestry/index.tsx.
+// components/sections/index.tsx.
 const featuredSectionImageStyle: React.CSSProperties = { height: 'max(calc(100vh - 20vh), 700px)' }
 
 export const StyleGuideClient: React.FunctionComponent<{ posts: Post[] }> = ({ posts }) => {

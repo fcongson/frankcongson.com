@@ -2,7 +2,7 @@
 
 import { Container, Hero, PageHeader, Section, useTheme } from '@fcongson/lagom-ui'
 import { FillImageBox } from 'components/FillImageBox'
-import { ForestrySections } from 'components/forestry'
+import { PageSections } from 'components/sections'
 import { Layout } from 'components/layouts'
 import type { ContentPage } from 'lib/content-types'
 import { resolveImagePath } from 'lib/image-utils'
@@ -42,7 +42,7 @@ export const ContentPageClient: React.FunctionComponent<{ page: ContentPage }> =
             </Container>
           </Section>
         )}
-        <ForestrySections sections={sections} />
+        <PageSections sections={sections} />
       </PageContent>
     </Layout>
   )

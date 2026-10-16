@@ -36,7 +36,7 @@ const DecoratedFeaturedSection = styled(FeaturedSection)<{ $overlayOpacity?: Ove
   }
 `
 
-export type ForestrySection = {
+export type SectionData = {
   template: string
   [key: string]: any
 }
@@ -47,7 +47,7 @@ const Wrapper: React.FunctionComponent<{ children?: React.ReactNode }> = ({ chil
   </Section>
 )
 
-const getSection = (section: ForestrySection, unwrapped: boolean, index: number): React.ReactElement | undefined => {
+const getSection = (section: SectionData, unwrapped: boolean, index: number): React.ReactElement | undefined => {
   const key = `${section.template}.${index}`
   switch (section.template) {
     case 'featured-section':
@@ -77,7 +77,7 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
           }
         >
           {section.decoration === 'contours' && <ContourLines variant='quiet' />}
-          <ForestrySections sections={section.sections} unwrapped />
+          <PageSections sections={section.sections} unwrapped />
         </DecoratedFeaturedSection>
       )
 
@@ -135,8 +135,8 @@ const getSection = (section: ForestrySection, unwrapped: boolean, index: number)
   }
 }
 
-export const ForestrySections: React.FunctionComponent<{
-  sections: ForestrySection[]
+export const PageSections: React.FunctionComponent<{
+  sections: SectionData[]
   unwrapped?: boolean
 }> = ({ sections, unwrapped = false }) =>
   !sections ? null : <>{Array.from(sections).map((section, index) => getSection(section, unwrapped, index))}</>
