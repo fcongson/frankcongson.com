@@ -28,7 +28,9 @@ export const buildMetadata = ({
   const url = pathname ? `${siteMetadata.siteUrl}${pathname}` : siteMetadata.siteUrl
 
   return {
-    title: title || undefined,
+    // Omit the key entirely when there's no title: an explicit `title: undefined` overrides (and removes)
+    // the layout's default title instead of falling back to it.
+    ...(title ? { title } : {}),
     description: description || siteMetadata.description,
     keywords: keywordList,
     alternates: { canonical: url },
