@@ -18,22 +18,21 @@
     "jsx": "react-jsx",
     "incremental": true,
     "noImplicitAny": true,
-    "baseUrl": "./",
     "paths": {
       "components/*": [
-        "src/components/*"
+        "./src/components/*"
       ],
       "utils/*": [
-        "src/utils/*"
+        "./src/utils/*"
       ],
       "lib/*": [
-        "src/lib/*"
+        "./src/lib/*"
       ],
       "stylesheets/*": [
-        "src/stylesheets/*"
+        "./src/stylesheets/*"
       ],
       "content/*": [
-        "content/*"
+        "./content/*"
       ]
     },
     "plugins": [
