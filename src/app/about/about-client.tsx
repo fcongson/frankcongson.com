@@ -2,7 +2,7 @@
 
 import { Hero, PageHeader, useTheme } from '@fcongson/lagom-ui'
 import { FillImageBox } from 'components/FillImageBox'
-import { PageSections } from 'components/sections'
+import { PageSections, type SectionData } from 'components/sections'
 import { Layout } from 'components/layouts'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
@@ -18,7 +18,7 @@ const AboutContainer = styled.div`
 type AboutData = {
   hero_image: { image: string; alt_text: string }
   page_header: string
-  sections: any[]
+  sections: SectionData[]
 }
 
 export const AboutClient: React.FunctionComponent<{ about: AboutData }> = ({ about }) => {

@@ -3,7 +3,7 @@
 import { Container, Hero, Section, useTheme } from '@fcongson/lagom-ui'
 import { ContourLines } from 'components/ContourLines'
 import { FillImageBox } from 'components/FillImageBox'
-import { PageSections } from 'components/sections'
+import { PageSections, type SectionData } from 'components/sections'
 import { Layout } from 'components/layouts'
 import { CornerMarks, Coordinates } from 'components/ViewfinderFrame'
 import { Variants, motion } from 'framer-motion'
@@ -109,7 +109,7 @@ const Container_HomeContent = styled(Container)`
 type HomeData = {
   hero_image: { image: string; alt_text: string; coordinates?: string }
   main_content: { header: string; text: string; image: string; alt_text: string; coordinates?: string }
-  sections: any[]
+  sections: SectionData[]
 }
 
 export const HomeClient: React.FunctionComponent<{ home: HomeData }> = ({ home }) => {

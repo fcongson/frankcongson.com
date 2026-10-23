@@ -38,6 +38,8 @@ const DecoratedFeaturedSection = styled(FeaturedSection)<{ $overlayOpacity?: Ove
 
 export type SectionData = {
   template: string
+  // Section fields come from CMS front matter and vary by template.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
 }
 

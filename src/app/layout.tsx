@@ -27,6 +27,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang={siteMetadata.siteLanguage}>
       <head>
         <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='anonymous' />
+        {/* Root layout head applies to every page, so the page-scoped font warning doesn't apply. */}
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
         <link
           href='https://fonts.googleapis.com/css?family=Montserrat:400,600,700|Domine:400,700&display=swap'
           rel='stylesheet'
