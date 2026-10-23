@@ -2,6 +2,7 @@
 
 import { PageHeader } from '@fcongson/lagom-ui'
 import { Layout } from 'components/layouts'
+import Link from 'next/link'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -31,7 +32,7 @@ export default function NotFound() {
         <PageHeader>404</PageHeader>
         <h2>Page not found</h2>
         <p>
-          <a href='/'>Return to homepage</a>
+          <Link href='/'>Return to homepage</Link>
         </p>
       </Custom404Content>
     </Layout>

@@ -1,11 +1,11 @@
-import { useState } from 'react'
+import { useCallback, useRef, useState } from 'react'
 
 export const useScrollPosition = () => {
-  const [previousScrollPosition, setPreviousScrollPosition] = useState<number>(0)
+  const previousScrollPosition = useRef(0)
   const [scrollProgress, setScrollProgress] = useState<number>(0)
   const [scrollDirection, setScrollDireciton] = useState<'up' | 'down' | null>(null)
 
-  const handleScroll = () => {
+  const handleScroll = useCallback(() => {
     const scrollContainer = window.document.documentElement
     const currentScrollPosition = scrollContainer.scrollTop
 
@@ -13,17 +13,17 @@ export const useScrollPosition = () => {
     const scrollDistanceFromBottom = scrollableDistance - currentScrollPosition
     const scrollProgress = 1 - scrollDistanceFromBottom / scrollableDistance
 
-    if (currentScrollPosition > previousScrollPosition) {
+    if (currentScrollPosition > previousScrollPosition.current) {
       // Scrolling down
       setScrollDireciton('down')
-    } else if (currentScrollPosition < previousScrollPosition) {
+    } else if (currentScrollPosition < previousScrollPosition.current) {
       // Scrolling up
       setScrollDireciton('up')
     }
 
-    setPreviousScrollPosition(currentScrollPosition)
+    previousScrollPosition.current = currentScrollPosition
     setScrollProgress(scrollProgress)
-  }
+  }, [])
 
   return {
     handleScroll,

@@ -20,7 +20,7 @@ export const ScrollProgress = () => {
   useEffect(() => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [handleScroll])
 
   return <StyledScrollProgress $progress={scrollProgress * 100} />
 }
