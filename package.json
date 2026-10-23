@@ -6,7 +6,7 @@
   "author": "Frank Congson",
   "dependencies": {
     "@fcongson/lagom-tokens": "^1.0.0",
-    "@fcongson/lagom-ui": "^1.0.0",
+    "@fcongson/lagom-ui": "^1.0.3",
     "@fortawesome/fontawesome-svg-core": "^7.3.0",
     "@fortawesome/free-brands-svg-icons": "^7.3.0",
     "@fortawesome/react-fontawesome": "^3.3.1",
