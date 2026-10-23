@@ -281,10 +281,10 @@
   resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/1.0.0/7f22fe87dfd6bd7b6481a840c8c610de78e6a549#7f22fe87dfd6bd7b6481a840c8c610de78e6a549"
   integrity sha512-jrf8oxenOmclmIHW/khOj9CAkSwXcQs1SRtgNL5TrOtlp/xOfqhye/Y068O/qlFLi44jo6gicdfnUsZTgUnU9w==
 
-"@fcongson/lagom-ui@^1.0.3":
-  version "1.0.3"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/1.0.3/cb9b48cd22917ed760f7eb83c7e1d67dd783001b#cb9b48cd22917ed760f7eb83c7e1d67dd783001b"
-  integrity sha512-+cOxvZ2UvIVoOzF8i+hQujuY7YI+0KWOLOQSpn2gistGzXDv6LxNLzbfw9yCcDLrI76AoJvKNCtnTzP7+wyWkg==
+"@fcongson/lagom-ui@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/1.1.0/61d1fcc99a52da26bf827a9be2c40bd3197dd9f6#61d1fcc99a52da26bf827a9be2c40bd3197dd9f6"
+  integrity sha512-VGCRludvkRSWAMSC8seTg96TRz7K2ZCHPbKWCymuT1N2bObsnY7MbgTjDf8r5VlpNI0xDqbyZYxWhdz/VSDuog==
   dependencies:
     "@fcongson/lagom-tokens" "^1.0.0"
     "@growthbook/growthbook-react" "^1.3.1"
