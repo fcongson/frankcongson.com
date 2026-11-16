@@ -1,4 +1,6 @@
 import { GoogleAnalytics } from '@next/third-parties/google'
+import '@fcongson/lagom-brands/fern/css/fern.css'
+import '@fcongson/lagom-tokens/css/lagom.css'
 import '@fcongson/lagom-ui/style.css'
 import 'components/styles/font.css'
 import type { Metadata } from 'next'
@@ -24,7 +26,7 @@ const gaTrackingId = process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_TRACKING_ID
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang={siteMetadata.siteLanguage}>
+    <html lang={siteMetadata.siteLanguage} data-lagom-brand='fern'>
       <head>
         <link rel='preconnect' href='https://fonts.gstatic.com/' crossOrigin='anonymous' />
         {/* Root layout head applies to every page, so the page-scoped font warning doesn't apply. */}

@@ -276,17 +276,22 @@
     "@eslint/core" "^1.2.1"
     levn "^0.4.1"
 
-"@fcongson/lagom-tokens@^1.0.0":
+"@fcongson/lagom-brands@^1.0.0":
   version "1.0.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/1.0.0/7f22fe87dfd6bd7b6481a840c8c610de78e6a549#7f22fe87dfd6bd7b6481a840c8c610de78e6a549"
-  integrity sha512-jrf8oxenOmclmIHW/khOj9CAkSwXcQs1SRtgNL5TrOtlp/xOfqhye/Y068O/qlFLi44jo6gicdfnUsZTgUnU9w==
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-brands/1.0.0/b2fb3fb4bc241ab52dfa789fa7805cd7c65c9ff8#b2fb3fb4bc241ab52dfa789fa7805cd7c65c9ff8"
+  integrity sha512-GKEz0g4oJAJ4cJ2co4+yLgVqCTZmxHFGG9Bf1ux5GgeQzgsD9cDTLRQJ3IIHBXXZ6LNOyNqN9foe6g4QO1Xkxw==
 
-"@fcongson/lagom-ui@^1.1.0":
-  version "1.1.0"
-  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/1.1.0/61d1fcc99a52da26bf827a9be2c40bd3197dd9f6#61d1fcc99a52da26bf827a9be2c40bd3197dd9f6"
-  integrity sha512-VGCRludvkRSWAMSC8seTg96TRz7K2ZCHPbKWCymuT1N2bObsnY7MbgTjDf8r5VlpNI0xDqbyZYxWhdz/VSDuog==
+"@fcongson/lagom-tokens@^2.0.0":
+  version "2.0.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-tokens/2.0.0/3a2bb3613bd358df1ebc0f1b434be7c18aad3e66#3a2bb3613bd358df1ebc0f1b434be7c18aad3e66"
+  integrity sha512-wkFT6IGNGDUxHff8LH9njd79JzuP1Vb1cKgZ8q5YXhGVuMM7hrvI1UFkDlIOskPVD7qAmjfRx7tgNZvERotODg==
+
+"@fcongson/lagom-ui@^2.0.0":
+  version "2.0.0"
+  resolved "https://npm.pkg.github.com/download/@fcongson/lagom-ui/2.0.0/bc47736098e8f039ebde285011d6c84e7d7d96b6#bc47736098e8f039ebde285011d6c84e7d7d96b6"
+  integrity sha512-+ngAGxY2DH55t+DjVVW43RE3D+OnRgMtqV8rYd1Gj52EAUZ+At7IVbmmov7QCdNr2J+StRJY76UeewGb8fSSIA==
   dependencies:
-    "@fcongson/lagom-tokens" "^1.0.0"
+    "@fcongson/lagom-tokens" "^2.0.0"
     "@growthbook/growthbook-react" "^1.3.1"
     clsx "^2.1.1"
 
