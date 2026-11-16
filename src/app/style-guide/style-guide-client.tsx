@@ -16,11 +16,12 @@ import {
 import { BlogPosts } from 'components/BlogPosts'
 import { FillImageBox } from 'components/FillImageBox'
 import { Layout } from 'components/layouts'
+import { headerLabel } from 'components/styles'
 import type { Post } from 'lib/content-types'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 // The style guide shows an H1, but the page already has its own <h1> (the page header), and a page should
 // have only one. This reproduces the global `h1` styles on a <div> so the specimen looks identical.
@@ -34,6 +35,14 @@ const H1Specimen = styled.div`
 
   @media screen and (width <= 768px) {
     font-size: var(--lagom-core-font-sizes-h2);
+  }
+`
+
+// Section headers in the style guide's call-to-actions sit on the dark text label. Only the headers:
+// the call-to-action text and buttons are left alone. Global, but only mounted while this page is.
+const StyleGuideLabels = createGlobalStyle`
+  .lagom-call-to-action__header {
+    ${headerLabel}
   }
 `
 
@@ -68,9 +77,10 @@ export const StyleGuideClient: React.FunctionComponent<{ posts: Post[] }> = ({ p
 
   return (
     <Layout>
+      <StyleGuideLabels />
       <Section>
         <Container>
-          <PageHeader>Style Guide.</PageHeader>
+          <PageHeader className='page-header--label'>Style Guide.</PageHeader>
         </Container>
       </Section>
       <Section>

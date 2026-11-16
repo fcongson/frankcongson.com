@@ -3,6 +3,7 @@
 import { CallToAction, Container, FeaturedSection, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
 import { ContourLines } from 'components/ContourLines'
 import { FillImageBox } from 'components/FillImageBox'
+import { headerLabel } from 'components/styles'
 import { CornerMarks, Coordinates } from 'components/ViewfinderFrame'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
@@ -37,18 +38,7 @@ const labelStyles = css`
     h1,
     h2,
     h3 {
-      width: fit-content;
-      max-width: 100%;
-      margin-left: auto;
-      margin-right: auto;
-      background-color: #000;
-      color: #fff;
-    }
-
-    h1,
-    h2,
-    h3 {
-      padding: 0.1em 0.4em;
+      ${headerLabel}
       margin-bottom: 1.5rem;
     }
 
