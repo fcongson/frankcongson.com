@@ -6,7 +6,7 @@ import styled from 'styled-components'
 type Tone = 'theme' | 'light'
 
 const toneColor = (tone: Tone) =>
-  tone === 'light' ? 'rgba(255, 255, 255, 0.8)' : 'var(--lagom-semantic-color-fg-muted)'
+  tone === 'light' ? 'rgba(255, 255, 255, 0.8)' : 'var(--lagom-semantic-color-fg-secondary)'
 
 const CORNER_SIZE = '14px'
 

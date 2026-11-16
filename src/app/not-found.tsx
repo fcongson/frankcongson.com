@@ -13,14 +13,14 @@ const Custom404Content = styled.div`
   align-items: center;
 
   a {
-    color: var(--lagom-semantic-color-fg-subtle);
+    color: var(--lagom-semantic-color-fg-tertiary);
     font-weight: normal;
     padding-bottom: 4px;
     border-bottom: 1px solid transparent;
     transition: border-bottom 200ms ease-in-out;
 
     &:hover {
-      border-bottom: 1px solid var(--lagom-semantic-color-fg-subtle);
+      border-bottom: 1px solid var(--lagom-semantic-color-fg-tertiary);
     }
   }
 `

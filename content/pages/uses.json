@@ -4,6 +4,7 @@
     "alt_text": "Frank's desk setup and essential items"
   },
   "page_header": "Uses.",
+  "page_header_label": true,
   "sections": [
     {
       "template": "text",

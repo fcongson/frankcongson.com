@@ -17,7 +17,7 @@ const PageContent = styled.div`
 `
 
 export const ContentPageClient: React.FunctionComponent<{ page: ContentPage }> = ({ page }) => {
-  const { hero_image, page_header, sections } = page
+  const { hero_image, page_header, page_header_label, sections } = page
   const theme = useTheme()
   const heroImagePath = resolveImagePath(hero_image?.image)
 
@@ -31,7 +31,7 @@ export const ContentPageClient: React.FunctionComponent<{ page: ContentPage }> =
             </FillImageBox>
           }
         >
-          <PageHeader>{page_header}</PageHeader>
+          <PageHeader className={page_header_label ? 'page-header--label' : undefined}>{page_header}</PageHeader>
         </Hero>
       )}
       <PageContent theme={theme}>

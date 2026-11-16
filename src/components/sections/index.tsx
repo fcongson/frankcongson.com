@@ -7,7 +7,7 @@ import { CornerMarks, Coordinates } from 'components/ViewfinderFrame'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 // Anchors decorations (e.g. ContourLines) that sit behind a section's content.
 //
@@ -18,7 +18,59 @@ type OverlayOpacity = number | { light?: number; dark?: number }
 
 const overlayVar = (opacity?: number) => (opacity != null ? `--lagom-semantic-opacity-overlay: ${opacity};` : '')
 
-const DecoratedFeaturedSection = styled(FeaturedSection)<{ $overlayOpacity?: OverlayOpacity }>`
+// Opt-in (`text_labels` on a featured section): text and button sit on dark labels so they stay
+// legible over busy photos.
+const labelStyles = css`
+  /* Dark, blurred button with white text so it stays legible over busy photos. The library sets an
+     inline transparent background-color on the link, so the dark tint is painted as a background-image
+     (a flat gradient) over it, with the photo blurred behind. */
+  &.lagom-featured-section--image-background .lagom-button {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    backdrop-filter: blur(8px);
+    color: #fff;
+  }
+
+  /* Solid black label behind the text so it stays legible over the photo. */
+  &.lagom-featured-section--image-background .lagom-call-to-action {
+    align-items: center;
+
+    h1,
+    h2,
+    h3 {
+      width: fit-content;
+      max-width: 100%;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: #000;
+      color: #fff;
+    }
+
+    h1,
+    h2,
+    h3 {
+      padding: 0.1em 0.4em;
+      margin-bottom: 1.5rem;
+    }
+
+    /* The text is wrapped in an inline span so each line gets its own bar that hugs the text.
+       The paragraph's line-height leaves the gap between bars. */
+    p {
+      max-width: 36rem;
+      padding: 0;
+      color: #fff;
+      line-height: 2;
+    }
+
+    .label-text {
+      background-color: #000;
+      padding: 0.15em 0.75rem;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+    }
+  }
+`
+
+const DecoratedFeaturedSection = styled(FeaturedSection)<{ $overlayOpacity?: OverlayOpacity; $labels?: boolean }>`
   position: relative;
   isolation: isolate;
   overflow: hidden;
@@ -30,10 +82,7 @@ const DecoratedFeaturedSection = styled(FeaturedSection)<{ $overlayOpacity?: Ove
       overlayVar(typeof props.$overlayOpacity === 'object' ? props.$overlayOpacity.dark : props.$overlayOpacity)}
   }
 
-  /* Blur the photo behind buttons, matching the header's backdrop blur. */
-  &.lagom-featured-section--image-background .lagom-button {
-    backdrop-filter: blur(8px);
-  }
+  ${(props) => props.$labels && labelStyles}
 `
 
 export type SectionData = {
@@ -49,7 +98,12 @@ const Wrapper: React.FunctionComponent<{ children?: React.ReactNode }> = ({ chil
   </Section>
 )
 
-const getSection = (section: SectionData, unwrapped: boolean, index: number): React.ReactElement | undefined => {
+const getSection = (
+  section: SectionData,
+  unwrapped: boolean,
+  index: number,
+  textLabels: boolean,
+): React.ReactElement | undefined => {
   const key = `${section.template}.${index}`
   switch (section.template) {
     case 'featured-section':
@@ -59,6 +113,7 @@ const getSection = (section: SectionData, unwrapped: boolean, index: number): Re
           imageAsBackground={section.image_as_background}
           backgroundColor={section.background_color}
           $overlayOpacity={section.overlay_opacity}
+          $labels={section.text_labels}
           image={
             section.image ? (
               <FillImageBox style={{ height: 'max(calc(100vh - 20vh), 700px)' }}>
@@ -79,7 +134,7 @@ const getSection = (section: SectionData, unwrapped: boolean, index: number): Re
           }
         >
           {section.decoration === 'contours' && <ContourLines variant='quiet' />}
-          <PageSections sections={section.sections} unwrapped />
+          <PageSections sections={section.sections} unwrapped textLabels={section.text_labels} />
         </DecoratedFeaturedSection>
       )
 
@@ -88,7 +143,7 @@ const getSection = (section: SectionData, unwrapped: boolean, index: number): Re
         <CallToAction
           key={key}
           header={section.header}
-          text={section.text}
+          text={textLabels ? <span className='label-text'>{section.text}</span> : section.text}
           actionLink={section.call_to_action.url}
           actionText={section.call_to_action.text}
         />
@@ -140,5 +195,9 @@ const getSection = (section: SectionData, unwrapped: boolean, index: number): Re
 export const PageSections: React.FunctionComponent<{
   sections: SectionData[]
   unwrapped?: boolean
-}> = ({ sections, unwrapped = false }) =>
-  !sections ? null : <>{Array.from(sections).map((section, index) => getSection(section, unwrapped, index))}</>
+  // Set by a parent featured section that opted in to `text_labels`.
+  textLabels?: boolean
+}> = ({ sections, unwrapped = false, textLabels = false }) =>
+  !sections ? null : (
+    <>{Array.from(sections).map((section, index) => getSection(section, unwrapped, index, textLabels))}</>
+  )

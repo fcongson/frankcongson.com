@@ -11,7 +11,7 @@ const Caption = styled.p`
   gap: 0.5rem 1.5rem;
   margin: 14px 0 0 0;
   padding: 0;
-  color: var(--lagom-semantic-color-fg-subtle);
+  color: var(--lagom-semantic-color-fg-tertiary);
   font-size: 11px;
   line-height: 1.4;
   letter-spacing: 0.14em;

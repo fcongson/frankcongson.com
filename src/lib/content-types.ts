@@ -39,5 +39,7 @@ export type ContentPage = {
   seo?: SeoFrontmatter
   hero_image?: { image: string; alt_text?: string }
   page_header?: string
+  // Renders the page header on a solid black label (for titles over a hero photo).
+  page_header_label?: boolean
   sections: PageSection[]
 }

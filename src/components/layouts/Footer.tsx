@@ -8,8 +8,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const FooterStyles = styled.footer`
-  background-color: var(--lagom-core-colors-black);
-  color: var(--lagom-core-colors-grey-lighter40);
+  background-color: var(--fern-grey-5);
+  color: var(--fern-grey-80);
   text-align: center;
   flex-shrink: 0;
 
@@ -55,7 +55,7 @@ const FooterStyles = styled.footer`
         line-height: 20px;
         width: fit-content;
         margin: 0 0 0 2rem;
-        color: var(--lagom-core-colors-grey-lighter40);
+        color: var(--fern-grey-80);
       }
 
       ${(props) => props.theme.mediaQueries!.large} {
@@ -75,13 +75,13 @@ const FooterStyles = styled.footer`
 
       & a {
         padding: 1rem;
-        color: var(--lagom-core-colors-grey-lighter40);
+        color: var(--fern-grey-80);
       }
 
       & svg {
         width: 1.5rem;
         height: 1.5rem;
-        color: var(--lagom-core-colors-grey-lighter40);
+        color: var(--fern-grey-80);
       }
     }
 
