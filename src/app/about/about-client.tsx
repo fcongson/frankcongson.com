@@ -4,6 +4,7 @@ import { Hero, PageHeader, useTheme } from '@fcongson/lagom-ui'
 import { FillImageBox } from 'components/FillImageBox'
 import { PageSections, type SectionData } from 'components/sections'
 import { Layout } from 'components/layouts'
+import { Coordinates } from 'components/ViewfinderFrame'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
 import React from 'react'
@@ -16,7 +17,7 @@ const AboutContainer = styled.div`
 `
 
 type AboutData = {
-  hero_image: { image: string; alt_text: string }
+  hero_image: { image: string; alt_text: string; coordinates?: string }
   page_header: string
   sections: SectionData[]
 }
@@ -31,6 +32,11 @@ export const AboutClient: React.FunctionComponent<{ about: AboutData }> = ({ abo
         image={
           <FillImageBox>
             <Image src={heroImagePath ?? ''} alt={about.hero_image.alt_text} fill style={{ objectFit: 'cover' }} />
+            {about.hero_image.coordinates && (
+              <Coordinates placement='bottom-center' tone='light' label>
+                {about.hero_image.coordinates}
+              </Coordinates>
+            )}
           </FillImageBox>
         }
       >

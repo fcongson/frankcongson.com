@@ -1,15 +1,14 @@
 {
   "hero_image": {
     "image": "/content/images/banff-gondola-2.jpg",
-    "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada"
+    "alt_text": "A view of the Canadian Rocky Mountains at the top of the Banff Gondola in Alberta, Canada",
+    "coordinates": "51.15°N 115.57°W"
   },
   "page_header": "Blog.",
   "seo": {
     "title": "Blog",
     "description": "",
-    "keywords": [
-
-    ],
+    "keywords": [],
     "image": "",
     "alt_text": ""
   }

@@ -4,6 +4,7 @@ import { Container, Hero, PageHeader, Section, useTheme } from '@fcongson/lagom-
 import { BlogPosts } from 'components/BlogPosts'
 import { FillImageBox } from 'components/FillImageBox'
 import { Layout } from 'components/layouts'
+import { Coordinates } from 'components/ViewfinderFrame'
 import blog from 'content/data/blog.json'
 import type { Post } from 'lib/content-types'
 import { resolveImagePath } from 'lib/image-utils'
@@ -67,6 +68,11 @@ export const BlogListClient: React.FunctionComponent<{
         image={
           <FillImageBox>
             <Image src={heroImagePath ?? ''} alt={blog.hero_image.alt_text} fill style={{ objectFit: 'cover' }} />
+            {blog.hero_image.coordinates && (
+              <Coordinates placement='bottom-center' tone='light'>
+                {blog.hero_image.coordinates}
+              </Coordinates>
+            )}
           </FillImageBox>
         }
       >

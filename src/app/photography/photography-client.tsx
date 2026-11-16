@@ -4,6 +4,7 @@ import { Container, Hero, PageHeader, useTheme } from '@fcongson/lagom-ui'
 import { ExifCaption } from 'components/ExifCaption'
 import { FillImageBox } from 'components/FillImageBox'
 import { Layout } from 'components/layouts'
+import { Coordinates } from 'components/ViewfinderFrame'
 import { motion } from 'framer-motion'
 import { resolveImagePath } from 'lib/image-utils'
 import Image from 'next/image'
@@ -41,7 +42,7 @@ type PhotographySection = {
 }
 
 type PhotographyData = {
-  hero_image: { image: string; alt_text: string }
+  hero_image: { image: string; alt_text: string; coordinates?: string }
   page_header: string
   sections: PhotographySection[]
 }
@@ -98,6 +99,11 @@ export const PhotographyClient: React.FunctionComponent<{ photography: Photograp
               fill
               style={{ objectFit: 'cover' }}
             />
+            {photography.hero_image.coordinates && (
+              <Coordinates placement='bottom-center' tone='light'>
+                {photography.hero_image.coordinates}
+              </Coordinates>
+            )}
           </FillImageBox>
         }
       >

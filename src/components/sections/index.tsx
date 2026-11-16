@@ -153,6 +153,21 @@ const getSection = (
                 fill
                 style={{ objectFit: 'cover' }}
               />
+              {/* Full-width photos run to the screen edge, so the marks and readout sit inside them. */}
+              {section.decoration === 'viewfinder' && (
+                <CornerMarks
+                  inset={section.fullwidth ? '28px' : '-10px'}
+                  tone={section.fullwidth ? 'light' : 'theme'}
+                />
+              )}
+              {section.coordinates &&
+                (section.fullwidth ? (
+                  <Coordinates placement='bottom-center' tone='light' label>
+                    {section.coordinates}
+                  </Coordinates>
+                ) : (
+                  <Coordinates>{section.coordinates}</Coordinates>
+                ))}
             </FillImageBox>
           }
           caption={section.caption}

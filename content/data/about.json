@@ -1,7 +1,8 @@
 {
   "hero_image": {
     "image": "/content/images/frank-redrocks.jpg",
-    "alt_text": "Frank in Red Rocks, Nevada"
+    "alt_text": "Frank in Red Rocks, Nevada",
+    "coordinates": "36.13°N 115.43°W"
   },
   "page_header": "About.",
   "sections": [
@@ -21,6 +22,8 @@
       "template": "image-caption",
       "image": "/content/images/banff-vermillion-lakes.jpg",
       "alt_text": "Jami sitting at the end of a dock at Vermillion Lakes located within Banff National Park in Alberta, Canada",
+      "decoration": "viewfinder",
+      "coordinates": "51.17°N 115.60°W",
       "fullwidth": true,
       "caption": "",
       "emphasized": false

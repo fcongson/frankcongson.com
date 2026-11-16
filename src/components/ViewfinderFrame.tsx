@@ -44,7 +44,7 @@ export const CornerMarks: React.FunctionComponent<{ inset?: string; tone?: Tone 
   </Marks>
 )
 
-const Readout = styled.span<{ $placement: 'below' | 'bottom-center'; $tone: Tone }>`
+const Readout = styled.span<{ $placement: 'below' | 'bottom-center'; $tone: Tone; $label: boolean }>`
   position: absolute;
   color: ${(p) => toneColor(p.$tone)};
   font-size: 11px;
@@ -53,6 +53,8 @@ const Readout = styled.span<{ $placement: 'below' | 'bottom-center'; $tone: Tone
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
   pointer-events: none;
+  /* Optional solid black label, matching the text labels, for readouts over busy or bright photos. */
+  ${(p) => (p.$label ? 'background-color: #000; color: #fff; padding: 0.5em 0.75em;' : '')}
   ${(p) =>
     p.$placement === 'below'
       ? 'top: 100%; left: 0; margin-top: 18px;'
@@ -66,8 +68,9 @@ export const Coordinates: React.FunctionComponent<{
   children: React.ReactNode
   placement?: 'below' | 'bottom-center'
   tone?: Tone
-}> = ({ children, placement = 'below', tone = 'theme' }) => (
-  <Readout $placement={placement} $tone={tone}>
+  label?: boolean
+}> = ({ children, placement = 'below', tone = 'theme', label = false }) => (
+  <Readout $placement={placement} $tone={tone} $label={label}>
     {children}
   </Readout>
 )
