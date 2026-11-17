@@ -34,7 +34,8 @@ const MdxImageCaption: React.FunctionComponent<{
   emphasized?: boolean
   fullwidth?: boolean
   aspectRatio?: string
-}> = ({ image, altText, caption, emphasized, fullwidth, aspectRatio = '16 / 9' }) => {
+  maxWidth?: string
+}> = ({ image, altText, caption, emphasized, fullwidth, aspectRatio = '16 / 9', maxWidth }) => {
   const resolved = resolveImagePath(image)
   if (!resolved) return null
   return (
@@ -47,9 +48,11 @@ const MdxImageCaption: React.FunctionComponent<{
           // eslint-disable-next-line @next/next/no-img-element
           <img src={resolved} alt={altText} />
         ) : (
-          <FillImageBox $aspectRatio={aspectRatio}>
-            <Image src={resolved} alt={altText ?? ''} fill style={{ objectFit: 'cover' }} />
-          </FillImageBox>
+          <div style={maxWidth ? { maxWidth, margin: '0 auto' } : undefined}>
+            <FillImageBox $aspectRatio={aspectRatio}>
+              <Image src={resolved} alt={altText ?? ''} fill style={{ objectFit: 'cover' }} />
+            </FillImageBox>
+          </div>
         )
       }
     />
