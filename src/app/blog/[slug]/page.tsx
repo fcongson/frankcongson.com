@@ -7,9 +7,19 @@ import { notFound } from 'next/navigation'
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import { MdxBlockquote, MdxImage, MdxImageCaption, MdxLink, MdxLinkComponent, MdxSection } from './mdx-components'
 import { PostShell } from './post-shell'
+import { Children, isValidElement } from 'react'
+
+// Markdown wraps a lone image in <p>, but MdxImage renders block elements (section, figure, div),
+// which can't be nested in a <p> and cause hydration errors. Skip the <p> for image-only paragraphs.
+const MdxParagraph = ({ children }: { children?: React.ReactNode }) => {
+  const nodes = Children.toArray(children)
+  if (nodes.length === 1 && isValidElement(nodes[0]) && nodes[0].type === MdxImage) return <>{children}</>
+  return <p>{children}</p>
+}
 
 const mdxComponents = {
   Section: MdxSection,
+  p: MdxParagraph,
   img: MdxImage,
   ImageCaption: MdxImageCaption,
   blockquote: MdxBlockquote,
