@@ -15,7 +15,7 @@
     "@sentry/nextjs": "^10.63.0",
     "framer-motion": "^12.42.2",
     "gray-matter": "^4.0.3",
-    "next": "^16.4.2",
+    "next": "16.4.6",
     "next-mdx-remote": "^6.0.0",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",

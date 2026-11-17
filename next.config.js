@@ -11,6 +11,9 @@ const nextConfig = {
   compiler: {
     styledComponents: true,
   },
+  experimental: {
+    agentUpgrade: 'security',
+  },
 }
 
 module.exports = nextConfig
