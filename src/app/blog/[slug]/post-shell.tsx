@@ -1,6 +1,7 @@
 'use client'
 
 import { Container, ImageCaption, Section, useTheme } from '@fcongson/lagom-ui'
+import { renderCaption } from 'components/CaptionText'
 import { FillImageBox } from 'components/FillImageBox'
 import { Layout } from 'components/layouts'
 import { ScrollProgress } from 'components/ScrollProgress'
@@ -111,7 +112,7 @@ export const PostShell: React.FunctionComponent<{
                   <Image src={imagePath} alt={altText ?? title ?? ''} fill style={{ objectFit: 'cover' }} />
                 </FillImageBox>
               }
-              caption={imageCaption ?? ''}
+              caption={renderCaption(imageCaption ?? '') as string}
             />
           )}
         </PostHeader>

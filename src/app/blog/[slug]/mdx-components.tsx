@@ -1,6 +1,7 @@
 'use client'
 
 import { Container, ImageCaption, Quote, Section } from '@fcongson/lagom-ui'
+import { renderCaption } from 'components/CaptionText'
 import { FillImageBox } from 'components/FillImageBox'
 import { NextLinkAdapter } from 'components/NextLinkAdapter'
 import { isGif, resolveImagePath } from 'lib/image-utils'
@@ -42,7 +43,8 @@ const MdxImageCaption: React.FunctionComponent<{
     <ImageCaption
       emphasized={emphasized}
       fullwidth={fullwidth}
-      caption={caption}
+      // lagom-ui types `caption` as a string but renders it as children, so links in it work.
+      caption={renderCaption(caption) as string}
       image={
         isGif(image) ? (
           // eslint-disable-next-line @next/next/no-img-element
