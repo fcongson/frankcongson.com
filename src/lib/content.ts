@@ -27,7 +27,11 @@ const readPostDir = (slugDir: string): Post => {
 
 export const getAllPosts = (): Post[] => {
   const dirs = fs.readdirSync(POSTS_DIR, { withFileTypes: true }).filter((d) => d.isDirectory())
-  const posts = dirs.map((d) => readPostDir(d.name)).filter((post) => post.frontmatter.published !== false)
+  // Posts with `published: false` are drafts: visible on the local dev server only, never in a production build.
+  const showDrafts = process.env.NODE_ENV === 'development'
+  const posts = dirs
+    .map((d) => readPostDir(d.name))
+    .filter((post) => showDrafts || post.frontmatter.published !== false)
   return posts.sort((a, b) => (a.frontmatter.date < b.frontmatter.date ? 1 : -1))
 }
 
