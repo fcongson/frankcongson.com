@@ -1,0 +1,381 @@
+---
+seo:
+  image: '../../images/glint-hero-post2-references-and-app.png'
+  alt_text: 'A Leica M10-R and a Sony A1 II camera next to the Glint camera app'
+keywords:
+  - glint
+  - ios
+  - camera app
+  - design process
+  - leica
+  - building with ai
+  - claude
+published: false
+title: 'Designing Glint like a camera'
+description: 'I designed Glint taking inspiration from real cameras with tactile controls. I asked Claude for mockups, tested the UX on my phone, and iterated.'
+date: 2026-11-20
+slug: designing-glint-like-a-camera
+featured_image: '../../images/glint-hero-post2-references-and-app.png'
+alt_text: 'A Leica M10-R and a Sony A1 II camera next to the Glint camera app'
+image_caption: 'A Leica M10-R and a Sony A1 II, next to Glint as it is now'
+excerpt: "I designed Glint taking inspiration from real cameras with tactile controls. I asked Claude for mockups, tested the UX on my phone, and iterated. Here's the process, and the decisions I made along the way."
+---
+
+<Section>
+
+My design process has become significantly faster with AI. In the past, I would gather reference images into Figma and use them to narrow down the design I was looking for, before I could start thinking about what to mock up. Now I can throw those reference images at Claude, and we go straight to mockups and iterate quickly. It was also fun. I spent my time looking at photos of cameras. I love the look of vintage cameras and their tactile dials, and there were so many great options to <s>copy</s> steal from 😆.
+
+> "Good artists copy; great artists steal." — probably Pablo Picasso
+
+This post is about how I designed Glint, my raw-first iPhone camera app. Have a read of [the first post](https://frankcongson.com/blog/building-glint) if you want the whole story.
+
+## The rule
+
+**Function and form** — the app had to function like a camera, and its form had to say "camera" 📷.
+
+## First, it had neither function nor form
+
+Before I started any real design iteration, Claude had built a camera app that didn't feel like a camera at all. It looked like a form. The first run on my phone was a plain SwiftUI form over a live preview, with two toggles and two unlabelled sliders. My next prompt to Claude was the start of the design cycle.
+
+> "I'd love to iterate on the stylings of the controls. It would be great to make it feel more like a real camera." — My prompt to Claude
+
+Within minutes, it had yellow RAW and M chips, a 4:3 viewfinder, and monospaced ISO, SHUTTER, and APERTURE readouts. After a few more iterations, it had tap-to-focus and a histogram chip.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-blog-first-night.png'
+  altText='Three screenshots of the first versions of Glint: a plain form over the viewfinder, then a styled camera interface, then tap to focus with a histogram'
+  caption='Left: the first run, a plain form. Middle: minutes later. Right: the end of the night.'
+  emphasized
+/>
+
+<Section>
+
+And by the end of the night, the histogram had its own spot in the corner of the viewfinder.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-shot-01-first-generated-ui.png'
+  altText='The first generated Glint interface with the histogram in the corner of the viewfinder'
+  maxWidth='360px'
+/>
+
+<Section>
+
+Design iterations were moving quickly. It had the basic function and form of a camera.
+
+## Inspiration from a Leica
+
+I wanted to improve the UX and the interactions for Glint's manual controls. The single slider wasn't very intuitive, and it made sense to follow the familiar way physical cameras handle those controls — specifically the Leica M.
+
+> "**Jakob's Law** (also known as the Law of Familiarity) states that users spend most of their time on other sites and apps, so they expect a new product to work the same way as familiar ones" — [Laws of UX](https://lawsofux.com/jakobs-law/)
+
+I gave Claude images for inspiration and quickly got mockups for several options to choose from. It was great getting those mockups from Claude. They were even interactive, so I could get a feel for the interactions. That alone would have taken me days in Figma.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-blog-leica-options.png'
+  altText='Three mockups for the manual controls: A, twin dials; B, a lens barrel with a rangefinder patch; C, one wheel and a focus rail'
+  caption='Left: A, twin dials. Middle: B, lens barrel and rangefinder patch. Right: C, one wheel and a focus rail.'
+  emphasized
+/>
+
+<ImageCaption
+  image='images/glint-ref-leica-m10-r.png'
+  altText='A Leica M10-R camera showing the distance scale on the lens and the ISO and shutter dials'
+  caption='Leica M10-R, with the distance scale on the lens and the ISO and shutter dials.'
+  fullwidth
+/>
+
+<Section>
+
+What I took from a Leica M (the image above is an M10-R, but the controls are the same):
+
+- **The distance scale ending in ∞** became the model for the NEAR to ∞ focus rail.
+- **The A beside the ISO and shutter values.** Auto is a position on the dial. In Glint, any setting can be on A: ISO on A gives shutter priority, shutter on A gives ISO priority, both give program, and the ruler then sets exposure compensation.
+- **The meter.** The ▶ ● ◀ LEDs with the offset in stops became the exposure meter in the top bar.
+
+Of the mockups Claude presented, I chose C. It made the best use of space while still feeling familiar. The viewfinder fills the screen, the focus rail sits on the right edge (close to the image you're focusing on, while covering as little of it as possible), and one wheel adjusts the selected manual setting. I did like the twin dials in A, but turning those tiny dials on a touchscreen seemed difficult. The touch targets were too small, a limitation of touch interfaces. B just took up too much screen real estate.
+
+## The iPhone's fixed aperture
+
+My iPhone 15 Pro has no adjustable aperture, so the Leica's depth-of-field scale has no equivalent. Glint shows the lens's f-number read-only, because the only way to change it is to change lens. The iPhone 18 Pro now has an adjustable aperture, which is obviously a very good reason to upgrade — for research 😉.
+
+## User testing and fast iterations
+
+Once I had the Leica-inspired designs coded, built, and installed on my phone, it was time to do some real user testing. That user being me 🤝.
+
+Here are the five improvements that came out of it. Each started as a mockup, then I tested it out on my phone to make sure the change improved the issue I was having.
+
+### 1. The chips over the viewfinder were unreadable
+
+On a bright scene, I noticed HIST, ZEB, PK, and MAG were hard to read. They were drawn straight over the viewfinder. When off, they were bare white text that disappeared against the brightness, and the Dynamic Island clipped some of them.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-blog-chips-phone-vs-mockup.png'
+  altText='Glint on a bright scene where the HIST and ZEB chips are hard to read, next to a mockup of the same screen'
+  caption='Left: the screenshot Claude built the mockups from. On a bright scene, HIST and ZEB almost vanish against the worktop. Right: the mockup of the same screen.'
+  maxWidth='600px'
+/>
+
+<Section>
+
+I decided that information belongs around the viewfinder, the way it does on a camera. I asked Claude to mock up two ways to do it: a tool row under the viewfinder, and the same row with the lens picker in it.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-blog-tool-row-options.png'
+  altText='Two mockups: A, a tool row under the viewfinder; B, a compact row that includes the lens picker'
+  caption='Left: A, a tool row. Right: B, a compact row with lenses.'
+  maxWidth='600px'
+/>
+
+<Section>
+
+I chose B — the compact row with lenses. Asking for two options made the lens picker the deciding difference. In A, it still sat on the viewfinder. In B, only AF and the focus rail stay on the viewfinder. Here's the before and after.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-shot-chips-before-after.png'
+  altText='Two Glint screenshots: the chips over the viewfinder on the left and the tool row under the viewfinder on the right'
+  caption='Left: the chips over the viewfinder. Right: the tool row under the viewfinder, enlarged to the same height.'
+/>
+
+<Section>
+
+### 2. The settings I rarely change needed a home
+
+Taking the chips off the viewfinder left a problem: where do the settings I don't change often go? Until then, some of them lived in touch-and-hold menus on PK and ZEB. Cameras solve this with a quick menu, plus custom buttons for the few things you toggle often.
+
+Fuji, Canon, and Panasonic call theirs Q. Sony uses Fn. In the first mockup, the button was labelled Q. I asked Claude why, then asked for a different name. SET was one of the options Claude gave me, and I liked that it's shorthand for "settings". It also borrows no brand's label and fits Glint's all-caps labels. Its first version was nine tiles — tap one and its choices appear underneath.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-mock-04-set-menu-first-pass-tiles.png'
+  altText='A mockup of the first SET menu made of nine tiles'
+  maxWidth='360px'
+/>
+
+<Section>
+
+### 3. The viewfinder got smaller, so the mode switch moved
+
+As soon as I used the tool row version on the phone, I noticed the viewfinder had got smaller. It was losing space to the tool row. SET moved to the top bar beside the format shown as plain text (the RAW chip looked out of place), and I needed somewhere else for PHOTO | VIDEO, so I asked for two places to put it.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-blog-mode-options.png'
+  altText='Two mockups: the mode switches stacked on the left, and PHOTO and VIDEO by the shutter'
+  caption='Left: both stacked on the left. Right: PHOTO | VIDEO by the shutter.'
+  maxWidth='600px'
+/>
+
+<Section>
+
+I decided on the left stack: AUTO | MANUAL over PHOTO | VIDEO, beside the shutter. It mirrors the Sony A1's mode dial with its photo and movie collar underneath, and it gave the bottom strip back to the viewfinder.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-ref-sony-top-plate.png'
+  altText='The top plate of a Sony A1 II showing the mode dial and the photo and movie collar'
+  caption='Sony A1 II top plate, with the mode dial and its photo and movie collar.'
+  fullwidth
+/>
+
+<Section>
+
+### 4. Landscape was a mess
+
+Rotating every label with the phone made chips overlap and left the focus rail along the top.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-shot-landscape-mess.png'
+  altText='Glint in landscape with overlapping rotated labels and the focus rail along the top'
+  caption='Landscape, before: every label rotated with the phone.'
+/>
+
+<Section>
+
+I didn't mock this one up. I decided it on the phone. Controls don't rotate on a physical camera, so I did the same in my camera app. Only the focus rail moves, to the side you choose (a setting in SET), turned so ∞ is up.
+
+### 5. SET wasn't obvious
+
+The tiles worked, but tapping one showed its choices in a panel along the bottom, and nothing tied the two together.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-shot-early-set-menu-tiles.png'
+  altText='The first SET menu on the phone with tiles and a panel of choices at the bottom'
+  caption='The first SET menu on the phone: tiles, with the choices for the selected tile in a panel at the bottom.'
+  maxWidth='360px'
+/>
+
+<Section>
+
+> "I want to improve the SET UX. It wasn't obvious to me that the bottom row was the options for the currently selected setting." — My prompt to Claude
+
+Claude had designed that menu, and I couldn't tell how it worked. If I couldn't tell, anyone new to the app would struggle too. Claude's answer was three options, as mockups.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-blog-set-options.png'
+  altText='Three mockups of the SET menu: rows with every choice on show, choices open under the tile, and tap a tile then pick'
+  caption='Left: rows, every choice on show. Middle: choices open under the tile. Right: tap a tile, then pick.'
+/>
+
+<Section>
+
+I chose rows, the one where every choice is visible. Each setting names itself and shows every choice as a segmented control, like a digital camera's menu system. The expanding version needed a pointer arrow to tie its choices to the tile, and the drill-in version hides everything else. I didn't like the additional steps to find the setting I wanted. I just wanted to get to the setting fast.
+
+The mockup next to what shipped:
+
+</Section>
+
+<ImageCaption
+  image='images/glint-blog-set-mockup-vs-app.png'
+  altText='The rows mockup of the SET menu next to the shipped SET menu in the app'
+  caption='Left: the mockup. Right: what shipped in the app.'
+  maxWidth='600px'
+/>
+
+<Section>
+
+Here's where the design ended up — the tool row under the viewfinder, SET and the exposure meter in the top bar, the mode stack by the shutter, and the focus rail on the edge.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-shot-02-main-screen-peaking-zebras.png'
+  altText="Glint's main screen with focus peaking and zebras on"
+  caption="Glint's main screen as it is now, with focus peaking and zebras on."
+  maxWidth='360px'
+/>
+
+<Section>
+
+## App experience enhancements
+
+The design of Glint has come a long way in a short amount of time, and I wanted the app to feel polished. That meant improving the experience outside the app too, the way you get into it: how the icon looks on the Home Screen, and how the Glint control looks on the Lock Screen and in Control Centre. I took both through the same design loop as the controls, with additional design iterations for each.
+
+**The app icon.** I wanted it to say "camera" at a glance and to work in light, dark, and tinted modes. It started life as a placeholder sparkle, then went through five rounds in one evening.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-icon-00-placeholder-sparkle.png'
+  altText='The placeholder sparkle app icon'
+  caption='The placeholder sparkle icon.'
+  maxWidth='140px'
+/>
+
+<Section>
+
+**1. Six directions**, all built around the name (a glint is a small catch of light): a spark, an aperture, a specular dot, Bayer pixels, a G monogram, and a framed glint.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-icon-01-six-first-directions-clean.png'
+  altText='Six first app icon directions'
+  caption='Round 1: the six first directions.'
+  maxWidth='700px'
+/>
+
+<Section>
+
+**2. Three palettes.** I liked three of the six directions but wasn't sure about palette or tone, so I asked to see options. I chose graphite and amber: technical, and the amber reads as light and not decoration.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-icon-02-three-palettes-light-dark.png'
+  altText='Three palettes for the app icon in light and dark'
+  caption='Round 2: three palettes, in light and dark.'
+/>
+
+<Section>
+
+**3. Three shapes**, tested at 60, 40, and 29 px. I chose the specular lens, which was the calmest and survived shrinking, but it was the weakest "camera" cue.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-icon-03-three-shapes-light-dark-tinted.png'
+  altText='Three icon shapes in light, dark, and tinted versions'
+  caption='Round 3: three shapes, in light, dark, and tinted.'
+/>
+
+<Section>
+
+**4. Four ways to add a camera cue.** Once I'd chosen the specular lens, I asked how to make it read more like a camera, which is where the four cues came from. I didn't understand the top plate at first, so I wanted to see why before ruling it out. I chose iris blades, a hexagon inside the lens.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-icon-04-specular-lens-camera-cue-variants.png'
+  altText='Four variants of the specular lens icon with different camera cues'
+  caption='Round 4: four ways to add a camera cue to the specular lens.'
+  emphasized
+/>
+
+<Section>
+
+**5. The final icon.** The first export had a bug: the highlight dot overlapped a corner of the hexagon and looked accidental, so I shrank the hexagon and moved the dot.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-icon-shipped-light-dark-tinted.png'
+  altText='The shipped Glint icon in light, dark, and tinted versions'
+  caption='Round 5: the final icon, in light, dark, and tinted.'
+  maxWidth='700px'
+/>
+
+<ImageCaption
+  image='images/glint-shot-06-home-screen-icon.png'
+  altText='The Glint icon on a real home screen'
+  caption='On a real home screen.'
+  emphasized
+/>
+
+<Section>
+
+**The Lock Screen glyph.** The Lock Screen control first used a generic system aperture symbol, which looked like every other camera app. I rebuilt it from the app icon's own shapes, and it took six passes in a short afternoon session: an off-centre hexagon, a centred one, a lighter one, a custom symbol (the PNG showed up as a question mark), a version drawn like the icon, and a final one scaled up to match its neighbours in Control Centre.
+
+</Section>
+
+<ImageCaption
+  image='images/glint-blog-lock-glyph.png'
+  altText='The first pass and the shipped Lock Screen glyph'
+  caption='Left: the first pass. Right: the shipped glyph.'
+  maxWidth='360px'
+/>
+
+<ImageCaption
+  image='images/glint-shot-07-lock-screen-control.png'
+  altText='The Glint control on a real Lock Screen next to the torch'
+  caption='On a real Lock Screen, next to the torch.'
+  emphasized
+/>
+
+<Section>
+
+## What's next
+
+I still have ideas from my references that aren't built yet. Most are small details in how the controls look and feel, like the ticks and numerals on a Leica's focus scale, plus a few camera features like separate focus and exposure lock buttons.
+
+</Section>
